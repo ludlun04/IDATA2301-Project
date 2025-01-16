@@ -4,10 +4,12 @@ import {NavLink} from "react-router-dom";
 export default function Header() {
     return (
         <div className={"Header"}>
-            <NavLink to={"/home"}>Rental Roulette</NavLink>
-            <NavLink to={"/portal"}>Rent</NavLink>
-            <NavLink to={"/about"}>About</NavLink>
-            <NavLink to={"contact"}>Contact</NavLink>
+            <NavLink className={"Logo"} to={"/home"}>Rental Roulette</NavLink>
+            <div className={"rightContainer"}>
+                <NavLink className={"navLink rent"} to={"/portal"}>Rent</NavLink>
+                <NavLink className={"navLink"} to={"/about"}>About</NavLink>
+                <NavLink className={"navLink"} to={"contact"}>Contact</NavLink>
+            </div>
         </div>
     )
 }
