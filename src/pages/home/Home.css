@@ -1,3 +1,54 @@
 .Home {
     background: orange;
+
+    display: flex;
+    height: 100vh;
+}
+
+
+.home {
+    padding-top: 60px;
+    padding-left: 15%;
+    padding-right: 15%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+.leftPane {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 50px;
+    backdrop-filter: blur(50px);
+    border-radius: 50px;
+
+    box-shadow: 0 0 30px 15px rgba(0, 0, 0, 0.5);
+}
+
+.slogan1 {
+    line-height: 0;
+    font-size: 48px;
+    margin-bottom: 0;
+
+    font-family: "Kantumruy Pro";
+
+    color: white;
+}
+
+.slogan2 {
+    line-height: 0;
+    font-size: 96px;
+    margin-bottom: 70px;
+    margin-top: 80px;
+
+    font-family: "Kantumruy Pro";
+    font-weight: 500;
+
+    color: white;
+}
+
+.slogan2.ease {
+    margin-top: 0;
 }
