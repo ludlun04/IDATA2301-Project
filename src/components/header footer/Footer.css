@@ -1,4 +1,98 @@
 .Footer {
-    background: yellow;
     z-index: 999;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #121212;
+
+    border-top:solid rgba(0, 0, 0, 0.1);
+}
+
+.footerBottom {
+    display: flex;
+    background: #0D0D0D;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0px 10px 0px 10px;
+
+
+    border-top:solid rgba(0, 0, 0, 0.1);
+
+    color: #B5B5B5;
+
+    font-family: "Kantumruy Pro";
+    font-weight: 200;
+}
+
+.footerTop {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    padding: 0px 20px 0px 20px;
+}
+
+.footerTopLeftPane {
+    display: flex;
+    flex-direction: row;
+
+    gap: 60px;
+}
+
+.footerTopRightPane {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    gap: 40px;
+}
+
+.footerAddressPane {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.footerNavigationPane {
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.footerIcon {
+    color: white;
+}
+
+.footerAddress {
+    font-family: "Kantumruy Pro";
+    color: white;
+    margin: 0px 0px 0px 0px;
+}
+
+.footerAddress.title {
+    margin: 0px 0px 5px 0px;
+    font-weight: 550;
+}
+
+.footerNavigation {
+    font-family: "Kantumruy Pro";
+    font-weight: 550;
+    color: white;
+    margin: 0px 0px 5px 0px;
+}
+
+.footerNavLink {
+    color: white;
+    font-family: "Kantumruy Pro";
+}
+
+.footerNavLink:active {
+    color: #3c61e6;
 }

@@ -14,5 +14,5 @@ code {
 
 @font-face {
   font-family: "Kantumruy Pro";
-  src: local("Kantumruy Pro"), url("fonts/KantumruyPro-VariableFont_wght.ttf") format("truetype");
+  src: local("Kantumruy Pro"), url("resources/fonts/KantumruyPro-VariableFont_wght.ttf") format("truetype");
 }
