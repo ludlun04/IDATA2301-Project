@@ -23,6 +23,9 @@ export default function About() {
                     <EmployeeCard></EmployeeCard>
                 </div>
             </div>
+            <div className={"aboutFAQ"}>
+                <h1 className={"aboutHeader"}>FAQ</h1>
+            </div>
         </div>
 
     )
