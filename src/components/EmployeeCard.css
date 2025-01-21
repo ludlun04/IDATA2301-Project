@@ -1,8 +1,17 @@
 .EmployeeCard {
     border: solid 2px rgba(0, 0, 0, .1);
-
+    border-radius: 10px;
 }
 
 .employeeCardContentContainer {
     padding: 10px;
 }
+
+.employeeCardHeader {
+    font-size: 24px;
+}
+
+.employeeCardParagraph {
+    font-size: 15px;
+}
+
