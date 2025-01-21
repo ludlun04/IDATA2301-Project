@@ -96,3 +96,18 @@
 .footerNavLink:active {
     color: #3c61e6;
 }
+
+@media only screen and (max-width: 512px) {
+    .footerTop {
+        flex-direction: column;
+    }
+
+    .footerTopLeftPane {
+        justify-content: space-between;
+    }
+
+    .footerTopRightPane {
+        justify-content: center;
+    }
+}
+
