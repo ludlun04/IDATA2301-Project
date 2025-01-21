@@ -1,3 +1,11 @@
 .Rent {
-    background: blue;
+  padding: 60px;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.CarImage {
+  width: 100%;
+  
 }
