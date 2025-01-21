@@ -7,6 +7,8 @@ import About from "../pages/about/About";
 import Contact from "../pages/contact/Contact";
 import Footer from "../components/header footer/Footer";
 import Header from "../components/header footer/Header";
+import SignIn from "../pages/signIn/SignIn";
+import SignUp from "../pages/signUp/SignUp";
 
 const router = createBrowserRouter(createRoutesFromElements(
     <Route path={"/"} element={ <Root />}>
@@ -16,6 +18,8 @@ const router = createBrowserRouter(createRoutesFromElements(
       <Route path={"rent"} element={<Rent />} />
       <Route path={"about"} element={<About />} />
       <Route path={"contact"} element={<Contact />} />
+      <Route path={"sign-in"} element={<SignIn />} />
+      <Route path={"sign-up"} element={<SignUp />} />
     </Route>
 ))
 

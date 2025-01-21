@@ -1,4 +1,4 @@
-import "./Header.css"
+ import "./Header.css"
 import {NavLink} from "react-router-dom";
 
 export default function Header() {
@@ -9,6 +9,7 @@ export default function Header() {
                 <NavLink className={"navLink rent"} to={"/portal"}>Rent</NavLink>
                 <NavLink className={"navLink"} to={"/about"}>About</NavLink>
                 <NavLink className={"navLink"} to={"contact"}>Contact</NavLink>
+                <NavLink className={"navLink sign-in"} to={"/sign-in"}>Sign In</NavLink>
             </div>
         </div>
     )
