@@ -10,7 +10,6 @@
 
 
 .home {
-    padding-top: 60px;
     padding-left: 10%;
     padding-right: 10%;
 
@@ -22,7 +21,6 @@
 }
 
 .homeLeftPane {
-    padding: 50px;
     border-radius: 50px;
 
     text-shadow: 0px 0px 50px #000000;
@@ -80,4 +78,39 @@
 
 .portalButton:active {
     background: linear-gradient(to right, #233986 0%, #2e398f 100%);
+}
+
+@media only screen and (max-width: 1024px) {
+    .home {
+        flex-direction: column;
+        justify-content: center;
+        gap: 10%;
+    }
+
+    .slogan1 {
+        font-size: 200%;
+    }
+
+    .slogan2 {
+        font-size: 400%;
+        margin-top: 53px;
+        margin-bottom: 47px;
+    }
+}
+
+@media only screen and (max-width: 512px) {
+    .home {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .slogan1 {
+        font-size: 150%;
+    }
+
+    .slogan2 {
+        font-size: 300%;
+        margin-top: 40px;
+        margin-bottom: 35px;
+    }
 }
