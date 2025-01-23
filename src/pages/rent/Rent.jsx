@@ -7,8 +7,10 @@ export default function Rent() {
           <div>
             <img alt="" className={"CarImage"} src={bmw}/>
             <h1>Hello World!</h1>
+            
+            <section className={"Attributes"}>
             <h2>Attributes</h2>
-            <section className={"Attributes"}></section>
+            </section>
             <h2>Description</h2>
             <p>This is a description for this car</p>
           </div>
