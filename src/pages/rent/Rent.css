@@ -1,11 +1,62 @@
-.Rent {
-  padding: 60px;
+Main {
+  padding-top: 60px;
   display: flex;
   flex-direction: row;
   gap: 1rem;
 }
 
-.CarImage {
+.Information {
   width: 100%;
+}
+
+.Interaction {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.DurationSelection {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+
+.DailyPrice > p {
+  margin: 0px;
+  padding: 0px;
+}
+
+.DailyPrice > .Title {
+  font-size: 1rem;
   
+}
+
+.DailyPrice > .Content {
+  font-size: 1.25rem;
+}
+
+.TotalPrice > p {
+  margin: 0px;
+  padding: 0px;
+}
+
+.TotalPrice > Title {
+  font-size: 1.25rem;
+}
+
+.TotalPrice > .Content {
+  font-size: 2rem;
+}
+
+.RentButton {
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  padding: 1rem;
+
+  font-weight: 800;
+  color: #EAEAEA;
+
+  background: linear-gradient(#3C61E6, #5063F8)
 }
