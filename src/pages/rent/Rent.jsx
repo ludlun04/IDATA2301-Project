@@ -1,5 +1,6 @@
 import "./Rent.css"
 import DatePickerField from "../../components/DatePickerField/DatePickerField"
+import CarAttribute from "../../components/CarAttribute/CarAttribute";
 import bmw from "./../../resources/images/bmw.jpg";
 
 export default function Rent() {
@@ -11,6 +12,13 @@ export default function Rent() {
 
         <section className={"RentAttributes"}>
           <h2>Attributes</h2>
+          <div className="RentAttributeList">
+            <CarAttribute/>
+            <CarAttribute/>
+            <CarAttribute/>
+            <CarAttribute/>
+            <CarAttribute/>
+          </div>
         </section>
         <h2>Description</h2>
         <p>This is a description for this car</p>
