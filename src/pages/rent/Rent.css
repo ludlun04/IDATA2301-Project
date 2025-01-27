@@ -1,51 +1,51 @@
-Main {
+.RentMain {
   padding-top: 60px;
   display: flex;
   flex-direction: row;
   gap: 1rem;
 }
 
-.Information {
+.RentInformation {
   width: 100%;
 }
 
-.Interaction {
+.RentInteraction {
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-.DurationSelection {
+.RentDurationSelection {
   display: flex;
   flex-direction: row;
   gap: 1rem;
 }
 
 
-.DailyPrice > p {
+.RentDailyPrice > p {
   margin: 0px;
   padding: 0px;
 }
 
-.DailyPrice > .Title {
+.RentDailyPrice > .Title {
   font-size: 1rem;
   
 }
 
-.DailyPrice > .Content {
+.RentDailyPrice > .Content {
   font-size: 1.25rem;
 }
 
-.TotalPrice > p {
+.RentTotalPrice > p {
   margin: 0px;
   padding: 0px;
 }
 
-.TotalPrice > Title {
+.RentTotalPrice > Title {
   font-size: 1.25rem;
 }
 
-.TotalPrice > .Content {
+.RentTotalPrice > .Content {
   font-size: 2rem;
 }
 
