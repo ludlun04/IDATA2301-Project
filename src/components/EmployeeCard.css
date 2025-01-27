@@ -5,13 +5,43 @@
 
 .employeeCardContentContainer {
     padding: 10px;
+    width: 200px;
 }
 
+.employeeCardImageContainer {
+    width: 100%;
+    aspect-ratio: 1/1;
+}
+
+.employeeCardContentContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
 .employeeCardHeader {
-    font-size: 24px;
+    font-size: 1.5rem;
 }
 
 .employeeCardParagraph {
-    font-size: 15px;
+    font-size: 0.938rem;
 }
+
+@media only screen and (max-width: 1024px) {
+    .employeeCardContentContainer {
+        width: 150px;
+    }
+}
+
+@media only screen and (max-width: 512px) {
+    .employeeCardContentContainer {
+        width: 120px;
+    }
+    .employeeCardHeader {
+        font-size: 1rem;
+    }
+}
+
 

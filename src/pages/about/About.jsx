@@ -21,6 +21,7 @@ export default function About() {
                     <EmployeeCard></EmployeeCard>
                     <EmployeeCard></EmployeeCard>
                     <EmployeeCard></EmployeeCard>
+                    <EmployeeCard></EmployeeCard>
                 </div>
             </div>
             <div className={"aboutFAQ"}>
