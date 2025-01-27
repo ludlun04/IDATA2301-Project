@@ -2,17 +2,19 @@
   padding: 60px;
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  gap: 4rem;
 }
 
-.RentInformation {
-  width: 100%;
+.RentCarImage {
+  width: 900px;
+}
 
-
+.RentDescriptionText {
+  width: 70ch;
 }
 
 .RentInteraction {
-  width: 100%;
-
   display: flex;
   justify-content: center;
 }
