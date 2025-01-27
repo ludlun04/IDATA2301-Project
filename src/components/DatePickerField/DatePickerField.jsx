@@ -1,10 +1,10 @@
 import "./DatePickerField.css"
 
 
-export default function Portal(props) {
+export default function DatePickerField(props) {
   return (
     <div>
-      <p>{props.title}</p>
+      <p className="">{props.title}</p>
       <input type="date" name="RentFrom" id="Rent-From" />
     </div>
   )

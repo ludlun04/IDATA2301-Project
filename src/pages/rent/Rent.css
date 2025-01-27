@@ -2,17 +2,26 @@
   padding-top: 60px;
   display: flex;
   flex-direction: row;
-  gap: 1rem;
 }
 
 .RentInformation {
   width: 100%;
+
+
 }
 
 .RentInteraction {
   width: 100%;
+
   display: flex;
   justify-content: center;
+}
+
+.RentInteractionInner {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: fit-content;
 }
 
 .RentDurationSelection {
@@ -27,12 +36,12 @@
   padding: 0px;
 }
 
-.RentDailyPrice > .Title {
+.RentDailyPrice > .RentTitle {
   font-size: 1rem;
   
 }
 
-.RentDailyPrice > .Content {
+.RentDailyPrice > .RentContent {
   font-size: 1.25rem;
 }
 
@@ -41,16 +50,16 @@
   padding: 0px;
 }
 
-.RentTotalPrice > Title {
+.RentTotalPrice > .RentTitle {
   font-size: 1.25rem;
 }
 
-.RentTotalPrice > .Content {
+.RentTotalPrice > .RentContent {
   font-size: 2rem;
 }
 
 .RentButton {
-  width: 100%;
+  width: fit-content;
   border: none;
   border-radius: 10px;
   padding: 1rem;
@@ -59,4 +68,21 @@
   color: #EAEAEA;
 
   background: linear-gradient(#3C61E6, #5063F8)
+}
+
+.RentCompanyCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.RentCompanyCard > .RentCompanyImage{
+  background-image: url("./../../resources/images/bmw.jpg");
+  background-position: center center;
+  background-size: cover;
+  display: block;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
 }
