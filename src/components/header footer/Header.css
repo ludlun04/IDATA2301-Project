@@ -79,13 +79,21 @@
         height: 4px;
     }
 
+    .headerMenuButton.bottom, .headerMenuButton.top {
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .headerMenuButton.middle {
+        transition: opacity 0.3s ease-in-out;
+    }
+
     .headerMenuButton.bottom.active {
-        animation: burgerMenuBottom 0.2s ease-in-out;
+        animation: burgerMenuBottom 0.3s ease-in-out;
         transform: rotate(225deg) translateY(8px) translateX(8px);
     }
 
     .headerMenuButton.top.active {
-        animation: burgerMenuTop 0.2s ease-in-out;
+        animation: burgerMenuTop 0.3s ease-in-out;
         transform: rotate(-225deg) translateY(-8px) translateX(8px);
     }
 
@@ -113,7 +121,7 @@
         transform: translateX(0) translateY(0) rotate(0deg);
     }
     50% {
-        transform: translateX(-100%) translateY(8px) rotate(90deg);
+        transform: translateX(-50%) translateY(8px) rotate(90deg);
     }
     100% {
         transform: translateX(0) translateY(-8px) rotate(225deg);
@@ -125,7 +133,7 @@
         transform: translateX(0) translateY(0) rotate(0deg);
     }
     50% {
-        transform: translateX(-100%) translateY(-8px) rotate(-90deg);
+        transform: translateX(50%) translateY(-8px) rotate(-90deg);
     }
     100% {
         transform: translateX(0) translateY(8px) rotate(-225deg);
