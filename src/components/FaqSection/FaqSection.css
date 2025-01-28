@@ -1,0 +1,9 @@
+.FaqSection {
+    display: flex;
+    border: solid black 1px;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.faqSectionIconContainer {
+}

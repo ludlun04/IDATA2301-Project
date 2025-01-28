@@ -1,5 +1,6 @@
 import "./About.css"
-import EmployeeCard from "../../components/EmployeeCard";
+import EmployeeCard from "../../components/EmployeeCard/EmployeeCard";
+import FaqSection from "../../components/FaqSection/FaqSection";
 
 export default function About() {
     return (
@@ -21,11 +22,15 @@ export default function About() {
                     <EmployeeCard></EmployeeCard>
                     <EmployeeCard></EmployeeCard>
                     <EmployeeCard></EmployeeCard>
-                    <EmployeeCard></EmployeeCard>
                 </div>
             </div>
-            <div className={"aboutFAQ"}>
+            <div className={"aboutFaq"}>
                 <h1 className={"aboutHeader"}>FAQ</h1>
+                <div className={"aboutFaqMenuContainer"}>
+                    <FaqSection></FaqSection>
+                    <FaqSection></FaqSection>
+                    <FaqSection></FaqSection>
+                </div>
             </div>
         </div>
 

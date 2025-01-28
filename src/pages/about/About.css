@@ -18,7 +18,7 @@
     margin: 10px;
 }
 
-.aboutEmployees, .aboutOurStory, .aboutFAQ {
+.aboutEmployees, .aboutOurStory, .aboutFaq {
     border: solid 2px rgba(0, 0, 0, .1);
     padding: 20px;
     border-radius: 10px;
@@ -45,13 +45,13 @@
         font-size: 1rem;
     }
 
-    .aboutEmployees, .aboutOurStory, .aboutFAQ {
+    .aboutEmployees, .aboutOurStory, .aboutFaq {
         width: 400px;
     }
 }
 
 @media only screen and (max-width: 512px) {
-    .aboutEmployees, .aboutOurStory, .aboutFAQ {
+    .aboutEmployees, .aboutOurStory, .aboutFaq {
         width: 200px;
     }
 

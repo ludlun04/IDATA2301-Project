@@ -1,5 +1,5 @@
 import "./EmployeeCard.css"
-import vedum from "../resources/images/vedum.png"
+import vedum from "../../resources/images/vedum.png"
 
 export default function EmployeeCard(props) {
     return (
