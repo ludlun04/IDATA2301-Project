@@ -5,7 +5,7 @@
 ### Theme
 The website should give an impression of a journey, travel and adventure. There should also be a balance in design between playfull and serious-buisness.
 ### Color Theme
-- Primary color
+- Primary color gradient from A to B
   - #3C61E6 -> #5063F8
 ### Hierarchy and layout
 
