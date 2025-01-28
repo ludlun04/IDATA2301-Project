@@ -8,6 +8,8 @@
 }
 
 .contact-form {
+    display: flex;
+    flex-direction: column;
     padding: 20px;
     border: solid 2px rgba(0, 0, 0, .1);
     border-radius: 10px;
