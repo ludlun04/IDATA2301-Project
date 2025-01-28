@@ -1,14 +1,21 @@
-import "./FaqSection.css"
-import openFaqIcon from "../../resources/icons/open-faq.svg"
+import "./FaqSection.css";
+import openFaqIcon from "../../resources/icons/open-faq.svg";
+import {useState} from "react";
 
 export default function () {
+    const [menuActive, toggleMenuActive] = useState(false)
+
+    const triggerToggle = () => {
+        toggleMenuActive(!menuActive)
+    }
+
     return (
         <div className={"FaqSection"}>
             <div className={"faqSectionQuestion"}>
-                This is a very important question
+                <p>This is a very important question</p>
             </div>
-            <div className={"faqSectionIconContainer"}>
-                <img  src={openFaqIcon}></img>
+            <div>
+                <img src={openFaqIcon} alt={"Arrow for triggering displaying the answer of this question"} onClick={triggerToggle} className={`faqSectionIcon ${menuActive ? "active" : ""} `}></img>
             </div>
         </div>
     )
