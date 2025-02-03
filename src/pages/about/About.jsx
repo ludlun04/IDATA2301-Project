@@ -27,9 +27,26 @@ export default function About() {
             <div className={"aboutFaq"}>
                 <h1 className={"aboutHeader"}>FAQ</h1>
                 <div className={"aboutFaqSectionContainer"}>
-                    <FaqSection></FaqSection>
-                    <FaqSection></FaqSection>
-                    <FaqSection></FaqSection>
+                    <FaqSection
+                        question={"This is a very important question, or is it?"}
+                        answer={"And this is a very important answer.ssfd " +
+                            "sdf" +
+                            " " +
+                            "dsf " +
+                            "sfd dsf " +
+                            "" +
+                            "dsf ds dfsdfsfsfsdfsfsdsdfsdfsdfdf " +
+                            "sfd sdfsdsdfsfsfsdfsfd sdf " +
+                            "sdf sdfsfddfjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj sdffffffffffffffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffffffffffff ffffffffffffffffffffffffffff"}
+                    />
+                    <FaqSection
+                        question={"This is a very important question, or is it?"}
+                        answer={"And this is a very important answer."}
+                    />
+                    <FaqSection
+                        question={"This is a very important question, or is it?"}
+                        answer={"And this is a very important answer."}
+                    />
                 </div>
             </div>
         </div>

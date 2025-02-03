@@ -1,24 +1,35 @@
 import "./FaqSection.css";
 import openFaqIcon from "../../resources/icons/open-faq.svg";
-import {useState} from "react";
+import {useState, useRef, useEffect} from "react";
 
-export default function FaqSection() {
+export default function FaqSection(props) {
     const [menuActive, toggleMenuActive] = useState(false)
+    const [height, setHeight] = useState(0)
+    const contentRef = useRef(null)
 
     const triggerToggle = () => {
         toggleMenuActive(!menuActive)
     }
 
+    useEffect(() => {
+        if (menuActive) {
+            setHeight(contentRef.current.scrollHeight)
+        } else {
+            setHeight(0)
+        }
+    }, [menuActive]);
+
     return (
         <div className={"FaqSection"}>
             <div className={"faqSectionQuestionAndIconContainer"}>
-                <p className={`faqSectionQuestion`}>This is a very important question, or is it?</p>
+                <p className={`faqSectionQuestion`}>{props.question}</p>
                 <img className={`faqSectionIcon ${menuActive ? "active" : ""} `} src={openFaqIcon}
                      alt={"Arrow for triggering displaying the answer of this question"}
-                     onClick={triggerToggle}></img>
+                     onClick={triggerToggle}
+                     ></img>
             </div>
-            <div className={`faqSectionAnswerContainer`} style={{height: `${menuActive ? "100px" : "0px"}`}}>
-                <p className={"faqSectionAnswer"}>And this is a very important answer.</p>
+            <div className={`faqSectionAnswerContainer`} style={{height: `${height}px`}} ref={contentRef}>
+                <p className={"faqSectionAnswer"}>{props.answer}</p>
             </div>
         </div>
     )
