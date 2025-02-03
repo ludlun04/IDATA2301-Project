@@ -12,6 +12,8 @@
     backdrop-filter: blur(5px);
 
     border-bottom:solid rgba(0, 0, 0, 0.1);
+
+    z-index: 999;
 }
 
 .navLink {
@@ -67,6 +69,7 @@
     }
 
     .headerMenuButtonContainer {
+        cursor: pointer;
         display: flex;
         flex-direction: column;
         gap: 7px;

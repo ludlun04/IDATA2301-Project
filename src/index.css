@@ -12,6 +12,11 @@ code {
     monospace;
 }
 
+h1, h2, h3, h4, h5, h6, p {
+  color: #191100;
+  font-family: "Kantumruy Pro", sans-serif;
+}
+
 @font-face {
   font-family: "Kantumruy Pro";
   src: local("Kantumruy Pro"), url("resources/fonts/KantumruyPro-VariableFont_wght.ttf") format("truetype");

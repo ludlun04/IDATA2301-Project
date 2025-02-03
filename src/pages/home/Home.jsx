@@ -6,9 +6,9 @@ export default function Home() {
         <div className={"Home"}>
             <div className={"home"}>
                 <div className={"homeLeftPane"}>
-                    <p className={"slogan1"}>Your journey starts here</p>
-                    <p className={"slogan2"}>Rent with</p>
-                    <p className={"slogan2 ease"}>ease</p>
+                    <h2 className={"slogan1"}>Your journey starts here</h2>
+                    <h1 className={"slogan2"}>Rent with</h1>
+                    <h1 className={"slogan2 ease"}>ease</h1>
                 </div>
                 <div className={"homeRightPane"}>
                     <NavLink className={"portalButton"} to={"/portal"}>Rent Now</NavLink>

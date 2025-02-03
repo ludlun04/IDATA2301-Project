@@ -6,6 +6,8 @@
 
     display: flex;
     height: 100vh;
+
+    z-index: 0;
 }
 
 
@@ -23,17 +25,16 @@
 .homeLeftPane {
     border-radius: 50px;
 
-    text-shadow: 0px 0px 50px #000000;
+    text-shadow: 0px 0px 50px #dadada;
+    padding: 20px;
 }
 
 .slogan1 {
     line-height: 0;
     font-size: 300%;
     margin-bottom: 0;
-
-    font-family: "Kantumruy Pro";
-
-    color: white;
+    font-weight: 400;
+    z-index: 10;
 }
 
 .slogan2 {
@@ -42,10 +43,7 @@
     margin-bottom: 70px;
     margin-top: 80px;
 
-    font-family: "Kantumruy Pro";
     font-weight: 500;
-
-    color: white;
 }
 
 .slogan2.ease {
