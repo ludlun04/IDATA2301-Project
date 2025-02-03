@@ -26,7 +26,7 @@ export default function About() {
             </div>
             <div className={"aboutFaq"}>
                 <h1 className={"aboutHeader"}>FAQ</h1>
-                <div className={"aboutFaqMenuContainer"}>
+                <div className={"aboutFaqSectionContainer"}>
                     <FaqSection></FaqSection>
                     <FaqSection></FaqSection>
                     <FaqSection></FaqSection>

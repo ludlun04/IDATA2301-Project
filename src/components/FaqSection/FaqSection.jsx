@@ -17,7 +17,7 @@ export default function FaqSection() {
                      alt={"Arrow for triggering displaying the answer of this question"}
                      onClick={triggerToggle}></img>
             </div>
-            <div className={`faqSectionAnswerContainer ${menuActive ? "active" : ""}`}>
+            <div className={`faqSectionAnswerContainer`} style={{height: `${menuActive ? "100px" : "0px"}`}}>
                 <p className={"faqSectionAnswer"}>And this is a very important answer.</p>
             </div>
         </div>
