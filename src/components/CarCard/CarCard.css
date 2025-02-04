@@ -1,0 +1,43 @@
+.CarCard {
+    display: flex;
+    border: solid 1px black;
+    height: 300px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.CarCard h1, h2, p {
+    margin: 0;
+}
+
+.CarCardRightPane {
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.CarCardInnerRightPane {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.CarCardInnerLeftPane {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.CarCardAvailabilityContainer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.CarCardCarInfoContainer {
+    display: flex;
+}
+
+.CarCardPriceContainer {
+    display: flex;
+    justify-content: flex-end;
+}
