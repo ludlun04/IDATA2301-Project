@@ -20,16 +20,18 @@ export default function FaqSection(props) {
     }, [menuActive]);
 
     return (
-        <div className={"FaqSection"}>
-            <div className={"faqSectionQuestionAndIconContainer"}>
-                <p className={`faqSectionQuestion`}>{props.question}</p>
-                <img className={`faqSectionIcon ${menuActive ? "active" : ""} `} src={openFaqIcon}
-                     alt={"Arrow for triggering displaying the answer of this question"}
-                     onClick={triggerToggle}
-                     ></img>
-            </div>
-            <div className={`faqSectionAnswerContainer`} style={{height: `${height}px`}} ref={contentRef}>
-                <p className={"faqSectionAnswer"}>{props.answer}</p>
+        <div className={props.className} onClick={triggerToggle}>
+            <div className={"FaqSection"}>
+                <div className={"faqSectionQuestionAndIconContainer"}>
+                    <p className={`faqSectionQuestion`}>{props.question}</p>
+                    <img className={`faqSectionIcon ${menuActive ? "active" : ""} `} src={openFaqIcon}
+                         alt={"Arrow for triggering displaying the answer of this question"}
+                    ></img>
+                </div>
+                <div className={`faqSectionAnswerContainer`} style={{height: `${height}px`}}
+                     ref={contentRef}>
+                    <p className={"faqSectionAnswer"}>{props.answer}</p>
+                </div>
             </div>
         </div>
     )
