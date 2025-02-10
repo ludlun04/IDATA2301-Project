@@ -47,5 +47,7 @@ The font will have rounded corners.
 ### Border rounding
 Borders will be slightly rounded to give a playfull design.
 
+Borders should be 1 rem
+
 ### Shadows
 Shadows will be used to emphasize important elements.
