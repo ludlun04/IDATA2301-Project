@@ -13,15 +13,17 @@ export default function Rent() {
         <section className={"RentAttributes"}>
           <h2>Attributes</h2>
           <div className="RentAttributeList">
-            <CarAttribute/>
-            <CarAttribute/>
-            <CarAttribute/>
-            <CarAttribute/>
-            <CarAttribute/>
+            <CarAttribute />
+            <CarAttribute />
+            <CarAttribute />
+            <CarAttribute />
+            <CarAttribute />
           </div>
         </section>
-        <h2>Description</h2>
-        <p className="RentDescriptionText">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <section className="RentCarDescription">
+          <h2>Description</h2>
+          <p className="RentDescriptionText">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </section>
       </div>
 
       <div className="RentInteraction">
@@ -33,8 +35,8 @@ export default function Rent() {
 
           <div className="RentRentSection">
             <div className="RentDurationSelection">
-              <DatePickerField title={"From"}/>
-              <DatePickerField title={"To"}/>
+              <DatePickerField title={"From"} />
+              <DatePickerField title={"To"} />
             </div>
           </div>
 
@@ -49,7 +51,7 @@ export default function Rent() {
           </div>
 
           <input className="RentButton" type="button" value="Rent Now" />
-          </div>
+        </div>
       </div>
     </main>
   )
