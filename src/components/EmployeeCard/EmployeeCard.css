@@ -1,6 +1,9 @@
 .EmployeeCard {
     border: solid 2px rgba(0, 0, 0, .1);
     border-radius: 10px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
 
 .employeeCardContentContainer {
