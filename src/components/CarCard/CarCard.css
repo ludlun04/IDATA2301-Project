@@ -1,6 +1,7 @@
 .CarCard {
     display: flex;
-    border: solid 1px black;
+    border: solid 1px #e8e6e6;
+    box-shadow: 0 0px 10px #e8e6e6;
     width: 32rem;
     height: 7rem;
     padding: .5rem;
@@ -8,11 +9,17 @@
     gap: .5rem;
 }
 
+.CarCard:hover {
+    background: lightgray;
+    cursor: pointer;
+}
+
 .CarCard h1, h2, p {
     margin: 0;
 }
 
 .CarCard h1 {
+    font-weight: 550;
     font-size: 1.5rem;
 }
 
@@ -74,13 +81,21 @@
 }
 
 .CarCardAvailabilityIndicator {
-    background: lawngreen;
+    background: #fc0000;
     width: .5rem;
     height: .5rem;
     border-radius: 50%;
 }
 
 .CarCardAvailabilityTag {
-    color: lawngreen;
+    color: #fc0000;
     font-weight: 500;
+}
+
+.CarCardAvailabilityIndicator.true {
+    background: #7afc00;
+}
+
+.CarCardAvailabilityTag.true {
+    color: #7afc00;
 }

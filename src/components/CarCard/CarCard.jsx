@@ -10,21 +10,21 @@ export default function CarCard(props) {
             <div className={"CarCardRightPane"}>
                 <div className={"CarCardInnerLeftPane"}>
                     <div className={"CarCardHeaderContainer"}>
-                        <h1 className={"CarCardHeader"}>BMW M3</h1>
-                        <h2 className={"CarCardCompany"}>Kacper Rental AS</h2>
+                        <h1 className={"CarCardHeader"}>{props.name}</h1>
+                        <h2 className={"CarCardCompany"}>{props.company}</h2>
                     </div>
                     <div className={"CarCardCarInfoContainer"}>
-                        <p>2002</p>
-                        <p>4 Seter</p>
+                        <p>{props.year}</p>
+                        <p>{props.seats + " Seter"}</p>
                     </div>
                 </div>
                 <div className={"CarCardInnerRightPane"}>
                     <div className={"CarCardAvailabilityContainer"}>
-                        <div className={"CarCardAvailabilityIndicator"}></div>
-                        <p className={"CarCardAvailabilityTag"}>Available</p>
+                        <div className={`CarCardAvailabilityIndicator ${props.availability}`}></div>
+                        <p className={`CarCardAvailabilityTag ${props.availability}`}>Available</p>
                     </div>
                     <div className={"CarCardPriceContainer"}>
-                        <p>Price</p>
+                        <p>{props.price + ",-"}</p>
                     </div>
                 </div>
             </div>

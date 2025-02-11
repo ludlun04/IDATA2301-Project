@@ -5,4 +5,5 @@
     gap: 1rem;
     padding: 70px 10px 10px;
     background: white;
+    min-height: 100vh;
 }
