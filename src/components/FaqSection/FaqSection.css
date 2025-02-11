@@ -28,6 +28,10 @@
     display: revert;
 }
 
+.faqSectionAnswer {
+    margin-top: 20px;
+}
+
 .faqSectionIcon {
     transition: transform .1s ease-in-out;
     transform: rotate(0deg);

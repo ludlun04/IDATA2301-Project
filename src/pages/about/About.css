@@ -76,11 +76,19 @@
     .aboutEmployees, .aboutOurStory, .aboutFaq {
         width: 400px;
     }
+
+    .aboutFaqSectionContainer {
+        width: 350px;
+    }
 }
 
 @media only screen and (max-width: 512px) {
     .aboutEmployees, .aboutOurStory, .aboutFaq {
-        width: 200px;
+        width: 255px;
+    }
+
+    .aboutFaqSectionContainer {
+        width: 250px;
     }
 
     .aboutEmployeeCardContainer {
