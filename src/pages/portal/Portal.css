@@ -1,5 +1,8 @@
 .Portal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
     padding: 70px 10px 10px;
     background: white;
-    height: 100vh;
 }

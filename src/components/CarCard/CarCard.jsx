@@ -1,10 +1,11 @@
 import "./CarCard.css"
+import img from "../../resources/images/bmw_m3/bmw_m3-1600.webp"
 
 export default function CarCard(props) {
     return (
         <div className="CarCard">
-            <div>
-                Picture
+            <div className={"CarCardImageContainer"}>
+                <img className={"CarCardImg"} src={img} alt={"Image"}/>
             </div>
             <div className={"CarCardRightPane"}>
                 <div className={"CarCardInnerLeftPane"}>
@@ -19,8 +20,8 @@ export default function CarCard(props) {
                 </div>
                 <div className={"CarCardInnerRightPane"}>
                     <div className={"CarCardAvailabilityContainer"}>
-                        <p>.</p>
-                        <p>Available</p>
+                        <div className={"CarCardAvailabilityIndicator"}></div>
+                        <p className={"CarCardAvailabilityTag"}>Available</p>
                     </div>
                     <div className={"CarCardPriceContainer"}>
                         <p>Price</p>

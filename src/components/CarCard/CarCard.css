@@ -1,13 +1,41 @@
 .CarCard {
     display: flex;
     border: solid 1px black;
-    height: 300px;
-    padding: 20px;
-    border-radius: 10px;
+    width: 32rem;
+    height: 7rem;
+    padding: .5rem;
+    border-radius: .5rem;
+    gap: .5rem;
 }
 
 .CarCard h1, h2, p {
     margin: 0;
+}
+
+.CarCard h1 {
+    font-size: 1.5rem;
+}
+
+.CarCard h2 {
+    font-size: .7rem;
+}
+
+.CarCard p {
+    font-size: 1rem;
+}
+
+.CarCardImageContainer {
+    background: #5063f8;
+    border-radius: .5rem;
+    overflow: hidden;
+    width: 35%;
+}
+
+.CarCardImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 .CarCardRightPane {
@@ -28,16 +56,31 @@
     justify-content: space-between;
 }
 
-.CarCardAvailabilityContainer {
-    display: flex;
-    justify-content: flex-end;
-}
-
 .CarCardCarInfoContainer {
     display: flex;
+    gap: 1rem;
 }
 
 .CarCardPriceContainer {
     display: flex;
     justify-content: flex-end;
+}
+
+.CarCardAvailabilityContainer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: .5rem;
+}
+
+.CarCardAvailabilityIndicator {
+    background: lawngreen;
+    width: .5rem;
+    height: .5rem;
+    border-radius: 50%;
+}
+
+.CarCardAvailabilityTag {
+    color: lawngreen;
+    font-weight: 500;
 }
