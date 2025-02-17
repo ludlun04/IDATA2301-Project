@@ -2,11 +2,22 @@ import "./Portal.css";
 import CarCard from "../../components/CarCard/CarCard";
 import CarSearchSortSection from "../../components/CarSearchSortSection/CarSearchSortSection";
 import FilterSection from "../../components/FilterSection/FilterSection";
+import axios from "axios";
+
+axios.defaults.headers.post['Content-Type'] = 'application/json';
+
 
 export default function Portal() {
-    const handleUserChoice = (searchItem, filterItem) => {
+    const handleUserChoice = async (searchItem, filterItem) => {
         console.log(searchItem);
         console.log(filterItem);
+        try {
+            const response = await axios.get('http://localhost:8080/company');
+            const data = response.data;
+            console.log(data);
+        } catch (e) {
+            console.log(e.message);
+        }
     }
     return (
         <div className={"Portal"}>
