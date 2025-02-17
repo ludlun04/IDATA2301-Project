@@ -1,0 +1,28 @@
+.FilterSection {
+  border: solid 1px #e8e6e6;
+  box-shadow: 0 0px 10px #e8e6e6;
+  height: fit-content;
+  padding: 1rem;
+  border-radius: .5rem;
+  min-width: 12rem;
+}
+
+.FilterSection ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.FilterLine {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: .5rem;
+}
+
+.FilterLine p {
+  max-width: 15ch;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
