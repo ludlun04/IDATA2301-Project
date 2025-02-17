@@ -15,7 +15,7 @@
 }
 
 .navLink {
-    padding: 0 20px 0 20px;
+    padding: 0 1rem 0 1rem;
     font-family: "Kantumruy Pro";
     font-size: x-large;
     text-align: center;
@@ -25,8 +25,9 @@
     color: var(--text-200);
 }
 
-.logo {
-    padding: 20px;
+.headerLogo {
+    padding-left: 1rem;
+    width: 10rem;
 }
 
 .navLink.sign-in {
@@ -38,7 +39,7 @@
 }
 
 .navLink:active {
-    color: #2f3a93;
+    color: var(--primary-100);
 }
 
 .headerMenuButtonContainer {

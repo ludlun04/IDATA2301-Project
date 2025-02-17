@@ -6,7 +6,7 @@
 
     background: var(--background);
 
-    border-top:solid .25rem var(--primary-100);
+    border-top:solid .15rem var(--primary-100);
 }
 
 .footerBottom {

@@ -1,8 +1,9 @@
  import "./Header.css"
 import {NavLink} from "react-router-dom";
  import {useState} from "react";
+import {ReactComponent as Logo} from "../../resources/logo/Logo-Dark-Horizontal.svg";
 
-export default function Header() {
+ export default function Header() {
     const [menuButtonActive, setMenuButtonActive] = useState(false);
 
     const handleToggle = () => {
@@ -11,7 +12,9 @@ export default function Header() {
 
     return (
         <div className={"Header"}>
-            <NavLink className={"logo"} to={"/home"}>Rental Roulette</NavLink>
+            <NavLink className={"logo"} to={"/home"}>
+                <Logo className={"headerLogo"}/>
+            </NavLink>
             <div className={`headerRightContainer ${menuButtonActive ? "active" : ""}`}>
                 <NavLink className={"navLink rent"} to={"/portal"} onClick={handleToggle}>Rent</NavLink>
                 <NavLink className={"navLink"} to={"/about"} onClick={handleToggle}>About</NavLink>
