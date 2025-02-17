@@ -1,12 +1,25 @@
 import "./CarSearchSortSection.css";
 import {useState} from "react";
 
-export default function CarSearchSortSection() {
-    const [searchItem, setSearchItem] = useState('')
+const CarSearchSortSection = ({onChange}) => {
+
+    if (typeof onChange !== "function") {
+        throw new TypeError("onChange must be a function");
+    }
+
+    const [searchItem, setSearchItem] = useState('');
+    const [sortByItem, setSortByItem] = useState('');
 
     const handleSearchFieldChange = (input) => {
         const searchWord = input.target.value;
         setSearchItem(searchWord);
+        onChange(searchWord, sortByItem);
+    }
+
+    const handleSortByFieldChange = (input) => {
+        const sortByWord = input.target.value;
+        setSortByItem(sortByWord);
+        onChange(searchItem, sortByWord);
     }
 
     return (
@@ -20,7 +33,7 @@ export default function CarSearchSortSection() {
                 />
             </div>
             <div className={"carSortContainer"}>
-                <select value={"Price"}>
+                <select value={sortByItem} onChange={handleSortByFieldChange}>
                     <option value="Price">Price</option>
                     <option value="Year">Year</option>
                     <option value="Seats">Seats</option>
@@ -29,3 +42,5 @@ export default function CarSearchSortSection() {
         </div>
     )
 }
+
+export default CarSearchSortSection;

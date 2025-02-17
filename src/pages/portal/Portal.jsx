@@ -4,14 +4,18 @@ import CarSearchSortSection from "../../components/CarSearchSortSection/CarSearc
 import FilterSection from "../../components/FilterSection/FilterSection";
 
 export default function Portal() {
-  return (
-    <div className={"Portal"}>
-      <CarSearchSortSection />
-      <FilterSection />
-      <div className={"CarList"}>
-        <CarCard price={5234} availability={false} seats={2} year={2002} name={"BMW M3"} company={"Kacper Rentals AS"} />
-        <CarCard price={4325} availability={true} seats={4} year={2021} name={"Mazda CX3"} company={"Steike Rentals"} />
-      </div>
-    </div>
-  )
+    const handleUserChoice = (searchItem, filterItem) => {
+        console.log(searchItem);
+        console.log(filterItem);
+    }
+    return (
+        <div className={"Portal"}>
+            <CarSearchSortSection onChange={handleUserChoice}/>
+            <FilterSection />
+            <div className={"CarList"}>
+                <CarCard price={5234} availability={false} seats={2} year={2002} name={"BMW M3"} company={"Kacper Rentals AS"} />
+                <CarCard price={4325} availability={true} seats={4} year={2021} name={"Mazda CX3"} company={"Steike Rentals"} />
+            </div>
+        </div>
+    )
 }
