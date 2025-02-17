@@ -7,3 +7,10 @@
     background: white;
     min-height: 100vh;
 }
+
+.portalSearchSortContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 500px;
+}
