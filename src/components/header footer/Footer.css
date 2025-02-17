@@ -4,23 +4,22 @@
     display: flex;
     flex-direction: column;
 
-    background: #121212;
+    background: var(--background);
 
-    border-top:solid rgba(0, 0, 0, 0.1);
+    border-top:solid .25rem var(--primary-100);
 }
 
 .footerBottom {
     display: flex;
-    background: #0D0D0D;
     align-items: center;
     justify-content: center;
 
-    padding: 0px 10px 0px 10px;
+    padding: 0.25rem;
 
 
-    border-top:solid rgba(0, 0, 0, 0.1);
+    border-top:solid var(--primary-100);
 
-    color: #B5B5B5;
+    color: var(--text-100);
 
     font-family: "Kantumruy Pro";
     font-weight: 200;
@@ -67,12 +66,12 @@
 }
 
 .footerIcon {
-    color: white;
+    color: var(--primary-200);
 }
 
 .footerAddress {
     font-family: "Kantumruy Pro";
-    color: white;
+    color: var(--text-100);
     margin: 0px 0px 0px 0px;
 }
 
@@ -84,17 +83,17 @@
 .footerNavigation {
     font-family: "Kantumruy Pro";
     font-weight: 550;
-    color: white;
+    color: var(--text-100);
     margin: 0px 0px 5px 0px;
 }
 
 .footerNavLink {
-    color: white;
+    color: var(--text-100);
     font-family: "Kantumruy Pro";
 }
 
 .footerNavLink:active {
-    color: #3c61e6;
+    color: var(--primary-100);
 }
 
 @media only screen and (max-width: 512px) {

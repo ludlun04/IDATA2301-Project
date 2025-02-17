@@ -17,6 +17,17 @@ h1, h2, h3, h4, h5, h6, p {
   font-family: "Kantumruy Pro", sans-serif;
 }
 
+:root {
+  --primary-100: #FFEB54;
+  --primary-200: #FFCA1E;
+  --border-color: #D9D9D9;
+  --background: #FFFDEF;
+  --text-200: #2F2F2F;
+  --text-100: #515151;
+  --error: #FF9898;
+  --success: #A6EC94;
+}
+
 @font-face {
   font-family: "Kantumruy Pro";
   src: local("Kantumruy Pro"), url("resources/fonts/KantumruyPro-VariableFont_wght.ttf") format("truetype");
