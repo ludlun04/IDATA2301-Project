@@ -14,3 +14,9 @@
     justify-content: space-between;
     width: 500px;
 }
+
+.CarList {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
