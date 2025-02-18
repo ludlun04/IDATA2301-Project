@@ -1,5 +1,5 @@
 .Home {
-    background-image: url("./../../resources/images/closeup-of-car-2.jpg");
+    background-image: url("./../../resources/images/pexels-nextvoyage-1476880.jpg");
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -23,13 +23,10 @@
 }
 
 .homeLeftPane {
-    border-radius: 50px;
-
-    text-shadow: 0px 0px 50px #dadada;
-    padding: 20px;
 }
 
 .slogan1 {
+    color: var(--background);
     line-height: 0;
     font-size: 300%;
     margin-bottom: 0;
@@ -38,6 +35,7 @@
 }
 
 .slogan2 {
+    color: var(--background);
     line-height: 0;
     font-size: 600%;
     margin-bottom: 70px;
@@ -56,26 +54,27 @@
 
 .portalButton {
     border-radius: 10px;
-    border: 2px solid rgba(255, 255, 255, 0.1);
 
     padding: 20px 60px;
-    background: linear-gradient(to right, #3c61e6 0%, #5063f8 100%);
+    background: var(--primary-200);
 
     font-family: "Kantumruy Pro";
     text-decoration: none;
-    color: white;
+    color: var(--text-200);
     font-size: 200%;
     font-weight: 500;
-    -webkit-text-stroke: 1px #b9b9b9;
-    text-shadow: 0px 0px 20px #797979;
 
-    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.26);
 
     text-wrap: nowrap;
 }
 
+.portalButton:hover {
+    background: #ffc100;
+}
+
 .portalButton:active {
-    background: linear-gradient(to right, #233986 0%, #2e398f 100%);
+    background: #ac8302;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -110,5 +109,10 @@
         font-size: 300%;
         margin-top: 40px;
         margin-bottom: 35px;
+    }
+
+    .portalButton {
+        font-size: 150%;
+        padding: 15px 40px;
     }
 }
