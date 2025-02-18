@@ -5,7 +5,7 @@ export default function CarCard(props) {
     return (
         <div className="CarCard">
             <div className={"CarCardImageContainer"}>
-                <img className={"CarCardImg"} src={img} alt={"Image"}/>
+                <img className={"CarCardImg"} src={img} alt={"Car"}/>
             </div>
             <div className={"CarCardRightPane"}>
                 <div className={"CarCardInnerLeftPane"}>

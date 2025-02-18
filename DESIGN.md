@@ -7,9 +7,10 @@ The website should give an impression of a journey, travel and adventure. There 
 
 
 ### Color Theme
-- Companies primary color is #FCC419. This color gives a feeling of Happiness liveliness, hope, curiosity and intelligence.
+- Companies primary color is #FFCA1E. This color gives a feeling of Happiness liveliness, hope, curiosity and intelligence.
 - Accent colors and alternative colors will be chosen from the below chart.
-![Image of color gradients from primary color](assets/image.png)
+#### Color pallet
+![Image of color gradients from primary color](/assets/colors.jpg)
 
 ### Hierarchy and layout
 TODO: Ask the question about this thing to teacher person

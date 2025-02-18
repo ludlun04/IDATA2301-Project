@@ -2,7 +2,7 @@ import "./DropdownMenu.css";
 import Arrow from "../../resources/icons/arrowDeprecated.svg";
 import { useState } from "react";
 
-export default (props) => {
+const DropdownMenu = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleOpen = () => {
@@ -22,3 +22,5 @@ export default (props) => {
     </div>
   )
 }
+
+export default DropdownMenu;
