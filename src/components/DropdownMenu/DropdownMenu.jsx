@@ -1,5 +1,5 @@
 import "./DropdownMenu.css";
-import Arrow from "../../resources/icons/arrow.svg";
+import Arrow from "../../resources/icons/arrowDeprecated.svg";
 import { useState } from "react";
 
 export default (props) => {

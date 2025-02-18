@@ -1,5 +1,5 @@
 import "./FaqSection.css";
-import openFaqIcon from "../../resources/icons/arrow.svg";
+import openFaqIcon from "../../resources/icons/arrowDeprecated.svg";
 import {useState, useRef, useEffect} from "react";
 
 export default function FaqSection(props) {
