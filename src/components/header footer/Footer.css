@@ -6,7 +6,7 @@
 
     background: var(--background);
 
-    border-top:solid .15rem var(--primary-100);
+    border-top:solid .15rem var(--primary-200);
 }
 
 .footerBottom {
@@ -17,7 +17,7 @@
     padding: 0.25rem;
 
 
-    border-top:solid var(--primary-100);
+    border-top:solid var(--primary-200);
 
     color: var(--text-100);
 

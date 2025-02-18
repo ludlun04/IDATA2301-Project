@@ -9,7 +9,7 @@
     flex-direction: row;
     justify-content: space-between;
 
-    border-bottom:solid .25rem var(--primary-100);
+    border-bottom:solid .20rem var(--primary-200);
 
     z-index: 999;
 }
@@ -50,7 +50,7 @@
 @media only screen and (max-width: 1024px) {
     .headerRightContainer {
         display: none;
-        background: rgba(0, 0, 0, 0.9);
+        background: var(--background);
 
         width: 100vw;
         flex-direction: column;
@@ -64,7 +64,7 @@
         padding: 10px 0 10px 0;
         width: 100vw;
 
-        border-bottom:solid rgba(0, 0, 0, 0.3);
+        border-bottom:solid var(--primary-200);
     }
 
     .headerMenuButtonContainer {
@@ -76,7 +76,7 @@
 
     .headerMenuButton {
         border-radius: 50px;
-        background: white;
+        background: var(--text-200);
         width: 40px;
         height: 4px;
     }
