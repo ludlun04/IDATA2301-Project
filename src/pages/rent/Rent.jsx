@@ -6,8 +6,8 @@ import bmw from "./../../resources/images/bmw.jpg";
 export default function Rent() {
   return (
     <main className="RentMain">
+      <img alt="" className={"RentCarImage"} src={bmw} />
       <div className="RentInformation">
-        <img alt="" className={"RentCarImage"} src={bmw} />
         <h1>Fast cool car</h1>
 
         <section className={"RentAttributes"}>
@@ -20,11 +20,13 @@ export default function Rent() {
             <CarAttribute />
           </div>
         </section>
-        <section className="RentCarDescription">
-          <h2>Description</h2>
-          <p className="RentDescriptionText">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </section>
       </div>
+
+      <section className="RentCarDescription">
+          <h2>Description</h2>
+          <p className="RentDescriptionText">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </section>
 
       <div className="RentInteraction">
         <div className="RentInteractionInner">
