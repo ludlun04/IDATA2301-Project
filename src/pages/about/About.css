@@ -1,10 +1,15 @@
 .About {
-    background: bisque;
+    background: var(--background);
     padding-top: 70px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 50px;
+}
+
+.About h1 {
+    font-weight: 600;
+    font-size: 2rem;
 }
 
 .aboutHeader {
@@ -15,7 +20,7 @@
 
 .aboutOurStoryParagraph {
     display: flex;
-    font-size: 2rem;
+    font-size: 1.2rem;
     margin: 10px;
 }
 
@@ -26,7 +31,7 @@
 }
 
 .aboutFaqSection {
-    border-bottom: solid 2px rgba(0, 0, 0, .1);
+    border-bottom: solid 1px var(--border-color);
     cursor: pointer;
 }
 
@@ -37,7 +42,6 @@
 
 
 .aboutEmployees, .aboutOurStory, .aboutFaq {
-    border: solid 2px rgba(0, 0, 0, .1);
     padding: 20px;
     border-radius: 10px;
     width: 800px;
@@ -45,7 +49,6 @@
 
 .aboutEmployeeCardContainer {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
@@ -57,9 +60,8 @@
 .aboutFaqSectionContainer {
     display: flex;
     flex-direction: column;
-    border: solid 2px rgba(0, 0, 0, .1);
+    border: solid 1px var(--border-color);
     border-radius: 10px;
-    width: 750px;
 }
 
 
@@ -78,7 +80,6 @@
     }
 
     .aboutFaqSectionContainer {
-        width: 350px;
     }
 }
 
@@ -88,7 +89,7 @@
     }
 
     .aboutFaqSectionContainer {
-        width: 250px;
+        width: 255px;
     }
 
     .aboutEmployeeCardContainer {
