@@ -12,9 +12,11 @@ export default function Portal() {
         console.log(searchItem);
         console.log(filterItem);
         try {
-            const response = await axios.get('http://localhost:8080/company');
-            const data = response.data;
-            console.log(data);
+            const response = await axios.post('http://localhost:8080/authenticate', {username: "user", password: "password"});
+            const token = response.data;
+            const cars = await axios.get('http://localhost:8080/cars', { headers: {"Authorization" : `Bearer ${token}`}});
+            console.log(token);
+            console.log(cars)
         } catch (e) {
             console.log(e.message);
         }
