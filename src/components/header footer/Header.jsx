@@ -19,7 +19,7 @@ import {ReactComponent as Logo} from "../../resources/logo/Logo-Dark-Horizontal.
                 <NavLink className={"navLink rent"} to={"/portal"} onClick={handleToggle}>Rent</NavLink>
                 <NavLink className={"navLink"} to={"/about"} onClick={handleToggle}>About</NavLink>
                 <NavLink className={"navLink"} to={"contact"} onClick={handleToggle}>Contact</NavLink>
-                <NavLink className={"navLink sign-in"} to={"/sign-in"} onClick={handleToggle}>Sign In</NavLink>
+                <NavLink className={"navLink sign-in"} to={"/sign-in"} onClick={handleToggle}>Login</NavLink>
             </div>
             <div className={`headerMenuButtonContainer ${menuButtonActive ? "active" : ""}`} onClick={handleToggle}>
                 <div className={`headerMenuButton top ${menuButtonActive ? "active" : ""}`}></div>
