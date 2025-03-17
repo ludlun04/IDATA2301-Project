@@ -22,7 +22,7 @@ export default function Contact() {
               <label htmlFor="lname">Message*</label><br />
               <textarea className={"contactInput message"} type="text" id="message" name="lname" /><br />
           </div>
-        <input className={"ContactSubmit"} type="submit" value="Send" />
+        <input className={"FormSubmitButton"} type="submit" value="Send" />
       </form>
     </div>
   )

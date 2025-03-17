@@ -8,10 +8,6 @@
     background: var(--background);
 }
 
-.ContactHeader {
-    font-weight: 400;
-}
-
 .ContactMessage {
     max-width: 80%;
     text-align: center;
@@ -24,14 +20,9 @@
     gap: 1rem;
 }
 
-.form-group {
-    display: flex;
-    flex-direction: column;
-    font-weight: 200;
-    font-size: 0.75rem;
-}
-
-.contactInput {
+.contactInput.message {
+    margin: 0;
+    resize: vertical;
     font-family: "Kantumruy Pro", sans-serif;
     font-size: 1.25rem;
     padding: 0.25rem;
@@ -41,27 +32,7 @@
     transition: border-color ease-in-out .15s;
 }
 
-.contactInput.message {
-    margin: 0;
-    resize: vertical;
-}
-
-.contactInput:focus {
-    border: 1px solid var(--primary-100);
-}
-
-.ContactSubmit {
-    background-color: var(--primary-200);
-    border: none;
-    color: var(--text-200);
-    font-family: "Kantumruy Pro", sans-serif;
-    cursor: pointer;
-    border-radius: 0.25rem;
-    height: 30px;
-    font-weight: 500;
-}
-
-.ContactSubmit:hover {
+.FormSubmitButton:hover {
     background-color: var(--primary-100);
 }
 

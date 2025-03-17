@@ -1,3 +1,33 @@
 .SignIn {
     background: var(--background);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.signin-form {
+    width: 24rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.forgot-passwordButton {
+    background: none;
+    border: none;
+    text-align: right;
+    cursor: pointer;
+    color: #0F89F4;
+}
+
+.forgot-passwordButton:hover {
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 512px) {
+    .signin-form {
+        width: 16rem;
+    }
 }
