@@ -38,6 +38,10 @@
     font-weight: 550;
 }
 
+.navLink:hover {
+    text-decoration: underline;
+}
+
 .navLink:active {
     color: var(--primary-100);
 }
