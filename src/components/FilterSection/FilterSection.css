@@ -1,9 +1,6 @@
 .FiltersSection {
-  border: solid 1px #e8e6e6;
-  box-shadow: 0 0 10px #e8e6e6;
   height: fit-content;
   padding: 1rem;
-  border-radius: .5rem;
   min-width: 12rem;
   max-width: 12rem;
 }
@@ -38,3 +35,16 @@
   text-overflow: ellipsis;
 }
 
+.filtersSectionDateLine {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 5px;
+  justify-content: space-between;
+}
+
+.filtersSectionDatePicker {
+  width: 90px;
+  font-size: 1rem;
+  margin-left: auto;
+}
