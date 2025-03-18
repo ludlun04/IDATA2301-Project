@@ -8,12 +8,15 @@ export default function About() {
             <div className={"aboutOurStory"}>
                 <h1 className={"aboutHeader"}>Our Story</h1>
                 <p className={"aboutOurStoryParagraph"}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
+                    <p>Our story starts in the heart of Ålesund, a place known for its breathtaking fjords, coastal beauty, and vibrant spirit. We’re more than just a car rental company — Driveo was born from a passion for exploration and a desire to help locals and travelers alike experience the freedom of the open road.</p>
+
+                    <p>We saw an opportunity to create something better — a service that’s reliable, flexible, and built around you. Whether you’re visiting for a weekend getaway, embarking on a scenic adventure through the Sunnmøre Alps, or simply need a car for your daily needs, Driveo is here to make it easy and enjoyable.</p>
+
+                    <p>Our mission is simple: to empower your journey. We believe renting a car shouldn’t be complicated or expensive. With a modern fleet of well-maintained vehicles and a dedicated team that knows Ålesund inside out, we’re committed to getting you where you want to go — smoothly and safely.</p>
+
+                    <p>From the winding coastal roads to the charming streets of the city, Driveo is here to help you explore Ålesund and beyond on your terms.</p>
+
+                    <p>Let’s hit the road — your adventure starts with Driveo.</p>
                 </p>
             </div>
             <div className={"aboutEmployees"}>
@@ -28,16 +31,24 @@ export default function About() {
                 <h1 className={"aboutHeader"}>FAQ</h1>
                 <div className={"aboutFaqSectionContainer"}>
                     <FaqSection className={faqSectionClassName}
-                        question={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. At cum ex non ratione! Alias dicta obcaecati optio ut veritatis voluptatem?"}
-                        answer={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid corporis ducimus quibusdam suscipit! Adipisci, eius eum excepturi id impedit ipsum mollitia quia ratione sequi suscipit voluptas voluptates voluptatum? Eius esse facere fuga natus nulla quisquam repudiandae totam voluptas."}
+                        question={"What makes Driveo different from other car rental companies in Ålesund?"}
+                        answer={"At Driveo, we’re all about flexibility, convenience, and making your journey unforgettable. We’re a local company that knows Ålesund inside out — from the must-see landmarks to the hidden gems. Our modern, reliable fleet is matched with personalized service to ensure your trip is smooth, whether you’re here for an adventure or a quick visit."}
                     />
                     <FaqSection className={faqSectionClassName}
-                        question={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam at aut delectus dignissimos dolorum ducimus eveniet exercitationem id ipsa magnam natus obcaecati perferendis porro quaerat qui quidem quos recusandae, repellendus rerum sapiente, tempore voluptatem voluptatum! Amet eius illum necessitatibus suscipit?"}
-                        answer={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, maiores."}
+                        question={"Can I rent a car from Driveo for just a day or a weekend trip?"}
+                        answer={"Absolutely! Whether you need a car for a few hours, a day, or a long weekend getaway, we’ve got you covered. We offer short-term rentals so you can explore Ålesund and beyond without committing to a long rental period."}
                     />
                     <FaqSection className={faqSectionClassName}
-                        question={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, beatae consequatur corporis eligendi illo ipsam maxime nesciunt sed velit veniam?"}
-                        answer={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic perspiciatis sit tempore! Cupiditate earum, ipsam laboriosam magni natus similique temporibus."}
+                        question={"Does Driveo offer any local travel tips or suggested routes for exploring Ålesund and the fjords?"}
+                        answer={"Yes — and we love to share! Our team is packed with local knowledge and recommendations. Whether you’re after a scenic drive through the Sunnmøre Alps, a coastal route along the fjords, or a quick trip to explore Ålesund’s Art Nouveau architecture, we’ll gladly suggest routes and must-see stops."}
+                    />
+                    <FaqSection className={faqSectionClassName}
+                                question={"What types of vehicles are available for rent at Driveo?"}
+                                answer={"We offer a wide range of vehicles to match your journey. From compact cars for city driving to spacious SUVs for road trips and family adventures — even eco-friendly options — you’ll find something that suits your needs and style."}
+                    />
+                    <FaqSection className={faqSectionClassName}
+                                question={"How do I book a car with Driveo, and what’s included in the rental price?"}
+                                answer={"Booking is easy — you can reserve your car online or give us a call. Our rentals include basic insurance, roadside assistance, and a clean, fuel-efficient vehicle ready to go. No hidden fees, no hassle — just a smooth start to your journey."}
                     />
                 </div>
             </div>
