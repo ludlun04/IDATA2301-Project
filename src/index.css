@@ -43,6 +43,10 @@ input:focus {
   border: 1px solid var(--primary-100);
 }
 
+input::placeholder {
+  color: rgba(47, 47, 47, 0.25);
+}
+
 .FormSubmitButton {
   background-color: var(--primary-200);
   border: none;
