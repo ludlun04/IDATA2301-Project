@@ -7,6 +7,24 @@
     align-items: center;
 }
 
+.SignIn p {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    text-align: center;
+}
+
+.signUpNavLink {
+    border: none;
+    background: none;
+    color: #0F89F4;
+    text-decoration: none;
+}
+
+.signUpNavLink:hover {
+    text-decoration: underline;
+}
+
 .signin-form {
     width: 24rem;
     display: flex;

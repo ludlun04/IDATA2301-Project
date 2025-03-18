@@ -1,4 +1,5 @@
 import "./SignIn.css"
+import {NavLink} from "react-router-dom";
 
 export default function SignIn() {
     return (
@@ -12,9 +13,11 @@ export default function SignIn() {
                 <div className={"form-group"}>
                     <label htmlFor="password">Password*</label>
                     <input type="password" name="password" id="password" />
-                    <button className={"forgot-passwordButton"}>Forgot Password</button>
                 </div>
-                <input className={"FormSubmitButton"} type="submit" value="Send" />
+                <input className={"FormSubmitButton"} type="submit" value="Login" />
+                <p>Don't have a user yet?
+                    <NavLink className={"signUpNavLink"} to={"/sign-up"}>Create one!</NavLink>
+                </p>
             </form>
         </div>
     )

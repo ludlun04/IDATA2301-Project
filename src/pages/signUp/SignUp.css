@@ -1,3 +1,43 @@
 .SignUp {
-    background: darkorange;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--background);
+}
+
+.SignUp p {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    text-align: center;
+}
+
+.signInNavLink {
+    border: none;
+    background: none;
+    color: #0F89F4;
+    text-decoration: none;
+}
+
+.signInNavLink:hover {
+    text-decoration: underline;
+}
+
+.phoneNumberGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.phoneNumberGroup.countryCode {
+    width: 6rem;
+}
+
+.form-group.phoneNumber {
+    flex-direction: row;
+}
+
+.countryCodeInput {
 }
