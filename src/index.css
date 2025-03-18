@@ -21,6 +21,10 @@ h1 {
   font-weight: 400;
 }
 
+h2 {
+  font-weight: 300;
+}
+
 .form-group {
   display: flex;
   flex-direction: column;

@@ -12,7 +12,7 @@ const DropdownMenu = (props) => {
   return (
     <div className={"DropdownMenu"}>
       <button onClick={toggleOpen} className={"DropdownMenuHeader"}>
-        <h3 className={"DropdownMenuTitle"}>{props.title}</h3>
+        <h2 className={"DropdownMenuTitle"}>{props.title}</h2>
         <img src={Arrow} alt="Arrow" className={isOpen ? "DropdownMenuArrowOpen" : "DropdownMenuArrow"} />
       </button>
 
