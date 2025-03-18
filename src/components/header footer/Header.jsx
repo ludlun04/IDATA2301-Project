@@ -21,11 +21,11 @@ import {ReactComponent as Logo} from "../../resources/logo/Logo-Dark-Horizontal.
                 <NavLink className={"navLink"} to={"contact"} onClick={handleToggle}>Contact</NavLink>
                 <NavLink className={"navLink sign-in"} to={"/sign-in"} onClick={handleToggle}>Login</NavLink>
             </div>
-            <div className={`headerMenuButtonContainer ${menuButtonActive ? "active" : ""}`} onClick={handleToggle}>
+            <button className={`headerMenuButtonContainer ${menuButtonActive ? "active" : ""}`} onClick={handleToggle}>
                 <div className={`headerMenuButton top ${menuButtonActive ? "active" : ""}`}></div>
                 <div className={`headerMenuButton middle ${menuButtonActive ? "active" : ""}`}></div>
                 <div className={`headerMenuButton bottom ${menuButtonActive ? "active" : ""}`}></div>
-            </div>
+            </button>
         </div>
     )
 }
