@@ -47,4 +47,6 @@
   width: 90px;
   font-size: 1rem;
   margin-left: auto;
+  text-align: center;
+  --rdp-accent-color: var(--primary-100);
 }

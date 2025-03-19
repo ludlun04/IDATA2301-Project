@@ -62,6 +62,11 @@ input::placeholder {
   font-weight: 500;
 }
 
+.react-datepicker__day--selected {
+  background: var(--primary-100) !important;
+  color: var(--text-200) !important;
+}
+
 :root {
   --primary-100: #FFEB54;
   --primary-200: #ffca1e;
