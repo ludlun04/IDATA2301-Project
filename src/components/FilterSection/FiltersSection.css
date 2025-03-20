@@ -22,6 +22,10 @@
   margin: 5px;
 }
 
+.filtersSectionDateLine, .filtersSectionFromToSection {
+  margin: 5px;
+}
+
 .filtersSectionFilterLine {
   display: flex;
   flex-direction: row;
@@ -41,7 +45,6 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: 5px;
   justify-content: space-between;
 }
 
@@ -63,3 +66,4 @@
   width: 100px;
   height: 40px;
 }
+
