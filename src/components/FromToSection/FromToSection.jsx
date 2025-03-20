@@ -1,13 +1,15 @@
 import "./FromToSection.css";
 
-const FromToSection = () => {
+const FromToSection = (props) => {
   return (
-    <div className={"FromToSection"}>
-      <p>From</p>
-      <input className={"fromToSectionInput"}/>
+    <div className={props.className}>
+      <div className={"FromToSection"}>
+        <p>From</p>
+        <input className={"fromToSectionInput"}/>
 
-      <p>To</p>
-      <input className={"fromToSectionInput"}/>
+        <p>To</p>
+        <input className={"fromToSectionInput"}/>
+      </div>
     </div>
   )
 }

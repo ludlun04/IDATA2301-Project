@@ -32,10 +32,6 @@
     transition: border-color ease-in-out .15s;
 }
 
-.FormSubmitButton:hover {
-    background-color: var(--primary-100);
-}
-
 @media (max-width: 512px) {
     .contact-form {
         width: 16rem;

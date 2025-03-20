@@ -1,7 +1,7 @@
 import "./Portal.css";
 import CarCard from "../../components/CarCard/CarCard";
 import CarSearchSortSection from "../../components/CarSearchSortSection/CarSearchSortSection";
-import FilterSection from "../../components/FilterSection/FilterSection";
+import FiltersSection from "../../components/FilterSection/FiltersSection";
 import axios from "axios";
 
 axios.defaults.headers.post['Content-Type'] = 'application/json';
@@ -23,7 +23,7 @@ export default function Portal() {
     }
     return (
         <div className={"Portal"}>
-            <FilterSection />
+            <FiltersSection />
             <div>
                 <CarSearchSortSection onChange={handleUserChoice}/>
                 <div className={"portalCarCards"}>

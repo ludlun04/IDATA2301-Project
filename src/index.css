@@ -33,7 +33,7 @@ h2 {
   gap: 0.25rem;
 }
 
-input {
+input, button {
   font-family: "Kantumruy Pro", sans-serif;
   font-size: 1.25rem;
   padding: 0.25rem;
@@ -61,6 +61,11 @@ input::placeholder {
   height: 30px;
   font-weight: 500;
 }
+
+.FormSubmitButton:hover {
+  background-color: var(--primary-100);
+}
+
 
 .react-datepicker__day--selected {
   background: var(--primary-100) !important;
