@@ -1,8 +1,12 @@
 import "./SignUp.css"
 import {NavLink} from "react-router-dom";
 import DatePickerField from "../../components/DatePickerField/DatePickerField";
+import DatePicker from "react-datepicker";
+import React, {useState} from "react";
 
 export default function SignUp() {
+    const [startDate, setStartDate] = useState(new Date());
+    const [endDate, setEndDate] = useState(new Date());
     return (
         <div className={"SignUp"}>
             <h1>Sign Up</h1>
@@ -50,7 +54,9 @@ export default function SignUp() {
 
                 <div className={"form-group"}>
                     <label htmlFor="email">Date of birth*</label>
-                    <DatePickerField />
+                    <div>
+                        <DatePicker className={"signUpDatePicker"} dateFormat={"dd.MM.yyyy"} selected={startDate} onChange={(date) => setStartDate(date)}/>
+                    </div>
                 </div>
                 <div className={"form-group"}>
                     <label htmlFor="password">Password*</label>

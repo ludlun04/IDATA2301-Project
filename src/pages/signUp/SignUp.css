@@ -55,3 +55,7 @@
 .form-group.phoneNumber {
     width: 100%;
 }
+
+.signUpDatePicker {
+    width: 6.5rem;
+}
