@@ -4,3 +4,22 @@
     justify-content: space-between;
     width: 500px;
 }
+
+.carSearchContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.carSearchSortContainerSearch {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+#carSearchContainerButton {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    height: 100%;
+    display:flex;
+    align-items: center;
+}
+
