@@ -12,6 +12,6 @@ export default function SelectMenu(props) {
 
 	};
 	return (
-		<Select menuIsOpen={true} classNamePrefix="react-select" components={customComponents} options={props.options} value={props.value} onChange={props.onChange} />
+		<Select classNamePrefix="react-select" components={customComponents} options={props.options} value={props.value} onChange={props.onChange} />
 	)
 }

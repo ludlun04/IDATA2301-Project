@@ -46,8 +46,8 @@ const CarSearchSortSection = ({ onChange }) => {
         <button className={"FormSubmitButton"} id={"carSearchContainerButton"}>
           <SearchIcon className="SvgIcon" />
         </button>
-        <SelectMenu options={options} value={sortByItem} onChange={setSortByItem} />
       </div>
+      <SelectMenu options={options} value={sortByItem} onChange={setSortByItem} />
     </div>
   )
 }
