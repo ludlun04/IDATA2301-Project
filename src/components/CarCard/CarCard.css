@@ -31,7 +31,7 @@
 }
 
 .CarCardImageContainer {
-    background: #5063f8;
+    position: relative;
     border-radius: .5rem;
     overflow: hidden;
     width: 35%;
@@ -42,6 +42,27 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
+}
+
+.favoriteButton {
+    border: none;
+    background: none;
+    position: absolute;
+    left: .25rem;
+    top: .25rem;
+    width: 1.5rem;
+    padding: 0;
+    cursor: pointer;
+}
+
+.favoritedStarIcon {
+    width: 100%;
+    height: 100%;
+}
+
+.favoriteButton:hover .favoritedStarIcon, .favoritedStar:hover {
+    filter: brightness(.9);
+    cursor: pointer;
 }
 
 .CarCardRightPane {
@@ -80,21 +101,21 @@
 }
 
 .CarCardAvailabilityIndicator {
-    background: #fc0000;
+    background: var(--error);
     width: .5rem;
     height: .5rem;
     border-radius: 50%;
 }
 
 .CarCardAvailabilityTag {
-    color: #fc0000;
+    color: var(--error);
     font-weight: 500;
 }
 
 .CarCardAvailabilityIndicator.true {
-    background: #7afc00;
+    background: var(--success);
 }
 
 .CarCardAvailabilityTag.true {
-    color: #7afc00;
+    color: var(--success);
 }

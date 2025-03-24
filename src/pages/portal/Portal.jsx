@@ -28,8 +28,8 @@ export default function Portal() {
                 <CarSearchSortSection onChange={handleUserChoice}/>
                 <div className={"portalCarCards"}>
 
-                    <CarCard price={5234} availability={false} seats={2} year={2002} name={"BMW M3"} company={"Kacper Rentals AS"} />
-                    <CarCard price={4325} availability={true} seats={4} year={2021} name={"Mazda CX3"} company={"Steike Rentals"} />
+                    <CarCard price={5234} availability={false} seats={2} year={2002} name={"BMW M3"} company={"Kacper Rentals AS"} isFavorite={false}/>
+                    <CarCard price={4325} availability={true} seats={4} year={2021} name={"Mazda CX3"} company={"Steike Rentals"} isFavorite={true}/>
                 </div>
             </div>
 
