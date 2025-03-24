@@ -1,4 +1,5 @@
 .SignUp {
+    padding-top: 60px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -58,4 +59,18 @@
 
 .signUpDatePicker {
     width: 6.5rem;
+}
+
+@media only screen and (max-width: 512px) {
+    .signup-form {
+        width: 15rem;
+    }
+
+    .addressCountryZipCodeGroup {
+        flex-direction: column;
+    }
+
+    .phoneNumberGroup {
+        flex-direction: column;
+    }
 }
