@@ -43,6 +43,11 @@ input, button {
   transition: border-color ease-in-out .15s;
 }
 
+input[type="checkbox"] {
+  color: var(--text-200);
+  accent-color: var(--primary-200);
+}
+
 input:focus {
   border: 1px solid var(--primary-100);
 }
