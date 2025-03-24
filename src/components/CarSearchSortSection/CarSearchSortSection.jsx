@@ -1,16 +1,26 @@
 import "./CarSearchSortSection.css";
 import { ReactComponent as SearchIcon } from "../../resources/icons/search.svg";
 
-import {useState} from "react";
+import { useState } from "react";
+import Select from "react-select";
+import SelectMenu from "../SelectMenu/SelectMenu";
 
-const CarSearchSortSection = ({onChange}) => {
+const CarSearchSortSection = ({ onChange }) => {
 
   if (typeof onChange !== "function") {
     throw new TypeError("onChange must be a function");
   }
 
+  const options = [
+    { value: 'price', label: 'Price' },
+    { value: 'year', label: 'Year' },
+    { value: 'seats', label: 'Seats' },
+
+  ]
   const [searchItem, setSearchItem] = useState('');
-  const [sortByItem, setSortByItem] = useState('');
+  const [sortByItem, setSortByItem] = useState(options[0]);
+
+
 
   const handleSearchFieldChange = (input) => {
     const searchWord = input.target.value;
@@ -19,9 +29,8 @@ const CarSearchSortSection = ({onChange}) => {
   }
 
   const handleSortByFieldChange = (input) => {
-    const sortByWord = input.target.value;
-    setSortByItem(sortByWord);
-    onChange(searchItem, sortByWord);
+    setSortByItem(input.value);
+    onChange(searchItem, sortByItem);
   }
 
   return (
@@ -35,15 +44,9 @@ const CarSearchSortSection = ({onChange}) => {
           placeholder='Type to search'
         />
         <button className={"FormSubmitButton"} id={"carSearchContainerButton"}>
-          <SearchIcon className = "SvgIcon"/>
+          <SearchIcon className="SvgIcon" />
         </button>
-      </div>
-      <div className={"carSortContainer"}>
-        <select value={sortByItem} onChange={handleSortByFieldChange}>
-          <option value="Price">Price</option>
-          <option value="Year">Year</option>
-          <option value="Seats">Seats</option>
-        </select>
+        <SelectMenu options={options} value={sortByItem} onChange={setSortByItem} />
       </div>
     </div>
   )
