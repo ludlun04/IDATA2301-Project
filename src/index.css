@@ -62,7 +62,7 @@ input::placeholder {
   color: var(--text-200);
   font-family: "Kantumruy Pro", sans-serif;
   cursor: pointer;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
   height: 30px;
   font-weight: 500;
 }
