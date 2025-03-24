@@ -17,6 +17,7 @@ export default function Footer() {
                         <NavLink className={"footerNavLink"} to={"/portal"}>Rent</NavLink>
                         <NavLink className={"footerNavLink"} to={"/about"}>About Us</NavLink>
                         <NavLink className={"footerNavLink"} to={"/contact"}>Contact</NavLink>
+                        <NavLink className={"footerNavLink"} to={"/sign-in"}>Login</NavLink>
                     </div>
                 </div>
                 <div className={"footerTopRightPane"}>
