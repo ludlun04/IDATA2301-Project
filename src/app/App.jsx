@@ -10,6 +10,7 @@ import Header from "../components/header footer/Header";
 import SignIn from "../pages/signIn/SignIn";
 import SignUp from "../pages/signUp/SignUp";
 import Admin from '../pages/admin/Admin';
+import Company from "../pages/company/Company";
 import EmptyDevPage from "../pages/emptyDevPage/emptyDevPage";
 
 const router = createBrowserRouter(createRoutesFromElements(
@@ -23,7 +24,8 @@ const router = createBrowserRouter(createRoutesFromElements(
       <Route path={"sign-in"} element={<SignIn />} />
       <Route path={"sign-up"} element={<SignUp />} />
       <Route path={"admin"} element={<Admin />} />
-        <Route path={"dev"} element={<EmptyDevPage />} />
+      <Route path={"company"} element={<Company/>}/>
+      <Route path={"dev"} element={<EmptyDevPage />} />
     </Route>
 ))
 
