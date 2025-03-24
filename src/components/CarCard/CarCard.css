@@ -1,7 +1,7 @@
 .CarCard {
     display: flex;
     border: solid 1px #e8e6e6;
-    width: 32rem;
+    min-width: 32rem;
     height: 7rem;
     padding: .5rem;
     border-radius: .5rem;
@@ -118,4 +118,20 @@
 
 .CarCardAvailabilityTag.true {
     color: var(--success);
+}
+
+@media only screen and (max-width: 512px) {
+    .CarCard {
+        min-width: 16rem;
+        min-height: 17rem;
+        flex-direction: column;
+    }
+
+    .CarCardImageContainer {
+        width: 100%;
+    }
+
+    .favoriteButton {
+        width: 3rem;
+    }
 }
