@@ -1,11 +1,10 @@
-import "./Admin.css"
-import UserRow from "../../components/DashboardComponents/UserRow"
+import "./UsersSection.css";
+import UserRow from "./UserRow"
 import { User } from "../../model/User"
 
-export default function Admin() {
+export default function UsersSection() {
   return (
-    <div className={"admin"}>
-      <main className="adminMain">
+    <main className="usersSectionMain">
         <h1>Users</h1>
         <table>
           <thead>
@@ -25,6 +24,5 @@ export default function Admin() {
           </tbody>
         </table>
       </main>
-    </div>
   )
 }
