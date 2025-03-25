@@ -1,0 +1,21 @@
+.Company {
+    padding-top: 70px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: space-between;
+
+    background: var(--background);
+}
+
+.companyDetailsLinks {
+    align-self: flex-start;
+    padding: 20px;
+}
+
+.companyDetailsDetailsSection {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}

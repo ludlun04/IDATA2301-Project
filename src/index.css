@@ -21,6 +21,10 @@ h1 {
   font-weight: 400;
 }
 
+h2 {
+  font-weight: 300;
+}
+
 .form-group {
   display: flex;
   flex-direction: column;
@@ -29,7 +33,7 @@ h1 {
   gap: 0.25rem;
 }
 
-input {
+input, button {
   font-family: "Kantumruy Pro", sans-serif;
   font-size: 1.25rem;
   padding: 0.25rem;
@@ -39,19 +43,45 @@ input {
   transition: border-color ease-in-out .15s;
 }
 
+input[type="checkbox"] {
+  color: var(--text-200);
+  accent-color: var(--primary-200);
+}
+
 input:focus {
   border: 1px solid var(--primary-100);
 }
 
+input::placeholder {
+  color: rgba(47, 47, 47, 0.25);
+}
+
 .FormSubmitButton {
   background-color: var(--primary-200);
-  border: none;
+  border: 1px solid rgba(255, 255, 255, .2);
   color: var(--text-200);
   font-family: "Kantumruy Pro", sans-serif;
   cursor: pointer;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
   height: 30px;
   font-weight: 500;
+}
+
+.FormSubmitButton:hover {
+  background-color: var(--primary-100);
+}
+
+.FormSubmitButton img {
+  color: black;
+}
+
+.SvgIcon {
+  fill: var(--text-200);
+}
+
+.react-datepicker__day--selected {
+  background: var(--primary-100) !important;
+  color: var(--text-200) !important;
 }
 
 :root {

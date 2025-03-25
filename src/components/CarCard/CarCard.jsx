@@ -1,11 +1,18 @@
 import "./CarCard.css"
 import img from "../../resources/images/bmw_m3/bmw_m3-1600.webp"
+import starFilled from "../../resources/icons/starFilled.svg"
+import starUnfilled from "../../resources/icons/starUnfilled.svg"
+
+import {useState} from "react";
 
 export default function CarCard(props) {
     return (
         <div className="CarCard">
             <div className={"CarCardImageContainer"}>
                 <img className={"CarCardImg"} src={img} alt={"Car"}/>
+                <button className={"favoriteButton"}>
+                    <img className={"favoritedStarIcon"} src={props.isFavorite ? starFilled : starUnfilled} alt={starUnfilled} />
+                </button>
             </div>
             <div className={"CarCardRightPane"}>
                 <div className={"CarCardInnerLeftPane"}>

@@ -1,48 +1,70 @@
 import "./SignUp.css"
 import {NavLink} from "react-router-dom";
+import DatePickerField from "../../components/DatePickerField/DatePickerField";
+import DatePicker from "react-datepicker";
+import React, {useState} from "react";
 
 export default function SignUp() {
+    const [startDate, setStartDate] = useState(new Date());
+    const [endDate, setEndDate] = useState(new Date());
     return (
         <div className={"SignUp"}>
             <h1>Sign Up</h1>
-            <form className={"signin-form"}>
+            <form className={"signup-form"}>
                 <div className={"form-group"}>
                     <label htmlFor="email">First Name*</label>
-                    <input type="email" name="email" id="email" />
+                    <input name="firstName" id="firstName" placeholder={"Ada"}/>
                 </div>
                 <div className={"form-group"}>
-                    <label htmlFor="email">Last Name*</label>
-                    <input type="email" name="email" id="email" />
+                    <label htmlFor="lastName">Last Name*</label>
+                    <input name="lastName" id="lastName" placeholder={"Lovelace"}/>
                 </div>
                 <div className={"form-group"}>
                     <label htmlFor="email">Email*</label>
-                    <input type="email" name="email" id="email" />
+                    <input name="email" id="email" placeholder={"email@gmail.com"}/>
                 </div>
-                <div className={"form-group"}>
-                    <label htmlFor="email">Address*</label>
-                    <input type="email" name="email" id="email" />
-                </div>
-                <div className={"form-group phoneNumber"}>
-                    <div className={"phoneNumberGroup countryCode"}>
-                        <label htmlFor="email">Country Code*</label>
-                        <input className={"countryCodeInput"} type="countryCode" name="countryCode" id="countryCode" />
+
+                <div className={"addressGroup"}>
+                    <div className={"form-group"}>
+                        <label htmlFor="address">Address*</label>
+                        <input name="address" id="address" placeholder={"Borgundvegen 222A"}/>
                     </div>
-                    <div className={"phoneNumberGroup"}>
-                        <label htmlFor="email">Phone Number*</label>
-                        <input type="phoneNumber" name="phoneNumber" id="phoneNumber" />
+                    <div className={"addressCountryZipCodeGroup"}>
+                        <div className={"form-group"}>
+                            <label htmlFor={"country"}>Country*</label>
+                            <input name="country" id="country" placeholder={"Norway"}/>
+                        </div>
+                        <div className={"form-group"}>
+                            <label htmlFor={"zipCode"}>Zip Code*</label>
+                            <input name="zipCode" id="zipCode" placeholder={"6002"}/>
+                        </div>
                     </div>
                 </div>
+
+                <div className={"phoneNumberGroup"}>
+                    <div className={"form-group"}>
+                        <label htmlFor={"countryCode*"}>Country Code*</label>
+                        <input name={"countryCode"} id="countryCode" placeholder={"+47"}/>
+                    </div>
+                    <div className={"form-group phoneNumber"}>
+                        <label htmlFor={"phoneNumber"}>Phone Number*</label>
+                        <input name={"phoneNumber"} id="phoneNumber" placeholder={"800 80 000"}/>
+                    </div>
+                </div>
+
                 <div className={"form-group"}>
                     <label htmlFor="email">Date of birth*</label>
-                    <input type="email" name="email" id="email" />
+                    <div>
+                        <DatePicker className={"signUpDatePicker"} dateFormat={"dd.MM.yyyy"} selected={startDate} onChange={(date) => setStartDate(date)}/>
+                    </div>
                 </div>
                 <div className={"form-group"}>
-                    <label htmlFor="email">Password*</label>
-                    <input type="email" name="email" id="email" />
+                    <label htmlFor="password">Password*</label>
+                    <input name="password" id="password" />
                 </div>
                 <div className={"form-group"}>
                     <label htmlFor="password">Repeat Password*</label>
-                    <input type="password" name="password" id="password" />
+                    <input name="passwordRepeat" id="passwordRepeat" />
                 </div>
                 <input className={"FormSubmitButton"} type="submit" value="Sign Up" />
                 <p>Already have an account?

@@ -11,7 +11,7 @@ export default function Home() {
                     <h1 className={"slogan2 ease"}>ease</h1>
                 </div>
                 <div className={"homeRightPane"}>
-                    <NavLink className={"portalButton"} to={"/portal"}>Rent Now</NavLink>
+                    <NavLink id={"portalButton"} className={"FormSubmitButton"} to={"/portal"}>Rent Now</NavLink>
                 </div>
             </div>
         </div>
