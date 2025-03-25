@@ -15,6 +15,18 @@
   border-right: 1px solid var(--border-color);
 }
 
+.adminNavigation ul {
+  list-style: none;
+  padding: 0;
+  margin: 0; 
+}
+
+.adminNavigation ul li *{
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 1rem;
+}
+
 .adminMain {
   display: flex;
   flex-direction: column;

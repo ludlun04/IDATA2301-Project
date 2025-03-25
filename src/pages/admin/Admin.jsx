@@ -1,5 +1,6 @@
+import { NavLink } from "react-router-dom"
 import "./Admin.css"
-
+import UserRow from "../../components/DashboardComponents/UserRow"
 
 export default function Admin() {
   return (
@@ -7,8 +8,8 @@ export default function Admin() {
       <nav className={"adminNavigation"}>
         <h1>Admin</h1>
         <ul>
-          <li>Users</li>
-          <li>Companies</li>
+          <li><NavLink>User</NavLink></li>
+          <li><NavLink>Company</NavLink></li>
         </ul>
       </nav>
       <main className="adminMain">
@@ -26,26 +27,8 @@ export default function Admin() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>chuck@norris.com</td>
-              <td>Chuck</td>
-              <td>Norris</td>
-              <td>123-456-7890</td>
-              <td>03/10/1940</td>
-              <td>Admin</td>
-              <td><button>edit</button></td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>chuck@norris.com</td>
-              <td>Chuck</td>
-              <td>Norris</td>
-              <td>123-456-7890</td>
-              <td>03/10/1940</td>
-              <td>Admin</td>
-              <td><button>edit</button></td>
-            </tr>
+            <UserRow />
+            <UserRow />
           </tbody>
         </table>
       </main>
