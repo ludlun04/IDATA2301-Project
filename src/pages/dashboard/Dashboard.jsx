@@ -7,11 +7,21 @@ import CompaniesSection from "../../components/DashboardComponents/CompaniesSect
 export default function Dashboard() {
   let [currentPage, setCurrentPage] = useState("Users");
 
+  let getSection = () => {
+    switch (currentPage) {
+      case "Users":
+        return <UsersSection />;
+      case "Companies":
+        return <CompaniesSection />;
+      default:
+        break;
+    }
+  }
+
   return (
     <div className={"Dashboard"}>
       <DashboardNavBar setCurrentPage={setCurrentPage} />
-      {currentPage == "Users" && <UsersSection />
-      || currentPage == "Companies" && <CompaniesSection />}
+      {getSection()}
     </div>
   )
 }
