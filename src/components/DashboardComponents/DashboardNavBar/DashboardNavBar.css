@@ -1,0 +1,9 @@
+.DashboardNavBar {
+    display: flex;
+    flex-direction: column;
+}
+
+.DashboardNavBar button:hover {
+    background: var(--primary-100);
+    cursor: pointer;
+}

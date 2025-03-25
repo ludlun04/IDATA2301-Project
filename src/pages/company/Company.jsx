@@ -1,5 +1,5 @@
 import "./Company.css"
-import DetailsSection from "../../components/DetailsSection/DetailsSection";
+import DetailsSection from "../../components/DashboardComponents/DetailsSection/DetailsSection";
 export default function Company() {
 
   const info = [

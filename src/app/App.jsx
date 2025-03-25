@@ -12,6 +12,7 @@ import SignUp from "../pages/signUp/SignUp";
 import Admin from '../pages/admin/Admin';
 import Company from "../pages/company/Company";
 import EmptyDevPage from "../pages/emptyDevPage/emptyDevPage";
+import Dashboard from "../pages/dashboard/Dashboard";
 
 const router = createBrowserRouter(createRoutesFromElements(
     <Route path={"/"} element={ <Root />}>
@@ -25,6 +26,7 @@ const router = createBrowserRouter(createRoutesFromElements(
       <Route path={"sign-up"} element={<SignUp />} />
       <Route path={"admin"} element={<Admin />} />
       <Route path={"company"} element={<Company/>}/>
+        <Route path={"dashboard"} element={<Dashboard />} />
       <Route path={"dev"} element={<EmptyDevPage />} />
     </Route>
 ))
