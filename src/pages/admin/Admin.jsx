@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom"
 import "./Admin.css"
 import UserRow from "../../components/DashboardComponents/UserRow"
+import { User } from "../../model/User"
 
 export default function Admin() {
   return (
@@ -27,8 +28,8 @@ export default function Admin() {
             </tr>
           </thead>
           <tbody>
-            <UserRow />
-            <UserRow />
+            <UserRow user={new User(1, "Yes@no.com", "Chuck", "Norris", 41234567, "20-01-2912", ["User", "Admin"])} />
+            <UserRow user={new User(2, "Yes@no.com", "Chuck", "Norris", 41234567, "20-01-2912", ["User", "Admin"])} />
           </tbody>
         </table>
       </main>
