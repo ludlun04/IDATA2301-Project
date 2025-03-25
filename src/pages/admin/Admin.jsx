@@ -34,6 +34,7 @@ export default function Admin() {
               <td>123-456-7890</td>
               <td>03/10/1940</td>
               <td>Admin</td>
+              <td><button>edit</button></td>
             </tr>
             <tr>
               <td>2</td>
@@ -43,6 +44,7 @@ export default function Admin() {
               <td>123-456-7890</td>
               <td>03/10/1940</td>
               <td>Admin</td>
+              <td><button>edit</button></td>
             </tr>
           </tbody>
         </table>
