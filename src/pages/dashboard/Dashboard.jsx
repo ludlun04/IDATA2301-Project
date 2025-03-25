@@ -1,9 +1,11 @@
 import "./Dashboard.css"
 import DashboardNavBar from "../../components/DashboardComponents/DashboardNavBar/DashboardNavBar";
 import { useState } from "react";
-import UsersSection from "../../components/DashboardComponents/UsersSection";
-import CompaniesSection from "../../components/DashboardComponents/CompaniesSection";
-import UserRentals from "../../components/DashboardComponents/UserRentals/UserRentals";
+import UsersSection from "../../components/DashboardComponents/Admin/UsersSection";
+import CompaniesSection from "../../components/DashboardComponents/Admin/CompaniesSection";
+import UserRentals from "../../components/DashboardComponents/User/UserRentals";
+import DetailsSection from "../../components/DashboardComponents/User/DetailsSection";
+import UserFavorites from "../../components/DashboardComponents/User/UserFavorites";
 
 export default function Dashboard() {
   let [currentPage, setCurrentPage] = useState("Users");
@@ -12,10 +14,14 @@ export default function Dashboard() {
     switch (currentPage) {
       case "UserRentals":
         return <UserRentals />;
+      case "UserFavorites":
+        return <UserFavorites />;
       case "Users":
         return <UsersSection />;
       case "Companies":
         return <CompaniesSection />;
+      case "Details":
+        return <DetailsSection />;
       default:
         break;
     }
@@ -24,7 +30,9 @@ export default function Dashboard() {
   return (
     <div className={"Dashboard"}>
       <DashboardNavBar setCurrentPage={setCurrentPage} />
-      {getSection()}
+      <div className={"DashboardSectionContainer"}>
+        {getSection()}
+      </div>
     </div>
   )
 }

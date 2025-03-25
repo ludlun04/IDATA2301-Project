@@ -1,8 +1,6 @@
 .DetailsSection {
     display: flex;
     flex-direction: column;
-
-
 }
 
 .detailsSectionRow {

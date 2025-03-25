@@ -1,20 +1,9 @@
 import "./Company.css"
-import DetailsSection from "../../components/DashboardComponents/DetailsSection/DetailsSection";
+import DetailsSection from "../../components/DashboardComponents/User/DetailsSection";
 import {Rental} from "../../model/Rental";
 import {User} from "../../model/User";
 import {Car} from "../../model/Car";
 export default function Company() {
-
-  const details = [
-    ["Company", "AB Rentals"],
-    ["Name", "Username"],
-    ["Email", "U***e@gmail.com"],
-    ["Phone Number", "91902345"],
-    ["First Name", "John"],
-    ["Last Name", "Doe"],
-    ["Address", "Borgundvegen"],
-    ["Birthdate", "12.02.1994"]
-  ];
 
   const getRentals = () => {
     const users = User.getSampleUsers();
@@ -45,7 +34,7 @@ export default function Company() {
         <p>Link 2</p>
         <p>Link 3</p>
       </section>
-      <DetailsSection className={"companyDetailsDetailsSection"} info={details} onEdit={onEdit} onResetPassword={onResetPassword}/>
+      <DetailsSection className={"companyDetailsDetailsSection"} onEdit={onEdit} onResetPassword={onResetPassword}/>
       <table>
 
       </table>

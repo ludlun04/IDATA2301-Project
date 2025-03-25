@@ -1,6 +1,7 @@
 .DashboardNavBar {
     display: flex;
     flex-direction: column;
+    justify-self: flex-start;
 }
 
 .DashboardNavBar button:hover {

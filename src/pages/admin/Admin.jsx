@@ -1,5 +1,5 @@
 import "./Admin.css"
-import UserRow from "../../components/DashboardComponents/UserRow"
+import UserRow from "../../components/DashboardComponents/Admin/UserRow"
 import { User } from "../../model/User"
 
 export default function Admin() {

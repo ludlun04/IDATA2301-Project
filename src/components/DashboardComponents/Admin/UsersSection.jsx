@@ -1,6 +1,6 @@
 import "./UsersSection.css";
 import UserRow from "./UserRow"
-import { User } from "../../model/User"
+import { User } from "../../../model/User"
 
 export default function UsersSection() {
   return (

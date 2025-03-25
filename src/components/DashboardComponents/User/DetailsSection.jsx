@@ -1,11 +1,20 @@
 import "./DetailsSection.css"
-
 export default function DetailsSection(props) {
+    const details = [
+        ["Company", "AB Rentals"],
+        ["Name", "Username"],
+        ["Email", "U***e@gmail.com"],
+        ["Phone Number", "91902345"],
+        ["First Name", "John"],
+        ["Last Name", "Doe"],
+        ["Address", "Borgundvegen"],
+        ["Birthdate", "12.02.1994"]
+    ];
   return (
     <div className={props.className}>
       <h1>Details</h1>
       <div className="DetailsSection">
-        {props.info.map((row, index) => (
+        {details.map((row, index) => (
           <div key={index} className="detailsSectionRow">
             <p className={"detailsSectionDescriptor"}>{row[0]}</p>
             <p>{row[1]}</p>

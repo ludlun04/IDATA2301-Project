@@ -1,5 +1,5 @@
 import "./CompaniesSection.css";
-import { Company } from "../../model/Company";
+import { Company } from "../../../model/Company";
 import CompanyRow from "./CompanyRow";
 
 export default function CompaniesSection() {
