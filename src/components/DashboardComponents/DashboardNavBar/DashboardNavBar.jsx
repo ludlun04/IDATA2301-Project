@@ -11,7 +11,7 @@ export default function DashboardNavBar({ setCurrentPage }) {
   return (
     <div className={"DashboardNavBar"}>
       <button onClick={onClick("")}>Details</button>
-      <button onClick={onClick("")}>UserRentals</button>
+      <button onClick={onClick("UserRentals")}>UserRentals</button>
       <button onClick={onClick("")}>UserFavorites</button>
       <button onClick={onClick("")}>CompanyCars</button>
       <button onClick={onClick("")}>CompanyHistory</button>

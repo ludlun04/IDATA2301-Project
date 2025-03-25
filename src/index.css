@@ -33,7 +33,7 @@ h2 {
   gap: 0.25rem;
 }
 
-input, button {
+input {
   font-family: "Kantumruy Pro", sans-serif;
   font-size: 1.25rem;
   padding: 0.25rem;
@@ -71,8 +71,27 @@ input::placeholder {
   background-color: var(--primary-100);
 }
 
-.FormSubmitButton img {
-  color: black;
+.FormSubmitButton:active {
+  background-color: var(--primary-200);
+}
+
+button {
+  background-color: var(--primary-200);
+  border: 1px solid rgba(255, 255, 255, .2);
+  color: var(--text-200);
+  font-family: "Kantumruy Pro", sans-serif;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  height: 30px;
+  font-weight: 500;
+}
+
+button:hover {
+  background-color: var(--primary-100);
+}
+
+button:active {
+  background-color: var(--primary-200);
 }
 
 .SvgIcon {

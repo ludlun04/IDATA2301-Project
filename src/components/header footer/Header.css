@@ -82,6 +82,10 @@
         gap: 7px;
     }
 
+    .headerMenuButtonContainer:hover {
+        background: none;
+    }
+
     .headerMenuButton {
         border-radius: 50px;
         background: var(--text-200);

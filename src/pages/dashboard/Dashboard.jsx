@@ -3,12 +3,15 @@ import DashboardNavBar from "../../components/DashboardComponents/DashboardNavBa
 import { useState } from "react";
 import UsersSection from "../../components/DashboardComponents/UsersSection";
 import CompaniesSection from "../../components/DashboardComponents/CompaniesSection";
+import UserRentals from "../../components/DashboardComponents/UserRentals/UserRentals";
 
 export default function Dashboard() {
   let [currentPage, setCurrentPage] = useState("Users");
 
   let getSection = () => {
     switch (currentPage) {
+      case "UserRentals":
+        return <UserRentals />;
       case "Users":
         return <UsersSection />;
       case "Companies":
