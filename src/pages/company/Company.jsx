@@ -1,8 +1,11 @@
 import "./Company.css"
 import DetailsSection from "../../components/DashboardComponents/DetailsSection/DetailsSection";
+import {Rental} from "../../model/Rental";
+import {User} from "../../model/User";
+import {Car} from "../../model/Car";
 export default function Company() {
 
-  const info = [
+  const details = [
     ["Company", "AB Rentals"],
     ["Name", "Username"],
     ["Email", "U***e@gmail.com"],
@@ -12,6 +15,20 @@ export default function Company() {
     ["Address", "Borgundvegen"],
     ["Birthdate", "12.02.1994"]
   ];
+
+  const getRentals = () => {
+    const users = User.getSampleUsers();
+    const cars = Car.getSampleCars();
+
+    return [
+      new Rental(users[0], new Date("2025-03-01"), new Date("2025-03-03"), cars[0]),
+      new Rental(users[1], new Date("2025-04-01"), new Date("2025-03-05"), cars[0]),
+      new Rental(users[0], new Date("2025-06-01"), new Date("2025-03-09"), cars[2]),
+      new Rental(users[2], new Date("2025-01-01"), new Date("2025-03-03"), cars[1])
+    ];
+  }
+
+  const rentals = getRentals();
 
   const onEdit = () => {
     console.log("editing");
@@ -23,12 +40,15 @@ export default function Company() {
 
   return (
     <div className={"Company"}>
-      <div className={"companyDetailsLinks"}>
+      <section className={"companyDetailsLinks"}>
         <p>Link 1</p>
         <p>Link 2</p>
         <p>Link 3</p>
-      </div>
-      <DetailsSection className={"companyDetailsDetailsSection"} info={info} onEdit={onEdit} onResetPassword={onResetPassword}/>
+      </section>
+      <DetailsSection className={"companyDetailsDetailsSection"} info={details} onEdit={onEdit} onResetPassword={onResetPassword}/>
+      <table>
+
+      </table>
     </div>
   )
 }
