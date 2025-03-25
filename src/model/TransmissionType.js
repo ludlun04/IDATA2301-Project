@@ -1,4 +1,4 @@
-class TransmissionType {
+export class TransmissionType {
   /**
    * Creates a new transmission type.
    * @param {number} id - The ID of the transmission type.

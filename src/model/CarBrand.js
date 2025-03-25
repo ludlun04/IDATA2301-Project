@@ -1,4 +1,4 @@
-class CarBrand {
+export class CarBrand {
   /**
    * Creates a new car brand.
    * @param {number} id - The ID of the car brand.

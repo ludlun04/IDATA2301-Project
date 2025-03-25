@@ -1,4 +1,4 @@
-class Addon {
+export class Addon {
   /**
    * Creates a new addon.
    * @param {number} id - The ID of the addon.

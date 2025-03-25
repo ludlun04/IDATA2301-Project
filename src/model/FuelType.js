@@ -1,4 +1,4 @@
-class FuelType {
+export class FuelType {
   /**
    * Creates a new fuel type.
    * @param {number} id - The ID of the fuel type.

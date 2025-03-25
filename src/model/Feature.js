@@ -1,4 +1,4 @@
-class Feature {
+export class Feature {
   /**
    * Creates a new feature.
    * @param {number} id - The ID of the feature.

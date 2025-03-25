@@ -1,3 +1,10 @@
+import { CarBrand } from "./CarBrand";
+import { CarModel } from "./CarModel";
+import { FuelType } from "./FuelType";
+import { Feature } from "./Feature";
+import { TransmissionType } from "./TransmissionType";
+import { Addon } from "./Addon";
+
 export class Car {
   /**
    * Creates a new car.
@@ -76,10 +83,34 @@ export class Car {
   }
 
   static getSampleCars() {
+    const toyota = new CarBrand(1, "Toyota");
+    const volkswagen = new CarBrand(2, "Volkswagen");
+    const volvo = new CarBrand(3, "Volvo");
+
+    const corolla = new CarModel(1, "Corolla", toyota);
+    const passat = new CarModel(2, "Passat", volkswagen);
+    const v60 = new CarModel(3, "V60", volvo);
+
+    const petrol = new FuelType(1, "Petrol");
+    const diesel = new FuelType(2, "Diesel");
+
+    const manual = new TransmissionType(1, "manual");
+    const automatic = new TransmissionType(2, "automatic");
+
+    const addons = [
+      new Addon(1, "Baby seat"),
+      new Addon(2, "GPS")
+    ];
+
+    const features = [
+      new Feature(1, "Heated seats"),
+      new Feature(2, "Sun roof")
+    ];
+
     return [
-      new Car(1, 2015, 5, 900, { name: "Corolla" }, { name: "Petrol" }, { name: "Manual" }, [{ name: "Baby seat" }], [{ name: "Parking camera" }]),
-      new Car(2, 2018, 4, 1100, { name: "Civic" }, { name: "Diesel" }, { name: "Automatic" }, [{ name: "GPS" }], [{ name: "Sunroof" }]),
-      new Car(3, 2020, 7, 1500, { name: "Highlander" }, { name: "Hybrid" }, { name: "Automatic" }, [{ name: "Heated seats" }], [{ name: "Blind spot monitor" }])
+      new Car(1, 2015, 5, 900, corolla, petrol, manual, addons, features),
+      new Car(2, 2018, 4, 1100, passat, diesel, automatic, addons, features),
+      new Car(3, 2020, 7, 1500, v60, petrol, manual, addons, features)
     ];
   }
 }

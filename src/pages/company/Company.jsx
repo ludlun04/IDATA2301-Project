@@ -3,6 +3,7 @@ import DetailsSection from "../../components/DashboardComponents/User/DetailsSec
 import {Rental} from "../../model/Rental";
 import {User} from "../../model/User";
 import {Car} from "../../model/Car";
+import CarDetailsColumn from "../../components/CarDetailsColumn/CarDetailsColumn";
 export default function Company() {
 
   const getRentals = () => {
@@ -35,9 +36,13 @@ export default function Company() {
         <p>Link 3</p>
       </section>
       <DetailsSection className={"companyDetailsDetailsSection"} onEdit={onEdit} onResetPassword={onResetPassword}/>
-      <table>
 
-      </table>
+      <section className={"companyDetailsCars"}>
+        {getRentals().map((rental) => (
+          <CarDetailsColumn rental={rental}/>
+        ))}
+      </section>
+
     </div>
   )
 }

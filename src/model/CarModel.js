@@ -1,4 +1,4 @@
-class CarModel {
+export class CarModel {
   /**
    * Creates a new car model.
    * @param {number} id - The ID of the car model.
