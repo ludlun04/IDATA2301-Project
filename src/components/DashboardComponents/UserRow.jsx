@@ -1,3 +1,5 @@
+
+
 export default function UserRow({ user }) {
   return (
     <tr>
@@ -7,7 +9,7 @@ export default function UserRow({ user }) {
       <td>{user.getLastname()}</td>
       <td>{user.getPhoneNumber()}</td>
       <td>{user.getDateOfBirth()}</td>
-      <td>{user.getRoles().map(role => {role})}</td>
+      <td>{user.getRoles().map(role => <div key={role}>{role}</div>)}</td>
       <td><button>{user.getId()}</button></td>
     </tr>
   )
