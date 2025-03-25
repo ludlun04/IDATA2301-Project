@@ -37,4 +37,12 @@ export class User {
   getRoles() {
     return this.roles
   }
+
+  static getSampleUsers() {
+    return [
+      new User(1, "john.doe@example.com", "John", "Doe", "1234567890", "1990-05-15", ["USER"]),
+      new User(2, "jane.smith@example.com", "Jane", "Smith", "0987654321", "1985-08-22", ["ADMIN"]),
+      new User(3, "alice.jones@example.com", "Alice", "Jones", "1122334455", "1995-12-10", ["USER"])
+    ];
+  }
 }
