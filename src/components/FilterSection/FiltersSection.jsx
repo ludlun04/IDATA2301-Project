@@ -53,7 +53,7 @@ const FiltersSection = () => {
         <li className="filtersSectionFilterLine" ><p>Available now</p> <input type="checkbox"></input></li>
         <section className={"filtersSectionDateLine"}>
           <p>From</p>
-          <DatePicker className={"filtersSectionDatePicker"} selected={startDate} onChange={(date) => setStartDate(date)} dateFormat={dateFormat} portalId={portalId} calendarStartDay={calendarStartDay}/>
+          <DatePicker /*monthsShown={3}*/ className={"filtersSectionDatePicker"} selected={startDate} onChange={(date) => setStartDate(date)} dateFormat={dateFormat} portalId={portalId} calendarStartDay={calendarStartDay}/>
         </section>
         <section className={"filtersSectionDateLine"}>
           <p>To</p>
