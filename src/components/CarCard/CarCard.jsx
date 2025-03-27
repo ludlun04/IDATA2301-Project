@@ -1,5 +1,5 @@
 import "./CarCard.css"
-import img from "../../resources/images/bmw_m3/bmw_m3-1600.webp"
+import img from "../../resources/images/cars/bmw_m3/bmw_m3-1600.webp"
 import starFilled from "../../resources/icons/starFilled.svg"
 import starUnfilled from "../../resources/icons/starUnfilled.svg"
 

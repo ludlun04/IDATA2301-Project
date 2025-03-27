@@ -1,10 +1,10 @@
 .EmployeeCard {
     border: 1px solid var(--border-color);
     border-radius: .5rem;
-    align-items: center;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     padding: .25rem;
+    width: 200px;
 }
 
 .EmployeeCard h1 {
@@ -12,23 +12,12 @@
     margin: .75rem 0 0 0;
 }
 
-.employeeCardContentContainer {
-    width: 200px;
-}
-
-.employeeCardImageContainer {
+.employeeCardImage {
     width: 100%;
     aspect-ratio: 1/1;
-}
-
-.employeeCardContentContainer img {
-    width: 100%;
-    height: 100%;
     object-fit: cover;
-    border-radius: .5rem .5rem 0 0;
+    border-radius: .5rem;
 }
-
-
 
 .employeeCardHeader {
     font-size: 1.5rem;
@@ -39,14 +28,14 @@
 }
 
 @media only screen and (max-width: 1024px) {
-    .employeeCardContentContainer {
-        width: 150px;
+    .EmployeeCard {
+        width: 160px;
     }
 }
 
 @media only screen and (max-width: 512px) {
-    .employeeCardContentContainer {
-        width: 150px;
+    .EmployeeCard {
+        width: 160px;
     }
     .employeeCardHeader {
         font-size: 1rem;

@@ -1,17 +1,15 @@
-import "./EmployeeCard.css"
-import vedum from "../../resources/images/vedum.png"
+import "./EmployeeCard.css";
 
 export default function EmployeeCard(props) {
-    return (
-        <div className={"EmployeeCard"}>
-            <div className={"employeeCardContentContainer"}>
-                <div className={"employeeCardImageContainer"}>
-                    <img src={vedum} alt={"The finance minister of norway, sir vedum, is smiling."}/>
-                </div>
-                <h1 className={"employeeCardHeader"}>Vedum</h1>
-                <p className={"employeeCardParagraph"}>Finance minister</p>
-            </div>
+  const path = props.path;
+  const name = props.name;
+  const title = props.title;
 
-        </div>
-    )
+  return (
+    <div className={"EmployeeCard"}>
+        <img className={"employeeCardImage"} src={path} alt={`Picture of ${name ? name : "unknown employee"}`}/>
+      <h1 className={"employeeCardHeader"}>{name ? name : "No name available"}</h1>
+      <p className={"employeeCardParagraph"}>{title ? title : "no title available"}</p>
+    </div>
+  )
 }

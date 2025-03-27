@@ -1,6 +1,9 @@
 import "./About.css"
 import EmployeeCard from "../../components/EmployeeCard/EmployeeCard";
 import FaqSection from "../../components/FaqSection/FaqSection";
+import Turing from "../../resources/images/employees/turing.jpg";
+import Lovelace from "../../resources/images/employees/lovelace.jpg";
+import Haaland from "../../resources/images/employees/haaland.jpg";
 
 export default function About() {
     const faqSectionClassName = "aboutFaqSection";
@@ -22,9 +25,9 @@ export default function About() {
             <div className={"aboutEmployees"}>
                 <h1 className={"aboutHeader"}>Employees</h1>
                 <div className={"aboutEmployeeCardContainer"}>
-                    <EmployeeCard></EmployeeCard>
-                    <EmployeeCard></EmployeeCard>
-                    <EmployeeCard></EmployeeCard>
+                    <EmployeeCard path={Turing} name={"Alan Turing"} title={"Managing Director"}></EmployeeCard>
+                    <EmployeeCard path={Lovelace} name={"Ada Lovelace"} title={"Finance Manager"}></EmployeeCard>
+                    <EmployeeCard path={Haaland} name={"Erling Braut Haaland"} title={"Marketing Consultant"}></EmployeeCard>
                 </div>
             </div>
             <div className={"aboutFaq"}>
