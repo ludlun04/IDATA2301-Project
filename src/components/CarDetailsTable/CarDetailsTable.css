@@ -1,47 +1,60 @@
 .CarDetailsTable {
     display: flex;
     flex-direction: column;
+    width: 700px;
 }
 
 .carDetailsTableRowTop {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
-    padding-top: 10px;
-    padding-bottom: 10px;
     gap: 10px;
-    width: 500px;
+    width: 100%;
+}
+
+.carDetailsTableDropdownMenu, .carDetailsTableDropdownMenu {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.carDetailsTableDropdownMenu button {
+    font-weight: normal;
 }
 
 .carDetailsTableDropdownMenu {
-    border-bottom: 1px solid var(--border-color);
+    padding: 15px 0 15px 0;
 }
 
-.carDetailsTableRowTopSection {
-    width: 90px;
+.carDetailsTableColumn {
+    width: 110px;
     text-align: center;
     font-size: 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.carDetailsTableDescriptorRow {
-    border-bottom: 1px solid var(--border-color);
-    width: 100%;
-
+.carDetailsTableDescriptorRow p {
+    font-size: 1.2rem;
 }
 
-.carDetailsTableRowDates {
+.carDetailsTableDates, .carDetailsTableOpenContentRenteeSection {
     flex-grow: 1;
     font-size: 1rem;
+}
+
+.carDetailsTableDates {
     text-align: center;
 }
 
-.carDetailsColumnOpenContent {
+.carDetailsTableOpenContentRenteeSection {
+    text-align: right;
+}
+
+.carDetailsTableOpenContent {
     display: flex;
     gap: 20px;
     width: 90%;
+    margin: 10px 0 20px 0;
 }
 
-.carDetailsColumnOpenContentRenteeSection {
-    flex-grow: 1;
-    text-align: center;
+.carDetailsTableColumnDescriptor {
+    font-weight: 500;
 }

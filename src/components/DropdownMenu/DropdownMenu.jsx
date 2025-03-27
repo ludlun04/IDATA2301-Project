@@ -12,8 +12,8 @@ const DropdownMenu = (props) => {
   return (
     <div className={props.className}>
       <div className={"DropdownMenu"}>
-        <button onClick={toggleOpen} className={"DropdownMenuHeader"}>
-          <h2 className={"DropdownMenuTitle"}>{props.title}</h2>
+        <button onClick={toggleOpen} className={"dropdownMenuButton"}>
+          {props.alwaysShownContent}
           <img src={Arrow} alt="Arrow" className={isOpen ? "DropdownMenuArrowOpen" : "DropdownMenuArrow"} />
         </button>
 

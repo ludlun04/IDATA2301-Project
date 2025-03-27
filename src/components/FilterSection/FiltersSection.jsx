@@ -18,30 +18,33 @@ const FiltersSection = () => {
   const portalId = "root-portal"; // makes the datepicker window not affect positioning of datepicker field
   const calendarStartDay = 1; // monday as first day of week instead of sunday
 
+  const getHeader = (title) => (
+    <h2>{title}</h2>
+  )
 
   return (
     <div className={"FiltersSection"}>
       <section>
         <h1>The car</h1>
-        <DropdownMenu title={"Manufacturer"}>
+        <DropdownMenu alwaysShownContent={getHeader("Manufacturer")}>
           <ul>
             <li className="filtersSectionFilterLine" ><p>First filter</p> <input type="checkbox"></input></li>
             <li className="filtersSectionFilterLine" ><p>This is a filter that is very very very long</p> <input type="checkbox"></input></li>
           </ul>
         </DropdownMenu>
-        <DropdownMenu title={"Fuel type"}>
+        <DropdownMenu alwaysShownContent={getHeader("Fuel type")}>
           <ul>
             <li className="filtersSectionFilterLine" ><p>First filter</p> <input type="checkbox"></input></li>
             <li className="filtersSectionFilterLine" ><p>This is a filter that is very very very long</p> <input type="checkbox"></input></li>
           </ul>
         </DropdownMenu>
-        <DropdownMenu title={"Seller"}>
+        <DropdownMenu alwaysShownContent={getHeader("Seller")}>
           <ul>
             <li className="filtersSectionFilterLine" ><p>First filter</p> <input type="checkbox"></input></li>
             <li className="filtersSectionFilterLine" ><p>This is a filter that is very very very long</p> <input type="checkbox"></input></li>
           </ul>
         </DropdownMenu>
-        <DropdownMenu title={"Seats"}>
+        <DropdownMenu alwaysShownContent={getHeader("Seats")}>
           <ul>
             <li className="filtersSectionFilterLine" ><p>First filter</p> <input type="checkbox"></input></li>
             <li className="filtersSectionFilterLine" ><p>This is a filter that is very very very long</p> <input type="checkbox"></input></li>
