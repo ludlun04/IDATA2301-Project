@@ -4,8 +4,15 @@ import {Rental} from "../../model/Rental";
 import {User} from "../../model/User";
 import {Car} from "../../model/Car";
 import CarDetailsTable from "../../components/CarDetailsTable/CarDetailsTable";
-//import CarDetailsTable from "../../components/CarDetailsTable/CarDetailsTable";
+import {useState} from "react";
+
 export default function Company() {
+
+  const details = "details";
+  const cars = "cars";
+  const third = "third";
+
+  const [active, setActive] = useState(details);
 
   const getRentals = () => {
     const users = User.getSampleUsers();
@@ -32,12 +39,26 @@ export default function Company() {
   return (
     <div className={"Company"}>
       <section className={"companyDetailsLinks"}>
-        <p>Link 1</p>
-        <p>Link 2</p>
-        <p>Link 3</p>
+        <button onClick={() => setActive(details)}>Details</button>
+        <button onClick={() => setActive(cars)}>Cars</button>
+        <button onClick={() => setActive(third)}>Third</button>
       </section>
-      <DetailsSection className={"companyDetailsDetailsSection"} onEdit={onEdit} onResetPassword={onResetPassword}/>
-      <CarDetailsTable className={"companyDetailsCars"} rentals={getRentals()}></CarDetailsTable>
+      <div className={"companyDetailsMainSection"}>
+        <DetailsSection
+          className={"companyDetailsDetailsSection"}
+          style={active === details ? { display: 'block' } : { display: 'none' }}
+          onEdit={onEdit}
+          onResetPassword={onResetPassword}
+        />
+        <CarDetailsTable
+          className={"companyDetailsCars"}
+          style={active === cars ? { display: 'block' } : { display: 'none' }}
+          rentals={getRentals()}
+        />
+        <p
+          style={active === third ? { display: 'block' } : { display: 'none' }}
+        >Third section...</p>
+      </div>
     </div>
   )
 }

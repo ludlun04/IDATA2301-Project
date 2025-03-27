@@ -10,15 +10,15 @@
 .companyDetailsLinks {
     align-self: flex-start;
     padding: 20px;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
-.companyDetailsDetailsSection, .companyDetailsCars {
+.companyDetailsMainSection {
     position: absolute;
-    top: 50%;
+    top: auto;
     left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.companyDetailsDetailsSection {
-    display: none;
+    margin-top: 30vh;
+    transform: translate(-50%);
 }

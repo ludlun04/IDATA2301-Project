@@ -49,7 +49,7 @@ export default function CarDetailsTable(props) {
   }
 
   return (
-    <div className={props.className}>
+    <div className={props.className} style={props.style}>
       <div className={"CarDetailsTable"}>
         <div className={"carDetailsTableRowTop carDetailsTableDescriptorRow"}>
           <p className={"carDetailsTableColumn"}>Brand</p>

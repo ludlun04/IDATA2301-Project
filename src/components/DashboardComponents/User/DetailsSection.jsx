@@ -11,7 +11,7 @@ export default function DetailsSection(props) {
         ["Birthdate", "12.02.1994"]
     ];
   return (
-    <div className={props.className}>
+    <div className={props.className} style={props.style}>
       <h1>Details</h1>
       <div className="DetailsSection">
         {details.map((row, index) => (
