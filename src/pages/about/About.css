@@ -1,5 +1,5 @@
 .About {
-    background: var(--background);
+    background-image: url("../../resources/background/endless-constellation.svg");
     padding-top: 70px;
     display: flex;
     flex-direction: column;
@@ -11,6 +11,7 @@
     font-size: 3rem;
     margin: 10px;
     align-self: flex-start;
+    background: var(--background);
 }
 
 .aboutOurStoryParagraph {
@@ -19,12 +20,14 @@
     font-size: 1.2rem;
     margin: 10px;
     gap: 1rem;
+    background: var(--background);
 }
 
 .aboutFaq {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: var(--background);
 }
 
 .aboutFaqSection {
