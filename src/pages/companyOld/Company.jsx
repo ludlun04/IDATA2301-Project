@@ -3,7 +3,7 @@ import DetailsSection from "../../components/DashboardComponents/User/DetailsSec
 import {Rental} from "../../model/Rental";
 import {User} from "../../model/User";
 import {Car} from "../../model/Car";
-import CarDetailsTable from "../../components/CarDetailsTable/CarDetailsTable";
+import CarDetailsTable from "../../components/DashboardComponents/Company/CarDetailsTable/CarDetailsTable";
 import {useState} from "react";
 
 export default function Company() {

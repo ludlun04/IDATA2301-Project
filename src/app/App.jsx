@@ -9,8 +9,8 @@ import Footer from "../components/header footer/Footer";
 import Header from "../components/header footer/Header";
 import SignIn from "../pages/signIn/SignIn";
 import SignUp from "../pages/signUp/SignUp";
-import Admin from '../pages/admin/Admin';
-import Company from "../pages/company/Company";
+import Admin from '../pages/adminOld/Admin';
+import Company from "../pages/companyOld/Company";
 import EmptyDevPage from "../pages/emptyDevPage/emptyDevPage";
 import Dashboard from "../pages/dashboard/Dashboard";
 
@@ -24,9 +24,7 @@ const router = createBrowserRouter(createRoutesFromElements(
       <Route path={"contact"} element={<Contact />} />
       <Route path={"sign-in"} element={<SignIn />} />
       <Route path={"sign-up"} element={<SignUp />} />
-      <Route path={"admin"} element={<Admin />} />
-      <Route path={"company"} element={<Company/>}/>
-        <Route path={"dashboard"} element={<Dashboard />} />
+x        <Route path={"dashboard"} element={<Dashboard />} />
       <Route path={"dev"} element={<EmptyDevPage />} />
     </Route>
 ))

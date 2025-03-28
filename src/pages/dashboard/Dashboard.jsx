@@ -6,9 +6,10 @@ import CompaniesSection from "../../components/DashboardComponents/Admin/Compani
 import UserRentals from "../../components/DashboardComponents/User/UserRentals";
 import DetailsSection from "../../components/DashboardComponents/User/DetailsSection";
 import UserFavorites from "../../components/DashboardComponents/User/UserFavorites";
+import CompanyCars from "../../components/DashboardComponents/Company/CompanyCars";
 
 export default function Dashboard() {
-  let [currentPage, setCurrentPage] = useState("Users");
+  let [currentPage, setCurrentPage] = useState("Details");
 
   let getSection = () => {
     switch (currentPage) {
@@ -22,6 +23,8 @@ export default function Dashboard() {
         return <CompaniesSection />;
       case "Details":
         return <DetailsSection />;
+      case "CompanyCars":
+        return <CompanyCars />;
       default:
         break;
     }

@@ -35,7 +35,7 @@ export default function About() {
                 <div className={"aboutFaqSectionContainer"}>
                     <FaqSection className={faqSectionClassName}
                         question={"What makes Driveo different from other car rental companies in Ålesund?"}
-                        answer={"At Driveo, we’re all about flexibility, convenience, and making your journey unforgettable. We’re a local company that knows Ålesund inside out — from the must-see landmarks to the hidden gems. Our modern, reliable fleet is matched with personalized service to ensure your trip is smooth, whether you’re here for an adventure or a quick visit."}
+                        answer={"At Driveo, we’re all about flexibility, convenience, and making your journey unforgettable. We’re a local companyOld that knows Ålesund inside out — from the must-see landmarks to the hidden gems. Our modern, reliable fleet is matched with personalized service to ensure your trip is smooth, whether you’re here for an adventure or a quick visit."}
                     />
                     <FaqSection className={faqSectionClassName}
                         question={"Can I rent a car from Driveo for just a day or a weekend trip?"}

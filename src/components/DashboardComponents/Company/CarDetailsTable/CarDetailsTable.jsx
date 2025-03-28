@@ -1,5 +1,5 @@
 import "./CarDetailsTable.css";
-import DropdownMenu from "../DropdownMenu/DropdownMenu";
+import DropdownMenu from "../../../DropdownMenu/DropdownMenu";
 
 export default function CarDetailsTable(props) {
 
@@ -49,7 +49,7 @@ export default function CarDetailsTable(props) {
   }
 
   return (
-    <div className={props.className} style={props.style}>
+    <div>
       <div className={"CarDetailsTable"}>
         <div className={"carDetailsTableRowTop carDetailsTableDescriptorRow"}>
           <p className={"carDetailsTableColumn"}>Brand</p>
