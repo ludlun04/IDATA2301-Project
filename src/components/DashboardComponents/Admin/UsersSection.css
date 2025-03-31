@@ -4,3 +4,11 @@
   align-items: center;
 }
 
+.usersTable {
+  border-collapse: collapse;
+}
+
+.usersTable thead tr th {
+  text-align: center;
+  padding-right: 1rem;
+}
