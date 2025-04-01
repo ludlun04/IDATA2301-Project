@@ -30,13 +30,13 @@ export default function UsersSection() {
         <table className={"usersTable"}>
           <thead>
             <tr>
-              <th>Id</th>
-              <th>Email</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Phone Number</th>
-              <th>Date Of Birth</th>
-              <th>Roles</th>
+              <th><p>Id</p></th>
+              <th><p>Email</p></th>
+              <th><p>First Name</p></th>
+              <th><p>Last Name</p></th>
+              <th><p>Phone Number</p></th>
+              <th><p>Date Of Birth</p></th>
+              <th><p>Roles</p></th>
               <th></th>
             </tr>
           </thead>

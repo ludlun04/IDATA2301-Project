@@ -8,7 +8,9 @@
   border-collapse: collapse;
 }
 
-.usersTable thead tr th {
+.companiesTable thead tr th p{
   text-align: center;
-  padding-right: 1rem;
+  font-weight: normal;
+  font-size: 1.2rem;
+  margin: 1rem 3rem;
 }

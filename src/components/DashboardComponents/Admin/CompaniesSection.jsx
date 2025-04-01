@@ -21,10 +21,10 @@ export default function CompaniesSection() {
         <table className="companiesTable">
           <thead>
             <tr>
-              <th>Id</th>
-              <th>Name</th>
-              <th>Address</th>
-              <th>Email</th>
+              <th><p>Id</p></th>
+              <th><p>Name</p></th>
+              <th><p>Address</p></th>
+              <th><p>Email</p></th>
             </tr>
           </thead>
           <tbody>

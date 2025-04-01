@@ -1,5 +1,5 @@
 .companyRow {
-  border-bottom: 1px solid var(--text-200);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .companyRow:hover {
@@ -8,5 +8,5 @@
 
 .companyRow td {
   text-align: center;
-  padding: .5rem;
+  padding: 1rem;
 }

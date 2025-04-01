@@ -1,5 +1,5 @@
 .userRow {
-  border-bottom: 1px solid var(--text-200);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .userRow:hover {
@@ -8,5 +8,5 @@
 
 .userRow td {
   text-align: center;
-  padding: .5rem;
+  font-size: 1rem;
 }
