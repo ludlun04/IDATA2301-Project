@@ -6,6 +6,7 @@ import CompaniesSection from "../../components/DashboardComponents/Admin/Compani
 import UserRentals from "../../components/DashboardComponents/User/UserRentals";
 import DetailsSection from "../../components/DashboardComponents/User/DetailsSection";
 import UserFavorites from "../../components/DashboardComponents/User/UserFavorites";
+import CompanyCarsHistory from "../../components/DashboardComponents/Company/CompanyCarsHistory";
 import CompanyCars from "../../components/DashboardComponents/Company/CompanyCars";
 
 export default function Dashboard() {
@@ -23,6 +24,8 @@ export default function Dashboard() {
         return <CompaniesSection />;
       case "Details":
         return <DetailsSection />;
+      case "CompanyCarsHistory":
+        return <CompanyCarsHistory />;
       case "CompanyCars":
         return <CompanyCars />;
       default:

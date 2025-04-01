@@ -4,6 +4,7 @@ import DropdownMenu from "../../../DropdownMenu/DropdownMenu";
 export default function CarDetailsTable(props) {
 
   const rentals = props.rentals;
+  const cars = props.cars;
 
   const getFormattedDate = (date) => {
     const year = date.getFullYear();
@@ -13,8 +14,7 @@ export default function CarDetailsTable(props) {
     return `${year}.${month}.${day}`;
   }
 
-  const getOpenContent = (rental) => {
-    const car = rental.getCar();
+  const getOpenContent = (rental, car) => {
     return (
       <div className={"carDetailsTableOpenContent"}>
         <section className={"carDetailsTableColumn"}>
@@ -25,24 +25,31 @@ export default function CarDetailsTable(props) {
           <p className={"carDetailsTableColumnDescriptor"}>Transmission</p>
           <p>{car.getTransmissionType().getName()}</p>
         </section>
-        <section className={"carDetailsTableOpenContentRenteeSection"}>
-          <p className={"carDetailsTableColumnDescriptor"}>Rentee</p>
-          <p>{rental.getUser().getFirstName()}</p>
-        </section>
+        {rental !== null &&
+          <section className={"carDetailsTableOpenContentRenteeSection"}>
+            <p className={"carDetailsTableColumnDescriptor"}>Rentee</p>
+            <p>{rental.getUser().getFirstName()}</p>
+          </section>
+        }
+
       </div>
     )
   }
 
-  const getTopContent = (rental) => {
-    const car = rental.getCar();
+  const getTopContent = (rental, car) => {
 
     return (
       <div className={"carDetailsTableRowTop"}>
         <p className={"carDetailsTableColumn"}>{car.getModel().getBrand().getName()}</p>
         <p className={"carDetailsTableColumn"}>{car.getModel().getName()}</p>
         <p className={"carDetailsTableColumn"}>{car.getYear()}</p>
-        <p
-          className={"carDetailsTableDates"}>{getFormattedDate(rental.getFromDate())} - {getFormattedDate(rental.getToDate())}</p>
+        {rental !== null ?
+          <p
+            className={"carDetailsTableDates"}>{getFormattedDate(rental.getFromDate())} - {getFormattedDate(rental.getToDate())}</p>
+        :
+          <p className={"carDetailsTableStatus"}>IMPLEMENT ME</p>
+        }
+
       </div>
     )
 
@@ -55,18 +62,30 @@ export default function CarDetailsTable(props) {
           <p className={"carDetailsTableColumn"}>Brand</p>
           <p className={"carDetailsTableColumn"}>Model</p>
           <p className={"carDetailsTableColumn"}>Year</p>
-          <p className={"carDetailsTableDates"}>Dates</p>
+          {rentals !== undefined ?
+            <p className={"carDetailsTableDates"}>Dates</p>
+            :
+            <p className={"carDetailsTableStatus"}>Status</p>
+          }
         </div>
-        {
+        {rentals !== undefined ?
           rentals.map((rental, index) => {
             return (
-                <DropdownMenu key={index} className={"carDetailsTableDropdownMenu"} alwaysShownContent={getTopContent(rental)}>
-                  {getOpenContent(rental)}
-                </DropdownMenu>
+              <DropdownMenu key={index} className={"carDetailsTableDropdownMenu"}
+                            alwaysShownContent={getTopContent(rental, rental.getCar())}>
+                {getOpenContent(rental, rental.getCar())}
+              </DropdownMenu>
             )
 
           })
-        }
+          : cars.map((car, index) => {
+            return (
+              <DropdownMenu key={index} className={"carDetailsTableDropdownMenu"}
+                            alwaysShownContent={getTopContent(null, car)}>
+                {getOpenContent(null, car)}
+              </DropdownMenu>
+            )
+          })}
       </div>
     </div>
 
