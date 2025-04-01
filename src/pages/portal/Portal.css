@@ -9,6 +9,8 @@
     background: var(--background);
 }
 
+
+
 .portalSearchSortContainer {
     display: flex;
     flex-direction: row;
@@ -27,4 +29,36 @@
     flex-direction: column;
     gap: 25px;
     margin-top: 10px;
+}
+
+.portalVerticalSection {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.portalVerticalSectionFilters {
+    display: none;
+    transition: height ease-in-out .5s;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+.portalVerticalSectionButton {
+    display: none;
+    width: 100px;
+}
+
+@media screen and (max-width: 800px) {
+    .portalLeftFilters {
+        display: none;
+    }
+    .portalVerticalSectionButton {
+        display: block;
+    }
+    .portalVerticalSectionFilters {
+        display: flex;
+    }
 }

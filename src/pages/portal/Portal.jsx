@@ -3,11 +3,31 @@ import CarCard from "../../components/CarCard/CarCard";
 import CarSearchSortSection from "../../components/CarSearchSortSection/CarSearchSortSection";
 import FiltersSection from "../../components/FilterSection/FiltersSection";
 import axios from "axios";
+import {useEffect, useLayoutEffect, useRef, useState} from "react";
 
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 
 export default function Portal() {
+
+    const [centerFiltersHeight, setCenterFiltersHeight] = useState(0);
+    const [centerFiltersDisplayed, setCenterFiltersDisplayed] = useState(false);
+    const filtersRef = useRef(null);
+
+    const filters = (<FiltersSection/>)
+
+    useLayoutEffect(() => {
+        if (filtersRef.current) {
+            console.log(filtersRef.current.getBoundingClientRect().height);
+            setCenterFiltersHeight(centerFiltersDisplayed ? filtersRef.current.scrollHeight : 0);
+        }
+
+    });
+
+    const toggleFiltersDisplayed = () => {
+        setCenterFiltersDisplayed(!centerFiltersDisplayed);
+    }
+
     const handleUserChoice = async (searchItem, filterItem) => {
         console.log(searchItem);
         console.log(filterItem);
@@ -23,9 +43,15 @@ export default function Portal() {
     }
     return (
         <div className={"Portal"}>
-            <FiltersSection />
-            <div>
+            <div className={"portalLeftFilters"}>
+                {filters}
+            </div>
+            <div className={"portalVerticalSection"}>
                 <CarSearchSortSection onChange={handleUserChoice}/>
+                <div className={"portalVerticalSectionFilters"} style={{height: `${centerFiltersHeight}px`}} ref={filtersRef}>
+                    {filters}
+                </div>
+                <button className={"portalVerticalSectionButton"} onClick={toggleFiltersDisplayed}>Filters</button>
                 <div className={"portalCarCards"}>
 
                     <CarCard price={5234} availability={false} seats={2} year={2002} name={"BMW M3"} company={"Kacper Rentals AS"} isFavorite={false}/>
