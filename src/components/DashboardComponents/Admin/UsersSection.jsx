@@ -1,19 +1,18 @@
 import "./UsersSection.css";
 import UserRow from "./UserRow"
-import { User } from "../../../model/User"
+import { useEffect, useState } from "react";
+import { UsersAPI } from "../../../api/UsersAPI";
 
 export default function UsersSection() {
-  const users = [
-    new User(1, "Yes@no.com", "Chuck", "Norris", 41234567, "20-01-2912", ["User", "Admin"]),
-    new User(2, "Yes@no.com", "Chuck", "Norris", 41234567, "20-01-2912", ["User", "Admin"]),
-    new User(3, "Yes@no.com", "Chuck", "Norris", 41234567, "20-01-2912", ["User", "Admin"]),
-    new User(4, "Yes@no.com", "Chuck", "Norris", 41234567, "20-01-2912", ["User", "Admin"]),
-    new User(5, "Yes@no.com", "Chuck", "Norris", 41234567, "20-01-2912", ["User", "Admin"]),
-    new User(6, "Yes@no.com", "Chuck", "Norris", 41234567, "20-01-2912", ["User", "Admin"]),
-    new User(7, "Yes@no.com", "Chuck", "Norris", 41234567, "20-01-2912", ["User", "Admin"]),
-    new User(8, "Yes@no.com", "Chuck", "Norris", 41234567, "20-01-2912", ["User", "Admin"]),
-    new User(9, "Yes@no.com", "Chuck", "Norris", 41234567, "20-01-2912", ["User", "Admin"]),
-  ]
+  const [users, setUsers] = useState([])
+
+  useEffect(() => {
+    UsersAPI.getAllUsers().then(users => {
+      setUsers(users)
+    }).catch(err => {
+      console.log(err)
+    })
+  })
 
   const createUserRows = () => {
     return users.map(user => {
@@ -23,7 +22,10 @@ export default function UsersSection() {
 
   return (
     <main className={"usersSectionMain"}>
-        <h1>Users</h1>
+      <h1>Users</h1>
+
+      {(users.length === 0) && <h2>Maybe loading users, not sure though</h2>}
+      {(users.length > 0) &&
         <table className={"usersTable"}>
           <thead>
             <tr>
@@ -41,6 +43,7 @@ export default function UsersSection() {
             {createUserRows()}
           </tbody>
         </table>
-      </main>
+      }
+    </main>
   )
 }
