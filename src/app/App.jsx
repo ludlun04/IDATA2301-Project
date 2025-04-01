@@ -9,8 +9,6 @@ import Footer from "../components/header footer/Footer";
 import Header from "../components/header footer/Header";
 import SignIn from "../pages/signIn/SignIn";
 import SignUp from "../pages/signUp/SignUp";
-import Admin from '../pages/adminOld/Admin';
-import Company from "../pages/companyOld/Company";
 import EmptyDevPage from "../pages/emptyDevPage/emptyDevPage";
 import Dashboard from "../pages/dashboard/Dashboard";
 
