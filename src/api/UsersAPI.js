@@ -16,17 +16,23 @@ export const UsersAPI = {
       }
     });
 
-    const users = result.data.map(user => {
-      return new User(
-        user.id,
+    let users = [];
+
+    for (let i = 0; i < result.data.length; i++) {
+      const user = result.data[i];
+      users.push(new User(
+        i,
         user.email,
         user.firstName,
         user.lastName,
-        user.phoneNumber,
+        user.phoneNumber.number,
         user.dateOfBirth,
-        user.roles
-      );
-    });
+        user.roles.map(role => role.name)
+      ));
+    }
+
+    console.log(result.data);
+
     return users;
 
 
