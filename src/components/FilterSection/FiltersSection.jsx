@@ -71,7 +71,7 @@ const FiltersSection = (props) => {
 
         </section>
 
-        <button className={"FormSubmitButton"} id={"filtersSectionFormSubmitButton"}>Save</button>
+        <button className={"FormSubmitButton"} id={"filtersSectionFormSubmitButton"} onClick={props.onSave}>Save</button>
       </div>
     </div>
   )
