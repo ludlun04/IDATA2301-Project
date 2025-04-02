@@ -4,10 +4,11 @@
     justify-content: center;
     gap: 1rem;
     padding: 70px 10px 10px;
-    background: white;
     min-height: 100vh;
     background: var(--background);
 }
+
+
 
 .portalSearchSortContainer {
     display: flex;
@@ -23,8 +24,77 @@
 }
 
 .portalCarCards {
+    display: none;
+}
+
+.portalCarCards.active {
     display: flex;
     flex-direction: column;
     gap: 25px;
     margin-top: 10px;
+}
+
+.portalVerticalSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1000px;
+}
+
+
+
+.portalVerticalSectionFilters.active {
+    display: flex;
+}
+
+.portalVerticalSectionButton.active {
+    display: block;
+}
+
+#portalFiltersPortal {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width: 900px) {
+    .portalLeftFilters {
+        display: none;
+    }
+    .portalVerticalSectionButton {
+        display: block;
+    }
+    .portalVerticalSectionFilters {
+        display: flex;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .portalVerticalSectionFilters.active {
+        display: none;
+    }
+
+    .portalVerticalSectionButton.active {
+        display: none;
+    }
+
+    .portalCarCards {
+        display: block;
+    }
+}
+
+.portalVerticalSectionFilters {
+    display: none;
+    transition: height ease-in-out .5s;
+    flex-direction: column;
+    align-items: center;
+}
+
+.portalVerticalSectionButton {
+    width: 130px;
+    height: 50px;
+    font-size: 1.2rem;
+    display: none;
+    margin-bottom: 20px;
 }

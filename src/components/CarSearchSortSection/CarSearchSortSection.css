@@ -4,6 +4,7 @@
     justify-content: space-between;
     width: 100%;
     margin-bottom: 20px;
+
 }
 
 .carSearchContainer {
@@ -25,5 +26,16 @@
     height: 100%;
     display:flex;
     align-items: center;
+}
+
+#carSearchSortSectionSelectMenu {
+    margin-left: 40px;
+    min-width: 100px;
+}
+
+@media screen and (max-width: 400px) {
+    .carSearchSortContainerSearch {
+        font-size: .9rem !important;
+    }
 }
 
