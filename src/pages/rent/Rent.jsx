@@ -12,7 +12,7 @@ export default function Rent() {
 
         <section className={"RentAttributes"}>
           <h2>Attributes</h2>
-          <div className="RentAttributeList">
+          <div className={"RentAttributeList"}>
             <CarAttribute />
             <CarAttribute />
             <CarAttribute />
@@ -22,20 +22,20 @@ export default function Rent() {
         </section>
       </div>
 
-      <section className="RentCarDescription">
-          <h2>Description</h2>
-          <p className="RentDescriptionText">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </section>
+      <section className={"RentCarDescription"}>
+        <h2>Description</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </section>
 
-      <div className="RentInteraction">
-        <div className="RentInteractionInner">
-          <div className="RentCompanyCard">
-            <div alt="Image of company renting out the car" className="RentCompanyImage"></div>
-            <h2>Company</h2>
+      <div className={"RentInteraction"}>
+        <div className={"RentInteractionInner"}>
+          <div className={"RentCompanyCard"}>
+            <div alt="Image of company renting out the car" className={"RentCompanyImage"}></div>
+            <h2>VERY VERY VERY LONG COMPANY NAMe</h2>
           </div>
 
-          <div className="RentRentSection">
+          <div className={"RentDuration"}>
             <div className="RentDurationSelection">
               <DatePickerField title={"From"} />
               <DatePickerField title={"To"} />

@@ -1,7 +1,6 @@
 .RentMain {
-  padding-top: 60px;
   display: grid;
-  gap: 4rem;
+  gap: 2rem;
   justify-content: center;
 }
 
@@ -11,12 +10,13 @@
 }
 
 .RentCarImage {
-  width: 900px;
+  width: 100%;
+  max-width: 70ch;
   grid-column: 1;
 }
 
-.RentDescriptionText {
-  width: 70ch;
+.RentCarDescription p {
+  max-width: 70ch;
 }
 
 .RentCarDescription {
@@ -27,6 +27,8 @@
 
 .RentInteraction {
   grid-column: 2;
+  width: 100%;
+  max-width: 20rem;
   display: flex;
   justify-content: center;
 }
@@ -34,8 +36,8 @@
 .RentInteractionInner {
   display: flex;
   flex-direction: column;
+  width: 100%;
   gap: 1rem;
-  width: fit-content;
 }
 
 .RentDurationSelection {
@@ -51,7 +53,6 @@
 
 .RentDailyPrice > .RentTitle {
   font-size: 1rem;
-  
 }
 
 .RentDailyPrice > .RentContent {
@@ -83,10 +84,11 @@
 }
 
 .RentCompanyCard {
+  height: 100%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: end;
+  gap: 1rem;
 }
 
 .RentCompanyCard > .RentCompanyImage{
@@ -94,8 +96,9 @@
   background-position: center center;
   background-size: cover;
   display: block;
-  width: 10rem;
-  height: 10rem;
+  height: 100%;
+  max-height: 4rem;
+  aspect-ratio: 1/1;
   border-radius: 50%;
 }
 
@@ -107,30 +110,28 @@
 
 .RentAttributeList {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   gap: 1rem;
 }
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1024px) {
+
   .RentCarImage {
-    grid-column: 1 / 3;
+    width: 100%;
     max-width: 100%;
+    grid-column: 1;
   }
-  
+
+  .RentMain {
+    padding: 0rem;
+  }
+
   .RentInteraction {
     grid-column: 1;
-    grid-row: 3;
-    width: 100%;
-    
-  }
+    grid-row: 4;
+  } 
 
-  .RentInteractionInner {
-    flex-direction: row;
-  }
-
-  .RentInteraction .RentCompanyImage {
-    display: none;
-  }
 
   .RentInformation {
     grid-column: 1;
@@ -138,7 +139,7 @@
   }
 
   .RentCarDescription {
-    grid-row: 4; 
+    grid-row: 3; 
     grid-column: 1;
   }
 }
