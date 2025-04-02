@@ -1,0 +1,76 @@
+.SignUp {
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--background);
+}
+
+.SignUp p {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    text-align: center;
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.signInNavLink {
+    border: none;
+    background: none;
+    color: #0F89F4;
+    text-decoration: none;
+}
+
+.signInNavLink:hover {
+    text-decoration: underline;
+}
+
+.addressGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.addressCountryZipCodeGroup {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.phoneNumberGroup {
+    display: flex;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+#countryCode {
+    width: 6rem;
+}
+
+.form-group.phoneNumber {
+    width: 100%;
+}
+
+.signUpDatePicker {
+    width: 6.5rem;
+}
+
+@media only screen and (max-width: 512px) {
+    .signup-form {
+        width: 15rem;
+    }
+
+    .addressCountryZipCodeGroup {
+        flex-direction: column;
+    }
+
+    .phoneNumberGroup {
+        flex-direction: column;
+    }
+}

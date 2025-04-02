@@ -1,0 +1,28 @@
+.DetailsSection {
+    display: flex;
+    flex-direction: column;
+}
+
+.detailsSectionRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 120px;
+    margin: 5px;
+}
+
+.detailsSectionDescriptor {
+    font-weight: 700;
+}
+
+.detailsSectionButtonContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.detailsSectionButton {
+    height: 50px;
+    margin-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}

@@ -1,0 +1,145 @@
+.RentMain {
+  display: grid;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.RentInformation {
+  grid-row: 2;
+  grid-column: 1;
+}
+
+.RentCarImage {
+  width: 100%;
+  max-width: 70ch;
+  grid-column: 1;
+}
+
+.RentCarDescription p {
+  max-width: 70ch;
+}
+
+.RentCarDescription {
+  margin-top: 2rem;
+  grid-row: 3;
+  grid-column: 1;
+}
+
+.RentInteraction {
+  grid-column: 2;
+  width: 100%;
+  max-width: 20rem;
+  display: flex;
+  justify-content: center;
+}
+
+.RentInteractionInner {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
+}
+
+.RentDurationSelection {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.RentDailyPrice > p {
+  margin: 0px;
+  padding: 0px;
+}
+
+.RentDailyPrice > .RentTitle {
+  font-size: 1rem;
+}
+
+.RentDailyPrice > .RentContent {
+  font-size: 1.25rem;
+}
+
+.RentTotalPrice > p {
+  margin: 0px;
+  padding: 0px;
+}
+
+.RentTotalPrice > .RentTitle {
+  font-size: 1.25rem;
+}
+
+.RentTotalPrice > .RentContent {
+  font-size: 2rem;
+}
+
+.RentButton {
+  width: fit-content;
+  border: none;
+  border-radius: 10px;
+  padding: 1rem;
+
+  font-weight: 800;
+  background-color: var(--primary-100);
+  color: var(--text-200);
+}
+
+.RentCompanyCard {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  gap: 1rem;
+}
+
+.RentCompanyCard > .RentCompanyImage{
+  background-image: url("./../../resources/images/bmw.jpg");
+  background-position: center center;
+  background-size: cover;
+  display: block;
+  height: 100%;
+  max-height: 4rem;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+}
+
+.RentAttributes {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.RentAttributeList {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+@media screen and (max-width: 1024px) {
+
+  .RentCarImage {
+    width: 100%;
+    max-width: 100%;
+    grid-column: 1;
+  }
+
+  .RentMain {
+    padding: 0rem;
+  }
+
+  .RentInteraction {
+    grid-column: 1;
+    grid-row: 4;
+  } 
+
+
+  .RentInformation {
+    grid-column: 1;
+    grid-row:2;
+  }
+
+  .RentCarDescription {
+    grid-row: 3; 
+    grid-column: 1;
+  }
+}

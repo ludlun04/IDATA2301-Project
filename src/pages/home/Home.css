@@ -1,0 +1,112 @@
+.Home {
+    background-image: url("./../../resources/images/pexels-nextvoyage-1476880.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    display: flex;
+    height: 100vh;
+
+    z-index: 0;
+}
+
+
+.home {
+    padding-left: 10%;
+    padding-right: 10%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+.homeLeftPane {
+}
+
+.slogan1 {
+    color: var(--background);
+    line-height: 0;
+    font-size: 300%;
+    margin-bottom: 0;
+    font-weight: 400;
+    z-index: 10;
+}
+
+.slogan2 {
+    color: var(--background);
+    line-height: 0;
+    font-size: 600%;
+    margin-bottom: 70px;
+    margin-top: 80px;
+
+    font-weight: 500;
+}
+
+.slogan2.ease {
+    margin-top: 0;
+}
+
+.homeRightPane {
+
+}
+
+#portalButton {
+    border-radius: 10px;
+
+    padding: 20px 60px;
+
+    text-decoration: none;
+
+    font-size: 200%;
+    font-weight: 500;
+
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.26);
+
+    text-wrap: nowrap;
+}
+
+.portalButton:active {
+    background: #ac8302;
+}
+
+@media only screen and (max-width: 1024px) {
+    .home {
+        flex-direction: column;
+        justify-content: center;
+        gap: 10%;
+    }
+
+    .slogan1 {
+        font-size: 200%;
+    }
+
+    .slogan2 {
+        font-size: 400%;
+        margin-top: 53px;
+        margin-bottom: 47px;
+    }
+}
+
+@media only screen and (max-width: 512px) {
+    .home {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .slogan1 {
+        font-size: 150%;
+    }
+
+    .slogan2 {
+        font-size: 300%;
+        margin-top: 40px;
+        margin-bottom: 35px;
+    }
+
+    .portalButton {
+        font-size: 150%;
+        padding: 15px 40px;
+    }
+}

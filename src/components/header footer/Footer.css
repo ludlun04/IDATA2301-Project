@@ -1,0 +1,112 @@
+.Footer {
+    z-index: 999;
+
+    display: flex;
+    flex-direction: column;
+
+    background: var(--background);
+
+    border-top:solid .15rem var(--primary-200);
+}
+
+.footerBottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0.25rem;
+
+
+    border-top:solid var(--primary-200);
+
+    color: var(--text-100);
+
+    font-family: "Kantumruy Pro";
+    font-weight: 200;
+}
+
+.footerTop {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    padding: 0px 20px 0px 20px;
+}
+
+.footerTopLeftPane {
+    display: flex;
+    flex-direction: row;
+
+    gap: 60px;
+}
+
+.footerTopRightPane {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    gap: 40px;
+}
+
+.footerAddressPane {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.footerNavigationPane {
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.footerIcon {
+    color: var(--primary-200);
+}
+
+.footerAddress {
+    font-family: "Kantumruy Pro";
+    color: var(--text-100);
+    margin: 0px 0px 0px 0px;
+}
+
+.footerAddress.title {
+    margin: 0px 0px 5px 0px;
+    font-weight: 550;
+}
+
+.footerNavigation {
+    font-family: "Kantumruy Pro";
+    font-weight: 550;
+    color: var(--text-100);
+    margin: 0px 0px 5px 0px;
+}
+
+.footerNavLink {
+    color: var(--text-100);
+    font-family: "Kantumruy Pro";
+}
+
+.footerNavLink:active {
+    color: var(--primary-100);
+}
+
+@media only screen and (max-width: 512px) {
+    .footerTop {
+        flex-direction: column;
+    }
+
+    .footerTopLeftPane {
+        justify-content: space-between;
+    }
+
+    .footerTopRightPane {
+        justify-content: center;
+    }
+}
+

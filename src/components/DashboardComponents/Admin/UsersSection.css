@@ -1,0 +1,16 @@
+.usersSectionMain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.usersTable {
+  border-collapse: collapse;
+}
+
+.usersTable thead tr th p{
+  text-align: center;
+  font-weight: normal;
+  font-size: 1.2rem;
+  margin: 1rem 1rem;
+}

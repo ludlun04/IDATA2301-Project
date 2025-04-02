@@ -1,0 +1,12 @@
+.companyRow {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.companyRow:hover {
+  background-color: var(--background-200);
+}
+
+.companyRow td {
+  text-align: center;
+  padding: 1rem;
+}

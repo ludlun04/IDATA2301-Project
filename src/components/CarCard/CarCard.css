@@ -1,0 +1,137 @@
+.CarCard {
+    display: flex;
+    border: solid 1px #e8e6e6;
+    min-width: 32rem;
+    height: 7rem;
+    padding: .5rem;
+    border-radius: .5rem;
+    gap: .5rem;
+}
+
+.CarCard:hover {
+    background: lightgray;
+    cursor: pointer;
+}
+
+.CarCard h1, h2, p {
+    margin: 0;
+}
+
+.CarCard h1 {
+    font-weight: 550;
+    font-size: 1.5rem;
+}
+
+.CarCard h2 {
+    font-size: .7rem;
+}
+
+.CarCard p {
+    font-size: 1rem;
+}
+
+.CarCardImageContainer {
+    position: relative;
+    border-radius: .5rem;
+    overflow: hidden;
+    width: 35%;
+}
+
+.CarCardImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.favoriteButton {
+    border: none;
+    background: none;
+    position: absolute;
+    left: .25rem;
+    top: .25rem;
+    width: 1.5rem;
+    padding: 0;
+    cursor: pointer;
+}
+
+.favoritedStarIcon {
+    width: 100%;
+    height: 100%;
+}
+
+.favoriteButton:hover .favoritedStarIcon, .favoritedStar:hover {
+    filter: brightness(.9);
+    cursor: pointer;
+}
+
+.CarCardRightPane {
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.CarCardInnerRightPane {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.CarCardInnerLeftPane {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.CarCardCarInfoContainer {
+    display: flex;
+    gap: 1rem;
+}
+
+.CarCardPriceContainer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.CarCardAvailabilityContainer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: .5rem;
+}
+
+.CarCardAvailabilityIndicator {
+    background: var(--error);
+    width: .5rem;
+    height: .5rem;
+    border-radius: 50%;
+}
+
+.CarCardAvailabilityTag {
+    color: var(--error);
+    font-weight: 500;
+}
+
+.CarCardAvailabilityIndicator.true {
+    background: var(--success);
+}
+
+.CarCardAvailabilityTag.true {
+    color: var(--success);
+}
+
+@media only screen and (max-width: 550px) {
+    .CarCard {
+        min-width: 16rem;
+        min-height: 17rem;
+        flex-direction: column;
+    }
+
+    .CarCardImageContainer {
+        width: 100%;
+    }
+
+    .favoriteButton {
+        width: 3rem;
+    }
+}

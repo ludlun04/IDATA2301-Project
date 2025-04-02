@@ -1,0 +1,46 @@
+.EmployeeCard {
+    border: 1px solid var(--border-color);
+    border-radius: .5rem;
+    display: flex;
+    flex-direction: column;
+    padding: .25rem;
+    width: 200px;
+    background: var(--background);
+}
+
+.EmployeeCard h1 {
+    font-size: 1rem;
+    margin: .75rem 0 0 0;
+}
+
+.employeeCardImage {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: .5rem;
+}
+
+.employeeCardHeader {
+    font-size: 1.5rem;
+}
+
+.employeeCardParagraph {
+    font-size: 0.938rem;
+}
+
+@media only screen and (max-width: 1024px) {
+    .EmployeeCard {
+        width: 160px;
+    }
+}
+
+@media only screen and (max-width: 512px) {
+    .EmployeeCard {
+        width: 160px;
+    }
+    .employeeCardHeader {
+        font-size: 1rem;
+    }
+}
+
+

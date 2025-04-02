@@ -1,0 +1,12 @@
+.userRow {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.userRow:hover {
+  background-color: var(--background-200);
+}
+
+.userRow td {
+  text-align: center;
+  font-size: 1rem;
+}

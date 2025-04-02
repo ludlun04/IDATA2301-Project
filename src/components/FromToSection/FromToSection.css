@@ -1,0 +1,10 @@
+.FromToSection {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
+.fromToSectionInput {
+    width: 50px;
+}

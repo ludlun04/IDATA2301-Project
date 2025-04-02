@@ -1,0 +1,100 @@
+.About {
+    background-image: url("../../resources/background/endless-constellation-lightgray.svg");
+    padding-top: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+}
+
+.aboutHeader {
+    font-size: 3rem;
+    margin: 10px;
+    align-self: flex-start;
+    background: var(--background);
+}
+
+.aboutOurStoryParagraph {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2rem;
+    margin: 10px;
+    gap: 1rem;
+    background: var(--background);
+}
+
+.aboutFaq {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--background);
+}
+
+.aboutFaqSection {
+    border-bottom: solid 1px var(--border-color);
+    cursor: pointer;
+}
+
+.aboutFaqSection:last-child {
+    border: none;
+}
+
+
+
+.aboutEmployees, .aboutOurStory, .aboutFaq {
+    padding: 20px;
+    border-radius: 10px;
+    width: 800px;
+}
+
+.aboutEmployeeCardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    max-width: 100%;
+}
+
+
+
+.aboutFaqSectionContainer {
+    display: flex;
+    flex-direction: column;
+    border: solid 1px var(--border-color);
+    border-radius: 10px;
+}
+
+
+@media only screen and (max-width: 1024px) {
+
+    .aboutHeader {
+        font-size: 2rem;
+    }
+
+    .aboutOurStoryParagraph {
+        font-size: 1rem;
+    }
+
+    .aboutEmployees, .aboutOurStory, .aboutFaq {
+        width: 400px;
+    }
+
+    .aboutFaqSectionContainer {
+    }
+}
+
+@media only screen and (max-width: 512px) {
+    .aboutEmployees, .aboutOurStory, .aboutFaq {
+        width: 255px;
+    }
+
+    .aboutFaqSectionContainer {
+        width: 255px;
+    }
+
+    .aboutEmployeeCardContainer {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+

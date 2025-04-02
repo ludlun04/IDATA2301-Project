@@ -1,0 +1,61 @@
+.CarDetailsTable {
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+}
+
+.carDetailsTableRowTop {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.carDetailsTableDropdownMenu, .carDetailsTableDropdownMenu {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.carDetailsTableDropdownMenu button {
+    font-weight: normal;
+}
+
+.carDetailsTableDropdownMenu {
+    padding: 15px 0 15px 0;
+}
+
+.carDetailsTableColumn {
+    width: 110px;
+    text-align: center;
+    font-size: 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.carDetailsTableDescriptorRow p {
+    font-size: 1.2rem;
+}
+
+.carDetailsTableDates, .carDetailsTableOpenContentRenteeSection, .carDetailsTableStatus {
+    flex-grow: 1;
+    font-size: 1rem;
+}
+
+.carDetailsTableDates, .carDetailsTableStatus {
+    text-align: center;
+}
+
+.carDetailsTableOpenContentRenteeSection {
+    text-align: right;
+}
+
+.carDetailsTableOpenContent {
+    display: flex;
+    gap: 20px;
+    width: 90%;
+    margin: 10px 0 20px 0;
+}
+
+.carDetailsTableColumnDescriptor {
+    font-weight: 500;
+}
