@@ -14,13 +14,13 @@ export default function Dashboard() {
   const [currentPage, setCurrentPage] = useState("Details");
 
   const pagesWithLinks = [
-    ["UserRentals", <UserRentals/>],
-    ["UserFavorites", <UserFavorites/>],
+    ["User Rentals", <UserRentals/>],
+    ["User Favorites", <UserFavorites/>],
     ["Users", <UsersSection/>],
     ["Companies", <CompaniesSection/>],
     ["Details", <DetailsSection/>],
-    ["CompanyCarsHistory", <CompanyCarsHistory/>],
-    ["CompanyCars", <CompanyCars/>]
+    ["Company Cars History", <CompanyCarsHistory/>],
+    ["Company Cars", <CompanyCars/>]
   ];
 
   const pages = pagesWithLinks.map((page) => page[0]);
@@ -43,10 +43,14 @@ export default function Dashboard() {
     )
   }
 
+  const getCurrentPage = () => (
+    <p className={"dashboardCurrentPage"}>{currentPage}</p>
+  )
+
   return (
     <div className={"Dashboard"}>
       <DashboardNavBar className={"dashboardDashboardNavBar"} pages={pages} setCurrentPage={setCurrentPage} />
-      <DropdownMenu className={"dashboardDropdownMenu"} alwaysShownContent={<p>{currentPage}</p>}>
+      <DropdownMenu className={"dashboardDropdownMenu"} alwaysShownContent={getCurrentPage()}>
         {getNavBarExceptCurrentPage()}
       </DropdownMenu>
       <div className={"dashboardSectionContainer"}>
