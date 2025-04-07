@@ -1,6 +1,6 @@
 import "./DashboardNavBar.css"
 
-export default function DashboardNavBar({ setCurrentPage }) {
+export default function DashboardNavBar({className, pages, setCurrentPage}) {
 
   let onClick = (page) => {
     return () => {
@@ -9,14 +9,16 @@ export default function DashboardNavBar({ setCurrentPage }) {
   }
 
   return (
-    <div className={"DashboardNavBar"}>
-      <button onClick={onClick("Details")}>Details</button>
-      <button onClick={onClick("UserRentals")}>UserRentals</button>
-      <button onClick={onClick("UserFavorites")}>UserFavorites</button>
-      <button onClick={onClick("CompanyCarsHistory")}>CompanyHistory</button>
-      <button onClick={onClick("CompanyCars")}>CompanyCars</button>
-      <button onClick={onClick("Users")}>AdminUsers</button>
-      <button onClick={onClick("Companies")}>AdminCompany</button>
+    <div className={className}>
+      <div className={"DashboardNavBar"}>
+        {
+          pages.map((page) => (
+            <button key={page} onClick={onClick(page)}>
+              {page}
+            </button>
+          ))
+        }
+      </div>
     </div>
   )
 }

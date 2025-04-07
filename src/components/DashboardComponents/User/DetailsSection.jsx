@@ -12,7 +12,6 @@ export default function DetailsSection(props) {
     ];
   return (
     <div className={props.className} style={props.style}>
-      <h1>Details</h1>
       <div className="DetailsSection">
         {details.map((row, index) => (
           <div key={index} className="detailsSectionRow">

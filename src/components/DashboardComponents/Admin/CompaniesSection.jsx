@@ -17,7 +17,6 @@ export default function CompaniesSection() {
 
   return (
     <main className="companiesSectionMain">
-        <h1>Companies</h1>
         <table className="companiesTable">
           <thead>
             <tr>

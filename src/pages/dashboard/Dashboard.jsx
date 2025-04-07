@@ -8,35 +8,52 @@ import DetailsSection from "../../components/DashboardComponents/User/DetailsSec
 import UserFavorites from "../../components/DashboardComponents/User/UserFavorites";
 import CompanyCarsHistory from "../../components/DashboardComponents/Company/CompanyCarsHistory";
 import CompanyCars from "../../components/DashboardComponents/Company/CompanyCars";
+import DropdownMenu from "../../components/DropdownMenu/DropdownMenu";
 
 export default function Dashboard() {
-  let [currentPage, setCurrentPage] = useState("Details");
+  const [currentPage, setCurrentPage] = useState("Details");
 
-  let getSection = () => {
-    switch (currentPage) {
-      case "UserRentals":
-        return <UserRentals />;
-      case "UserFavorites":
-        return <UserFavorites />;
-      case "Users":
-        return <UsersSection />;
-      case "Companies":
-        return <CompaniesSection />;
-      case "Details":
-        return <DetailsSection />;
-      case "CompanyCarsHistory":
-        return <CompanyCarsHistory />;
-      case "CompanyCars":
-        return <CompanyCars />;
-      default:
-        break;
+  const pagesWithLinks = [
+    ["User Rentals", <UserRentals/>],
+    ["User Favorites", <UserFavorites/>],
+    ["Users", <UsersSection/>],
+    ["Companies", <CompaniesSection/>],
+    ["Details", <DetailsSection/>],
+    ["Company Cars History", <CompanyCarsHistory/>],
+    ["Company Cars", <CompanyCars/>]
+  ];
+
+  const pages = pagesWithLinks.map((page) => page[0]);
+
+  const getSection = () => {
+    for (let i = 0; i < pagesWithLinks.length; i++) {
+      if (pagesWithLinks[i][0] === currentPage) {
+        return pagesWithLinks[i][1];
+      }
     }
+    return null;
   }
+
+  const getNavBarExceptCurrentPage = () => {
+
+    const pagesExceptCurrent = pages.filter((page) => page !== currentPage);
+
+    return (
+      <DashboardNavBar className={"dashboardDashboardDropdownNavBar"} pages={pagesExceptCurrent} setCurrentPage={setCurrentPage} />
+    )
+  }
+
+  const getCurrentPage = () => (
+    <p className={"dashboardCurrentPage"}>{currentPage}</p>
+  )
 
   return (
     <div className={"Dashboard"}>
-      <DashboardNavBar setCurrentPage={setCurrentPage} />
-      <div className={"DashboardSectionContainer"}>
+      <DashboardNavBar className={"dashboardDashboardNavBar"} pages={pages} setCurrentPage={setCurrentPage} />
+      <DropdownMenu className={"dashboardDropdownMenu"} alwaysShownContent={getCurrentPage()}>
+        {getNavBarExceptCurrentPage()}
+      </DropdownMenu>
+      <div className={"dashboardSectionContainer"}>
         {getSection()}
       </div>
     </div>

@@ -3,7 +3,7 @@
     flex-direction: row;
     justify-content: center;
     gap: 1rem;
-    padding: 70px 10px 10px;
+    margin-top: 1rem;
     min-height: 100vh;
     background: var(--background);
 }
@@ -38,7 +38,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 1000px;
+    width: 800px;
 }
 
 
@@ -80,7 +80,10 @@
     }
 
     .portalCarCards {
-        display: block;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        margin-top: 10px;
     }
 }
 

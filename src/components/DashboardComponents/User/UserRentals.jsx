@@ -4,7 +4,6 @@ import CarCard from "../../CarCard/CarCard";
 export default function UserRentals() {
     return (
         <main className={"UserRentals"}>
-            <h1>Rentals</h1>
             <div className={"UserRentalsButtonContainer"}>
                 <button>Active</button>
                 <button>History</button>

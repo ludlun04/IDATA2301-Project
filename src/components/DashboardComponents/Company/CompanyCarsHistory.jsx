@@ -19,7 +19,6 @@ export default function CompanyCarsHistory() {
 
     return (
         <main className={"CompanyCars"}>
-            <h1>Cars</h1>
             <CarDetailsTable rentals={getRentals()}/>
         </main>
     )

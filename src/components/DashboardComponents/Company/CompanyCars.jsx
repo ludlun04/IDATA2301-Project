@@ -6,7 +6,6 @@ export default function CompanyCars() {
 
   return (
     <main className={"CompanyCars"}>
-      <h1>Cars</h1>
       <CarDetailsTable cars={Car.getSampleCars()}/>
     </main>
   )
