@@ -1,3 +1,4 @@
+import Constants from "../Constants.jsx";
 import axios from 'axios';
 import { Authentication } from './Authentication';
 import { User } from '../model/User';
@@ -10,7 +11,7 @@ export const UsersAPI = {
     }
 
     const token = Authentication.getToken();
-    const result = await axios.get('http://localhost:8080/users', {
+    const result = await axios.get(`${Constants.API_URL}/users`, {
       headers: {
         'Authorization': `Bearer ${token}`
       }

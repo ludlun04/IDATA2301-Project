@@ -1,3 +1,5 @@
+import Constants from "../Constants.jsx";
+
 import axios from "axios";
 
 export const Authentication = {
@@ -10,7 +12,7 @@ export const Authentication = {
   },
 
   login: (username, password) => {
-    return axios.post("http://localhost:8080/authenticate", { username, password })
+    return axios.post(`${Constants.API_URL}/authenticate`, { username, password })
       .then(response => {
         const token = response.data;
         localStorage.setItem("token", token);
