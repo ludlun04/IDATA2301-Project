@@ -120,7 +120,7 @@
     color: var(--success);
 }
 
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 650px) {
     .CarCard {
         min-width: 13rem;
         min-height: 17rem;
