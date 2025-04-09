@@ -17,7 +17,7 @@ export default function CarCard(props) {
     }
 
     const onClick = () => {
-        navigate("/rent");
+        navigate(`/rent/${car.getId()}`);
     }
     return (
         <div className="CarCard" onClick={onClick}>

@@ -4,10 +4,13 @@ import CarAttribute from "../../components/CarAttribute/CarAttribute";
 import bmw from "./../../resources/images/bmw.jpg";
 import DatePicker from "react-datepicker";
 import React, {useState} from "react";
+import { useParams } from "react-router-dom";
 
 export default function Rent(props) {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
+  let { id } = useParams();
+  console.log(id);
 
   // datepicker configuration
   const dateFormat = "dd.MM.yyyy"; // displayed date format in datepicker
