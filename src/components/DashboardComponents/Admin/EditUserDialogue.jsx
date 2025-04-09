@@ -46,7 +46,7 @@ export default function EditUserDialogue(props) {
           <input type="text" defaultValue ={user.getDateOfBirth()} />
         </div>
         <div className={"detailsSectionButtonContainer"}>
-          <button className={"FormSubmitButton detailsSectionButton"} onClick={onEdit}>Edit</button>
+          <button className={"FormSubmitButton detailsSectionButton"} onClick={onEdit}>Save</button>
           <button className={"FormSubmitButton detailsSectionButton"} onClick={onCancelEdit}>Cancel</button>
         </div>
       </form>
