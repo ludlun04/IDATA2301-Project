@@ -2,8 +2,19 @@ import "./Rent.css"
 import DatePickerField from "../../components/DatePickerField/DatePickerField"
 import CarAttribute from "../../components/CarAttribute/CarAttribute";
 import bmw from "./../../resources/images/bmw.jpg";
+import DatePicker from "react-datepicker";
+import React, {useState} from "react";
 
-export default function Rent() {
+export default function Rent(props) {
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+
+  // datepicker configuration
+  const dateFormat = "dd.MM.yyyy"; // displayed date format in datepicker
+  const portalId = "root-portal"; // makes the datepicker window not affect positioning of datepicker field
+  const calendarStartDay = 1; // monday as first day of week instead of sunday
+
+
   return (
     <main className="RentMain">
       <img alt="" className={"RentCarImage"} src={bmw} />
@@ -37,8 +48,8 @@ export default function Rent() {
 
           <div className={"RentDuration"}>
             <div className="RentDurationSelection">
-              <DatePickerField title={"From"} />
-              <DatePickerField title={"To"} />
+              <DatePicker /*monthsShown={3}*/ className={"filtersSectionDatePicker"} selected={startDate} onChange={(date) => setStartDate(date)} dateFormat={dateFormat} portalId={portalId} calendarStartDay={calendarStartDay}/>
+              <DatePicker className={"filtersSectionDatePicker"} selected={endDate} onChange={(date) => setEndDate(date)} dateFormat={dateFormat} portalId={portalId} calendarStartDay={calendarStartDay}/>
             </div>
           </div>
 
@@ -52,7 +63,7 @@ export default function Rent() {
             <p className="RentContent">10000 kr</p>
           </div>
 
-          <input className="RentButton" type="button" value="Rent Now" />
+          <button className="RentButton" type="button">Rent</button>
         </div>
       </div>
     </main>
