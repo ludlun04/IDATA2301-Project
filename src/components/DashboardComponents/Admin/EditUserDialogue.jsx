@@ -1,3 +1,4 @@
+import PhoneNumberField from "../../input/PhoneNumberField/PhoneNumberField";
 import "./EditUserDialogue.css"
 
 export default function EditUserDialogue(props) {
@@ -16,7 +17,7 @@ export default function EditUserDialogue(props) {
   return (
     <div className="EditUserDialogue">
       <form >
-        <p>Hello</p>
+        <h2>Edit User</h2>
         <div>
           <label htmlFor="username">Username</label>
           <input  type="text" defaultValue={user.getFirstName()} />
@@ -25,10 +26,7 @@ export default function EditUserDialogue(props) {
           <label htmlFor="email">Email</label>
           <input type="text" defaultValue={user.getEmail()} />
         </div>
-        <div>
-          <label htmlFor="phone">Phone Number</label>
-          <input type="text" defaultValue={user.getPhoneNumber()} />
-        </div>
+        <PhoneNumberField/>
         <div>
           <label htmlFor="firstName">First Name</label>
           <input type="text" defaultValue={user.getFirstName()} />

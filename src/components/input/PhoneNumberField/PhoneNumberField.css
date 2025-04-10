@@ -1,0 +1,24 @@
+.PhoneNumberField {
+  width: 100%;
+}
+
+.PhoneNumberFieldInputContainer {
+  width: 100%;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.PhoneNumberFieldInputContainer > input {
+  border: none;
+  outline: none;
+}
+
+.PhoneNumberFieldInputContainer > input:first-child {
+  width: 2rem;
+  background-color: var(--border-color);
+  border: none;
+  outline: none;
+}

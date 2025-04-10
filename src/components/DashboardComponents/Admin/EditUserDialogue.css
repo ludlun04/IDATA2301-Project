@@ -22,7 +22,7 @@
 
 
 
-.EditUserDialogue Form div {
+.EditUserDialogue Form > div {
   display: flex;
   flex-direction: column;
 }
