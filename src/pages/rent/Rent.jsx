@@ -18,6 +18,7 @@ export default function Rent(props) {
   // car data
   const [carName, setCarName] = useState("Loading");
   const [carPricePerDay, setCarPricePerDay] = useState(0);
+  const [features, setFeatures] = useState([]);
 
   useEffect( () => {
     const fetchCar = async () => {
@@ -28,6 +29,7 @@ export default function Rent(props) {
 
         setCarName(car.getName())
         setCarPricePerDay(car.getPricePerDay());
+        setFeatures(car.getFeatures());
       } catch (error) {
         console.error("Error fetching car data:", error);
       }
@@ -51,11 +53,9 @@ export default function Rent(props) {
         <section className={"RentAttributes"}>
           <h2>Attributes</h2>
           <div className={"RentAttributeList"}>
-            <CarAttribute />
-            <CarAttribute />
-            <CarAttribute />
-            <CarAttribute />
-            <CarAttribute />
+            {features.map((feature) => (
+                <CarAttribute key={feature.getId()} name={feature.getName()} />
+                ))}
           </div>
         </section>
       </div>

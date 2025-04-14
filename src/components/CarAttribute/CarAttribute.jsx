@@ -1,8 +1,8 @@
 import "./CarAttribute.css";
 
-export default function CarAttribute() {
+export default function CarAttribute(props) {
   return <div className="CarAttributeCard">
     <div className="CarAttributeImage"></div>
-    <p className="CarAttributeText">Attribute</p>
+    <p className="CarAttributeText">{props.name}</p>
   </div>
 }
