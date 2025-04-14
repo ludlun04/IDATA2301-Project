@@ -1,28 +1,52 @@
 import "./Rent.css"
-import DatePickerField from "../../components/DatePickerField/DatePickerField"
 import CarAttribute from "../../components/CarAttribute/CarAttribute";
 import bmw from "./../../resources/images/bmw.jpg";
 import DatePicker from "react-datepicker";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
+import {UsersAPI as CarAPI} from "../../api/CarAPI";
 
 export default function Rent(props) {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   let { id } = useParams();
-  console.log(id);
+
+  // fetch car data
+  const [car, setCar] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  // car data
+  const [carName, setCarName] = useState("Loading");
+  const [carPricePerDay, setCarPricePerDay] = useState(0);
+
+  useEffect( () => {
+    const fetchCar = async () => {
+      try {
+        const car = await CarAPI.getCar(id);
+        setCar(car)
+        setLoading(false);
+
+        setCarName(car.getName())
+        setCarPricePerDay(car.getPricePerDay());
+      } catch (error) {
+        console.error("Error fetching car data:", error);
+      }
+    }
+
+    fetchCar();
+
+  }, [id]);
 
   // datepicker configuration
   const dateFormat = "dd.MM.yyyy"; // displayed date format in datepicker
   const portalId = "root-portal"; // makes the datepicker window not affect positioning of datepicker field
   const calendarStartDay = 1; // monday as first day of week instead of sunday
 
-
   return (
     <main className="RentMain">
       <img alt="" className={"RentCarImage"} src={bmw} />
       <div className="RentInformation">
-        <h1>Fast cool car</h1>
+        <h1>{carName}</h1>
 
         <section className={"RentAttributes"}>
           <h2>Attributes</h2>
@@ -58,7 +82,7 @@ export default function Rent(props) {
 
           <div className="RentDailyPrice">
             <p className="RentTitle">kr/day</p>
-            <p className="RentContent">1000 kr</p>
+            <p className="RentContent">{carPricePerDay}</p>
           </div>
 
           <div className="RentTotalPrice">

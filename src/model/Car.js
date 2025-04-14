@@ -22,7 +22,7 @@ export class Car {
    * @param favorite
    * @param available
    */
-  constructor(company, brand, id, year, numberOfSeats, pricePerDay, model, fuelType, transmissionType, addons, features, favorite, available) {
+  constructor(company, brand, id, year, numberOfSeats, pricePerDay, model, fuelType, transmissionType, features, favorite, available) {
     this._id = id;
     this._brand = brand
     this._company = company
@@ -32,7 +32,6 @@ export class Car {
     this._model = model;
     this._fuelType = fuelType;
     this._transmissionType = transmissionType;
-    this._addons = addons;
     this._features = features;
     this._favorite = favorite;
     this._available = available;
