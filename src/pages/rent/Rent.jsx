@@ -4,7 +4,7 @@ import bmw from "./../../resources/images/bmw.jpg";
 import DatePicker from "react-datepicker";
 import React, {useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
-import {UsersAPI as CarAPI} from "../../api/CarAPI";
+import {CarAPI} from "../../api/CarAPI";
 
 export default function Rent(props) {
   const [startDate, setStartDate] = useState(new Date());
