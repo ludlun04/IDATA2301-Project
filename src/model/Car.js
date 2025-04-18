@@ -9,7 +9,6 @@ export class Car {
   /**
    * Creates a new car.
    * @param company - The company that owns the car.
-   * @param brand - The brand of the car.
    * @param {number} id - The ID of the car.
    * @param {number} year - The manufacturing year of the car.
    * @param {number} numberOfSeats - The number of seats in the car.
@@ -23,9 +22,8 @@ export class Car {
    * @param available - The availability of the car.
    * @param description - The description of the car.
    */
-  constructor(company, brand, id, year, numberOfSeats, pricePerDay, model, fuelType, transmissionType, features, favorite, available, description) {
+  constructor(company, id, year, numberOfSeats, pricePerDay, model, fuelType, transmissionType, addons, features, favorite, available, description) {
     this._id = id;
-    this._brand = brand
     this._company = company
     this._year = year;
     this._numberOfSeats = numberOfSeats;
@@ -33,6 +31,7 @@ export class Car {
     this._model = model;
     this._fuelType = fuelType;
     this._transmissionType = transmissionType;
+    this._addons = addons;
     this._features = features;
     this._favorite = favorite;
     this._available = available;

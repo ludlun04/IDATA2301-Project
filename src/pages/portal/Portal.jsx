@@ -3,7 +3,6 @@ import CarCard from "../../components/CarCard/CarCard";
 import CarSearchSortSection from "../../components/CarSearchSortSection/CarSearchSortSection";
 import FiltersSection from "../../components/FilterSection/FiltersSection";
 import {useEffect, useState} from "react";
-import {Car} from "../../model/Car.js";
 import {CarAPI} from "../../api/CarAPI";
 
 export default function Portal() {
@@ -27,18 +26,16 @@ export default function Portal() {
   }
 
   useEffect(() => {
-    const fetchCars = async () => {
-        try {
-            const cars = await CarAPI.getAllCars();
-            setCars(cars);
-            setLoading(false);
-            console.log(cars);
-        } catch (error) {
-            console.error("Error fetching car data:", error);
-        }
+    try {
+      CarAPI.getAllCars().then(cars => {
+        setCars(cars);
+        setLoading(false);
+        console.log(cars);
+      });
+    } catch (error) {
+      console.error("Error fetching car data:", error);
     }
-    fetchCars();
-    }, []);
+  }, []);
   return (
     <div className={"Portal"}>
       <div className={"portalLeftFilters"}>
@@ -56,8 +53,8 @@ export default function Portal() {
         </button>
         <div className={`portalCarCards ${centerFiltersDisplayed ? "" : " active"}`}>
           {loading ? <p>Loading...</p> : cars.map((car) => (
-                <CarCard key={car.getId()} car={car}/>
-            ))}
+            <CarCard key={car.getId()} car={car}/>
+          ))}
         </div>
 
       </div>
