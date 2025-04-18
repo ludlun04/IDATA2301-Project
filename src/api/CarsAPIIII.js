@@ -9,7 +9,7 @@ import {FuelType} from "../model/FuelType";
 import {Feature} from "../model/Feature";
 import {Addon} from "../model/Addon";
 
-export const CarsAPI = {
+export const CarsAPIIII = {
 
   getAllCars: async () => {
 
@@ -19,7 +19,7 @@ export const CarsAPI = {
 
     for (let i = 0; i < result.data.length; i++) {
       const carObject = result.data[i];
-      const car = CarsAPI.getCarFromJsonObject(carObject);
+      const car = CarsAPIIII.getCarFromJsonObject(carObject);
       cars.push(car);
     }
 
