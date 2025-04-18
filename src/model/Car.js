@@ -19,10 +19,11 @@ export class Car {
    * @param {Object} transmissionType - The transmission type of the car.
    * @param {Array} addons - The addons of the car.
    * @param {Array} features - The features of the car.
-   * @param favorite
-   * @param available
+   * @param favorite - Whether the car is favorited by the current authenticated user or not.
+   * @param available - The availability of the car.
+   * @param description - The description of the car.
    */
-  constructor(company, brand, id, year, numberOfSeats, pricePerDay, model, fuelType, transmissionType, features, favorite, available) {
+  constructor(company, brand, id, year, numberOfSeats, pricePerDay, model, fuelType, transmissionType, features, favorite, available, description) {
     this._id = id;
     this._brand = brand
     this._company = company
@@ -35,6 +36,11 @@ export class Car {
     this._features = features;
     this._favorite = favorite;
     this._available = available;
+    this._description = description;
+  }
+
+  getDescription() {
+    return this._description;
   }
 
   getCompany() {

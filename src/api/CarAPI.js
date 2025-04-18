@@ -33,9 +33,10 @@ export const UsersAPI = {
         const fuelType = new FuelType(result.data.fuelType.id, result.data.fuelType.name)
         const transmissionType = new TransmissionType(result.data.transmissionType.id, result.data.transmissionType.name)
         const features = result.data.features.map(feature => new Feature(feature.id, feature.name))
+        const description = result.data.description
 
         //TODO: Fix favorite/available
-        const car = new Car(company, brand, carId, year, numberOfSeats, pricePerDay, model, fuelType, transmissionType, features, true, true)
+        const car = new Car(company, brand, carId, year, numberOfSeats, pricePerDay, model, fuelType, transmissionType, features, true, true, description)
 
 
 
