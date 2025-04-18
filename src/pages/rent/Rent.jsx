@@ -20,6 +20,7 @@ export default function Rent(props) {
   const [carPricePerDay, setCarPricePerDay] = useState(0);
   const [features, setFeatures] = useState([]);
   const [carDescription, setCarDescription] = useState("Loading");
+  const [carCompany, setCarCompany] = useState("Loading");
 
   useEffect( () => {
     const fetchCar = async () => {
@@ -32,6 +33,7 @@ export default function Rent(props) {
         setCarPricePerDay(car.getPricePerDay());
         setFeatures(car.getFeatures());
         setCarDescription(car.getDescription());
+        setCarCompany(car.getCompanyName());
       } catch (error) {
         console.error("Error fetching car data:", error);
       }
@@ -53,7 +55,7 @@ export default function Rent(props) {
         <h1>{carName}</h1>
 
         <section className={"RentAttributes"}>
-          <h2>Attributes</h2>
+          <h2>Features</h2>
           <div className={"RentAttributeList"}>
             {features.map((feature) => (
                 <CarAttribute key={feature.getId()} name={feature.getName()} />
@@ -73,7 +75,7 @@ export default function Rent(props) {
         <div className={"RentInteractionInner"}>
           <div className={"RentCompanyCard"}>
             <div alt="Image of company renting out the car" className={"RentCompanyImage"}></div>
-            <h2>VERY VERY VERY LONG COMPANY NAMe</h2>
+            <h2>{carCompany}</h2>
           </div>
 
           <div className={"RentDuration"}>

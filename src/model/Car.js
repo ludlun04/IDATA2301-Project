@@ -43,7 +43,7 @@ export class Car {
     return this._description;
   }
 
-  getCompany() {
+  getCompanyName() {
     return this._company.getName();
   }
 
