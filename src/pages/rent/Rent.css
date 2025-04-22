@@ -1,27 +1,41 @@
 .RentMain {
-  display: grid;
-  row-gap: 0;
-  column-gap: 2rem;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   min-height: 100vh;
   background: var(--background);
   padding: 2rem;
 }
 
-.RentInformation {
-  grid-row: 2;
-  grid-column: 1;
+.RentMain > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
 
 .RentCarImage {
-  width: 100%;
   max-width: 70ch;
-  grid-column: 1;
+}
+
+.RentInformation {
+  text-align: left;
+}
+
+.RentAttributes {
+  width: fit-content;
 }
 
 .RentFeatureSection {
-  grid-row: 3;
-  grid-column: 1;
+  width: fit-content;
+}
+
+.RentInteraction {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: fit-content;
 }
 
 .RentCarDescription p {
@@ -29,23 +43,7 @@
 }
 
 .RentCarDescription {
-  grid-row: 4;
-  grid-column: 1;
-}
-
-.RentInteraction {
-  grid-column: 2;
-  width: 100%;
-  max-width: 20rem;
-  display: flex;
-  justify-content: center;
-}
-
-.RentInteractionInner {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: 1rem;
+  width: fit-content;
 }
 
 .RentDurationSelection {
@@ -102,44 +100,6 @@
   border-radius: 50%;
 }
 
-.RentAttributes {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.RentAttributeList {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  gap: 1rem;
-}
-
 @media screen and (max-width: 1024px) {
 
-  .RentCarImage {
-    width: 100%;
-    max-width: 100%;
-    grid-column: 1;
-  }
-
-  .RentMain {
-    padding: 0rem;
-  }
-
-  .RentInteraction {
-    grid-column: 1;
-    grid-row: 4;
-  } 
-
-
-  .RentInformation {
-    grid-column: 1;
-    grid-row:2;
-  }
-
-  .RentCarDescription {
-    grid-row: 3; 
-    grid-column: 1;
-  }
 }
