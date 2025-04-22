@@ -10,6 +10,12 @@ import "./FiltersSection.css";
 
 const FiltersSection = (props) => {
 
+  const manufacturers = props.manufacturers;
+  const fuelTypes = props.fuelTypes;
+  const sellers = props.sellers;
+  const seats = props.seats;
+  
+
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
 
@@ -17,6 +23,8 @@ const FiltersSection = (props) => {
   const dateFormat = "dd.MM.yyyy"; // displayed date format in datepicker
   const portalId = "root-portal"; // makes the datepicker window not affect positioning of datepicker field
   const calendarStartDay = 1; // monday as first day of week instead of sunday
+
+
 
   const getHeader = (title) => (
     <h2>{title}</h2>

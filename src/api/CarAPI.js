@@ -1,6 +1,5 @@
 import Constants from "../Constants.jsx";
 import axios from 'axios';
-import {Authentication} from './Authentication';
 import {Car} from "../model/Car";
 import {CarBrand} from "../model/CarBrand";
 import {CarModel} from "../model/CarModel";
@@ -17,11 +16,7 @@ export const CarAPI = {
     const carObject = result.data;
     console.log(carObject);
 
-    const car = CarAPI.getCarFromJsonObject(carObject);
-
-    console.log(result.data);
-
-    return car;
+    return CarAPI.getCarFromJsonObject(carObject);
   },
 
   getAllCars: async (filters) => {

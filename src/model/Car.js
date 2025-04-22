@@ -51,7 +51,8 @@ export class Car {
   }
 
   getName() {
-    return this.getBrand().getName() + " " + this.getModel().getName();
+    const model = this.getModel();
+    return model.getBrand().getName() + " " + model.getName();
   }
 
   getBrand() {
