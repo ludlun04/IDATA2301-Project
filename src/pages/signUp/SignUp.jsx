@@ -1,14 +1,43 @@
+import {User} from "../../model/User";
 import "./SignUp.css"
 import {NavLink} from "react-router-dom";
-import DatePickerField from "../../components/DatePickerField/DatePickerField";
 import DatePicker from "react-datepicker";
 import React, {useState} from "react";
+import { UsersAPI } from "../../api/UsersAPI";
+import { PhoneNumber } from "../../model/PhoneNumber";
+import { Address } from "../../model/Address";
 
 export default function SignUp() {
-    const [startDate, setStartDate] = useState(new Date());
-    const [endDate, setEndDate] = useState(new Date());
+    const [birthDate, setBirthDate] = useState(new Date());
+    
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        const data = Object.fromEntries(formData.entries());
+        
+        const user = new User(
+          0,
+          data.email,
+          data.firstName,
+          data.lastName,
+          new PhoneNumber(
+            data.countryCode,
+            data.phoneNumber
+          ),
+          birthDate,
+          ["USER"],
+          new Address(
+            data.country,
+            data.address,
+            data.zipCode
+          )
+        )
+
+        UsersAPI.signUp(user, data.password);
+    }
+
     return (
-        <div className={"SignUp"}>
+        <div className={"SignUp"} onSubmit={handleSubmit}>
             <h1>Sign Up</h1>
             <form className={"signup-form"}>
                 <div className={"form-group"}>
@@ -55,7 +84,7 @@ export default function SignUp() {
                 <div className={"form-group"}>
                     <label htmlFor="email">Date of birth*</label>
                     <div>
-                        <DatePicker className={"signUpDatePicker"} dateFormat={"dd.MM.yyyy"} selected={startDate} onChange={(date) => setStartDate(date)}/>
+                        <DatePicker className={"signUpDatePicker"} dateFormat={"dd.MM.yyyy"} selected={birthDate} onChange={(date) => setBirthDate(date)}/>
                     </div>
                 </div>
                 <div className={"form-group"}>

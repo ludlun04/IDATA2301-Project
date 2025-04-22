@@ -90,9 +90,9 @@ export class User {
 
   static getSampleUsers() {
     return [
-      new User(1, "john.doe@example.com", "John", "Doe", new PhoneNumber("47","1234567890"), "1990-05-15", ["USER"], new Address("Norway", "Ai", "1234")),
-      new User(2, "jane.smith@example.com", "Jane", "Smith", new PhoneNumber("47","5274572456"), "1985-08-22", ["ADMIN"], new Address("Norway", "Generated", "5678")),
-      new User(3, "alice.jones@example.com", "Alice", "Jones", new PhoneNumber("47","5754723564"), "1995-12-10", ["USER"], new Address("Norway", "Content", "9101")),
+      new User(1, "john.doe@example.com", "John", "Doe", new PhoneNumber("47","1234567890"), new Date("1990-05-15"), ["USER"], new Address("Norway", "Ai", "1234")),
+      new User(2, "jane.smith@example.com", "Jane", "Smith", new PhoneNumber("47","5274572456"), new Date("1990-05-15"), ["ADMIN"], new Address("Norway", "Generated", "5678")),
+      new User(3, "alice.jones@example.com", "Alice", "Jones", new PhoneNumber("47","5754723564"), new Date("1990-05-15"), ["USER"], new Address("Norway", "Content", "9101")),
     ];
   }
 }

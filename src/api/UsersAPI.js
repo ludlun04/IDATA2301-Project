@@ -38,5 +38,34 @@ export const UsersAPI = {
 
     console.log("UsersAPI.getAllUsers: ", users);
     return users;
+  },
+
+  signUp: async (user, password) => {
+    const result = await axios({
+      method: "post",
+      url: `${Constants.API_URL}/users/add`,
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: {
+        email: user.getEmail(),
+        username: user.getFirstName(),
+        firstName: user.getFirstName(),
+        lastName: user.getLastName(),
+        phoneNumber: {
+          countryCode: user.getPhoneNumber().getCountryCode(),
+          number: user.getPhoneNumber().getNumber()
+        },
+        dateOfBirth: user.getDateOfBirth().getTime(),
+        address: {
+          country: user.getAddress().getCountry(),
+          streetAddress: user.getAddress().getStreetAddress(),
+          zipCode: user.getAddress().getStreetAddress()
+        },
+        password: password
+      }
+    });
+
+    console.log("UsersAPI.signUp: ", result.request);
   }
 }
