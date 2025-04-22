@@ -3,19 +3,15 @@ import {NavLink} from "react-router-dom";
  import {useEffect, useState} from "react";
 import {ReactComponent as Logo} from "../../resources/logo/Logo-Dark-Horizontal.svg";
  import {Authentication} from "../../api/Authentication";
+import {useAuth} from "../../authcontext/AuthContext";
 
  export default function Header() {
     const [menuButtonActive, setMenuButtonActive] = useState(false);
-    const [isSignedIn, setIsSignedIn] = useState(false);
+    const { isSignedIn } = useAuth();
 
     const handleToggle = () => {
        setMenuButtonActive(!menuButtonActive)
     }
-
-     useEffect(() => {
-         setIsSignedIn(Authentication.isSignedIn());
-     }, []);
-    console.log(isSignedIn);
 
     return (
         <div className={"Header"}>

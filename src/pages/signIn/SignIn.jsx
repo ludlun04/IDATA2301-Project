@@ -2,12 +2,14 @@ import { useState } from "react";
 import { Authentication } from "../../api/Authentication";
 import "./SignIn.css"
 import { NavLink, useNavigate } from "react-router-dom";
+import {useAuth} from "../../authcontext/AuthContext";
 
 export default function SignIn() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
+  const { signIn } = useAuth();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -34,6 +36,7 @@ export default function SignIn() {
         console.error("Login failed:", error);
       }).finally(() => {
         setLoading(false);
+        signIn();
       });
   }
 
