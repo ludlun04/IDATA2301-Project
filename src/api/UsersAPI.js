@@ -2,6 +2,8 @@ import Constants from "../Constants.jsx";
 import axios from 'axios';
 import { Authentication } from './Authentication';
 import { User } from '../model/User';
+import { PhoneNumber } from "../model/PhoneNumber.js";
+import { Address } from "../model/Address.js";
 
 export const UsersAPI = {
 
@@ -17,25 +19,24 @@ export const UsersAPI = {
       }
     });
 
-    let users = [];
+    let users = result.data.map(user => {
+      const phoneNumber = new PhoneNumber(user.phoneNumber.countryCode, user.phoneNumber.number);
+      const dateOfBirth = new Date(user.dateOfBirth);
+      const address = new Address(user.address.country, user.address.address, user.address.zipCode);
 
-    for (let i = 0; i < result.data.length; i++) {
-      const user = result.data[i];
-      users.push(new User(
-        i,
+      return new User(
+        user.id,
         user.email,
         user.firstName,
         user.lastName,
-        user.phoneNumber.number,
-        user.dateOfBirth,
-        user.roles.map(role => role.name)
-      ));
-    }
+        phoneNumber,
+        dateOfBirth,
+        user.roles.map(role => role.name),
+        address
+      );
+    });
 
-    console.log(result.data);
-
+    console.log("UsersAPI.getAllUsers: ", users);
     return users;
-
-
   }
 }

@@ -16,7 +16,6 @@ export default function UsersSection() {
 
   const createUserRows = () => {
     return users.map(user => {
-      console.log(user.getId())
       return <UserRow key={user.getId()} user={user} />
     })
   }

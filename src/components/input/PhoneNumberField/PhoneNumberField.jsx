@@ -1,13 +1,15 @@
 import "./PhoneNumberField.css";
 
-function PhoneNumberField(params) {
+function PhoneNumberField({phoneNumber}) {
+  const countryCode = phoneNumber.getCountryCode() || "+47";
+  const number = phoneNumber.getNumber() || "";
 
   return (
     <div className={"PhoneNumberField"}>
       <p>Phone Number</p>
       <div className={"PhoneNumberFieldInputContainer"}>
-        <input type="number" name="CountryCode" defaultValue={"+47"}/>
-        <input type="number" name="PhoneNumber"/>
+        <input type="text" name="CountryCode" value={countryCode}/>
+        <input type="text" name="PhoneNumber" value={number}/>
       </div>
     </div>
   )

@@ -1,8 +1,13 @@
+import DatePicker from "react-datepicker";
+import AddressField from "../../input/AddressField/AddressField";
 import PhoneNumberField from "../../input/PhoneNumberField/PhoneNumberField";
 import "./EditUserDialogue.css"
+import { useState } from "react";
 
 export default function EditUserDialogue(props) {
   const user = props.user;
+
+  const [birthdate, setBirthdate] = useState(user.getDateOfBirth());
 
   const onEdit = (e) => {
     e.preventDefault();
@@ -23,11 +28,6 @@ export default function EditUserDialogue(props) {
           <input  type="text" defaultValue={user.getFirstName()} />
         </div>
         <div>
-          <label htmlFor="email">Email</label>
-          <input type="text" defaultValue={user.getEmail()} />
-        </div>
-        <PhoneNumberField/>
-        <div>
           <label htmlFor="firstName">First Name</label>
           <input type="text" defaultValue={user.getFirstName()} />
         </div>
@@ -36,12 +36,14 @@ export default function EditUserDialogue(props) {
           <input type="text" defaultValue={user.getLastName()} />
         </div>
         <div>
-          <label htmlFor="address">Address</label>
-          <input type="text"/>
+          <label htmlFor="email">Email</label>
+          <input type="text" defaultValue={user.getEmail()} />
         </div>
+        <PhoneNumberField phoneNumber={user.getPhoneNumber()}/>
+        <AddressField address={user.getAddress()}/>
         <div>
           <label htmlFor="birthdate">Birthdate</label>
-          <input type="text" defaultValue ={user.getDateOfBirth()} />
+          <DatePicker selected={birthdate} dateFormat={"dd.MM.yyyy"} onChange={(date) => setBirthdate(date)}/>
         </div>
         <div className={"detailsSectionButtonContainer"}>
           <button className={"FormSubmitButton detailsSectionButton"} onClick={onEdit}>Save</button>
