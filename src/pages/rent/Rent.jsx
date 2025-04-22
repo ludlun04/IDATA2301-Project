@@ -5,6 +5,7 @@ import DatePicker from "react-datepicker";
 import React, {useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
 import {CarAPI} from "../../api/CarAPI";
+import CarAttributes from "../../components/CarAttribute/CarAttributes";
 
 export default function Rent(props) {
   const [startDate, setStartDate] = useState(new Date());
@@ -21,6 +22,10 @@ export default function Rent(props) {
   const [features, setFeatures] = useState([]);
   const [carDescription, setCarDescription] = useState("Loading");
   const [carCompany, setCarCompany] = useState("Loading");
+  const [carYear, setCarYear] = useState(0);
+  const [carSeats, setCarSeats] = useState(0);
+  const [carTransmission, setCarTransmission] = useState("Loading");
+  const [carFuel, setCarFuel] = useState("Loading");
 
   useEffect( () => {
     const fetchCar = async () => {
@@ -34,6 +39,10 @@ export default function Rent(props) {
         setFeatures(car.getFeatures());
         setCarDescription(car.getDescription());
         setCarCompany(car.getCompanyName());
+        setCarYear(car.getYear());
+        setCarSeats(car.getNumberOfSeats());
+        setCarTransmission(car.getTransmissionType().getName());
+        setCarFuel(car.getFuelType().getName());
       } catch (error) {
         console.error("Error fetching car data:", error);
       }
@@ -42,6 +51,8 @@ export default function Rent(props) {
     fetchCar();
 
   }, [id]);
+
+  console.log(carTransmission)
 
   // datepicker configuration
   const dateFormat = "dd.MM.yyyy"; // displayed date format in datepicker
@@ -55,11 +66,8 @@ export default function Rent(props) {
         <h1>{carName}</h1>
 
         <section className={"RentAttributes"}>
-          <h2>Features</h2>
           <div className={"RentAttributeList"}>
-            {features.map((feature) => (
-                <CarAttribute key={feature.getId()} name={feature.getName()} />
-                ))}
+            <CarAttributes year={carYear} seats={carSeats} transmission={carTransmission} fuel={carFuel}/>
           </div>
         </section>
       </div>

@@ -2,13 +2,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
+  width: 10rem;
 }
 
 .CarAttributeImage {
   display: block;
   width: 4rem;
   height: 4rem;
-  background-color: grey;
-  border-radius: 50%;
-  margin-bottom: 1rem;
+  filter: brightness(0) saturate(100%) invert(99%) sepia(74%) saturate(3689%) hue-rotate(332deg) brightness(98%) contrast(103%);
+}
+
+.CarAttributeText {
+  margin: 0;
 }
