@@ -4,7 +4,7 @@ import axios from "axios";
 
 export const Authentication = {
   isSignedIn: () => {
-    return localStorage.getItem("token") !== null;
+    return localStorage.getItem("token") != null;
   },
 
   getToken: () => {

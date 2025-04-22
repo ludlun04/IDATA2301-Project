@@ -1,14 +1,21 @@
  import "./Header.css"
 import {NavLink} from "react-router-dom";
- import {useState} from "react";
+ import {useEffect, useState} from "react";
 import {ReactComponent as Logo} from "../../resources/logo/Logo-Dark-Horizontal.svg";
+ import {Authentication} from "../../api/Authentication";
 
  export default function Header() {
     const [menuButtonActive, setMenuButtonActive] = useState(false);
+    const [isSignedIn, setIsSignedIn] = useState(false);
 
     const handleToggle = () => {
        setMenuButtonActive(!menuButtonActive)
     }
+
+     useEffect(() => {
+         setIsSignedIn(Authentication.isSignedIn());
+     }, []);
+    console.log(isSignedIn);
 
     return (
         <div className={"Header"}>
@@ -19,7 +26,7 @@ import {ReactComponent as Logo} from "../../resources/logo/Logo-Dark-Horizontal.
                 <NavLink className={"navLink rent"} to={"/portal"} onClick={handleToggle}>Rent</NavLink>
                 <NavLink className={"navLink"} to={"/about"} onClick={handleToggle}>About</NavLink>
                 <NavLink className={"navLink"} to={"contact"} onClick={handleToggle}>Contact</NavLink>
-                <NavLink className={"navLink sign-in"} to={"/sign-in"} onClick={handleToggle}>Login</NavLink>
+                <NavLink className={"navLink sign-in"} to={"/sign-in"} onClick={handleToggle}>{isSignedIn ? "Test" : "Login"}</NavLink>
             </div>
             <button className={`headerMenuButtonContainer ${menuButtonActive ? "active" : ""}`} onClick={handleToggle}>
                 <div className={`headerMenuButton top ${menuButtonActive ? "active" : ""}`}></div>
