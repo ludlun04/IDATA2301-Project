@@ -1,4 +1,5 @@
 import "./CarAttribute.css";
+import Loader from "../loader/Loader";
 
 export default function CarAttribute(props) {
   return <div className="CarAttributeCard">

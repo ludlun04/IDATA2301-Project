@@ -6,6 +6,7 @@ import React, {useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
 import {CarAPI} from "../../api/CarAPI";
 import CarAttributes from "../../components/CarAttribute/CarAttributes";
+import Loader from "../../components/loader/Loader";
 
 export default function Rent(props) {
   const [startDate, setStartDate] = useState(new Date());
@@ -17,15 +18,11 @@ export default function Rent(props) {
   const [loading, setLoading] = useState(true);
 
   // car data
-  const [carName, setCarName] = useState("Loading");
   const [carPricePerDay, setCarPricePerDay] = useState(0);
   const [features, setFeatures] = useState([]);
-  const [carDescription, setCarDescription] = useState("Loading");
-  const [carCompany, setCarCompany] = useState("Loading");
-  const [carYear, setCarYear] = useState(0);
-  const [carSeats, setCarSeats] = useState(0);
-  const [carTransmission, setCarTransmission] = useState("Loading");
-  const [carFuel, setCarFuel] = useState("Loading");
+
+  const amountOfDays = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
+  const totalPrice = amountOfDays * carPricePerDay;
 
   useEffect( () => {
     const fetchCar = async () => {
@@ -34,56 +31,61 @@ export default function Rent(props) {
         setCar(car)
         setLoading(false);
 
-        setCarName(car.getName())
         setCarPricePerDay(car.getPricePerDay());
         setFeatures(car.getFeatures());
-        setCarDescription(car.getDescription());
-        setCarCompany(car.getCompanyName());
-        setCarYear(car.getYear());
-        setCarSeats(car.getNumberOfSeats());
-        setCarTransmission(car.getTransmissionType().getName());
-        setCarFuel(car.getFuelType().getName());
       } catch (error) {
         console.error("Error fetching car data:", error);
       }
     }
-
     fetchCar();
-
   }, [id]);
-
-  console.log(carTransmission)
 
   // datepicker configuration
   const dateFormat = "dd.MM.yyyy"; // displayed date format in datepicker
   const portalId = "root-portal"; // makes the datepicker window not affect positioning of datepicker field
   const calendarStartDay = 1; // monday as first day of week instead of sunday
 
+  if (loading) {
+    return (
+        <main className={"RentMain"}>
+          <Loader/>
+        </main>
+    );
+  }
   return (
     <main className="RentMain">
       <img alt="" className={"RentCarImage"} src={bmw} />
       <div className="RentInformation">
-        <h1>{carName}</h1>
+        <h1>{car.getName()}</h1>
 
         <section className={"RentAttributes"}>
           <div className={"RentAttributeList"}>
-            <CarAttributes year={carYear} seats={carSeats} transmission={carTransmission} fuel={carFuel}/>
+            <CarAttributes year={car.getYear()} seats={car.getNumberOfSeats()} transmission={car.getTransmissionType().getName()} fuel={car.getFuelType().getName()} />
           </div>
         </section>
       </div>
 
+      <section className={"RentFeatureSection"}>
+        <h2>Features</h2>
+        <div className={"RentFeatureList"}>
+          {features.map((feature, index) => (
+              <p className={"RentFeatureItem"}>- {feature.getName()}</p>
+          ))}
+        </div>
+      </section>
+
       <section className={"RentCarDescription"}>
         <h2>Description</h2>
         <p>
-          {carDescription}
+          {car.getDescription()}
           </p>
       </section>
 
       <div className={"RentInteraction"}>
         <div className={"RentInteractionInner"}>
           <div className={"RentCompanyCard"}>
-            <div alt="Image of company renting out the car" className={"RentCompanyImage"}></div>
-            <h2>{carCompany}</h2>
+            <img className={"RentCompanyImage"} src={bmw} />
+            <h2>{car.getCompanyName()}</h2>
           </div>
 
           <div className={"RentDuration"}>
@@ -100,7 +102,7 @@ export default function Rent(props) {
 
           <div className="RentTotalPrice">
             <p className="RentTitle">Total</p>
-            <p className="RentContent">10000 kr</p>
+            <p className="RentContent">{totalPrice} kr</p>
           </div>
 
           <button className="RentButton" type="button">Rent</button>

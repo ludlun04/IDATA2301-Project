@@ -1,8 +1,11 @@
 .RentMain {
   display: grid;
-  gap: 2rem;
+  row-gap: 0;
+  column-gap: 2rem;
   justify-content: center;
   min-height: 100vh;
+  background: var(--background);
+  padding: 2rem;
 }
 
 .RentInformation {
@@ -16,13 +19,17 @@
   grid-column: 1;
 }
 
+.RentFeatureSection {
+  grid-row: 3;
+  grid-column: 1;
+}
+
 .RentCarDescription p {
   max-width: 70ch;
 }
 
 .RentCarDescription {
-  margin-top: 2rem;
-  grid-row: 3;
+  grid-row: 4;
   grid-column: 1;
 }
 
@@ -74,14 +81,14 @@
 }
 
 .RentButton {
-  height: 5rem;
+  height: 3rem;
 }
 
 .RentCompanyCard {
-  height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: end;
+  align-items: center;
   gap: 1rem;
 }
 
@@ -92,7 +99,6 @@
   display: block;
   height: 100%;
   max-height: 4rem;
-  aspect-ratio: 1/1;
   border-radius: 50%;
 }
 
