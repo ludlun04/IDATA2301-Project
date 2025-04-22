@@ -1,6 +1,6 @@
 import Constants from "../Constants.jsx";
 import axios from 'axios';
-import { Authentication } from './Authentication';
+import {Authentication} from './Authentication';
 import {Car} from "../model/Car";
 import {CarBrand} from "../model/CarBrand";
 import {CarModel} from "../model/CarModel";
@@ -8,73 +8,72 @@ import {FuelType} from "../model/FuelType";
 import {TransmissionType} from "../model/TransmissionType";
 import {Company} from "../model/Company";
 import {Feature} from "../model/Feature";
+import {Addon} from "../model/Addon";
 
 export const CarAPI = {
-    getCar: async (id) => {
-        if (!Authentication.isSignedIn()) {
-            throw new Error("User is not signed in");
-        }
+  getCar: async (id) => {
+    const result = await axios.get(`${Constants.API_URL}/car/${id}`, {});
 
-        const token = Authentication.getToken();
-        const result = await axios.get(`${Constants.API_URL}/car/${id}`, {
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        });
+    const carObject = result.data;
+    console.log(carObject);
 
-        const company = new Company(result.data.company.id, result.data.company.name, result.data.company.address, result.data.company.email)
-        const carId = result.data.id
-        const year = result.data.year
-        const numberOfSeats = result.data.numberOfSeats
-        const pricePerDay = result.data.pricePerDay
-        const model = new CarModel(result.data.model.id, result.data.model.name, result.data.model.brand)
-        const brand = new CarBrand(result.data.model.brand.id, result.data.model.brand.name)
-        const fuelType = new FuelType(result.data.fuelType.id, result.data.fuelType.name)
-        const transmissionType = new TransmissionType(result.data.transmissionType.id, result.data.transmissionType.name)
-        const features = result.data.features.map(feature => new Feature(feature.id, feature.name))
-        const description = result.data.description
+    const car = CarAPI.getCarFromJsonObject(carObject);
 
-        //TODO: Fix favorite/available
-        const car = new Car(company, brand, carId, year, numberOfSeats, pricePerDay, model, fuelType, transmissionType, features, true, true, description)
+    console.log(result.data);
 
+    return car;
+  },
 
+  getAllCars: async (filters) => {
+    //TODO: Implement filters
+    const result = await axios.get(`${Constants.API_URL}/car`, {});
+    let cars = [];
+    result.data.forEach((carObject) => {
+      cars.push(CarAPI.getCarFromJsonObject(carObject))
+    })
 
-        console.log(result.data);
+    console.log(cars);
+    return cars;
+  },
 
-        return car;
-    },
-    getAllCars: async (filters) => {
-        //TODO: Implement filters
-        if (!Authentication.isSignedIn()) {
-            throw new Error("User is not signed in");
-        }
-        const token = Authentication.getToken();
-        const result = await axios.get(`${Constants.API_URL}/car`, {
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        });
+  getCarFromJsonObject(carObject) {
+    const modelObject = carObject.model;
 
-        let cars = [];
-        result.data.forEach((car) => {
-            const company = new Company(car.company.id, car.company.name, car.company.address, car.company.email)
-            const carId = car.id
-            const year = car.year
-            const numberOfSeats = car.numberOfSeats
-            const pricePerDay = car.pricePerDay
-            const model = new CarModel(car.model.id, car.model.name, car.model.brand)
-            const brand = new CarBrand(car.model.brand.id, car.model.brand.name)
-            const fuelType = new FuelType(car.fuelType.id, car.fuelType.name)
-            const transmissionType = new TransmissionType(car.transmissionType.id, car.transmissionType.name)
-            const features = car.features.map(feature => new Feature(feature.id, feature.name))
-            const description = car.description
+    const brandObject = modelObject.brand;
+    const brand = new CarBrand(brandObject.id, brandObject.name);
 
-            //TODO: Fix favorite/available
-            const c = new Car(company, brand, carId, year, numberOfSeats, pricePerDay, model, fuelType, transmissionType, features, true, true, description)
-            cars.push(c);
-        })
+    const model = new CarModel(modelObject.id, modelObject.name, brand);
 
-        console.log(cars);
-        return cars;
-    }
+    const transmissionTypeObject = carObject.transmissionType;
+    const transmissionType = new TransmissionType(transmissionTypeObject.id, transmissionTypeObject.name);
+
+    const fuelTypeObject = carObject.fuelType;
+    const fuelType = new FuelType(fuelTypeObject.id, fuelTypeObject.name);
+
+    const companyObject = carObject.company;
+    const company = new Company(companyObject.id, companyObject.name, companyObject.address, companyObject.email);
+
+    const features = carObject.features.map(feature => {
+      return new Feature(feature.id, feature.name);
+    });
+
+    const addons = carObject.addons.map(addon => {
+      return new Addon(addon.id, addon.name);
+    });
+    return new Car(
+      company,
+      carObject.id,
+      carObject.year,
+      carObject.numberOfSeats,
+      carObject.pricePerDay,
+      model,
+      fuelType,
+      transmissionType,
+      addons,
+      features,
+      true,
+      true,
+      carObject.description
+    );
+  }
 }
