@@ -2,27 +2,28 @@ import "./Portal.css";
 import CarCard from "../../components/CarCard/CarCard";
 import CarSearchSortSection from "../../components/CarSearchSortSection/CarSearchSortSection";
 import FiltersSection from "../../components/FilterSection/FiltersSection";
-import ErrorFetchingDataMessage from "../../components/ErrorFetchingDataMessage/ErrorFetchingDataMessage";
+import ErrorFetchingDataMessage
+  from "../../components/ErrorFetchingDataMessage/ErrorFetchingDataMessage";
 import {useEffect, useState} from "react";
 import {CarAPI} from "../../api/CarAPI";
+import {CompanyAPI} from "../../api/CompanyAPI";
 
 export default function Portal() {
 
   const [centerFiltersDisplayed, setCenterFiltersDisplayed] = useState(false);
 
   const [cars, setCars] = useState([]);
-
+  const [companies, setCompanies] = useState([]);
 
   const [loading, setLoading] = useState(true);
   const [errorMessageActive, setErrorMessageActive] = useState(false);
-
 
 
   const onSave = () => {
     setCenterFiltersDisplayed(false);
   }
 
-  const filters = (<FiltersSection onSave={onSave}/>)
+  const filters = (<FiltersSection sellers={companies} onSave={onSave}/>)
 
   const toggleFiltersDisplayed = () => {
     setCenterFiltersDisplayed(!centerFiltersDisplayed);
@@ -32,22 +33,30 @@ export default function Portal() {
     setCenterFiltersDisplayed(false);
   }
 
-  useEffect(() => {
-    const fetchCars = async () => {
-      try {
-        const cars = await CarAPI.getAllCars();
-        setCars(cars);
-        setLoading(false);
-        setErrorMessageActive(false);
-        console.log(cars);
+  const fetchCars = async () => {
+    const cars = await CarAPI.getAllCars();
+    setCars(cars);
+    setLoading(false);
+    console.log(cars);
+  };
 
-      } catch (error) {
-        console.error("Error fetching car data:", error);
-        setErrorMessageActive(true);
-        setLoading(false);
-      }
-    };
-    fetchCars();
+  const fetchCompanies = async () => {
+    const companies = await CompanyAPI.getCompaniesUsedInCars();
+    setCompanies(companies);
+    console.log(companies);
+  }
+
+  useEffect(() => {
+    try {
+      fetchCars();
+      fetchCompanies();
+      setErrorMessageActive(false);
+    } catch (error) {
+      console.error("Error fetching car data:", error);
+      setErrorMessageActive(true);
+      setLoading(false);
+    }
+
   }, []);
   return (
     <div className={"Portal"}>

@@ -10,11 +10,25 @@ import "./FiltersSection.css";
 
 const FiltersSection = (props) => {
 
-  const manufacturers = props.manufacturers;
-  const fuelTypes = props.fuelTypes;
-  const sellers = props.sellers;
-  const seats = props.seats;
+  //const availableManufacturers = props.manufacturers;
+  //const availableFuelTypes = props.fuelTypes;
+  const availableSellers = props.sellers;
+  //const availableSeats = props.seats;
+
+  const chosenSellers = []
   
+  const addToChosenSellers = (event) => {
+    const seller = event.target.value;
+    if (event.target.checked) {
+      chosenSellers.push(seller);
+    } else {
+      const index = chosenSellers.indexOf(seller);
+      if (index > -1) {
+        chosenSellers.splice(index, 1);
+      }
+    }
+  }
+
 
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
@@ -49,8 +63,9 @@ const FiltersSection = (props) => {
           </DropdownMenu>
           <DropdownMenu alwaysShownContent={getHeader("Seller")}>
             <ul>
-              <li className="filtersSectionFilterLine" ><p>First filter</p> <input type="checkbox"></input></li>
-              <li className="filtersSectionFilterLine" ><p>This is a filter that is very very very long</p> <input type="checkbox"></input></li>
+              {availableSellers.map((seller, index) => (
+                <li key={index} className="filtersSectionFilterLine" ><p>{seller.getName()}</p> <input value={seller.getName()} type="checkbox" onChange={addToChosenSellers}></input></li>
+              ))}
             </ul>
           </DropdownMenu>
           <DropdownMenu alwaysShownContent={getHeader("Seats")}>
