@@ -8,10 +8,10 @@ import calendarIcon from "./../../resources/icons/calendar.svg"
 export default function CarAttributes(props) {
     return (
         <div className="CarAttributes">
-            <CarAttribute name={"Model Year"} description={props.year} svg={calendarIcon}/>
-            <CarAttribute name={"Amount of Seats"} description={props.seats} svg={seatIcon}/>
+            <CarAttribute name={"Year"} description={props.year} svg={calendarIcon}/>
+            <CarAttribute name={"Seats"} description={props.seats} svg={seatIcon}/>
             <CarAttribute name={"Transmission"} description={props.transmission} svg={transmissionIcon}/>
-            <CarAttribute name={"Fuel Type"} description={props.fuel} svg={gasIcon}/>
+            <CarAttribute name={"Fuel"} description={props.fuel} svg={gasIcon}/>
         </div>
     )
 }
