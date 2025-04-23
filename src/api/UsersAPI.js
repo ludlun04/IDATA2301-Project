@@ -6,7 +6,6 @@ import { PhoneNumber } from "../model/PhoneNumber.js";
 import { Address } from "../model/Address.js";
 
 export const UsersAPI = {
-
   getAllUsers: async () => {
     if (!Authentication.isSignedIn()) {
       throw new Error("User is not signed in");
@@ -20,20 +19,7 @@ export const UsersAPI = {
     });
 
     let users = result.data.map(user => {
-      const phoneNumber = new PhoneNumber(user.phoneNumber.countryCode, user.phoneNumber.number);
-      const dateOfBirth = new Date(user.dateOfBirth);
-      const address = new Address(user.address.country, user.address.address, user.address.zipCode);
-
-      return new User(
-        user.id,
-        user.email,
-        user.firstName,
-        user.lastName,
-        phoneNumber,
-        dateOfBirth,
-        user.roles.map(role => role.name),
-        address
-      );
+      return getUserFromJsonObject(user);
     });
 
     console.log("UsersAPI.getAllUsers: ", users);
@@ -67,5 +53,36 @@ export const UsersAPI = {
     });
 
     console.log("UsersAPI.signUp: ", result.request);
+  },
+
+  getCurrentAuthenticatedUser: async () => {
+    if (Authentication.isSignedIn()) {
+      const token = Authentication.getToken();
+      const result = await axios.get(`${Constants.API_URL}/users/details`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+
+      const user = getUserFromJsonObject(result.data);
+      return user;
+    }
   }
+}
+
+function getUserFromJsonObject(userObject) {
+  const phoneNumber = new PhoneNumber(userObject.phoneNumber.countryCode, userObject.phoneNumber.number);
+  const dateOfBirth = userObject.dateOfBirth
+  const address = new Address(userObject.address.country, userObject.address.streetAddress, userObject.address.zipCode);
+
+  return new User(
+    userObject.id,
+    userObject.email,
+    userObject.firstName,
+    userObject.lastName,
+    phoneNumber,
+    dateOfBirth,
+    userObject.roles.map(role => role.name),
+    address
+  );
 }
