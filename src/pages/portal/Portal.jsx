@@ -8,6 +8,7 @@ import {useEffect, useState} from "react";
 import {CarAPI} from "../../api/CarAPI";
 import {CompanyAPI} from "../../api/CompanyAPI";
 import {CarBrandAPI} from "../../api/CarBrandAPI";
+import {FuelTypeAPI} from "../../api/FuelTypeAPI";
 
 export default function Portal() {
 
@@ -77,7 +78,7 @@ export default function Portal() {
   }
 
   const fetchFuelTypes = async () => {
-    const fuelTypes = await CarAPI.getAllFuelTypes();
+    const fuelTypes = await FuelTypeAPI.getFuelTypesUsedInCars();
     setPossibleFuelTypes(fuelTypes);
     console.log(fuelTypes);
   }
@@ -92,7 +93,7 @@ export default function Portal() {
     try {
       fetchCars();
       fetchManufacturers();
-      //fetchFuelTypes();
+      fetchFuelTypes();
       fetchSellers();
       setErrorMessageActive(false);
     } catch (error) {

@@ -87,8 +87,9 @@ const FiltersSection = (props) => {
           </DropdownMenu>
           <DropdownMenu alwaysShownContent={getHeader("Fuel type")}>
             <ul>
-              <li className="filtersSectionFilterLine" ><p>First filter</p> <input type="checkbox"></input></li>
-              <li className="filtersSectionFilterLine" ><p>This is a filter that is very very very long</p> <input type="checkbox"></input></li>
+              {availableFuelTypes.map((fuelType, index) => (
+                <li key={index} className="filtersSectionFilterLine" ><p>{fuelType.getName()}</p> <input value={fuelType.getName()} type="checkbox" onChange={alterChosenFuelTypes}></input></li>
+              ))}
             </ul>
           </DropdownMenu>
           <DropdownMenu alwaysShownContent={getHeader("Seller")}>
