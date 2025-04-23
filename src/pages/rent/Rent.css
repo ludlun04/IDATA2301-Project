@@ -5,101 +5,37 @@
   min-height: 100vh;
   background: var(--background);
   padding: 2rem;
-}
-
-.RentMain > div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 .RentCarImage {
   max-width: 70ch;
+  width: 100%;
 }
 
-.RentInformation {
-  text-align: left;
-}
-
-.RentAttributes {
-  width: fit-content;
-}
-
-.RentFeatureSection {
-  width: fit-content;
-}
-
-.RentInteraction {
+.RentUpperSection {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  width: fit-content;
+  align-items: left;
+  gap: 2rem;
+}
+
+.RentDynamicSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
 }
 
 .RentCarDescription p {
   max-width: 70ch;
 }
 
-.RentCarDescription {
-  width: fit-content;
-}
 
-.RentDurationSelection {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-}
-
-.RentDailyPrice > p {
-  margin: 0px;
-  padding: 0px;
-}
-
-.RentDailyPrice > .RentTitle {
-  font-size: 1rem;
-}
-
-.RentDailyPrice > .RentContent {
-  font-size: 1.25rem;
-}
-
-.RentTotalPrice > p {
-  margin: 0px;
-  padding: 0px;
-}
-
-.RentTotalPrice > .RentTitle {
-  font-size: 1.25rem;
-}
-
-.RentTotalPrice > .RentContent {
-  font-size: 2rem;
-}
-
-.RentButton {
-  height: 3rem;
-}
-
-.RentCompanyCard {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}
-
-.RentCompanyCard > .RentCompanyImage{
-  background-image: url("./../../resources/images/bmw.jpg");
-  background-position: center center;
-  background-size: cover;
-  display: block;
-  height: 100%;
-  max-height: 4rem;
-  border-radius: 50%;
-}
 
 @media screen and (max-width: 1024px) {
-
+  .RentDynamicSection {
+    flex-direction: column;
+  }
 }

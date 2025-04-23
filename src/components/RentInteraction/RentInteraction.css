@@ -1,0 +1,7 @@
+.RentInteraction {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: fit-content;
+  gap: 1rem;
+}

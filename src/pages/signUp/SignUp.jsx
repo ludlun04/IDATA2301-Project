@@ -2,7 +2,7 @@ import {User} from "../../model/User";
 import "./SignUp.css"
 import {NavLink} from "react-router-dom";
 import DatePicker from "react-datepicker";
-import React, {useState} from "react";
+import {useState} from "react";
 import { UsersAPI } from "../../api/UsersAPI";
 import { PhoneNumber } from "../../model/PhoneNumber";
 import { Address } from "../../model/Address";
