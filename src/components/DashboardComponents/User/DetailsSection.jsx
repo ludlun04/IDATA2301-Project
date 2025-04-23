@@ -1,5 +1,11 @@
 import "./DetailsSection.css"
+import {useNavigate} from "react-router-dom";
+import {Authentication} from "../../../api/Authentication";
+import {useAuth} from "../../../authcontext/AuthContext";
 export default function DetailsSection(props) {
+    const navigate = useNavigate();
+    const { signOut } = useAuth();
+
     const details = [
         ["Company", "AB Rentals"],
         ["Name", "Username"],
@@ -10,6 +16,13 @@ export default function DetailsSection(props) {
         ["Address", "Borgundvegen"],
         ["Birthdate", "12.02.1994"]
     ];
+
+    const handleLogOut = () => {
+        navigate("/sign-in")
+        Authentication.logout();
+        signOut();
+    }
+
   return (
     <div className={props.className} style={props.style}>
       <div className="DetailsSection">
@@ -21,7 +34,7 @@ export default function DetailsSection(props) {
         ))}
         <div className={"detailsSectionButtonContainer"}>
           <button className={"FormSubmitButton detailsSectionButton"} onClick={props.onEdit}>Edit</button>
-          <button className={"FormSubmitButton detailsSectionButton"} onClick={props.onResetPassword}>Reset Password</button>
+          <button className={"FormSubmitButton detailsSectionButton"} onClick={handleLogOut}>Log out</button>
         </div>
       </div>
     </div>
