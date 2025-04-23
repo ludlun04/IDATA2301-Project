@@ -41,10 +41,8 @@ export default function Rent(props) {
   }
   return (
     <main className={"RentMain"}>
-      <div className="RentDynamicSection">
-
-        <div className={"RentUpperSection"}>
-
+      <div className="RentGrid">
+        <div className="RentMainTop">
           <img alt="" className={"RentCarImage"} src={bmw} />
 
           <section className={"RentInformation"}>
@@ -55,23 +53,25 @@ export default function Rent(props) {
         </div>
 
         <RentInteraction car={car} />
-      </div>
 
-      <section className={"RentFeatureSection"}>
-        <h2>Features</h2>
-        <div className={"RentFeatureList"}>
-          {features.map((feature, index) => (
-            <p key={feature.getId()} className={"RentFeatureItem"}>- {feature.getName()}</p>
-          ))}
+        <div className={"RentMainBottom"}>
+          <section className={"RentFeatureSection"}>
+            <h2>Features</h2>
+            <div className={"RentFeatureList"}>
+              {features.map((feature, index) => (
+                <p key={feature.getId()} className={"RentFeatureItem"}>- {feature.getName()}</p>
+              ))}
+            </div>
+          </section>
+
+          <section className={"RentCarDescription"}>
+            <h2>Description</h2>
+            <p>
+              {car.getDescription()}
+            </p>
+          </section>
         </div>
-      </section>
-
-      <section className={"RentCarDescription"}>
-        <h2>Description</h2>
-        <p>
-          {car.getDescription()}
-        </p>
-      </section>
+      </div>
     </main>
   )
 }

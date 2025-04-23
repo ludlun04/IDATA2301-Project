@@ -3,5 +3,12 @@
   flex-direction: column;
   justify-content: center;
   width: fit-content;
+  height: fit-content;
   gap: 1rem;
+}
+
+@media screen and (max-width: 1024px) {
+  .RentInteraction {
+    width: 100%;
+  }
 }

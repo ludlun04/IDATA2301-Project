@@ -3,11 +3,12 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  flex-wrap: wrap;
+  min-width: 2rem;
 }
 
 .CarAttributeImage {
   display: block;
-  
   filter: brightness(0) saturate(100%) invert(99%) sepia(74%) saturate(3689%) hue-rotate(332deg) brightness(98%) contrast(103%);
 }
 

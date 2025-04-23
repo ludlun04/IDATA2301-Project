@@ -2,4 +2,13 @@
     display: flex;
     gap: 1rem;
     width: 100%;
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width: 333px) {
+  .CarAttributes {
+    flex-direction: column;
+    align-items: center;
+  } 
+  
 }
