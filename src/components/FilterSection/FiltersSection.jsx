@@ -10,22 +10,51 @@ import "./FiltersSection.css";
 
 const FiltersSection = (props) => {
 
-  //const availableManufacturers = props.manufacturers;
-  //const availableFuelTypes = props.fuelTypes;
-  const availableSellers = props.sellers;
-  //const availableSeats = props.seats;
 
-  const chosenSellers = []
-  
-  const addToChosenSellers = (event) => {
+  const availableManufacturers = props.manufacturers;
+  const availableFuelTypes = props.fuelTypes;
+  const availableSellers = props.sellers;
+  const availableSeats = props.seats;
+
+
+  const chosenManufacturers = [];
+  const chosenFuelTypes = [];
+  const chosenSellers = [];
+
+
+  const alterChosenSellers = (event) => {
     const seller = event.target.value;
     if (event.target.checked) {
-      chosenSellers.push(seller);
+      props.setChosenSellers((prev) => [...prev, seller]);
     } else {
-      const index = chosenSellers.indexOf(seller);
-      if (index > -1) {
-        chosenSellers.splice(index, 1);
-      }
+      props.setChosenSellers(chosenSellers => chosenSellers.filter((s) => s !== seller));
+    }
+  }
+
+  const alterChosenManufacturers = (event) => {
+    const manufacturer = event.target.value;
+    if (event.target.checked) {
+      props.setChosenManufacturers((prev) => [...prev, manufacturer]);
+    } else {
+      props.setChosenManufacturers(chosenManufacturers => chosenManufacturers.filter((m) => m !== manufacturer));
+    }
+  }
+
+  const alterChosenFuelTypes = (event) => {
+    const fuelType = event.target.value;
+    if (event.target.checked) {
+      props.setChosenFuelTypes((prev) => [...prev, fuelType]);
+    } else {
+      props.setChosenFuelTypes(chosenFuelTypes => chosenFuelTypes.filter((f) => f !== fuelType));
+    }
+  }
+
+  const alterChosenSeats = (event) => {
+    const seats = event.target.value;
+    if (event.target.checked) {
+      props.setChosenSeats((prev) => [...prev, seats]);
+    } else {
+      props.setChosenSeats(chosenSeats => chosenSeats.filter((s) => s !== seats));
     }
   }
 
@@ -64,7 +93,7 @@ const FiltersSection = (props) => {
           <DropdownMenu alwaysShownContent={getHeader("Seller")}>
             <ul>
               {availableSellers.map((seller, index) => (
-                <li key={index} className="filtersSectionFilterLine" ><p>{seller.getName()}</p> <input value={seller.getName()} type="checkbox" onChange={addToChosenSellers}></input></li>
+                <li key={index} className="filtersSectionFilterLine" ><p>{seller.getName()}</p> <input value={seller.getName()} type="checkbox" onChange={alterChosenSellers}></input></li>
               ))}
             </ul>
           </DropdownMenu>

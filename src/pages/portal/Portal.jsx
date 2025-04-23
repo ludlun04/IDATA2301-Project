@@ -13,17 +13,46 @@ export default function Portal() {
   const [centerFiltersDisplayed, setCenterFiltersDisplayed] = useState(false);
 
   const [cars, setCars] = useState([]);
-  const [companies, setCompanies] = useState([]);
+
+  const [possibleManufacturers, setPossibleManufacturers] = useState([]);
+  const [possibleFuelTypes, setPossibleFuelTypes] = useState([]);
+  const [possibleSellers, setPossibleSellers] = useState([]);
+  const [possibleSeats, setPossibleSeats] = useState([]);
+
+
 
   const [loading, setLoading] = useState(true);
   const [errorMessageActive, setErrorMessageActive] = useState(false);
 
+  const [chosenManufacturers, setChosenManufacturers] = useState([]);
+  const [chosenFuelTypes, setChosenFuelTypes] = useState([]);
+  const [chosenSellers, setChosenSellers] = useState([]);
+  const [chosenSeats, setChosenSeats] = useState([]);
+  const [chosenTimes, setChosenTimes] = useState([]);
 
-  const onSave = () => {
-    setCenterFiltersDisplayed(false);
-  }
+  useEffect(() => {
+    const filters = {
+      manufacturers: chosenManufacturers,
+      fuelTypes: chosenFuelTypes,
+      sellers: chosenSellers,
+      seats: chosenSeats,
+      times: chosenTimes
+    }
+    fetchCars(filters);
+  }, [chosenManufacturers, chosenFuelTypes, chosenSellers, chosenSeats, chosenTimes]);
 
-  const filters = (<FiltersSection sellers={companies} onSave={onSave}/>)
+  const filters = (
+    <FiltersSection
+      manufacturers={possibleManufacturers}
+      setChosenManufacturers={setChosenManufacturers}
+      fuelTypes={possibleFuelTypes}
+      setChosenFuelTypes={setChosenFuelTypes}
+      sellers={possibleSellers}
+      setChosenSellers={setChosenSellers}
+      seats={possibleSeats}
+      setChosenSeats={setChosenSeats}
+
+    />)
 
   const toggleFiltersDisplayed = () => {
     setCenterFiltersDisplayed(!centerFiltersDisplayed);
@@ -33,23 +62,37 @@ export default function Portal() {
     setCenterFiltersDisplayed(false);
   }
 
-  const fetchCars = async () => {
-    const cars = await CarAPI.getAllCars();
+  const fetchCars = async (filters) => {
+    const cars = await CarAPI.getAllCars(filters);
     setCars(cars);
     setLoading(false);
     console.log(cars);
   };
 
-  const fetchCompanies = async () => {
+  const fetchManufacturers = async () => {
+    const manufacturers = await CarAPI.getAllManufacturers();
+    setPossibleManufacturers(manufacturers);
+    console.log(manufacturers);
+  }
+
+  const fetchFuelTypes = async () => {
+    const fuelTypes = await CarAPI.getAllFuelTypes();
+    setPossibleFuelTypes(fuelTypes);
+    console.log(fuelTypes);
+  }
+
+  const fetchSellers = async () => {
     const companies = await CompanyAPI.getCompaniesUsedInCars();
-    setCompanies(companies);
+    setPossibleSellers(companies);
     console.log(companies);
   }
 
   useEffect(() => {
     try {
       fetchCars();
-      fetchCompanies();
+      fetchManufacturers();
+      fetchFuelTypes();
+      fetchSellers();
       setErrorMessageActive(false);
     } catch (error) {
       console.error("Error fetching car data:", error);
@@ -58,6 +101,7 @@ export default function Portal() {
     }
 
   }, []);
+
   return (
     <div className={"Portal"}>
       <div className={"portalLeftFilters"}>
