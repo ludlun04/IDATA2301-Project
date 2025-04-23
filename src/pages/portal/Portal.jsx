@@ -7,6 +7,7 @@ import ErrorFetchingDataMessage
 import {useEffect, useState} from "react";
 import {CarAPI} from "../../api/CarAPI";
 import {CompanyAPI} from "../../api/CompanyAPI";
+import {CarBrandAPI} from "../../api/CarBrandAPI";
 
 export default function Portal() {
 
@@ -70,7 +71,7 @@ export default function Portal() {
   };
 
   const fetchManufacturers = async () => {
-    const manufacturers = await CarAPI.getAllManufacturers();
+    const manufacturers = await CarBrandAPI.getBrandsUsedInCars();
     setPossibleManufacturers(manufacturers);
     console.log(manufacturers);
   }
@@ -91,7 +92,7 @@ export default function Portal() {
     try {
       fetchCars();
       fetchManufacturers();
-      fetchFuelTypes();
+      //fetchFuelTypes();
       fetchSellers();
       setErrorMessageActive(false);
     } catch (error) {

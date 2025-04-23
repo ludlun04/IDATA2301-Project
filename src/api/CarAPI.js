@@ -32,6 +32,8 @@ export const CarAPI = {
         .withFuelTypes(filters.fuelTypes)
     }
     const url = urlBuilder.build();
+    console.log("Requesting cars from: " + url);
+
     const result = await axios.get(url, {});
     let cars = [];
     result.data.forEach((carObject) => {
