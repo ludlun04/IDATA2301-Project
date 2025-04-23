@@ -11,6 +11,15 @@ const RentInteraction = ({ car }) => {
   const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
+    if (startDate.getTime() > endDate.getTime()) {
+      setStartDate(endDate);
+      setEndDate(startDate);
+
+      return;
+    } else if (startDate.getTime() === endDate.getTime()) {
+      setEndDate(new Date(endDate.getTime() + 86400000)); // 1 day later
+    }
+
     const amountOfDays = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
     const totalPrice = amountOfDays * carPricePerDay;
 

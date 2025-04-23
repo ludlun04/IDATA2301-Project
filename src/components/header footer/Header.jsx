@@ -23,7 +23,7 @@ import {UsersAPI} from "../../api/UsersAPI";
         if (isSignedIn) {
             return "/dashboard";
         } else {
-            return "/login";
+            return "/sign-in";
         }
     }
 
