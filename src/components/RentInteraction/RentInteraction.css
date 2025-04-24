@@ -8,9 +8,25 @@
 }
 
 .RentSelectedDay {
-  background-color: var(--primary-100);
+  background-color: var(--primary-200);
   color: var(--text-200);
 }
+
+.RentSelectedDay:hover {
+  background-color: var(--primary-100) !important;
+  color: var(--text-200);
+}
+
+.react-datepicker__day--in-selecting-range {
+  background-color: var(--primary-100) !important;
+  color: var(--text-200);
+}
+
+.react-datepicker__day--range-start {
+  background-color: var(--primary-100) !important;
+  color: var(--text-200);
+}
+
 
 
 @media screen and (max-width: 1024px) {
