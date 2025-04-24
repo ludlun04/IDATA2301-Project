@@ -30,6 +30,7 @@ export const CarAPI = {
         .withSeats(filters.seats)
         .withManufacturers(filters.manufacturers)
         .withFuelTypes(filters.fuelTypes)
+        .withKeyword(filters.keyword)
     }
     const url = urlBuilder.build();
     console.log("Requesting cars from: " + url);

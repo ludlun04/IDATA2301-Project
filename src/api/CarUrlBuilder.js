@@ -8,6 +8,7 @@ export class CarUrlBuilder {
   FUEL_TYPE_FILTER = "fuel_type";
   SELLER_FILTER = "seller";
   SEATS_FILTER = "seats";
+  KEYWORD_FILTER = "keyword";
 
   constructor() {
     this._url = this.CAR_URL;
@@ -45,6 +46,15 @@ export class CarUrlBuilder {
     }
     this._addQuestionMarkIfNeeded();
     this._url += this.SEATS_FILTER + "=" + seats.join(",") + "&";
+    return this;
+  }
+
+  withKeyword(keyword) {
+    if (keyword.length === 0) {
+      return this;
+    }
+    this._addQuestionMarkIfNeeded();
+    this._url += this.KEYWORD_FILTER + "=" + keyword + "&";
     return this;
   }
 

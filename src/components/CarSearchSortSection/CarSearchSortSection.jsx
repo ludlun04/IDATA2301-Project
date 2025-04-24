@@ -5,11 +5,9 @@ import { useState } from "react";
 import Select from "react-select";
 import SelectMenu from "../SelectMenu/SelectMenu";
 
-const CarSearchSortSection = ({ onChange }) => {
+const CarSearchSortSection = (props) => {
 
-  if (typeof onChange !== "function") {
-    throw new TypeError("onChange must be a function");
-  }
+  const setChosenKeyword = props.setChosenKeyword;
 
   const options = [
     { value: 'price', label: 'Price' },
@@ -25,12 +23,11 @@ const CarSearchSortSection = ({ onChange }) => {
   const handleSearchFieldChange = (input) => {
     const searchWord = input.target.value;
     setSearchItem(searchWord);
-    onChange(searchWord, sortByItem);
+    setChosenKeyword(searchWord);
   }
 
   const handleSortByFieldChange = (input) => {
     setSortByItem(input.value);
-    onChange(searchItem, sortByItem);
   }
 
   return (

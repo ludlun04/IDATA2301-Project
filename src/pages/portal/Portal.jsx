@@ -31,6 +31,7 @@ export default function Portal() {
   const [chosenSellers, setChosenSellers] = useState([]);
   const [chosenSeats, setChosenSeats] = useState([]);
   const [chosenTimes, setChosenTimes] = useState([]);
+  const [chosenKeyword, setChosenKeyword] = useState("");
 
   useEffect(() => {
     const filters = {
@@ -38,10 +39,11 @@ export default function Portal() {
       fuelTypes: chosenFuelTypes,
       sellers: chosenSellers,
       seats: chosenSeats,
-      times: chosenTimes
+      times: chosenTimes,
+      keyword: chosenKeyword
     }
     fetchCars(filters);
-  }, [chosenManufacturers, chosenFuelTypes, chosenSellers, chosenSeats, chosenTimes]);
+  }, [chosenManufacturers, chosenFuelTypes, chosenSellers, chosenSeats, chosenTimes, chosenKeyword]);
 
   const filters = (
     <FiltersSection
@@ -53,7 +55,6 @@ export default function Portal() {
       setChosenSellers={setChosenSellers}
       seats={possibleSeats}
       setChosenSeats={setChosenSeats}
-
     />)
 
   const toggleFiltersDisplayed = () => {
@@ -117,7 +118,7 @@ export default function Portal() {
         {filters}
       </div>
       <div className={"portalVerticalSection"}>
-        <CarSearchSortSection onChange={handleUserChoice}/>
+        <CarSearchSortSection setChosenKeyword={setChosenKeyword}/>
         <div className={`portalVerticalSectionFilters ${centerFiltersDisplayed ? " active" : ""}`}>
           {filters}
         </div>
