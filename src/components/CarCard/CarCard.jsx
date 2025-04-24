@@ -37,7 +37,7 @@ export default function CarCard(props) {
           </div>
           <div className={"CarCardCarInfoContainer"}>
             <p>{car.getYear()}</p>
-            <p>{car.getNumberOfSeats() + " Seter"}</p>
+            <p>{car.getNumberOfSeats() + " Seats"}</p>
           </div>
         </div>
         <div className={"CarCardInnerRightPane"}>
