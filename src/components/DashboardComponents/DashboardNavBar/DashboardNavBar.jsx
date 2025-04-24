@@ -1,24 +1,50 @@
 import "./DashboardNavBar.css"
+import {useEffect, useState} from "react";
+import {UsersAPI} from "../../../api/UsersAPI";
 
 export default function DashboardNavBar({className, pages, setCurrentPage}) {
+    const [roles, setRoles] = useState([]);
+    const [page, setPage] = useState(pages);
 
-  let onClick = (page) => {
-    return () => {
-      setCurrentPage(page);
-    }
-  }
-
-  return (
-    <div className={className}>
-      <div className={"DashboardNavBar"}>
-        {
-          pages.map((page) => (
-            <button key={page} onClick={onClick(page)}>
-              {page}
-            </button>
-          ))
+    let onClick = (page) => {
+        return () => {
+            setCurrentPage(page);
         }
-      </div>
-    </div>
-  )
+    }
+
+    useEffect(() => {
+        const fetchRoles = async () => {
+            const response = await UsersAPI.getCurrentAuthenticatedUserRoles();
+            setRoles(response);
+        }
+        fetchRoles();
+
+    }, [])
+
+    console.log(roles)
+
+    const pagesToShow = [];
+    pagesToShow.push(pages[0]);
+    if (roles.some(role => role.name === 'USER')) {
+        pagesToShow.push("Rentals", "Favorites");
+    }
+    if (roles.some(role => role.name === 'ADMIN')) {
+        pagesToShow.push("Users", "Companies");
+    }
+
+
+
+    return (
+        <div className={className}>
+            <div className={"DashboardNavBar"}>
+                {
+                    pagesToShow.map((page) => (
+                        <button key={page} onClick={onClick(page)}>
+                            {page}
+                        </button>
+                    ))
+                }
+            </div>
+        </div>
+    )
 }

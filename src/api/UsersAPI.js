@@ -67,12 +67,25 @@ export const UsersAPI = {
       const user = getUserFromJsonObject(result.data);
       return user;
     }
+  },
+
+  getCurrentAuthenticatedUserRoles: async () => {
+    if (Authentication.isSignedIn()) {
+      const token = Authentication.getToken();
+      const result = await axios.get(`${Constants.API_URL}/users/roles`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+
+      return result.data;
+    }
   }
 }
 
 function getUserFromJsonObject(userObject) {
   const phoneNumber = new PhoneNumber(userObject.phoneNumber.countryCode, userObject.phoneNumber.number);
-  const dateOfBirth = userObject.dateOfBirth
+  const dateOfBirth = new Date(userObject.dateOfBirth);
   const address = new Address(userObject.address.country, userObject.address.streetAddress, userObject.address.zipCode);
 
   return new User(

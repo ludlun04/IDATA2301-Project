@@ -1,6 +1,6 @@
 import { createPortal } from "react-dom"
 import EditUserDialogue from "./EditUserDialogue";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import "./UserRow.css"
 
 export default function UserRow({ user }) {

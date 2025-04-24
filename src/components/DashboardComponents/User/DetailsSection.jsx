@@ -23,7 +23,7 @@ export default function DetailsSection(props) {
                 setEmail(user.getEmail());
                 setPhoneNumber(user.getPhoneNumber().getNumber());
                 setAddress(user.getAddress().getStreetAddress());
-                setBirthdate(user.getDateOfBirth());
+                setBirthdate(user.getDateOfBirth().toDateString());
             })
         }
     }, []);

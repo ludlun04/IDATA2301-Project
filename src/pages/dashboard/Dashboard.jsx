@@ -14,13 +14,13 @@ export default function Dashboard() {
   const [currentPage, setCurrentPage] = useState("Details");
 
   const pagesWithLinks = [
-    ["User Rentals", <UserRentals/>],
-    ["User Favorites", <UserFavorites/>],
-    ["Users", <UsersSection/>],
-    ["Companies", <CompaniesSection/>],
     ["Details", <DetailsSection/>],
+    ["Rentals", <UserRentals/>],
+    ["Favorites", <UserFavorites/>],
     ["Company Cars History", <CompanyCarsHistory/>],
-    ["Company Cars", <CompanyCars/>]
+    ["Company Cars", <CompanyCars/>],
+    ["Users", <UsersSection/>],
+    ["Companies", <CompaniesSection/>]
   ];
 
   const pages = pagesWithLinks.map((page) => page[0]);
