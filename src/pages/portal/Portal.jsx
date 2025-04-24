@@ -68,25 +68,31 @@ export default function Portal() {
     const cars = await CarAPI.getAllCars(filters);
     setCars(cars);
     setLoading(false);
-    console.log(cars);
+    console.log("Fetched cars: " + cars);
   };
 
   const fetchManufacturers = async () => {
     const manufacturers = await CarBrandAPI.getBrandsUsedInCars();
     setPossibleManufacturers(manufacturers);
-    console.log(manufacturers);
+    console.log("Fetched manufacturers: " + manufacturers);
   }
 
   const fetchFuelTypes = async () => {
     const fuelTypes = await FuelTypeAPI.getFuelTypesUsedInCars();
     setPossibleFuelTypes(fuelTypes);
-    console.log(fuelTypes);
+    console.log("Fetched fuel types: " + fuelTypes);
   }
 
   const fetchSellers = async () => {
     const companies = await CompanyAPI.getCompaniesUsedInCars();
     setPossibleSellers(companies);
-    console.log(companies);
+    console.log("Fetched sellers: " + companies);
+  }
+
+  const fetchSeats = async () => {
+    const seats = await CarAPI.getAllAmountOfSeatsInCars();
+    setPossibleSeats(seats);
+    console.log("Fetched seats: " + seats);
   }
 
   useEffect(() => {
@@ -95,6 +101,7 @@ export default function Portal() {
       fetchManufacturers();
       fetchFuelTypes();
       fetchSellers();
+      fetchSeats();
       setErrorMessageActive(false);
     } catch (error) {
       console.error("Error fetching car data:", error);

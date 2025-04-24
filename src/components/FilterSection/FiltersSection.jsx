@@ -16,12 +16,6 @@ const FiltersSection = (props) => {
   const availableSellers = props.sellers;
   const availableSeats = props.seats;
 
-
-  const chosenManufacturers = [];
-  const chosenFuelTypes = [];
-  const chosenSellers = [];
-
-
   const alterChosenSellers = (event) => {
     const seller = event.target.value;
     if (event.target.checked) {
@@ -101,8 +95,9 @@ const FiltersSection = (props) => {
           </DropdownMenu>
           <DropdownMenu alwaysShownContent={getHeader("Seats")}>
             <ul>
-              <li className="filtersSectionFilterLine" ><p>First filter</p> <input type="checkbox"></input></li>
-              <li className="filtersSectionFilterLine" ><p>This is a filter that is very very very long</p> <input type="checkbox"></input></li>
+              {availableSeats.map((seat, index) => (
+                <li key={index} className="filtersSectionFilterLine" ><p>{seat}</p> <input value={seat} type="checkbox" onChange={alterChosenSeats}></input></li>
+              ))}
             </ul>
           </DropdownMenu>
         </section>

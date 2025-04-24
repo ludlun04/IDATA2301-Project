@@ -37,11 +37,21 @@ export const CarAPI = {
     const result = await axios.get(url, {});
     let cars = [];
     result.data.forEach((carObject) => {
-      cars.push(CarAPI.getCarFromJsonObject(carObject))
+      cars.push(CarAPI.getCarFromJsonObject(carObject));
     })
 
     console.log(cars);
     return cars;
+  },
+
+  getAllAmountOfSeatsInCars: async () => {
+    const result = await axios.get(`${_getBaseUrl()}/seats`, {});
+    console.log(result);
+    let seats = [];
+    result.data.forEach((seat) => {
+      seats.push(seat);
+    })
+    return seats;
   },
 
   getCarFromJsonObject(carObject) {
