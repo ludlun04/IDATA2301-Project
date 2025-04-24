@@ -63,7 +63,16 @@ const CarSearchSortSection = (props) => {
   const handleSearchFieldChange = (input) => {
     const searchWord = input.target.value;
     setSearchItem(searchWord);
-    setChosenKeyword(searchWord);
+  }
+
+  const handleSearchFieldKeyDown = (input) => {
+    if (input.key === "Enter") {
+      setChosenKeyword(searchItem);
+    }
+  }
+
+  const handleSearchButtonClick = () => {
+    setChosenKeyword(searchItem);
   }
 
   const handleSortByFieldChange = (input) => {
@@ -106,9 +115,10 @@ const CarSearchSortSection = (props) => {
           type="text"
           value={searchItem}
           onChange={handleSearchFieldChange}
+          onKeyDown={handleSearchFieldKeyDown}
           placeholder='Type to search'
         />
-        <button className={"FormSubmitButton"} id={"carSearchContainerButton"}>
+        <button className={"FormSubmitButton"} id={"carSearchContainerButton"} onClick={handleSearchButtonClick}>
           <SearchIcon className="SvgIcon" />
         </button>
       </div>
