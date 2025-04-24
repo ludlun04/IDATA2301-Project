@@ -1,5 +1,8 @@
 import "./Footer.css"
 import {NavLink} from "react-router-dom";
+import facebook from "./../../resources/icons/facebook.svg";
+import instagram from "./../../resources/icons/instagram-yellow.svg";
+import linkedin from "./../../resources/icons/linkedin.svg";
 
 export default function Footer() {
 
@@ -21,9 +24,15 @@ export default function Footer() {
                     </div>
                 </div>
                 <div className={"footerTopRightPane"}>
-                    <p className={"footerIcon"}>Icon</p>
-                    <p className={"footerIcon"}>Icon</p>
-                    <p className={"footerIcon"}>Icon</p>
+                    <a href={"https://www.instagram.com/ntnu/"} target={"_blank"} rel="noreferrer">
+                        <img className={"footerIcon"} src={instagram} alt="Icon"/>
+                    </a>
+                    <a href={"https://www.linkedin.com/school/ntnuaalesund/ "} target={"_blank"} rel="noreferrer">
+                        <img className={"footerIcon"} src={linkedin} alt="Icon"/>
+                    </a>
+                    <a href={"https://www.facebook.com/ntnu.no"} target={"_blank"} rel="noreferrer">
+                        <img className={"footerIcon"} src={facebook} alt="Icon"/>
+                    </a>
                 </div>
             </div>
             <div className={"footerBottom"}>
