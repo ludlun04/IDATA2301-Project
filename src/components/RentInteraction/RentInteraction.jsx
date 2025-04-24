@@ -11,23 +11,30 @@ const RentInteraction = ({ car }) => {
   const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
-    if (startDate.getTime() > endDate.getTime()) {
-      setStartDate(endDate);
-      setEndDate(startDate);
-
+    if (!startDate || !endDate) {
+      setTotalPrice(0);
       return;
-    } else if (startDate.getTime() === endDate.getTime()) {
-      setEndDate(new Date(endDate.getTime() + 86400000)); // 1 day later
     }
 
     const amountOfDays = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
     const totalPrice = amountOfDays * carPricePerDay;
 
-    setCarPricePerDay(car.getPricePerDay());
     setTotalPrice(totalPrice);
   }, [startDate, endDate]);
 
-  
+  const onChange = (dates) => {
+    const [start, end] = dates;
+
+    setStartDate(start);
+    setEndDate(end);
+  };
+
+  const handleDayClassName = (date) => {
+    const timeNumber = date.getTime();
+    const isInRange = startDate && endDate && timeNumber >= startDate.getTime() && timeNumber <= endDate.getTime();
+
+    return isInRange ? "RentSelectedDay" : undefined;
+  }
 
   // datepicker configuration
   const dateFormat = "dd.MM.yyyy"; // displayed date format in datepicker
@@ -36,12 +43,33 @@ const RentInteraction = ({ car }) => {
 
   return (
     <section className={"RentInteraction"}>
-      <CompanyCard car={car}/>
+      <CompanyCard car={car} />
 
       <div className={"RentDuration"}>
         <div className={"RentDurationSelection"}>
-          <DatePicker /*monthsShown={3}*/ className={"filtersSectionDatePicker"} selected={startDate} onChange={(date) => setStartDate(date)} dateFormat={dateFormat} portalId={portalId} calendarStartDay={calendarStartDay} />
-          <DatePicker className={"filtersSectionDatePicker"} selected={endDate} onChange={(date) => setEndDate(date)} dateFormat={dateFormat} portalId={portalId} calendarStartDay={calendarStartDay} />
+          <DatePicker /*monthsShown={3}*/
+            className={"filtersSectionDatePicker"}
+            minDate={new Date()}
+            startDate={startDate}
+            endDate={endDate}
+            onChange={onChange}
+            dateFormat={dateFormat}
+            portalId={portalId}
+            calendarStartDay={calendarStartDay}
+            dayClassName={handleDayClassName}
+            selectsRange
+            inline
+          />
+
+          {/* <DatePicker
+            className={"filtersSectionDatePicker"}
+            selected={endDate}
+            minDate={startDate}
+            onChange={(date) => setEndDate(date)}
+            dateFormat={dateFormat}
+            portalId={portalId}
+            calendarStartDay={calendarStartDay}
+          /> */}
         </div>
       </div>
 

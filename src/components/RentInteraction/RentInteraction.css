@@ -7,6 +7,12 @@
   gap: 1rem;
 }
 
+.RentSelectedDay {
+  background-color: var(--primary-100);
+  color: var(--text-200);
+}
+
+
 @media screen and (max-width: 1024px) {
   .RentInteraction {
     width: 100%;
