@@ -10,11 +10,54 @@ import "./FiltersSection.css";
 
 const FiltersSection = (props) => {
 
-  const manufacturers = props.manufacturers;
-  const fuelTypes = props.fuelTypes;
-  const sellers = props.sellers;
-  const seats = props.seats;
-  
+
+  const availableManufacturers = props.manufacturers;
+  const availableFuelTypes = props.fuelTypes;
+  const availableSellers = props.sellers;
+  const availableSeats = props.seats;
+
+
+  const chosenManufacturers = [];
+  const chosenFuelTypes = [];
+  const chosenSellers = [];
+
+
+  const alterChosenSellers = (event) => {
+    const seller = event.target.value;
+    if (event.target.checked) {
+      props.setChosenSellers((prev) => [...prev, seller]);
+    } else {
+      props.setChosenSellers(chosenSellers => chosenSellers.filter((s) => s !== seller));
+    }
+  }
+
+  const alterChosenManufacturers = (event) => {
+    const manufacturer = event.target.value;
+    if (event.target.checked) {
+      props.setChosenManufacturers((prev) => [...prev, manufacturer]);
+    } else {
+      props.setChosenManufacturers(chosenManufacturers => chosenManufacturers.filter((m) => m !== manufacturer));
+    }
+  }
+
+  const alterChosenFuelTypes = (event) => {
+    const fuelType = event.target.value;
+    if (event.target.checked) {
+      props.setChosenFuelTypes((prev) => [...prev, fuelType]);
+    } else {
+      props.setChosenFuelTypes(chosenFuelTypes => chosenFuelTypes.filter((f) => f !== fuelType));
+    }
+  }
+
+  const alterChosenSeats = (event) => {
+    const seats = event.target.value;
+    if (event.target.checked) {
+      props.setChosenSeats((prev) => [...prev, seats]);
+    } else {
+      props.setChosenSeats(chosenSeats => chosenSeats.filter((s) => s !== seats));
+    }
+  }
+
 
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
@@ -37,20 +80,23 @@ const FiltersSection = (props) => {
           <h1>The car</h1>
           <DropdownMenu alwaysShownContent={getHeader("Manufacturer")}>
             <ul>
-              <li className="filtersSectionFilterLine" ><p>First filter</p> <input type="checkbox"></input></li>
-              <li className="filtersSectionFilterLine" ><p>This is a filter that is very very very long</p> <input type="checkbox"></input></li>
+              {availableManufacturers.map((manufacturer, index) => (
+                <li key={index} className="filtersSectionFilterLine" ><p>{manufacturer.getName()}</p> <input value={manufacturer.getName()} type="checkbox" onChange={alterChosenManufacturers}></input></li>
+              ))}
             </ul>
           </DropdownMenu>
           <DropdownMenu alwaysShownContent={getHeader("Fuel type")}>
             <ul>
-              <li className="filtersSectionFilterLine" ><p>First filter</p> <input type="checkbox"></input></li>
-              <li className="filtersSectionFilterLine" ><p>This is a filter that is very very very long</p> <input type="checkbox"></input></li>
+              {availableFuelTypes.map((fuelType, index) => (
+                <li key={index} className="filtersSectionFilterLine" ><p>{fuelType.getName()}</p> <input value={fuelType.getName()} type="checkbox" onChange={alterChosenFuelTypes}></input></li>
+              ))}
             </ul>
           </DropdownMenu>
           <DropdownMenu alwaysShownContent={getHeader("Seller")}>
             <ul>
-              <li className="filtersSectionFilterLine" ><p>First filter</p> <input type="checkbox"></input></li>
-              <li className="filtersSectionFilterLine" ><p>This is a filter that is very very very long</p> <input type="checkbox"></input></li>
+              {availableSellers.map((seller, index) => (
+                <li key={index} className="filtersSectionFilterLine" ><p>{seller.getName()}</p> <input value={seller.getName()} type="checkbox" onChange={alterChosenSellers}></input></li>
+              ))}
             </ul>
           </DropdownMenu>
           <DropdownMenu alwaysShownContent={getHeader("Seats")}>

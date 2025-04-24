@@ -1,24 +1,24 @@
 export class Company {
-  constructor(id, name, address, email) {
-    this.id = id
-    this.name = name
-    this.address = address
-    this.email = email
+  constructor(id, name, address, phoneNumber) {
+    this.id = id;
+    this.name = name;
+    this.address = address;
+    this.phoneNumber = phoneNumber;
   }
 
   getId() {
-    return this.id
+    return this.id;
   }
 
   getName() {
-    return this.name
+    return this.name;
   }
 
   getAddress() {
-    return this.address
+    return this.address;
   }
 
-  getEmail() {
-    return this.email
+  getPhoneNumber() {
+    return this.phoneNumber;
   }
 }
