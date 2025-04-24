@@ -89,11 +89,11 @@ export default function SignUp() {
                 </div>
                 <div className={"form-group"}>
                     <label htmlFor="password">Password*</label>
-                    <input name="password" id="password" />
+                    <input type="password" name="password" id="password" />
                 </div>
                 <div className={"form-group"}>
                     <label htmlFor="password">Repeat Password*</label>
-                    <input name="passwordRepeat" id="passwordRepeat" />
+                    <input type="password" name="passwordRepeat" id="passwordRepeat" />
                 </div>
                 <input className={"FormSubmitButton"} type="submit" value="Sign Up" />
                 <p>Already have an account?

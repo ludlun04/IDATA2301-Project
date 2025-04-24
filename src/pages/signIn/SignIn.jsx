@@ -21,23 +21,26 @@ export default function SignIn() {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
-    console.log("Email:", email);
-    console.log("Password:", password);
-
     setLoading(true);
 
     Authentication.login(email, password)
       .then(token => {
         navigate("/");
         console.log("Login successful, token:", token);
-      })
-      .catch(error => {
-        setError("Login failed. Please check your credentials.");
-        console.error("Login failed:", error);
-      }).finally(() => {
         setLoading(false);
         signIn();
-      });
+      })
+      .catch(error => {
+        if (error.code === "ERR_NETWORK") {
+          setError("Network error. Unable to reach server.");
+        } else if (error.response && error.response.status === 401) {
+          setError("Invalid email or password.");
+        } else {
+          setError("An unexpected error occurred. Please try again.");
+        }
+
+        setLoading(false);
+      })
   }
 
   return (
