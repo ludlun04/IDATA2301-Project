@@ -118,7 +118,7 @@ export default function Portal() {
         {filters}
       </div>
       <div className={"portalVerticalSection"}>
-        <CarSearchSortSection setChosenKeyword={setChosenKeyword}/>
+        <CarSearchSortSection setChosenKeyword={setChosenKeyword} cars={cars} setCars={setCars}/>
         <div className={`portalVerticalSectionFilters ${centerFiltersDisplayed ? " active" : ""}`}>
           {filters}
         </div>
