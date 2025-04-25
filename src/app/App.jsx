@@ -19,6 +19,7 @@ import SignUp from "../pages/signUp/SignUp";
 import EmptyDevPage from "../pages/emptyDevPage/emptyDevPage";
 import Dashboard from "../pages/dashboard/Dashboard";
 import { AuthProvider } from "../authcontext/AuthContext"
+import Order from '../pages/order/Order';
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path={"/"} element={<Root/>}>
@@ -32,6 +33,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route path={"sign-up"} element={<SignUp/>}/>
     <Route path={"dashboard"} element={<Dashboard/>}/>
     <Route path={"dev"} element={<EmptyDevPage/>}/>
+    <Route path={"order/:id"} element={<Order/>}/>
   </Route>
 ))
 
