@@ -58,6 +58,31 @@ export class CarUrlBuilder {
     return this;
   }
 
+  withBetweenTimes(fromTime, toTime) {
+    if (fromTime && toTime) {
+      const fromTimeString = this._getDateString(fromTime);
+      const toTimeString = this._getDateString(toTime);
+      this._addQuestionMarkIfNeeded();
+      this._url += "between_times=" + fromTimeString + "," + toTimeString + "&";
+      return this;
+    }
+  }
+
+  withFromTime(fromTime) {
+    if (fromTime) {
+      const fromTimeString = this._getDateString(fromTime);
+      this._addQuestionMarkIfNeeded();
+      this._url += "from_time=" + fromTimeString + "&";
+      return this;
+    }
+  }
+
+  _getDateString(date) {
+    return date.getFullYear() + "-" +
+      (date.getMonth() + 1).toString().padStart(2, "0") + "-" + // month + 1 because javascript be like that
+      date.getDate().toString().padStart(2, "0");
+  }
+
   _addQuestionMarkIfNeeded() {
     if (!this._url.includes("?")) {
       this._url += "?";
@@ -67,4 +92,7 @@ export class CarUrlBuilder {
   build() {
     return this._url;
   }
+
+
+
 }

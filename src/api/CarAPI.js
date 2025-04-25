@@ -31,6 +31,13 @@ export const CarAPI = {
         .withManufacturers(filters.manufacturers)
         .withFuelTypes(filters.fuelTypes)
         .withKeyword(filters.keyword)
+      if (filters.from_time) {
+        if (filters.to_time) {
+          urlBuilder = urlBuilder.withBetweenTimes(filters.from_time, filters.to_time);
+        } else {
+          urlBuilder = urlBuilder.withFromTime(filters.from_time);
+        }
+      }
     }
     const url = urlBuilder.build();
     console.log("Requesting cars from: " + url);

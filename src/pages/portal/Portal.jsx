@@ -30,7 +30,8 @@ export default function Portal() {
   const [chosenFuelTypes, setChosenFuelTypes] = useState([]);
   const [chosenSellers, setChosenSellers] = useState([]);
   const [chosenSeats, setChosenSeats] = useState([]);
-  const [chosenTimes, setChosenTimes] = useState([]);
+  const [chosenFromTime, setChosenFromTime] = useState(null);
+  const [chosenToTime, setChosenToTime] = useState(null);
   const [chosenKeyword, setChosenKeyword] = useState("");
 
   useEffect(() => {
@@ -39,11 +40,20 @@ export default function Portal() {
       fuelTypes: chosenFuelTypes,
       sellers: chosenSellers,
       seats: chosenSeats,
-      times: chosenTimes,
+      from_time: chosenFromTime,
+      to_time: chosenToTime,
       keyword: chosenKeyword
     }
     fetchCars(filters);
-  }, [chosenManufacturers, chosenFuelTypes, chosenSellers, chosenSeats, chosenTimes, chosenKeyword]);
+  }, [
+    chosenManufacturers,
+    chosenFuelTypes,
+    chosenSellers,
+    chosenSeats,
+    chosenFromTime,
+    chosenToTime,
+    chosenKeyword
+  ]);
 
   const filters = (
     <FiltersSection
@@ -55,14 +65,12 @@ export default function Portal() {
       setChosenSellers={setChosenSellers}
       seats={possibleSeats}
       setChosenSeats={setChosenSeats}
+      setChosenFromTime={setChosenFromTime}
+      setChosenToTime={setChosenToTime}
     />)
 
   const toggleFiltersDisplayed = () => {
     setCenterFiltersDisplayed(!centerFiltersDisplayed);
-  }
-
-  const handleUserChoice = () => {
-    setCenterFiltersDisplayed(false);
   }
 
   const fetchCars = async (filters) => {

@@ -1,6 +1,6 @@
 import DropdownMenu from "../DropdownMenu/DropdownMenu";
 import FromToSection from "../FromToSection/FromToSection";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -34,9 +34,6 @@ const FiltersSection = (props) => {
     const checked = !availableNowChecked;
     setAvailableNowChecked(checked);
 
-    if (checked) {
-      setStartDate(new Date());
-    }
   }
 
   const handleStartDateChange = (date) => {
@@ -45,6 +42,16 @@ const FiltersSection = (props) => {
       setEndDate(oneDayAfter(date));
     }
   }
+
+  useEffect(() => {
+    if (availableNowChecked) {
+      props.setChosenFromTime(new Date());
+      props.setChosenToTime(null);
+    } else {
+      props.setChosenFromTime(startDate);
+      props.setChosenToTime(endDate);
+    }
+  }, [availableNowChecked, setStartDate, endDate]);
 
   const alterChosenSellers = (event) => {
     const seller = event.target.value;
@@ -153,6 +160,7 @@ const FiltersSection = (props) => {
               onChange={(date) => setEndDate(date)}
               dateFormat={dateFormat} portalId={portalId}
               calendarStartDay={calendarStartDay}
+              disabled={availableNowChecked}
             />
           </section>
 
