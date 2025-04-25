@@ -21,6 +21,7 @@ const FiltersSection = (props) => {
     return new Date(date.getTime() + days * 24 * 60 * 60 * 1000);
   }
 
+  const [availableNowChecked, setAvailableNowChecked] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(oneDayAfter(startDate));
 
@@ -28,6 +29,15 @@ const FiltersSection = (props) => {
   const dateFormat = "dd.MM.yyyy"; // displayed date format in datepicker
   const portalId = "root-portal"; // makes the datepicker window not affect positioning of datepicker field
   const calendarStartDay = 1; // monday as first day of week instead of sunday
+
+  const handleAvailableNowCheckedChange = () => {
+    const checked = !availableNowChecked;
+    setAvailableNowChecked(checked);
+
+    if (checked) {
+      setStartDate(new Date());
+    }
+  }
 
   const handleStartDateChange = (date) => {
     setStartDate(date)
@@ -120,7 +130,7 @@ const FiltersSection = (props) => {
         <section>
           <h1>The Time</h1>
           <li className="filtersSectionFilterLine"><p>Available now</p> <input
-            type="checkbox"></input></li>
+            type="checkbox" checked={availableNowChecked} onChange={handleAvailableNowCheckedChange}></input></li>
           <section className={"filtersSectionDateLine"}>
             <p>From</p>
             <DatePicker
@@ -131,6 +141,7 @@ const FiltersSection = (props) => {
               dateFormat={dateFormat}
               portalId={portalId}
               calendarStartDay={calendarStartDay}
+              disabled={availableNowChecked}
             />
           </section>
           <section className={"filtersSectionDateLine"}>
