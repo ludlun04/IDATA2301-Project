@@ -1,0 +1,26 @@
+import axios from "axios";
+import Constants from "../Constants";
+import { Authentication } from "./Authentication";
+import { Order } from "../model/Order";
+
+export const OrderAPI = {
+  getOrderById: async (orderId) => {
+    return await axios(`${Constants.API_URL}/order/${orderId}`, {
+      method: "GET",
+      headers: {
+        "Authorization": `Bearer ${Authentication.getToken()}`,
+      },
+    }).then(async (response) => {
+      const data = response.data;
+
+      return new Order(
+        data.orderId,
+        data.carId,
+        data.userId,
+        new Date(data.startDate),
+        new Date(data.endDate),
+        data.price,
+      )
+    });
+  },
+}
