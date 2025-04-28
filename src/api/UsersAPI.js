@@ -80,6 +80,7 @@ export const UsersAPI = {
 
       return result.data;
     }
+
   }
 }
 
