@@ -1,8 +1,8 @@
 import DropdownMenu from "../DropdownMenu/DropdownMenu";
 import FromToSection from "../FromToSection/FromToSection";
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useContext} from "react";
 import DatePicker from "react-datepicker";
-
+import {FiltersContext} from "../../context/FiltersContext";
 import "react-datepicker/dist/react-datepicker.css";
 import "./FiltersSection.css";
 // CSS Modules, react-datepicker-cssmodules.css
@@ -10,11 +10,12 @@ import "./FiltersSection.css";
 
 const FiltersSection = (props) => {
 
+  const context = useContext(FiltersContext);
 
-  const availableManufacturers = props.manufacturers;
-  const availableFuelTypes = props.fuelTypes;
-  const availableSellers = props.sellers;
-  const availableSeats = props.seats;
+  const availableManufacturers = context.possibleManufacturers;
+  const availableFuelTypes = context.possibleFuelTypes;
+  const availableSellers = context.possibleSellers;
+  const availableSeats = context.possibleSeats;
 
   const oneDayAfter = (date) => {
     const days = 1;
@@ -45,47 +46,47 @@ const FiltersSection = (props) => {
 
   useEffect(() => {
     if (availableNowChecked) {
-      props.setChosenFromTime(new Date());
-      props.setChosenToTime(null);
+      context.setChosenFromTime(new Date());
+      context.setChosenToTime(null);
     } else {
-      props.setChosenFromTime(startDate);
-      props.setChosenToTime(endDate);
+      context.setChosenFromTime(startDate);
+      context.setChosenToTime(endDate);
     }
   }, [availableNowChecked, setStartDate, endDate]);
 
   const alterChosenSellers = (event) => {
     const seller = event.target.value;
     if (event.target.checked) {
-      props.setChosenSellers((prev) => [...prev, seller]);
+      context.setChosenSellers((prev) => [...prev, seller]);
     } else {
-      props.setChosenSellers(chosenSellers => chosenSellers.filter((s) => s !== seller));
+      context.setChosenSellers(chosenSellers => chosenSellers.filter((s) => s !== seller));
     }
   }
 
   const alterChosenManufacturers = (event) => {
     const manufacturer = event.target.value;
     if (event.target.checked) {
-      props.setChosenManufacturers((prev) => [...prev, manufacturer]);
+      context.setChosenManufacturers((prev) => [...prev, manufacturer]);
     } else {
-      props.setChosenManufacturers(chosenManufacturers => chosenManufacturers.filter((m) => m !== manufacturer));
+      context.setChosenManufacturers(chosenManufacturers => chosenManufacturers.filter((m) => m !== manufacturer));
     }
   }
 
   const alterChosenFuelTypes = (event) => {
     const fuelType = event.target.value;
     if (event.target.checked) {
-      props.setChosenFuelTypes((prev) => [...prev, fuelType]);
+      context.setChosenFuelTypes((prev) => [...prev, fuelType]);
     } else {
-      props.setChosenFuelTypes(chosenFuelTypes => chosenFuelTypes.filter((f) => f !== fuelType));
+      context.setChosenFuelTypes(chosenFuelTypes => chosenFuelTypes.filter((f) => f !== fuelType));
     }
   }
 
   const alterChosenSeats = (event) => {
     const seats = event.target.value;
     if (event.target.checked) {
-      props.setChosenSeats((prev) => [...prev, seats]);
+      context.setChosenSeats((prev) => [...prev, seats]);
     } else {
-      props.setChosenSeats(chosenSeats => chosenSeats.filter((s) => s !== seats));
+      context.setChosenSeats(chosenSeats => chosenSeats.filter((s) => s !== seats));
     }
   }
 
@@ -167,13 +168,21 @@ const FiltersSection = (props) => {
         </section>
         <section>
           <h1>The Price</h1>
-          <FromToSection className={"filtersSectionFromToSection"}/>
+          <FromToSection
+            className={"filtersSectionFromToSection"}
+            setFromValue={context.setChosenFromPrice}
+            setToValue={context.setChosenToPrice}
+          />
 
         </section>
 
-        <button className={"FormSubmitButton"} id={"filtersSectionFormSubmitButton"}
+        {/*
+          //TODO: implement if needed
+         <button className={"FormSubmitButton"} id={"filtersSectionFormSubmitButton"}
                 onClick={props.onSave}>Save
         </button>
+        */
+}
       </div>
     </div>
   )

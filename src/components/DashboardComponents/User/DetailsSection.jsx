@@ -1,7 +1,7 @@
 import "./DetailsSection.css"
 import {useNavigate} from "react-router-dom";
 import {Authentication} from "../../../api/Authentication";
-import {useAuth} from "../../../authcontext/AuthContext";
+import {useAuth} from "../../../context/AuthContext";
 import {useEffect, useState} from "react";
 import {UsersAPI} from "../../../api/UsersAPI";
 export default function DetailsSection(props) {

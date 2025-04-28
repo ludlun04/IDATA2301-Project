@@ -18,7 +18,7 @@ import SignIn from "../pages/signIn/SignIn";
 import SignUp from "../pages/signUp/SignUp";
 import EmptyDevPage from "../pages/emptyDevPage/emptyDevPage";
 import Dashboard from "../pages/dashboard/Dashboard";
-import { AuthProvider } from "../authcontext/AuthContext"
+import { AuthProvider } from "../context/AuthContext"
 import Order from '../pages/order/Order';
 
 const router = createBrowserRouter(createRoutesFromElements(
