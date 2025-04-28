@@ -30,6 +30,8 @@ export const CarAPI = {
         .withSeats(filters.seats)
         .withManufacturers(filters.manufacturers)
         .withFuelTypes(filters.fuelTypes)
+        .withFromPrice(filters.from_price)
+        .withToPrice(filters.to_price)
         .withKeyword(filters.keyword)
       if (filters.from_time) {
         if (filters.to_time) {

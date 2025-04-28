@@ -2,7 +2,7 @@ import "./Header.css"
 import {NavLink} from "react-router-dom";
 import {useState} from "react";
 import {ReactComponent as Logo} from "../../resources/logo/Logo-Dark-Horizontal.svg";
-import {useAuth} from "../../authcontext/AuthContext";
+import {useAuth} from "../../context/AuthContext";
 import Profile from "./Profile";
 
  export default function Header() {

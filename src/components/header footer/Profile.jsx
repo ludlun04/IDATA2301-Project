@@ -1,4 +1,4 @@
-import {useAuth} from "../../authcontext/AuthContext";
+import {useAuth} from "../../context/AuthContext";
 import {useEffect, useState} from "react";
 import {UsersAPI} from "../../api/UsersAPI";
 import "./Profile.css"

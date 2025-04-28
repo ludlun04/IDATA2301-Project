@@ -9,6 +9,7 @@ import {CarAPI} from "../../api/CarAPI";
 import {CompanyAPI} from "../../api/CompanyAPI";
 import {CarBrandAPI} from "../../api/CarBrandAPI";
 import {FuelTypeAPI} from "../../api/FuelTypeAPI";
+import {FiltersContext} from "../../context/FiltersContext";
 
 export default function Portal() {
 
@@ -16,15 +17,13 @@ export default function Portal() {
 
   const [cars, setCars] = useState([]);
 
+  const [loading, setLoading] = useState(true);
+  const [errorMessageActive, setErrorMessageActive] = useState(false);
+
   const [possibleManufacturers, setPossibleManufacturers] = useState([]);
   const [possibleFuelTypes, setPossibleFuelTypes] = useState([]);
   const [possibleSellers, setPossibleSellers] = useState([]);
   const [possibleSeats, setPossibleSeats] = useState([]);
-
-
-
-  const [loading, setLoading] = useState(true);
-  const [errorMessageActive, setErrorMessageActive] = useState(false);
 
   const [chosenManufacturers, setChosenManufacturers] = useState([]);
   const [chosenFuelTypes, setChosenFuelTypes] = useState([]);
@@ -32,6 +31,8 @@ export default function Portal() {
   const [chosenSeats, setChosenSeats] = useState([]);
   const [chosenFromTime, setChosenFromTime] = useState(null);
   const [chosenToTime, setChosenToTime] = useState(null);
+  const [chosenFromPrice, setChosenFromPrice] = useState(null);
+  const [chosenToPrice, setChosenToPrice] = useState(null);
   const [chosenKeyword, setChosenKeyword] = useState("");
 
   useEffect(() => {
@@ -42,6 +43,8 @@ export default function Portal() {
       seats: chosenSeats,
       from_time: chosenFromTime,
       to_time: chosenToTime,
+      from_price: chosenFromPrice,
+      to_price: chosenToPrice,
       keyword: chosenKeyword
     }
     fetchCars(filters);
@@ -52,22 +55,35 @@ export default function Portal() {
     chosenSeats,
     chosenFromTime,
     chosenToTime,
+    chosenFromPrice,
+    chosenToPrice,
     chosenKeyword
   ]);
 
   const filters = (
-    <FiltersSection
-      manufacturers={possibleManufacturers}
-      setChosenManufacturers={setChosenManufacturers}
-      fuelTypes={possibleFuelTypes}
-      setChosenFuelTypes={setChosenFuelTypes}
-      sellers={possibleSellers}
-      setChosenSellers={setChosenSellers}
-      seats={possibleSeats}
-      setChosenSeats={setChosenSeats}
-      setChosenFromTime={setChosenFromTime}
-      setChosenToTime={setChosenToTime}
-    />)
+    <FiltersContext.Provider value={{
+      possibleManufacturers,
+      possibleFuelTypes,
+      possibleSellers,
+      possibleSeats,
+      chosenManufacturers,
+      setChosenManufacturers,
+      chosenFuelTypes,
+      setChosenFuelTypes,
+      chosenSellers,
+      setChosenSellers,
+      chosenSeats,
+      setChosenSeats,
+      chosenFromTime,
+      setChosenFromTime,
+      chosenToTime,
+      setChosenToTime,
+      setChosenFromPrice,
+      setChosenToPrice
+    }}>
+      <FiltersSection/>
+    </FiltersContext.Provider>
+    )
 
   const toggleFiltersDisplayed = () => {
     setCenterFiltersDisplayed(!centerFiltersDisplayed);
@@ -121,32 +137,32 @@ export default function Portal() {
   }, []);
 
   return (
-    <div className={"Portal"}>
-      <div className={"portalLeftFilters"}>
-        {filters}
-      </div>
-      <div className={"portalVerticalSection"}>
-        <CarSearchSortSection setChosenKeyword={setChosenKeyword} cars={cars} setCars={setCars}/>
-        <div className={`portalVerticalSectionFilters ${centerFiltersDisplayed ? " active" : ""}`}>
+      <div className={"Portal"}>
+        <div className={"portalLeftFilters"}>
           {filters}
         </div>
-
-
-        <button className={`portalVerticalSectionButton ${centerFiltersDisplayed ? "" : " active"}`}
-                onClick={toggleFiltersDisplayed}>Filters
-        </button>
-        {errorMessageActive ?
-          <ErrorFetchingDataMessage/>
-          :
-          <div className={`portalCarCards ${centerFiltersDisplayed ? "" : " active"}`}>
-            {loading ? <p>Loading...</p> : cars.map((car) => (
-              <CarCard key={car.getId()} car={car}/>
-            ))}
+        <div className={"portalVerticalSection"}>
+          <CarSearchSortSection setChosenKeyword={setChosenKeyword} cars={cars} setCars={setCars}/>
+          <div className={`portalVerticalSectionFilters ${centerFiltersDisplayed ? " active" : ""}`}>
+            {filters}
           </div>
-        }
+
+
+          <button className={`portalVerticalSectionButton ${centerFiltersDisplayed ? "" : " active"}`}
+                  onClick={toggleFiltersDisplayed}>Filters
+          </button>
+          {errorMessageActive ?
+            <ErrorFetchingDataMessage/>
+            :
+            <div className={`portalCarCards ${centerFiltersDisplayed ? "" : " active"}`}>
+              {loading ? <p>Loading...</p> : cars.map((car) => (
+                <CarCard key={car.getId()} car={car}/>
+              ))}
+            </div>
+          }
+
+        </div>
 
       </div>
-
-    </div>
   )
 }

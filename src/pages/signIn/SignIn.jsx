@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Authentication } from "../../api/Authentication";
 import "./SignIn.css"
 import { NavLink, useNavigate } from "react-router-dom";
-import {useAuth} from "../../authcontext/AuthContext";
+import {useAuth} from "../../context/AuthContext";
 
 export default function SignIn() {
   const [error, setError] = useState("");

@@ -9,6 +9,10 @@ export class CarUrlBuilder {
   SELLER_FILTER = "seller";
   SEATS_FILTER = "seats";
   KEYWORD_FILTER = "keyword";
+  BETWEEN_TIMES_FILTER = "between_times";
+  FROM_TIME_FILTER = "from_time";
+  FROM_PRICE_FILTER = "from_price";
+  TO_PRICE_FILTER = "to_price";
 
   constructor() {
     this._url = this.CAR_URL;
@@ -63,18 +67,34 @@ export class CarUrlBuilder {
       const fromTimeString = this._getDateString(fromTime);
       const toTimeString = this._getDateString(toTime);
       this._addQuestionMarkIfNeeded();
-      this._url += "between_times=" + fromTimeString + "," + toTimeString + "&";
-      return this;
+      this._url += this.BETWEEN_TIMES_FILTER + "=" + fromTimeString + "," + toTimeString + "&";
     }
+    return this;
   }
 
   withFromTime(fromTime) {
     if (fromTime) {
       const fromTimeString = this._getDateString(fromTime);
       this._addQuestionMarkIfNeeded();
-      this._url += "from_time=" + fromTimeString + "&";
-      return this;
+      this._url += this.FROM_TIME_FILTER + "=" + fromTimeString + "&";
     }
+    return this;
+  }
+
+  withFromPrice(price) {
+    if (price) {
+      this._addQuestionMarkIfNeeded();
+      this._url += this.FROM_PRICE_FILTER + "=" + price + "&";
+    }
+    return this;
+  }
+
+  withToPrice(price) {
+    if (price) {
+      this._addQuestionMarkIfNeeded();
+      this._url += this.TO_PRICE_FILTER + "=" + price + "&";
+    }
+    return this;
   }
 
   _getDateString(date) {
