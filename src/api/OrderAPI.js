@@ -23,4 +23,19 @@ export const OrderAPI = {
       )
     });
   },
+
+  requestRent: async (carId, startDate, endDate) => {
+    return await axios(`${Constants.API_URL}/order/`, {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${Authentication.getToken()}`,
+        "Content-Type": "application/json",
+      },
+      data: JSON.stringify({
+        carId: carId,
+        startDate: startDate,
+        endDate: endDate,
+      }),
+    });
+  }
 }

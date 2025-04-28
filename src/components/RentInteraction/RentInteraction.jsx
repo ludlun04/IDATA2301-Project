@@ -2,12 +2,16 @@ import "./RentInteraction.css";
 import DatePicker from "react-datepicker";
 import { useEffect, useState } from "react";
 import CompanyCard from "../CompanyCard/CompanyCard";
+import { useNavigate } from "react-router-dom";
+import { OrderAPI } from "../../api/OrderAPI";
 
 const RentInteraction = ({ car }) => {
+  const navigate = useNavigate();
+
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date(new Date().getTime() + 86400000)); // 1 day later
 
-  const [carPricePerDay, setCarPricePerDay] = useState(car.getPricePerDay());
+  const [carPricePerDay, setCarPricePerDay ] = useState(car.getPricePerDay());
   const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
@@ -34,6 +38,21 @@ const RentInteraction = ({ car }) => {
     const isInRange = startDate && endDate && timeNumber >= startDate.getTime() && timeNumber <= endDate.getTime();
 
     return isInRange ? "RentSelectedDay" : undefined;
+  }
+
+  const onRentPressed = () => {
+    OrderAPI.requestRent(car.getId(), startDate, endDate)
+      .then((response) => {
+        console.log("Rent response:", response);
+        if (response.status === 201) {
+          navigate("/order/" + response.data);
+        } else {
+          console.error("Error renting car:", response.statusText);
+        }
+      })
+      .catch((error) => {
+        console.error("Error renting car:", error);
+      });
   }
 
   // datepicker configuration
@@ -83,7 +102,7 @@ const RentInteraction = ({ car }) => {
         <p className={"RentContent"}>{totalPrice} kr</p>
       </div>
 
-      <button className={"RentButton"} type="button">Rent</button>
+      <button className={"RentButton"} type="button" onClick={onRentPressed}>Rent</button>
     </section>
   )
 }

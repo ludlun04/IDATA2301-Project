@@ -33,8 +33,8 @@ const Order = () => {
         {order ? (
           <ul className={"OrderInformation"}>
             <li><p>OrderId:</p><p>{order.getId()}</p></li>
-            <li><p>CarId:</p><p>{order.getUserId()}</p></li>
-            <li><p>UserId:</p><p>{order.getId()}</p></li>
+            <li><p>CarId:</p><p>{order.getCarId()}</p></li>
+            <li><p>UserId:</p><p>{order.getUserId()}</p></li>
             <li><p>StartDate:</p><p>{order.getStartDate().toDateString()}</p></li>
             <li><p>EndDate:</p><p>{order.getEndDate().toDateString()}</p></li>
             <li><p>Price:</p><p>{order.getPrice()}</p></li>
