@@ -1,6 +1,7 @@
 import Constants from "../Constants.jsx";
 
 import axios from "axios";
+import {resolvePath} from "react-router-dom";
 
 export const Authentication = {
   isSignedIn: () => {
@@ -27,4 +28,25 @@ export const Authentication = {
   logout: () => {
     localStorage.removeItem("token");
   },
+
+  tokenIsValid: async () => {
+    const token = Authentication.getToken();
+    if (!token) {
+      return false;
+    }
+
+
+    try {
+      const response = await axios.get(`${Constants.API_URL}/authenticate/validate`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      console.log(response.status);
+      return response.status === 200;
+    } catch (error) {
+      console.log("Token expired or invalid")
+      return false;
+    }
+  }
 }

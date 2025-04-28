@@ -58,6 +58,5 @@ export default function DetailsSection(props) {
         </div>
       </div>
     </div>
-
   );
 }
