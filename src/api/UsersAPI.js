@@ -1,9 +1,10 @@
 import Constants from "../Constants.jsx";
 import axios from 'axios';
-import { Authentication } from './Authentication';
-import { User } from '../model/User';
-import { PhoneNumber } from "../model/PhoneNumber.js";
-import { Address } from "../model/Address.js";
+import {Authentication} from './Authentication';
+import {User} from '../model/User';
+import {PhoneNumber} from "../model/PhoneNumber.js";
+import {Address} from "../model/Address.js";
+import {CarAPI} from "./CarAPI";
 
 export const UsersAPI = {
   getAllUsers: async () => {
@@ -81,6 +82,31 @@ export const UsersAPI = {
       return result.data;
     }
 
+  },
+
+  getFavoritesAmongCars: async (cars) => {
+    const carObjects = cars.map(car => {
+      return CarAPI.getJsonObjectFromCar(car);
+    });
+
+    if (Authentication.isSignedIn()) {
+      const token = Authentication.getToken();
+      const result = await axios.post(
+        `${Constants.API_URL}/users/favorites`,
+        carObjects,
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          },
+
+        }
+      );
+      return result.data.map(carObject => {
+        return CarAPI.getCarFromJsonObject(carObject);
+      })
+    } else {
+      console.error("Not signed in, can not get favorites");
+    }
   }
 }
 

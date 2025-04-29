@@ -8,6 +8,8 @@ import {Company} from "../model/Company";
 import {Feature} from "../model/Feature";
 import {Addon} from "../model/Addon";
 import {CarUrlBuilder} from "./CarUrlBuilder";
+import {UsersAPI} from "./UsersAPI";
+import {Authentication} from "./Authentication";
 
 export const CarAPI = {
 
@@ -50,13 +52,17 @@ export const CarAPI = {
       cars.push(CarAPI.getCarFromJsonObject(carObject));
     })
 
-    console.log(cars);
+    cars = await _setAvailable(cars);
+
+    if (Authentication.isSignedIn()) {
+      cars = await _setFavorites(cars);
+    }
+
     return cars;
   },
 
   getAllAmountOfSeatsInCars: async () => {
     const result = await axios.get(`${_getBaseUrl()}/seats`, {});
-    console.log(result);
     let seats = [];
     result.data.forEach((seat) => {
       seats.push(seat);
@@ -99,11 +105,84 @@ export const CarAPI = {
       transmissionType,
       addons,
       features,
-      true,
-      true,
+      false,
+      false,
       carObject.description
     );
+  },
+
+  getJsonObjectFromCar(car) {
+    return {
+      id: car.getId(),
+      year: car.getYear(),
+      numberOfSeats: car.getNumberOfSeats(),
+      pricePerDay: car.getPricePerDay(),
+      model: {
+        id: car.getModel().getId(),
+        name: car.getModel().getName(),
+        brand: {
+          id: car.getModel().getBrand().getId(),
+          name: car.getModel().getBrand().getName()
+        }
+      },
+      fuelType: {
+        id: car.getFuelType().getId(),
+        name: car.getFuelType().getName()
+      },
+      transmissionType: {
+        id: car.getTransmissionType().getId(),
+        name: car.getTransmissionType().getName()
+      },
+      addons: car.getAddons().map(addon => {
+        return {
+          id: addon.getId(),
+          name: addon.getName()
+        }
+      }),
+      features: car.getFeatures().map(feature => {
+        return {
+          id: feature.getId(),
+          name: feature.getName()
+        }
+      }),
+      description: car.getDescription()
+    };
   }
+
+}
+
+const _setFavorites = async (cars) => {
+  const favorites = await UsersAPI.getFavoritesAmongCars(cars);
+  favorites.forEach(favorite => {
+    for (let car in cars) {
+      if (cars[car].getId() === favorite.getId()) {
+        cars[car].setFavorite(true);
+        console.log("favorite: " + cars[car].getId());
+        break;
+      }
+    }
+  });
+  return cars;
+}
+
+const _setAvailable = async (cars) => {
+  const urlBuilder = new CarUrlBuilder().withFromTime(new Date);
+  const url = urlBuilder.build();
+  const response = await axios.get(url, {});
+
+  const available = [];
+  response.data.forEach(carObject => {
+    available.push(CarAPI.getCarFromJsonObject(carObject));
+  });
+
+  cars.forEach(car => {
+    available.forEach(availableCar => {
+      if (car.getId() === availableCar.getId()) {
+        car.setAvailable(true);
+      }
+    });
+  });
+  return cars;
 }
 
 const _getBaseUrl = () => {
