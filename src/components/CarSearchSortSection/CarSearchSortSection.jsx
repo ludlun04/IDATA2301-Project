@@ -28,7 +28,7 @@ const CarSearchSortSection = (props) => {
   ]
 
   const [searchItem, setSearchItem] = useState('');
-  const [sortByItem, setSortByItem] = useState(options[0]);
+  const [sortByItem, setSortByItem] = useState(null);
 
   const setSortByPriceAsc = () => {
     const sortedCars = [...cars].sort((a, b) => a.getPricePerDay() - b.getPricePerDay());
