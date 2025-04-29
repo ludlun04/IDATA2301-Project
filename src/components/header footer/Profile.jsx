@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 import {UsersAPI} from "../../api/UsersAPI";
 import "./Profile.css"
 import {Authentication} from "../../api/Authentication";
+import {ImageAPI} from "../../api/ImageAPI";
 
 export default function Profile() {
     const { isSignedIn } = useAuth();

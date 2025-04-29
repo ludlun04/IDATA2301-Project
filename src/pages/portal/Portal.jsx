@@ -10,12 +10,14 @@ import {CompanyAPI} from "../../api/CompanyAPI";
 import {CarBrandAPI} from "../../api/CarBrandAPI";
 import {FuelTypeAPI} from "../../api/FuelTypeAPI";
 import {FiltersContext} from "../../context/FiltersContext";
+import {ImageAPI} from "../../api/ImageAPI";
 
 export default function Portal() {
 
   const [centerFiltersDisplayed, setCenterFiltersDisplayed] = useState(false);
 
   const [cars, setCars] = useState([]);
+  const [tempImage, setTempImage] = useState(null);
 
   const [loading, setLoading] = useState(true);
   const [errorMessageActive, setErrorMessageActive] = useState(false);
@@ -156,7 +158,7 @@ export default function Portal() {
             :
             <div className={`portalCarCards ${centerFiltersDisplayed ? "" : " active"}`}>
               {loading ? <p>Loading...</p> : cars.map((car) => (
-                <CarCard key={car.getId()} car={car}/>
+                <CarCard key={car.getId()} car={car} img={tempImage}/>
               ))}
             </div>
           }

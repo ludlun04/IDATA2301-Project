@@ -3,12 +3,14 @@ import img from "../../resources/images/cars/bmw_m3/bmw_m3-1600.webp"
 import starFilled from "../../resources/icons/starFilled.svg"
 import starUnfilled from "../../resources/icons/starUnfilled.svg"
 
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {Car} from "../../model/Car";
+import {ImageAPI} from "../../api/ImageAPI";
 
 export default function CarCard(props) {
   const navigate = useNavigate();
+  const [carImage, setCarImage] = useState(img);
   let car = null;
   if (props.car instanceof Car) {
     car = props.car;
@@ -16,13 +18,33 @@ export default function CarCard(props) {
     throw new Error("Car must be defined");
   }
 
+  useEffect(() => {
+    async function fetchCarImage() {
+      try {
+        const imageData = await ImageAPI.getImageData(car.getId(), "jpg", 800);
+
+        if (imageData && imageData.data) {
+          const imageUrl = `data:image/jpeg;base64,${imageData.data}`;
+          setCarImage(imageUrl);
+        } else {
+          console.warn("Invalid image data format:", imageData);
+        }
+      } catch (error) {
+        console.error("Error fetching car image:", error);
+      }
+    }
+
+    fetchCarImage();
+  }, [car]);
+
+
   const onClick = () => {
     navigate(`/rent/${car.getId()}`);
   }
   return (
     <div className="CarCard" onClick={onClick}>
       <div className={"CarCardImageContainer"}>
-        <img className={"CarCardImg"} src={img} alt={"Car"}/>
+        <img className={"CarCardImg"} src={carImage} alt={"Car"}/>
         <button className={"favoriteButton"}>
           <img className={"favoritedStarIcon"} src={car.getFavorite() ? starFilled : starUnfilled}
                alt={starUnfilled}/>
