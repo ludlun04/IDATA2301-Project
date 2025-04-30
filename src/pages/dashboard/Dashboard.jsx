@@ -14,23 +14,24 @@ export default function Dashboard() {
   const [currentPage, setCurrentPage] = useState("Details");
 
   const pagesWithLinks = [
-    ["Details", <DetailsSection/>],
-    ["Rentals", <UserRentals/>],
-    ["Favorites", <UserFavorites/>],
-    ["Company Cars History", <CompanyCarsHistory/>],
-    ["Company Cars", <CompanyCars/>],
-    ["Users", <UsersSection/>],
-    ["Companies", <CompaniesSection/>]
+    ["Details", <DetailsSection key={"Details"}/>],
+    ["Rentals", <UserRentals key={"Rentals"}/>],
+    ["Favorites", <UserFavorites key={"Favorites"}/>],
+    ["Company Cars History", <CompanyCarsHistory key={"Company Cars History"}/>],
+    ["Company Cars", <CompanyCars key={"Company Cars"}/>],
+    ["Users", <UsersSection key={"Users"}/>],
+    ["Companies", <CompaniesSection key={"Companies"}/>]
   ];
 
   const pages = pagesWithLinks.map((page) => page[0]);
 
   const getSection = () => {
-    for (let i = 0; i < pagesWithLinks.length; i++) {
-      if (pagesWithLinks[i][0] === currentPage) {
-        return pagesWithLinks[i][1];
-      }
+    for (const element of pagesWithLinks) {
+      if (element[0] === currentPage) {
+        return element[1];
+      } 
     }
+
     return null;
   }
 

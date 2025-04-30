@@ -1,62 +1,62 @@
 import "./DetailsSection.css"
-import {useNavigate} from "react-router-dom";
-import {Authentication} from "../../../api/Authentication";
-import {useAuth} from "../../../context/AuthContext";
-import {useEffect, useState} from "react";
-import {UsersAPI} from "../../../api/UsersAPI";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../../context/AuthContext";
+import { useEffect, useState } from "react";
+import { UsersAPI } from "../../../api/UsersAPI";
+
 export default function DetailsSection(props) {
-    const navigate = useNavigate();
-    const { signOut } = useAuth();
-    const { isSignedIn } = useAuth();
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [email, setEmail] = useState("");
-    const [phoneNumber, setPhoneNumber] = useState("");
-    const [address, setAddress] = useState("");
-    const [birthdate, setBirthdate] = useState("");
+  const navigate = useNavigate();
+  const { signOut } = useAuth();
+  const [user, setUser] = useState(null);
 
-    useEffect(() => {
-        if (isSignedIn) {
-            UsersAPI.getCurrentAuthenticatedUser().then(user => {
-                setFirstName(user.getFirstName());
-                setLastName(user.getLastName());
-                setEmail(user.getEmail());
-                setPhoneNumber(user.getPhoneNumber().getNumber());
-                setAddress(user.getAddress().getStreetAddress());
-                setBirthdate(user.getDateOfBirth().toDateString());
-            })
-        }
-    }, []);
+  useEffect(() => {
+    console.log("DetailsSection useEffect");
+    UsersAPI.getCurrentAuthenticatedUser().then(user => {
+      setUser(user);
+    }).catch(error => {
+      console.error("Error fetching user data:", error);
+    });
+  }, []);
 
-    const details = [
-        ["First Name", firstName],
-        ["Last Name", lastName],
-        ["Email", email],
-        ["Phone Number", phoneNumber],
-        ["Address", address],
-        ["Birthdate", birthdate]
-    ];
-
-    const handleLogOut = () => {
-        navigate("/sign-in")
-        Authentication.logout();
-        signOut();
-    }
+  const handleLogOut = () => {
+    signOut();
+    navigate("/sign-in");
+  }
 
   return (
     <div className={props.className} style={props.style}>
-      <div className="DetailsSection">
-        {details.map((row, index) => (
-          <div key={index} className="detailsSectionRow">
-            <p className={"detailsSectionDescriptor"}>{row[0]}</p>
-            <p>{row[1]}</p>
-          </div>
-        ))}
+      {user !== null ? (
+        <div className="DetailsSection">
+        <div className="detailsSectionRow">
+          <p className={"detailsSectionDescriptor"}>First Name</p>
+          <p>{user.getFirstName()}</p>
+        </div>
+        <div className="detailsSectionRow">
+          <p className={"detailsSectionDescriptor"}>Last Name</p>
+          <p>{user.getLastName()}</p>
+        </div>
+        <div className="detailsSectionRow">
+          <p className={"detailsSectionDescriptor"}>Email</p>
+          <p>{user.getEmail()}</p>
+        </div>
+        <div className="detailsSectionRow">
+          <p className={"detailsSectionDescriptor"}>Phone Number</p>
+          <p>{user.getPhoneNumber().getNumber()}</p>
+        </div>
+        <div className="detailsSectionRow">
+          <p className={"detailsSectionDescriptor"}>Address</p>
+          <p>{user.getAddress().getStreetAddress()}</p>
+        </div>
+        <div className="detailsSectionRow">
+          <p className={"detailsSectionDescriptor"}>Birthdate</p>
+          <p>{user.getDateOfBirth().toDateString()}</p>
+        </div>
         <div className={"detailsSectionButtonContainer"}>
           <button className={"FormSubmitButton detailsSectionButton"} onClick={props.onEdit}>Edit</button>
           <button className={"FormSubmitButton detailsSectionButton"} onClick={handleLogOut}>Log out</button>
         </div>
       </div>
+      ): (<p>Loading</p>)}
     </div>
   );
 }
