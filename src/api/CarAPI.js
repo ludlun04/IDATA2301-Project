@@ -20,7 +20,12 @@ export const CarAPI = {
     const carObject = result.data;
     console.log(carObject);
 
-    return CarAPI.getCarFromJsonObject(carObject);
+    let car = CarAPI.getCarFromJsonObject(carObject);
+    if (Authentication.isSignedIn()) {
+      car = await _setFavorite(car);
+    }
+
+    return car;
   },
 
   getAllCars: async (filters) => {
@@ -149,6 +154,12 @@ export const CarAPI = {
     };
   }
 }
+
+const _setFavorite = async (car) => {
+  const result = await _setFavorites([car]);
+  return result[0];
+}
+
 const _setFavorites = async (cars) => {
   const favorites = await UsersAPI.getFavoritesAmongCars(cars);
   favorites.forEach(favorite => {
