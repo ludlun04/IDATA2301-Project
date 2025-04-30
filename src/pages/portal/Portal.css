@@ -4,8 +4,6 @@
     justify-content: center;
     gap: 1rem;
     padding-top: 2rem;
-    min-height: 100vh;
-    background: var(--background);
 }
 
 

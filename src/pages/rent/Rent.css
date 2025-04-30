@@ -2,8 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;
-  background: var(--background);
   padding: 2rem;
 }
 

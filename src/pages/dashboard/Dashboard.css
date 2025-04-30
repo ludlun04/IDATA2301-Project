@@ -1,6 +1,4 @@
 .Dashboard {
-    min-height: 100vh;
-    background: var(--background);
     padding: 1rem;
     display: flex;
     flex-direction: row;

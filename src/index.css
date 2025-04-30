@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: var(--background);
 }
 
 code {
@@ -112,6 +113,12 @@ button:active {
   --text-100: #515151;
   --error: #FF9898;
   --success: #A6EC94;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 @font-face {

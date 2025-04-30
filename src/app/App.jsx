@@ -49,7 +49,7 @@ function Root() {
   return (
     <>
       <Header/>
-      <main>
+      <main className={"AppMain"}>
         <Outlet/>
       </main>
       <Footer/>
