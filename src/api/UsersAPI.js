@@ -107,6 +107,26 @@ export const UsersAPI = {
     } else {
       console.error("Not signed in, can not get favorites");
     }
+  },
+
+  setFavorite: async(car, isFavorite) => {
+    if (Authentication.isSignedIn()) {
+      const token = Authentication.getToken();
+      const response = await axios.post(
+        `${Constants.API_URL}/users/favorites/alter`,
+        {
+          carId: car.getId(),
+          isFavorite: isFavorite
+        },
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        }
+      );
+      return response.data;
+    }
+
   }
 }
 

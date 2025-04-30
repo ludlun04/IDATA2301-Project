@@ -148,16 +148,13 @@ export const CarAPI = {
       description: car.getDescription()
     };
   }
-
 }
-
 const _setFavorites = async (cars) => {
   const favorites = await UsersAPI.getFavoritesAmongCars(cars);
   favorites.forEach(favorite => {
     for (let car in cars) {
       if (cars[car].getId() === favorite.getId()) {
         cars[car].setFavorite(true);
-        console.log("favorite: " + cars[car].getId());
         break;
       }
     }

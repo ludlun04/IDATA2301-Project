@@ -7,16 +7,20 @@ import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {Car} from "../../model/Car";
 import {ImageAPI} from "../../api/ImageAPI";
+import {UsersAPI} from "../../api/UsersAPI";
 
 export default function CarCard(props) {
   const navigate = useNavigate();
   const [carImage, setCarImage] = useState(img);
+
   let car = null;
   if (props.car instanceof Car) {
     car = props.car;
   } else {
     throw new Error("Car must be defined");
   }
+
+  const [isFavorite, setIsFavorite] = useState(car.getFavorite());
 
   useEffect(() => {
     async function fetchCarImage() {
@@ -37,6 +41,17 @@ export default function CarCard(props) {
     fetchCarImage();
   }, [car]);
 
+  const handleFavoriteButtonClick = async (event) => {
+    event.stopPropagation(); // Prevent the click event from bubbling up to the card
+
+    const isFavorite = await UsersAPI.setFavorite(car, !car.getFavorite());
+    if (isFavorite !== null) {
+      car.setFavorite(isFavorite);
+      setIsFavorite(isFavorite);
+    }
+
+  }
+
 
   const onClick = () => {
     navigate(`/rent/${car.getId()}`);
@@ -45,8 +60,8 @@ export default function CarCard(props) {
     <div className="CarCard" onClick={onClick}>
       <div className={"CarCardImageContainer"}>
         <img className={"CarCardImg"} src={carImage} alt={"Car"}/>
-        <button className={"favoriteButton"}>
-          <img className={"favoritedStarIcon"} src={car.getFavorite() ? starFilled : starUnfilled}
+        <button className={"favoriteButton"} onClick={handleFavoriteButtonClick}>
+          <img className={"favoritedStarIcon"} src={isFavorite ? starFilled : starUnfilled}
                alt={starUnfilled}/>
         </button>
       </div>
