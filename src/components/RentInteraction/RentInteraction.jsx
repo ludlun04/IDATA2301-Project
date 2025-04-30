@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import CompanyCard from "../CompanyCard/CompanyCard";
 import { useNavigate } from "react-router-dom";
 import { OrderAPI } from "../../api/OrderAPI";
+import AddonList from "../AddonList/AddonList";
 
 const RentInteraction = ({ car }) => {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ const RentInteraction = ({ car }) => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date(new Date().getTime() + 86400000)); // 1 day later
 
-  const [carPricePerDay, setCarPricePerDay ] = useState(car.getPricePerDay());
+  const [ carPricePerDay, setCarPricePerDay ] = useState(car.getPricePerDay());
   const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
@@ -79,18 +80,10 @@ const RentInteraction = ({ car }) => {
             selectsRange
             inline
           />
-
-          {/* <DatePicker
-            className={"filtersSectionDatePicker"}
-            selected={endDate}
-            minDate={startDate}
-            onChange={(date) => setEndDate(date)}
-            dateFormat={dateFormat}
-            portalId={portalId}
-            calendarStartDay={calendarStartDay}
-          /> */}
         </div>
       </div>
+
+      <AddonList addons={car.getAddons()} />
 
       <div className={"RentDailyPrice"}>
         <p className={"RentTitle"}>kr/day</p>
