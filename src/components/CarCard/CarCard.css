@@ -44,32 +44,14 @@
     object-position: center;
 }
 
-.favoriteButton {
-    border: none;
-    background: none;
+.carCardFavoriteButton {
     position: absolute;
     left: .25rem;
     top: .25rem;
     width: 1.5rem;
-    padding: 0;
-    cursor: pointer;
-    z-index: 900;
+    height: 1.5rem;
 }
 
-.favoriteButton:hover {
-    filter: brightness(.9);
-    background: none;
-}
-
-.favoritedStarIcon {
-    width: 100%;
-    height: 100%;
-}
-
-.favoriteButton:hover .favoritedStarIcon, .favoritedStar:hover {
-    filter: brightness(.9);
-    cursor: pointer;
-}
 
 .CarCardRightPane {
     display: flex;

@@ -1,12 +1,13 @@
 import "./Rent.css"
-import bmw from "./../../resources/images/bmw.jpg";
-
+import img from "../../resources/images/cars/bmw_m3/bmw_m3-1600.webp"
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { CarAPI } from "../../api/CarAPI";
 import CarAttributes from "../../components/CarAttribute/CarAttributes";
 import Loader from "../../components/loader/Loader";
 import RentInteraction from "../../components/RentInteraction/RentInteraction";
+import {ImageAPI} from "../../api/ImageAPI";
+import CarFavoriteButton from "../../components/CarFavoriteButton/CarFavoriteButton";
 
 export default function Rent(props) {
   let { id } = useParams();
@@ -18,11 +19,14 @@ export default function Rent(props) {
   // car data
   const [features, setFeatures] = useState([]);
 
+  const [carImage, setCarImage] = useState(img);
+
   useEffect(() => {
     const fetchCar = async () => {
       try {
         const car = await CarAPI.getCar(id);
         setCar(car)
+        console.log("car favorite: ", car.getFavorite());
         setLoading(false);
         setFeatures(car.getFeatures());
       } catch (error) {
@@ -31,6 +35,30 @@ export default function Rent(props) {
     }
     fetchCar();
   }, [id]);
+
+  useEffect(() => {
+    async function fetchCarImage() {
+      if (!car) {
+        return; //do nothing until car is set
+      }
+      try {
+        const imageData = await ImageAPI.getImageData(car.getId(), "jpg", 1600);
+
+        if (imageData && imageData.data) {
+          const imageUrl = `data:image/jpeg;base64,${imageData.data}`;
+          setCarImage(imageUrl);
+        } else {
+          console.warn("Invalid image data format:", imageData);
+        }
+      } catch (error) {
+        console.error("Error fetching car image:", error);
+      }
+    }
+
+    fetchCarImage();
+  }, [car]);
+
+
 
   if (loading) {
     return (
@@ -43,7 +71,8 @@ export default function Rent(props) {
     <main className={"RentMain"}>
       <div className="RentGrid">
         <div className="RentMainTop">
-          <img alt="" className={"RentCarImage"} src={bmw} />
+          <img alt="" className={"RentCarImage"} src={carImage} />
+          <CarFavoriteButton className={"RentCarFavoriteButton"} car={car} />
 
           <section className={"RentInformation"}>
             <h1>{car.getName()}</h1>

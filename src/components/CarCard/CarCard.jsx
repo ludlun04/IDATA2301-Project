@@ -1,13 +1,10 @@
 import "./CarCard.css"
 import img from "../../resources/images/cars/bmw_m3/bmw_m3-1600.webp"
-import starFilled from "../../resources/icons/starFilled.svg"
-import starUnfilled from "../../resources/icons/starUnfilled.svg"
-
+import CarFavoriteButton from "../CarFavoriteButton/CarFavoriteButton";
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {Car} from "../../model/Car";
 import {ImageAPI} from "../../api/ImageAPI";
-import {UsersAPI} from "../../api/UsersAPI";
 
 export default function CarCard(props) {
   const navigate = useNavigate();
@@ -19,8 +16,6 @@ export default function CarCard(props) {
   } else {
     throw new Error("Car must be defined");
   }
-
-  const [isFavorite, setIsFavorite] = useState(car.getFavorite());
 
   useEffect(() => {
     async function fetchCarImage() {
@@ -41,18 +36,6 @@ export default function CarCard(props) {
     fetchCarImage();
   }, [car]);
 
-  const handleFavoriteButtonClick = async (event) => {
-    event.stopPropagation(); // Prevent the click event from bubbling up to the card
-
-    const isFavorite = await UsersAPI.setFavorite(car, !car.getFavorite());
-    if (isFavorite !== null) {
-      car.setFavorite(isFavorite);
-      setIsFavorite(isFavorite);
-    }
-
-  }
-
-
   const onClick = () => {
     navigate(`/rent/${car.getId()}`);
   }
@@ -60,10 +43,7 @@ export default function CarCard(props) {
     <div className="CarCard" onClick={onClick}>
       <div className={"CarCardImageContainer"}>
         <img className={"CarCardImg"} src={carImage} alt={"Car"}/>
-        <button className={"favoriteButton"} onClick={handleFavoriteButtonClick}>
-          <img className={"favoritedStarIcon"} src={isFavorite ? starFilled : starUnfilled}
-               alt={starUnfilled}/>
-        </button>
+        <CarFavoriteButton className={"carCardFavoriteButton"} car={car}/>
       </div>
       <div className={"CarCardRightPane"}>
         <div className={"CarCardInnerLeftPane"}>
