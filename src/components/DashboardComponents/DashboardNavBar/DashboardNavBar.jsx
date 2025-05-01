@@ -1,50 +1,54 @@
 import "./DashboardNavBar.css"
-import {useEffect, useState} from "react";
-import {UsersAPI} from "../../../api/UsersAPI";
+import { useEffect, useState } from "react";
+import { UsersAPI } from "../../../api/UsersAPI";
 
-export default function DashboardNavBar({className, pages, setCurrentPage}) {
-    const [roles, setRoles] = useState([]);
-    const [page, setPage] = useState(pages);
+export default function DashboardNavBar({ className, pages, setCurrentPage }) {
+  const [roles, setRoles] = useState([]);
+  const [page, setPage] = useState(pages);
 
-    let onClick = (page) => {
-        return () => {
-            setCurrentPage(page);
-        }
+  let onClick = (page) => {
+    return () => {
+      setCurrentPage(page);
     }
+  }
 
-    useEffect(() => {
-        const fetchRoles = async () => {
-            const response = await UsersAPI.getCurrentAuthenticatedUserRoles();
-            setRoles(response);
-        }
-        fetchRoles();
+  useEffect(() => {
+    const fetchRoles = async () => {
+      const response = await UsersAPI.getCurrentAuthenticatedUserRoles();
+      setRoles(response);
+    }
+    fetchRoles().catch(error => {
+      console.error("Error fetching roles:", error);
+    });
 
-    }, [])
+  }, [])
 
-    console.log(roles)
+  console.log(roles)
 
-    const pagesToShow = [];
-    pagesToShow.push(pages[0]);
+  const pagesToShow = [];
+  pagesToShow.push(pages[0]);
+  if (roles) {
     if (roles.some(role => role.name === 'USER')) {
-        pagesToShow.push("Rentals", "Favorites");
+      pagesToShow.push("Rentals", "Favorites");
     }
     if (roles.some(role => role.name === 'ADMIN')) {
-        pagesToShow.push("Users", "Companies");
+      pagesToShow.push("Users", "Companies");
     }
+  }
 
 
 
-    return (
-        <div className={className}>
-            <div className={"DashboardNavBar"}>
-                {
-                    pagesToShow.map((page) => (
-                        <button key={page} onClick={onClick(page)}>
-                            {page}
-                        </button>
-                    ))
-                }
-            </div>
-        </div>
-    )
+  return (
+    <div className={className}>
+      <div className={"DashboardNavBar"}>
+        {
+          pagesToShow.map((page) => (
+            <button key={page} onClick={onClick(page)}>
+              {page}
+            </button>
+          ))
+        }
+      </div>
+    </div>
+  )
 }

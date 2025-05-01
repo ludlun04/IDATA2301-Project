@@ -25,7 +25,7 @@ export default function DetailsSection(props) {
 
   return (
     <div className={props.className} style={props.style}>
-      {user !== null ? (
+      {user ? (
         <div className="DetailsSection">
         <div className="detailsSectionRow">
           <p className={"detailsSectionDescriptor"}>First Name</p>
@@ -56,7 +56,7 @@ export default function DetailsSection(props) {
           <button className={"FormSubmitButton detailsSectionButton"} onClick={handleLogOut}>Log out</button>
         </div>
       </div>
-      ): (<p>Loading</p>)}
+      ): (<p>No current user</p>)}
     </div>
   );
 }
