@@ -113,6 +113,10 @@ export class CarUrlBuilder {
     return this._url;
   }
 
+  getFilterPart() {
+    return this._url.split("?")[1];
+  }
+
 
 
 }

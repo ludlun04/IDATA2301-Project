@@ -63,7 +63,10 @@ export const CarAPI = {
       cars = await _setFavorites(cars);
     }
 
-    return cars;
+    return {
+      cars: cars,
+      url: urlBuilder.getFilterPart()
+    }
   },
 
   getAllAmountOfSeatsInCars: async () => {

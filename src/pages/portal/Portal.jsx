@@ -11,7 +11,6 @@ import {CompanyAPI} from "../../api/CompanyAPI";
 import {CarBrandAPI} from "../../api/CarBrandAPI";
 import {FuelTypeAPI} from "../../api/FuelTypeAPI";
 import {FiltersContext} from "../../context/FiltersContext";
-import {ImageAPI} from "../../api/ImageAPI";
 
 export default function Portal() {
 
@@ -56,6 +55,8 @@ export default function Portal() {
   // search part of the URL, for maintaining state on refresh
   const searchParams = useLocation().search;
   const urlParams = new URLSearchParams(searchParams);
+
+  const [urlParamsReady, setUrlParamsReady] = useState(false);
 
   const getDateFromUrl = (dateString) => {
     const separatedDate = dateString.split("-");
@@ -112,6 +113,7 @@ export default function Portal() {
     if (keyword) {
       setChosenKeyword(keyword);
     }
+    setUrlParamsReady(true);
   }
 
   const toggleFiltersDisplayed = () => {
@@ -119,9 +121,15 @@ export default function Portal() {
   }
 
   const fetchCars = async (filters) => {
-    const cars = await CarAPI.getAllCars(filters);
-    setCars(cars);
+    const response = await CarAPI.getAllCars(filters);
+    setCars(response.cars);
     setLoading(false);
+
+    const url = response.url;
+    if (url) {
+      const newUrl = `${window.location.pathname}?${response.url}`;
+      window.history.pushState({}, '', newUrl);
+    }
     console.log("Fetched cars: " + cars);
   };
 
@@ -158,6 +166,7 @@ export default function Portal() {
   useEffect(() => {
     fetchCars(filters);
   }, [
+    urlParamsReady,
     chosenBrands,
     chosenFuelTypes,
     chosenSellers,
@@ -171,7 +180,7 @@ export default function Portal() {
 
   useEffect(() => {
     try {
-      fetchCars();
+      fetchCars(filters);
       fetchManufacturers();
       fetchFuelTypes();
       fetchSellers();
@@ -183,7 +192,7 @@ export default function Portal() {
       setLoading(false);
     }
 
-  }, []);
+  }, [urlParamsReady]);
 
   const filtersSectionInContext = !loading && (
     <FiltersContext.Provider value={{
