@@ -12,7 +12,8 @@ const FiltersSection = (props) => {
 
   const context = useContext(FiltersContext);
 
-  const availableManufacturers = context.possibleManufacturers;
+
+  const availableBrands = context.possibleBrands;
   const availableFuelTypes = context.possibleFuelTypes;
   const availableSellers = context.possibleSellers;
   const availableSeats = context.possibleSeats;
@@ -22,9 +23,18 @@ const FiltersSection = (props) => {
     return new Date(date.getTime() + days * 24 * 60 * 60 * 1000);
   }
 
-  const [availableNowChecked, setAvailableNowChecked] = useState(false);
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(oneDayAfter(startDate));
+  const isToday = (date) => {
+    const today = new Date();
+    return date.getFullYear() === today.getFullYear() &&
+      date.getMonth() === today.getMonth() &&
+      date.getDay() === today.getDay();
+  }
+
+  //true if to date exists and is today, and from date is null
+  const [availableNowChecked, setAvailableNowChecked] = useState(context.chosenFromTime && isToday(context.chosenFromTime) && context.chosenToTime === null);
+
+  const [startDate, setStartDate] = useState(context.chosenFromTime || new Date());
+  const [endDate, setEndDate] = useState(context.chosenToTime || oneDayAfter(startDate));
 
   // datepicker configuration
   const dateFormat = "dd.MM.yyyy"; // displayed date format in datepicker
@@ -63,12 +73,12 @@ const FiltersSection = (props) => {
     }
   }
 
-  const alterChosenManufacturers = (event) => {
-    const manufacturer = event.target.value;
+  const alterChosenBrands = (event) => {
+    const Brand = event.target.value;
     if (event.target.checked) {
-      context.setChosenManufacturers((prev) => [...prev, manufacturer]);
+      context.setChosenBrands((prev) => [...prev, Brand]);
     } else {
-      context.setChosenManufacturers(chosenManufacturers => chosenManufacturers.filter((m) => m !== manufacturer));
+      context.setChosenBrands(chosenBrands => chosenBrands.filter((m) => m !== Brand));
     }
   }
 
@@ -82,11 +92,13 @@ const FiltersSection = (props) => {
   }
 
   const alterChosenSeats = (event) => {
-    const seats = event.target.value;
+    const seat = Number(event.target.value);
     if (event.target.checked) {
-      context.setChosenSeats((prev) => [...prev, seats]);
+      console.log("checked");
+      context.setChosenSeats((prev) => [...prev, seat]);
     } else {
-      context.setChosenSeats(chosenSeats => chosenSeats.filter((s) => s !== seats));
+      console.log("unchecked");
+      context.setChosenSeats(chosenSeats => chosenSeats.filter((s) => s !== seat));
     }
   }
 
@@ -99,38 +111,63 @@ const FiltersSection = (props) => {
       <div className={"FiltersSection"}>
         <section>
           <h1>The car</h1>
-          <DropdownMenu alwaysShownContent={getHeader("Manufacturer")}>
+          <DropdownMenu alwaysShownContent={getHeader("Brand")}>
             <ul>
-              {availableManufacturers.map((manufacturer, index) => (
-                <li key={index} className="filtersSectionFilterLine"><p>{manufacturer.getName()}</p>
-                  <input value={manufacturer.getName()} type="checkbox"
-                         onChange={alterChosenManufacturers}></input></li>
+              {availableBrands.map((brand, index) => (
+                <li key={index} className="filtersSectionFilterLine">
+                  <p>{brand.getName()}</p>
+                  <input
+                    value={brand.getName()}
+                    type="checkbox"
+                    onChange={alterChosenBrands}
+                    checked={context.chosenBrands.includes(brand.getName())}
+                  />
+                </li>
               ))}
             </ul>
           </DropdownMenu>
           <DropdownMenu alwaysShownContent={getHeader("Fuel type")}>
             <ul>
               {availableFuelTypes.map((fuelType, index) => (
-                <li key={index} className="filtersSectionFilterLine"><p>{fuelType.getName()}</p>
-                  <input value={fuelType.getName()} type="checkbox"
-                         onChange={alterChosenFuelTypes}></input></li>
+                <li key={index} className="filtersSectionFilterLine">
+                  <p>{fuelType.getName()}</p>
+                  <input
+                    value={fuelType.getName()}
+                    type="checkbox"
+                    onChange={alterChosenFuelTypes}
+                    checked={context.chosenFuelTypes.includes(fuelType.getName())}
+                  />
+                </li>
               ))}
             </ul>
           </DropdownMenu>
           <DropdownMenu alwaysShownContent={getHeader("Seller")}>
             <ul>
               {availableSellers.map((seller, index) => (
-                <li key={index} className="filtersSectionFilterLine"><p>{seller.getName()}</p>
-                  <input value={seller.getName()} type="checkbox"
-                         onChange={alterChosenSellers}></input></li>
+                <li key={index} className="filtersSectionFilterLine">
+                  <p>{seller.getName()}</p>
+                  <input
+                    value={seller.getName()}
+                    type="checkbox"
+                    onChange={alterChosenSellers}
+                    checked={context.chosenSellers.includes(seller.getName())}
+                  />
+                </li>
               ))}
             </ul>
           </DropdownMenu>
           <DropdownMenu alwaysShownContent={getHeader("Seats")}>
             <ul>
               {availableSeats.map((seat, index) => (
-                <li key={index} className="filtersSectionFilterLine"><p>{seat}</p> <input
-                  value={seat} type="checkbox" onChange={alterChosenSeats}></input></li>
+                <li key={index} className="filtersSectionFilterLine">
+                  <p>{seat}</p>
+                  <input
+                    value={seat}
+                    type="checkbox"
+                    onChange={alterChosenSeats}
+                    checked={context.chosenSeats.includes(seat)}
+                  />
+                </li>
               ))}
             </ul>
           </DropdownMenu>
@@ -138,7 +175,8 @@ const FiltersSection = (props) => {
         <section>
           <h1>The Time</h1>
           <li className="filtersSectionFilterLine"><p>Available now</p> <input
-            type="checkbox" checked={availableNowChecked} onChange={handleAvailableNowCheckedChange}></input></li>
+            type="checkbox" checked={availableNowChecked}
+            onChange={handleAvailableNowCheckedChange}></input></li>
           <section className={"filtersSectionDateLine"}>
             <p>From</p>
             <DatePicker
@@ -170,6 +208,8 @@ const FiltersSection = (props) => {
           <h1>The Price</h1>
           <FromToSection
             className={"filtersSectionFromToSection"}
+            fromValue={context.chosenFromPrice}
+            toValue={context.chosenToPrice}
             setFromValue={context.setChosenFromPrice}
             setToValue={context.setChosenToPrice}
           />
@@ -182,7 +222,7 @@ const FiltersSection = (props) => {
                 onClick={props.onSave}>Save
         </button>
         */
-}
+        }
       </div>
     </div>
   )

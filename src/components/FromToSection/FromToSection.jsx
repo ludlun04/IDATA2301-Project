@@ -3,8 +3,8 @@ import {useState} from "react";
 
 const FromToSection = (props) => {
 
-  const [fromValue, setFromValue] = useState("");
-  const [toValue, setToValue] = useState("");
+  const [fromValue, setFromValue] = useState(props.fromValue || undefined);
+  const [toValue, setToValue] = useState(props.toValue || undefined);
 
   const handleFromValueChange = (event) => {
     const value = event.target.value;

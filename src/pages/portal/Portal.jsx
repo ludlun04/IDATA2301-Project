@@ -5,6 +5,7 @@ import FiltersSection from "../../components/FilterSection/FiltersSection";
 import ErrorFetchingDataMessage
   from "../../components/ErrorFetchingDataMessage/ErrorFetchingDataMessage";
 import {useEffect, useState} from "react";
+import {useLocation} from "react-router-dom";
 import {CarAPI} from "../../api/CarAPI";
 import {CompanyAPI} from "../../api/CompanyAPI";
 import {CarBrandAPI} from "../../api/CarBrandAPI";
@@ -22,12 +23,14 @@ export default function Portal() {
   const [loading, setLoading] = useState(true);
   const [errorMessageActive, setErrorMessageActive] = useState(false);
 
-  const [possibleManufacturers, setPossibleManufacturers] = useState([]);
+  // all the possible choices the user can make
+  const [possibleBrands, setPossibleBrands] = useState([]);
   const [possibleFuelTypes, setPossibleFuelTypes] = useState([]);
   const [possibleSellers, setPossibleSellers] = useState([]);
   const [possibleSeats, setPossibleSeats] = useState([]);
 
-  const [chosenManufacturers, setChosenManufacturers] = useState([]);
+  // the choices the user has made
+  const [chosenBrands, setChosenBrands] = useState([]);
   const [chosenFuelTypes, setChosenFuelTypes] = useState([]);
   const [chosenSellers, setChosenSellers] = useState([]);
   const [chosenSeats, setChosenSeats] = useState([]);
@@ -37,55 +40,79 @@ export default function Portal() {
   const [chosenToPrice, setChosenToPrice] = useState(null);
   const [chosenKeyword, setChosenKeyword] = useState("");
 
-  useEffect(() => {
-    const filters = {
-      manufacturers: chosenManufacturers,
-      fuelTypes: chosenFuelTypes,
-      sellers: chosenSellers,
-      seats: chosenSeats,
-      from_time: chosenFromTime,
-      to_time: chosenToTime,
-      from_price: chosenFromPrice,
-      to_price: chosenToPrice,
-      keyword: chosenKeyword
-    }
-    fetchCars(filters);
-  }, [
-    chosenManufacturers,
-    chosenFuelTypes,
-    chosenSellers,
-    chosenSeats,
-    chosenFromTime,
-    chosenToTime,
-    chosenFromPrice,
-    chosenToPrice,
-    chosenKeyword
-  ]);
+  // the filters object that will be sent to the API
+  const filters = {
+    brands: chosenBrands,
+    fuelTypes: chosenFuelTypes,
+    sellers: chosenSellers,
+    seats: chosenSeats,
+    fromTime: chosenFromTime,
+    toTime: chosenToTime,
+    fromPrice: chosenFromPrice,
+    toPrice: chosenToPrice,
+    keyword: chosenKeyword
+  }
 
-  const filters = (
-    <FiltersContext.Provider value={{
-      possibleManufacturers,
-      possibleFuelTypes,
-      possibleSellers,
-      possibleSeats,
-      chosenManufacturers,
-      setChosenManufacturers,
-      chosenFuelTypes,
-      setChosenFuelTypes,
-      chosenSellers,
-      setChosenSellers,
-      chosenSeats,
-      setChosenSeats,
-      chosenFromTime,
-      setChosenFromTime,
-      chosenToTime,
-      setChosenToTime,
-      setChosenFromPrice,
-      setChosenToPrice
-    }}>
-      <FiltersSection/>
-    </FiltersContext.Provider>
-    )
+  // search part of the URL, for maintaining state on refresh
+  const searchParams = useLocation().search;
+  const urlParams = new URLSearchParams(searchParams);
+
+  const getDateFromUrl = (dateString) => {
+    const separatedDate = dateString.split("-");
+    const year = Number(separatedDate[0]);
+    const month = Number(separatedDate[1]) - 1; // months are 0-indexed
+    const day = Number(separatedDate[2]);
+    return new Date(year, month, day);
+  }
+
+  const updateChoicesFromSearchParams = () => {
+    const brandsString = urlParams.get("brand");
+    const fuelTypesString = urlParams.get("fuel_type");
+    const sellersString = urlParams.get("seller");
+    const seatsString = urlParams.get("seats");
+    const betweenTimesString = urlParams.get("between_times");
+    const fromTime = urlParams.get("from_time");
+    const fromPrice = urlParams.get("from_price");
+    const toPrice = urlParams.get("to_price");
+    const keyword = urlParams.get("keyword");
+
+    if (brandsString) {
+      const brands = brandsString.split(",")
+      setChosenBrands(brands);
+    }
+    if (fuelTypesString) {
+      const fuelTypes = fuelTypesString.split(",");
+      setChosenFuelTypes(fuelTypes);
+    }
+    if (sellersString) {
+      const sellers = sellersString.split(",");
+      setChosenSellers(sellers);
+    }
+    if (seatsString) {
+      const seats = seatsString.split(",");
+      // convert the string array to a number array
+      setChosenSeats(seats.map(seat => {
+        return Number(seat);
+      }));
+    }
+    if (betweenTimesString) {
+      const betweenTimes = betweenTimesString.split(",");
+      setChosenFromTime(getDateFromUrl(betweenTimes[0]));
+      setChosenToTime(getDateFromUrl(betweenTimes[1]));
+    }
+    if (fromTime) {
+      setChosenFromTime(getDateFromUrl(fromTime));
+    }
+    if (fromPrice) {
+      setChosenFromPrice(Number(fromPrice));
+    }
+    if (toPrice) {
+      setChosenToPrice(Number(toPrice));
+    }
+    if (keyword) {
+      setChosenKeyword(keyword);
+    }
+  }
 
   const toggleFiltersDisplayed = () => {
     setCenterFiltersDisplayed(!centerFiltersDisplayed);
@@ -100,7 +127,7 @@ export default function Portal() {
 
   const fetchManufacturers = async () => {
     const manufacturers = await CarBrandAPI.getBrandsUsedInCars();
-    setPossibleManufacturers(manufacturers);
+    setPossibleBrands(manufacturers);
     console.log("Fetched manufacturers: " + manufacturers);
   }
 
@@ -123,6 +150,26 @@ export default function Portal() {
   }
 
   useEffect(() => {
+    if (searchParams) {
+      updateChoicesFromSearchParams();
+    }
+  }, [searchParams]);
+
+  useEffect(() => {
+    fetchCars(filters);
+  }, [
+    chosenBrands,
+    chosenFuelTypes,
+    chosenSellers,
+    chosenSeats,
+    chosenFromTime,
+    chosenToTime,
+    chosenFromPrice,
+    chosenToPrice,
+    chosenKeyword
+  ]);
+
+  useEffect(() => {
     try {
       fetchCars();
       fetchManufacturers();
@@ -138,33 +185,67 @@ export default function Portal() {
 
   }, []);
 
+  const filtersSectionInContext = !loading && (
+    <FiltersContext.Provider value={{
+      possibleBrands,
+      possibleFuelTypes,
+      possibleSellers,
+      possibleSeats,
+      chosenBrands,
+      setChosenBrands,
+      chosenFuelTypes,
+      setChosenFuelTypes,
+      chosenSellers,
+      setChosenSellers,
+      chosenSeats,
+      setChosenSeats,
+      chosenFromTime,
+      setChosenFromTime,
+      chosenToTime,
+      setChosenToTime,
+      chosenFromPrice,
+      setChosenFromPrice,
+      chosenToPrice,
+      setChosenToPrice
+    }}>
+      <FiltersSection/>
+    </FiltersContext.Provider>
+  );
+
   return (
-      <div className={"Portal"}>
-        <div className={"portalLeftFilters"}>
-          {filters}
+    <div className={"Portal"}>
+      <div className={"portalLeftFilters"}>
+        {filtersSectionInContext}
+      </div>
+      <div className={"portalVerticalSection"}>
+        {!loading &&
+          <CarSearchSortSection
+            chosenKeyword={chosenKeyword}
+            setChosenKeyword={setChosenKeyword}
+            cars={cars}
+            setCars={setCars}
+          />
+        }
+        <div className={`portalVerticalSectionFilters ${centerFiltersDisplayed ? " active" : ""}`}>
+          {filtersSectionInContext}
         </div>
-        <div className={"portalVerticalSection"}>
-          <CarSearchSortSection setChosenKeyword={setChosenKeyword} cars={cars} setCars={setCars}/>
-          <div className={`portalVerticalSectionFilters ${centerFiltersDisplayed ? " active" : ""}`}>
-            {filters}
+
+
+        <button className={`portalVerticalSectionButton ${centerFiltersDisplayed ? "" : " active"}`}
+                onClick={toggleFiltersDisplayed}>Filters
+        </button>
+        {errorMessageActive ?
+          <ErrorFetchingDataMessage/>
+          :
+          <div className={`portalCarCards ${centerFiltersDisplayed ? "" : " active"}`}>
+            {loading ? <p>Loading...</p> : cars.map((car) => (
+              <CarCard key={car.getId()} car={car} img={tempImage}/>
+            ))}
           </div>
-
-
-          <button className={`portalVerticalSectionButton ${centerFiltersDisplayed ? "" : " active"}`}
-                  onClick={toggleFiltersDisplayed}>Filters
-          </button>
-          {errorMessageActive ?
-            <ErrorFetchingDataMessage/>
-            :
-            <div className={`portalCarCards ${centerFiltersDisplayed ? "" : " active"}`}>
-              {loading ? <p>Loading...</p> : cars.map((car) => (
-                <CarCard key={car.getId()} car={car} img={tempImage}/>
-              ))}
-            </div>
-          }
-
-        </div>
+        }
 
       </div>
+
+    </div>
   )
 }

@@ -8,6 +8,7 @@ import SelectMenu from "../SelectMenu/SelectMenu";
 const CarSearchSortSection = (props) => {
 
   const setChosenKeyword = props.setChosenKeyword;
+  const chosenKeyword = props.chosenKeyword;
   const cars = props.cars;
   const setCars = props.setCars;
 
@@ -27,7 +28,7 @@ const CarSearchSortSection = (props) => {
     { value: SEATS_DESC_VALUE, label: 'Seats ↓' }
   ]
 
-  const [searchItem, setSearchItem] = useState('');
+  const [searchItem, setSearchItem] = useState(props.chosenKeyword || "");
   const [sortByItem, setSortByItem] = useState(null);
 
   const setSortByPriceAsc = () => {
@@ -63,6 +64,9 @@ const CarSearchSortSection = (props) => {
   const handleSearchFieldChange = (input) => {
     const searchWord = input.target.value;
     setSearchItem(searchWord);
+    if (searchWord === "") {
+      setChosenKeyword("");
+    }
   }
 
   const handleSearchFieldKeyDown = (input) => {

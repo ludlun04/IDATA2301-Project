@@ -35,16 +35,16 @@ export const CarAPI = {
       urlBuilder = urlBuilder
         .withSellers(filters.sellers)
         .withSeats(filters.seats)
-        .withManufacturers(filters.manufacturers)
+        .withManufacturers(filters.brands)
         .withFuelTypes(filters.fuelTypes)
-        .withFromPrice(filters.from_price)
-        .withToPrice(filters.to_price)
+        .withFromPrice(filters.fromPrice)
+        .withToPrice(filters.toPrice)
         .withKeyword(filters.keyword)
-      if (filters.from_time) {
-        if (filters.to_time) {
-          urlBuilder = urlBuilder.withBetweenTimes(filters.from_time, filters.to_time);
+      if (filters.fromTime) {
+        if (filters.toTime) {
+          urlBuilder = urlBuilder.withBetweenTimes(filters.fromTime, filters.toTime);
         } else {
-          urlBuilder = urlBuilder.withFromTime(filters.from_time);
+          urlBuilder = urlBuilder.withFromTime(filters.fromTime);
         }
       }
     }
