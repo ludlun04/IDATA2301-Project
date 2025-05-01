@@ -20,6 +20,7 @@ import EmptyDevPage from "../pages/emptyDevPage/emptyDevPage";
 import Dashboard from "../pages/dashboard/Dashboard";
 import { AuthProvider } from "../context/AuthContext"
 import Order from '../pages/order/Order';
+import Page404 from "../pages/404/Page404";
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path={"/"} element={<Root/>}>
@@ -34,6 +35,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route path={"dashboard"} element={<Dashboard/>}/>
     <Route path={"dev"} element={<EmptyDevPage/>}/>
     <Route path={"order/:id"} element={<Order/>}/>
+      <Route path={"*"} element={<Page404 />} />
   </Route>
 ))
 
