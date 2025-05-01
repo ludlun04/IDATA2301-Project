@@ -6,7 +6,7 @@
 }
 
 .main404 img {
-    width: 32rem;
+    width: 30rem;
     padding-top: 5rem;
 }
 
@@ -17,4 +17,10 @@
 
 .main404 > h2 {
     font-size: 2rem;
+}
+
+@media only screen and (max-width: 512px) {
+    .main404 > img {
+        width: 15rem;
+    }
 }
