@@ -5,6 +5,7 @@ import DatePicker from "react-datepicker";
 import {FiltersContext} from "../../context/FiltersContext";
 import "react-datepicker/dist/react-datepicker.css";
 import "./FiltersSection.css";
+import CarFilterToggle from "../CarFilterToggle/CarFilterToggle";
 // CSS Modules, react-datepicker-cssmodules.css
 // import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
@@ -64,36 +65,33 @@ const FiltersSection = (props) => {
     }
   }, [availableNowChecked, setStartDate, endDate]);
 
-  const alterChosenSellers = (event) => {
-    const seller = event.target.value;
-    if (event.target.checked) {
+  const alterChosenSellers = (seller, checked) => {
+
+    if (checked) {
       context.setChosenSellers((prev) => [...prev, seller]);
     } else {
       context.setChosenSellers(chosenSellers => chosenSellers.filter((s) => s !== seller));
     }
   }
 
-  const alterChosenBrands = (event) => {
-    const Brand = event.target.value;
-    if (event.target.checked) {
-      context.setChosenBrands((prev) => [...prev, Brand]);
+  const alterChosenBrands = (brand, checked) => {
+    if (checked) {
+      context.setChosenBrands((prev) => [...prev, brand]);
     } else {
-      context.setChosenBrands(chosenBrands => chosenBrands.filter((m) => m !== Brand));
+      context.setChosenBrands(chosenBrands => chosenBrands.filter((m) => m !== brand));
     }
   }
 
-  const alterChosenFuelTypes = (event) => {
-    const fuelType = event.target.value;
-    if (event.target.checked) {
+  const alterChosenFuelTypes = (fuelType, checked) => {
+    if (checked) {
       context.setChosenFuelTypes((prev) => [...prev, fuelType]);
     } else {
       context.setChosenFuelTypes(chosenFuelTypes => chosenFuelTypes.filter((f) => f !== fuelType));
     }
   }
 
-  const alterChosenSeats = (event) => {
-    const seat = Number(event.target.value);
-    if (event.target.checked) {
+  const alterChosenSeats = (seat, checked) => {
+    if (checked) {
       console.log("checked");
       context.setChosenSeats((prev) => [...prev, seat]);
     } else {
@@ -112,71 +110,61 @@ const FiltersSection = (props) => {
         <section>
           <h1>The car</h1>
           <DropdownMenu alwaysShownContent={getHeader("Brand")}>
-            <ul>
-              {availableBrands.map((brand, index) => (
-                <li key={index} className="filtersSectionFilterLine">
-                  <p>{brand.getName()}</p>
-                  <input
-                    value={brand.getName()}
-                    type="checkbox"
-                    onChange={alterChosenBrands}
-                    checked={context.chosenBrands.includes(brand.getName())}
-                  />
-                </li>
-              ))}
-            </ul>
+            {availableBrands.map((brand, index) => (
+              <CarFilterToggle
+                className={"filtersSectionCarFilterToggle"}
+                value={brand.getName()}
+                onClick={alterChosenBrands}
+                active={context.chosenBrands.includes(brand.getName())}
+                key={index}
+              />
+            ))}
           </DropdownMenu>
           <DropdownMenu alwaysShownContent={getHeader("Fuel type")}>
-            <ul>
-              {availableFuelTypes.map((fuelType, index) => (
-                <li key={index} className="filtersSectionFilterLine">
-                  <p>{fuelType.getName()}</p>
-                  <input
-                    value={fuelType.getName()}
-                    type="checkbox"
-                    onChange={alterChosenFuelTypes}
-                    checked={context.chosenFuelTypes.includes(fuelType.getName())}
-                  />
-                </li>
-              ))}
-            </ul>
+            {availableFuelTypes.map((fuelType, index) => (
+              <CarFilterToggle
+                className={"filtersSectionCarFilterToggle"}
+                value={fuelType.getName()}
+                onClick={alterChosenFuelTypes}
+                active={context.chosenFuelTypes.includes(fuelType.getName())}
+                key={index}
+              />
+
+            ))}
           </DropdownMenu>
           <DropdownMenu alwaysShownContent={getHeader("Seller")}>
-            <ul>
-              {availableSellers.map((seller, index) => (
-                <li key={index} className="filtersSectionFilterLine">
-                  <p>{seller.getName()}</p>
-                  <input
-                    value={seller.getName()}
-                    type="checkbox"
-                    onChange={alterChosenSellers}
-                    checked={context.chosenSellers.includes(seller.getName())}
-                  />
-                </li>
-              ))}
-            </ul>
+            {availableSellers.map((seller, index) => (
+              <CarFilterToggle
+                className={"filtersSectionCarFilterToggle"}
+                value={seller.getName()}
+                onClick={alterChosenSellers}
+                active={context.chosenSellers.includes(seller.getName())}
+                key={index}
+              />
+            ))}
           </DropdownMenu>
           <DropdownMenu alwaysShownContent={getHeader("Seats")}>
-            <ul>
-              {availableSeats.map((seat, index) => (
-                <li key={index} className="filtersSectionFilterLine">
-                  <p>{seat}</p>
-                  <input
-                    value={seat}
-                    type="checkbox"
-                    onChange={alterChosenSeats}
-                    checked={context.chosenSeats.includes(seat)}
-                  />
-                </li>
-              ))}
-            </ul>
+            {availableSeats.map((seat, index) => (
+              <CarFilterToggle
+                className={"filtersSectionCarFilterToggle"}
+                value={seat}
+                onClick={alterChosenSeats}
+                active={context.chosenSeats.includes(seat)}
+                key={index}
+              />
+            ))}
           </DropdownMenu>
         </section>
         <section>
           <h1>The Time</h1>
-          <li className="filtersSectionFilterLine"><p>Available now</p> <input
-            type="checkbox" checked={availableNowChecked}
-            onChange={handleAvailableNowCheckedChange}></input></li>
+          <CarFilterToggle
+            className={"filtersSectionCarFilterToggle"}
+            value={"Available now"}
+            onClick={handleAvailableNowCheckedChange}
+            active={availableNowChecked}
+          />
+
+
           <section className={"filtersSectionDateLine"}>
             <p>From</p>
             <DatePicker
