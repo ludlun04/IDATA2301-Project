@@ -100,7 +100,7 @@ export const CarAPI = {
     });
 
     const addons = carObject.addons.map(addon => {
-      return new Addon(addon.id, addon.name);
+      return new Addon(addon.id, addon.name, addon.price);
     });
     return new Car(
       company,
@@ -144,7 +144,8 @@ export const CarAPI = {
       addons: car.getAddons().map(addon => {
         return {
           id: addon.getId(),
-          name: addon.getName()
+          name: addon.getName(),
+          price: addon.getPrice()
         }
       }),
       features: car.getFeatures().map(feature => {

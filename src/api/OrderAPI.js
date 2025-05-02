@@ -24,7 +24,7 @@ export const OrderAPI = {
     });
   },
 
-  requestRent: async (carId, startDate, endDate) => {
+  requestRent: async (carId, startDate, endDate, addons) => {
     return await axios(`${Constants.API_URL}/order/`, {
       method: "POST",
       headers: {
@@ -35,6 +35,7 @@ export const OrderAPI = {
         carId: carId,
         startDate: startDate,
         endDate: endDate,
+        addonIds: addons.map(addon => addon.getId()),
       }),
     });
   }

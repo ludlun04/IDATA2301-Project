@@ -15,6 +15,8 @@ const RentInteraction = ({ car }) => {
   const [ carPricePerDay, setCarPricePerDay ] = useState(car.getPricePerDay());
   const [totalPrice, setTotalPrice] = useState(0);
 
+  const [ selectedAddons, setSelectedAddons ] = useState([]);
+
   useEffect(() => {
     if (!startDate || !endDate) {
       setTotalPrice(0);
@@ -22,10 +24,12 @@ const RentInteraction = ({ car }) => {
     }
 
     const amountOfDays = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
-    const totalPrice = amountOfDays * carPricePerDay;
+    const carTotal = amountOfDays * carPricePerDay;
 
-    setTotalPrice(totalPrice);
-  }, [startDate, endDate]);
+    const addonsPrice = selectedAddons.reduce((acc, addon) => acc + addon.getPrice(), 0);
+
+    setTotalPrice(carTotal + addonsPrice);
+  }, [startDate, endDate, selectedAddons]);
 
   const onChange = (dates) => {
     const [start, end] = dates;
@@ -42,7 +46,7 @@ const RentInteraction = ({ car }) => {
   }
 
   const onRentPressed = () => {
-    OrderAPI.requestRent(car.getId(), startDate, endDate)
+    OrderAPI.requestRent(car.getId(), startDate, endDate, selectedAddons)
       .then((response) => {
         console.log("Rent response:", response);
         if (response.status === 201) {
@@ -55,6 +59,16 @@ const RentInteraction = ({ car }) => {
         console.error("Error renting car:", error);
       });
   }
+
+  const onAddonSelected = (addon, selected) => {
+    if (selected) {
+      setSelectedAddons((prev) => [...prev, addon]);
+    } else {
+      setSelectedAddons((prev) => prev.filter((a) => a.getId() !== addon.getId()));
+    }
+  }
+
+  
 
   // datepicker configuration
   const dateFormat = "dd.MM.yyyy"; // displayed date format in datepicker
@@ -83,7 +97,7 @@ const RentInteraction = ({ car }) => {
         </div>
       </div>
 
-      <AddonList addons={car.getAddons()} />
+      <AddonList addons={car.getAddons()} onAddonSelected={onAddonSelected}/>
 
       <div className={"RentDailyPrice"}>
         <p className={"RentTitle"}>kr/day</p>
