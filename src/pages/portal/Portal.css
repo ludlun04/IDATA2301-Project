@@ -30,6 +30,9 @@
     flex-direction: column;
     gap: 25px;
     margin-top: 10px;
+
+    height: 70vh;
+    overflow: scroll;
 }
 
 .portalVerticalSection {
