@@ -1,19 +1,34 @@
 import "./UserFavorites.css"
 import CarCard from "../../CarCard/CarCard";
+import {useEffect, useState} from "react";
+import {UsersAPI} from "../../../api/UsersAPI";
+import {CarAPI} from "../../../api/CarAPI";
 
 export default function UserFavorites() {
+    const [favoritedCars, setFavoritedCars] = useState([]);
+
+
+    useEffect(() => {
+        async function fetchFavoritedCars() {
+            const favorites = await CarAPI.getCurrentUserFavorites()
+
+            if (favorites) {
+                setFavoritedCars(favorites)
+            }
+        }
+
+        fetchFavoritedCars();
+    }, []);
+
+    console.log(favoritedCars)
+
     return (
         <main className={"UserFavorites"}>
+            <h1>Favorites</h1>
             <div className={"UserFavoritesContainer"}>
-                <CarCard price={4325} availability={true} seats={4} year={2021} name={"Mazda CX3"} company={"Steike Rentals"} isFavorite={true}/>
-                <CarCard price={4325} availability={true} seats={4} year={2021} name={"Mazda CX3"} company={"Steike Rentals"} isFavorite={true}/>
-                <CarCard price={4325} availability={true} seats={4} year={2021} name={"Mazda CX3"} company={"Steike Rentals"} isFavorite={true}/>
-                <CarCard price={4325} availability={true} seats={4} year={2021} name={"Mazda CX3"} company={"Steike Rentals"} isFavorite={true}/>
-                <CarCard price={4325} availability={true} seats={4} year={2021} name={"Mazda CX3"} company={"Steike Rentals"} isFavorite={true}/>
-                <CarCard price={4325} availability={true} seats={4} year={2021} name={"Mazda CX3"} company={"Steike Rentals"} isFavorite={true}/>
-                <CarCard price={4325} availability={true} seats={4} year={2021} name={"Mazda CX3"} company={"Steike Rentals"} isFavorite={true}/>
-                <CarCard price={4325} availability={true} seats={4} year={2021} name={"Mazda CX3"} company={"Steike Rentals"} isFavorite={true}/>
-
+                {favoritedCars.map((car) => (
+                    <CarCard key={car.getId()} car={car} />
+                ))}
             </div>
         </main>
     )

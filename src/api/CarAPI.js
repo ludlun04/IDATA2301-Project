@@ -10,6 +10,7 @@ import {Addon} from "../model/Addon";
 import {CarUrlBuilder} from "./CarUrlBuilder";
 import {UsersAPI} from "./UsersAPI";
 import {Authentication} from "./Authentication";
+import Constants from "../Constants";
 
 export const CarAPI = {
 
@@ -67,6 +68,33 @@ export const CarAPI = {
       cars: cars,
       url: urlBuilder.getFilterPart()
     }
+  },
+
+  getCurrentUserFavorites: async () => {
+    if (!Authentication.isSignedIn()) {
+      throw new Error("User is not signed in")
+    }
+
+    const token = Authentication.getToken();
+    const result = await axios.get(`${Constants.API_URL}/users/favorites`, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+
+    const cars = [];
+
+    result.data.map(car => {
+      cars.push(CarAPI.getCarFromJsonObject(car))
+    })
+
+    cars.forEach((car) => {
+      car.setFavorite(true)
+      //TODO: Fix available?
+      car.setAvailable(true)
+    })
+
+    return cars;
   },
 
   getAllAmountOfSeatsInCars: async () => {
