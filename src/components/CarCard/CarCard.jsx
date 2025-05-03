@@ -1,5 +1,5 @@
 import "./CarCard.css"
-import img from "../../resources/images/cars/bmw_m3/bmw_m3-1600.webp"
+import img from "../../resources/images/bmw.jpg"
 import CarFavoriteButton from "../CarFavoriteButton/CarFavoriteButton";
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";

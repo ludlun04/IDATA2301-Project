@@ -1,5 +1,5 @@
 import "./Rent.css"
-import img from "../../resources/images/cars/bmw_m3/bmw_m3-1600.webp"
+import img from "../../resources/images/bmw.jpg"
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { CarAPI } from "../../api/CarAPI";

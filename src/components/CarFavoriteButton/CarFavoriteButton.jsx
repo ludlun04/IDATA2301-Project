@@ -1,6 +1,5 @@
 import {useState} from "react";
 import {UsersAPI} from "../../api/UsersAPI";
-import img from "../../resources/images/cars/bmw_m3/bmw_m3-1600.webp";
 import starFilled from "../../resources/icons/starFilled.svg";
 import starUnfilled from "../../resources/icons/starUnfilled.svg";
 import "./CarFavoriteButton.css";
