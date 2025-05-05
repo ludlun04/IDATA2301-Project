@@ -1,5 +1,5 @@
 import "./Rent.css"
-import img from "../../resources/images/bmw.jpg"
+import img from "../../resources/logo/Logo-Dark-Vertical.svg"
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { CarAPI } from "../../api/CarAPI";
@@ -71,7 +71,7 @@ export default function Rent(props) {
     <main className={"RentMain"}>
       <div className="RentGrid">
         <div className="RentMainTop">
-          <img alt="" className={"RentCarImage"} src={carImage} />
+          <img alt="CarImage" className={"RentCarImage"} src={carImage} />
           <CarFavoriteButton className={"RentCarFavoriteButton"} car={car} />
 
           <section className={"RentInformation"}>
