@@ -3,11 +3,11 @@
     display: flex;
     flex-direction: column;
     justify-self: flex-start;
+    gap: 2rem;
 }
 
 .DashboardNavBar button {
     background: none;
-    margin: .5rem .25rem .5rem .25rem;
     color: var(--text-200);
     font-family: "Kantumruy Pro";
     font-size: 1rem;
@@ -21,4 +21,19 @@
 
 .DashboardNavBar button.selected {
     font-weight: 700;
+}
+
+.DashboardNavBar div, h3 {
+    display: flex;
+    flex-direction: column;
+    font-weight: 300;
+    margin: 0;
+}
+
+.UserPages {
+    gap: 0
+}
+
+.AdminPages {
+    gap: 0
 }

@@ -26,29 +26,41 @@ export default function DashboardNavBar({ className, pages, setCurrentPage }) {
 
   console.log(roles);
 
-  const pagesToShow = [];
-  pagesToShow.push(pages[0]);
-  if (roles) {
-    if (roles.some(role => role.name === 'USER')) {
-      pagesToShow.push("Rentals", "Favorites");
-    }
-    if (roles.some(role => role.name === 'ADMIN')) {
-      pagesToShow.push("Users", "Companies");
-    }
-  }
 
-
+  const userPages = ["Details", "Rentals", "Favorites"];
+  const adminPages = ["Users", "Companies"];
+  const hasUserRole = roles.some(role => role.name === 'USER');
+  const hasAdmin = roles.some(role => role.name === 'ADMIN');
 
   return (
     <div className={className}>
       <div className={"DashboardNavBar"}>
-        {
-          pagesToShow.map((page) => (
-            <button key={page} onClick={onClick(page)} className={selectedPage === page ? "selected" : ""}>
-              {page}
-            </button>
-          ))
+        <div className={"UserPages"}>
+        <h3>User</h3>
+        <div>
+        {hasUserRole ? (
+            userPages.map((page) => (
+                <button key={page} onClick={onClick(page)} className={selectedPage === page ? "selected" : ""}>
+                  {page}
+                </button>
+            ))
+            ) : null
         }
+        </div>
+        </div>
+        <div className={"AdminPages"}>
+        <h3>Admin</h3>
+        <div>
+          {hasAdmin ? (
+            adminPages.map((page) => (
+              <button key={page} onClick={onClick(page)} className={selectedPage === page ? "selected" : ""}>
+                {page}
+              </button>
+            ))
+          ) : null
+          }
+        </div>
+        </div>
       </div>
     </div>
   )
