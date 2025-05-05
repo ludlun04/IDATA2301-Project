@@ -25,6 +25,10 @@
     text-decoration: none;
 }
 
+.SignUp input.invalid {
+    border: 1px solid var(--error);
+}
+
 .signInNavLink:hover {
     text-decoration: underline;
 }
@@ -57,6 +61,17 @@
 .signUpDatePicker {
     width: 6.5rem;
 }
+
+.FormSubmitButton {
+    height: 2.5rem;
+}
+
+.FormSubmitButton.disabled {
+    background-color: dimgrey;
+    cursor: not-allowed;
+}
+
+
 
 @media only screen and (max-width: 600px) {
     .signup-form {
