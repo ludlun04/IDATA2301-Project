@@ -38,26 +38,26 @@ export default function DashboardNavBar({ className, pages, setCurrentPage }) {
         <div className={"UserPages"}>
         <h3>User</h3>
         <div>
-        {hasUserRole ? (
+        {hasUserRole && (
             userPages.map((page) => (
                 <button key={page} onClick={onClick(page)} className={selectedPage === page ? "selected" : ""}>
                   {page}
                 </button>
             ))
-            ) : null
+            )
         }
         </div>
         </div>
         <div className={"AdminPages"}>
         <h3>Admin</h3>
         <div>
-          {hasAdmin ? (
+          {hasAdmin && (
             adminPages.map((page) => (
               <button key={page} onClick={onClick(page)} className={selectedPage === page ? "selected" : ""}>
                 {page}
               </button>
             ))
-          ) : null
+          )
           }
         </div>
         </div>
