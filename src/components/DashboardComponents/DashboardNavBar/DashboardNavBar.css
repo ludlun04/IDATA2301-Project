@@ -18,3 +18,7 @@
     text-decoration: underline;
     cursor: pointer;
 }
+
+.DashboardNavBar button.selected {
+    font-weight: 700;
+}

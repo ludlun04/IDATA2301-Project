@@ -24,7 +24,6 @@ export default function UserFavorites() {
 
     return (
         <main className={"UserFavorites"}>
-            <h1>Favorites</h1>
             <div className={"UserFavoritesContainer"}>
                 {favoritedCars.map((car) => (
                     <CarCard key={car.getId()} car={car} />
