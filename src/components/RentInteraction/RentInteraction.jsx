@@ -9,13 +9,13 @@ import AddonList from "../AddonList/AddonList";
 const RentInteraction = ({ car }) => {
   const navigate = useNavigate();
 
+  const carPricePerDay = car.getPricePerDay();
+
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date(new Date().getTime() + 86400000)); // 1 day later
-
-  const [ carPricePerDay, setCarPricePerDay ] = useState(car.getPricePerDay());
   const [totalPrice, setTotalPrice] = useState(0);
-
-  const [ selectedAddons, setSelectedAddons ] = useState([]);
+  const [numberOfDays, setNumberOfDays] = useState(2);
+  const [selectedAddons, setSelectedAddons] = useState([]);
 
   useEffect(() => {
     if (!startDate || !endDate) {
@@ -23,11 +23,12 @@ const RentInteraction = ({ car }) => {
       return;
     }
 
-    const amountOfDays = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
+    const amountOfDays = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24)) + 1;
     const carTotal = amountOfDays * carPricePerDay;
 
     const addonsPrice = selectedAddons.reduce((acc, addon) => acc + addon.getPrice(), 0);
 
+    setNumberOfDays(amountOfDays);
     setTotalPrice(carTotal + addonsPrice);
   }, [startDate, endDate, selectedAddons]);
 
@@ -46,6 +47,8 @@ const RentInteraction = ({ car }) => {
   }
 
   const onRentPressed = () => {
+    
+
     OrderAPI.requestRent(car.getId(), startDate, endDate, selectedAddons)
       .then((response) => {
         console.log("Rent response:", response);
@@ -68,7 +71,7 @@ const RentInteraction = ({ car }) => {
     }
   }
 
-  
+
 
   // datepicker configuration
   const dateFormat = "dd.MM.yyyy"; // displayed date format in datepicker
@@ -79,9 +82,7 @@ const RentInteraction = ({ car }) => {
     <section className={"RentInteraction"}>
       <CompanyCard car={car} />
 
-      <div className={"RentDuration"}>
-        <div className={"RentDurationSelection"}>
-          <DatePicker /*monthsShown={3}*/
+      <DatePicker /*monthsShown={3}*/
             className={"filtersSectionDatePicker"}
             minDate={new Date()}
             startDate={startDate}
@@ -94,10 +95,9 @@ const RentInteraction = ({ car }) => {
             selectsRange
             inline
           />
-        </div>
-      </div>
+          <p>Days: {numberOfDays}</p>
 
-      <AddonList addons={car.getAddons()} onAddonSelected={onAddonSelected}/>
+      <AddonList addons={car.getAddons()} onAddonSelected={onAddonSelected} />
 
       <div className={"RentDailyPrice"}>
         <p className={"RentTitle"}>kr/day</p>
