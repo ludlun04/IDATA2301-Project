@@ -35,6 +35,7 @@ export default function UserRentals() {
 
   return (
     <main className={"UserRentals"}>
+      <h1 className={"UserRentalsTitle"}>{section === "Active" ? ("Active Rentals") : ("Historical Rentals")}</h1>
       <div className={"UserRentalsButtonContainer"}>
         <button onClick={activePressed}>Active</button>
         <button onClick={historyPressed}>History</button>
