@@ -1,15 +1,51 @@
 import "./UserRentals.css"
-import CarCard from "../../CarCard/CarCard";
+import { useEffect, useState } from "react";
+import { OrderAPI } from "../../../api/OrderAPI";
+import RentCard from "../../RentCard/RentCard";
 
 export default function UserRentals() {
-    return (
-        <main className={"UserRentals"}>
-            <div className={"UserRentalsButtonContainer"}>
-                <button>Active</button>
-                <button>History</button>
-            </div>
-            <div className={"UserRentalsContainer"}>
-            </div>
-        </main>
-    )
+  const [section, setSection] = useState("Active");
+  const [rentals, setRentals] = useState([]);
+
+  useEffect(() => {
+    if (section === "Active") {
+      OrderAPI.getActiveRentals().then((orders) => {
+        setRentals(orders);
+      }).catch((error) => {
+        console.error("Error fetching active rentals:", error);
+      });
+    } else if (section === "History") {
+      OrderAPI.getHistoricalRentals().then((orders) => {
+        setRentals(orders);
+      }).catch((error) => {
+        console.error("Error fetching history rentals:", error);
+      });
+    }
+
+  }, [section])
+  
+
+  const activePressed = () => {
+    setSection("Active");
+  }
+
+  const historyPressed = () => {
+    setSection("History");
+  }
+
+  return (
+    <main className={"UserRentals"}>
+      <div className={"UserRentalsButtonContainer"}>
+        <button onClick={activePressed}>Active</button>
+        <button onClick={historyPressed}>History</button>
+      </div>
+      <div className={"UserRentalsContainer"}>
+        {rentals.map((order) => {
+          return (
+            <RentCard key={order.getId()} orderId={order.getId()} />
+          )
+        })}
+      </div>
+    </main>
+  )
 }

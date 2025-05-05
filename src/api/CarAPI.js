@@ -15,7 +15,6 @@ import Constants from "../Constants";
 export const CarAPI = {
 
   getCar: async (id) => {
-
     const result = await axios.get(`${_getBaseUrl()}/${id}`, {});
 
     const carObject = result.data;

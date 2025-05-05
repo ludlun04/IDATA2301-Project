@@ -1,0 +1,78 @@
+.RentCard {
+    display: flex;
+    border: solid 1px #e8e6e6;
+    height: 7rem;
+    padding: .5rem;
+    border-radius: .5rem;
+    gap: .5rem;
+}
+
+.RentCard:hover {
+    background: lightgray;
+    cursor: pointer;
+}
+
+.RentCard h1, h2, p {
+    margin: 0;
+}
+
+.RentCard h1 {
+    font-weight: 550;
+    font-size: 1.5rem;
+}
+
+.RentCard h2 {
+    font-size: .7rem;
+}
+
+.RentCard p {
+    font-size: 1rem;
+}
+
+.RentCardImageContainer {
+    border-radius: .5rem;
+    overflow: hidden;
+}
+
+.RentCardImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.RentCardRightPane {
+    display: flex;
+    justify-content: space-between;
+}
+
+.RentCardInnerLeftPane {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.RentCardCarInfoContainer {
+    display: flex;
+    gap: 1rem;
+}
+
+.RentCardAvailabilityTag.true {
+    color: var(--success);
+}
+
+@media only screen and (max-width: 650px) {
+    .RentCard {
+        min-width: 13rem;
+        min-height: 17rem;
+        flex-direction: column;
+    }
+
+    .RentCardImageContainer {
+        width: 100%;
+    }
+
+    .favoriteButton {
+        width: 3rem;
+    }
+}
