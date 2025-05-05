@@ -1,5 +1,5 @@
-import "./CarCard.css"
-import img from "../../resources/images/bmw.jpg"
+import "./CarCard.css";
+import img from "../../resources/logo/Logo-Dark-Icon.svg";
 import CarFavoriteButton from "../CarFavoriteButton/CarFavoriteButton";
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
@@ -42,7 +42,7 @@ export default function CarCard(props) {
   return (
     <div className="CarCard" onClick={onClick}>
       <div className={"CarCardImageContainer"}>
-        <img className={"CarCardImg"} src={carImage} alt={"Car"}/>
+        <img className={"CarCardImg"} src={carImage} alt={"CarImage"} />
         <CarFavoriteButton className={"carCardFavoriteButton"} car={car}/>
       </div>
       <div className={"CarCardRightPane"}>

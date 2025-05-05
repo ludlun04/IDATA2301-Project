@@ -1,45 +1,22 @@
-.RentDurationSelection {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-}
-
-.RentDailyPrice > p {
-  margin: 0px;
-  padding: 0px;
-}
-
-.RentDailyPrice > .RentTitle {
-  font-size: 1rem;
-}
-
-.RentDailyPrice > .RentContent {
-  font-size: 1.25rem;
-}
-
-.RentTotalPrice > p {
-  margin: 0px;
-  padding: 0px;
-}
-
-.RentTotalPrice > .RentTitle {
-  font-size: 1.25rem;
-}
-
-.RentTotalPrice > .RentContent {
-  font-size: 2rem;
-}
-
-.RentButton {
-  height: 3rem;
-}
-
 .RentCompanyCard {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1rem;
+}
+
+.RentCompanyIcon {
+  border: 3px solid var(--primary-200);
+  padding: 0.5rem;
+  border-radius: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.RentCompanyLetter {
+  font-size: 2rem;
 }
 
 .RentCompanyCard > .RentCompanyImage{

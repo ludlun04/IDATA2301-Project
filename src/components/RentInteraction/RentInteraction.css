@@ -27,6 +27,42 @@
   color: var(--text-200);
 }
 
+.RentDurationSelection {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.RentDailyPrice > p {
+  margin: 0px;
+  padding: 0px;
+}
+
+.RentDailyPrice > .RentTitle {
+  font-size: 1rem;
+}
+
+.RentDailyPrice > .RentContent {
+  font-size: 1.25rem;
+}
+
+.RentTotalPrice > p {
+  margin: 0px;
+  padding: 0px;
+}
+
+.RentTotalPrice > .RentTitle {
+  font-size: 1.25rem;
+}
+
+.RentTotalPrice > .RentContent {
+  font-size: 2rem;
+}
+
+.RentButton {
+  height: 3rem;
+}
+
 
 
 @media screen and (max-width: 1024px) {
