@@ -1,10 +1,12 @@
-import bmw from "./../../resources/images/bmw.jpg";
 import "./CompanyCard.css"
 
 const CompanyCard = ({ car }) => {
   return (
     <div className={"RentCompanyCard"}>
-      <img alt="Car" className={"RentCompanyImage"} src={bmw} />
+        <div className={"RentCompanyIcon"}>
+            <p className={"RentCompanyLetter"}>{car.getCompanyName().charAt(0)}</p>
+
+        </div>
       <h2>{car.getCompanyName()}</h2>
     </div>
   )
