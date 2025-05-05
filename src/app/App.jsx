@@ -50,10 +50,12 @@ function App() {
 function Root() {
   return (
     <>
+      <div className={"ContentWrapper"}>
       <Header/>
       <main className={"AppMain"}>
         <Outlet/>
       </main>
+      </div>
       <Footer/>
     </>
   )
