@@ -4,11 +4,12 @@ import { UsersAPI } from "../../../api/UsersAPI";
 
 export default function DashboardNavBar({ className, pages, setCurrentPage }) {
   const [roles, setRoles] = useState([]);
-  const [page, setPage] = useState(pages);
+  const [selectedPage, setSelectedPage] = useState(null);
 
   let onClick = (page) => {
     return () => {
       setCurrentPage(page);
+      setSelectedPage(page);
     }
   }
 
@@ -21,9 +22,9 @@ export default function DashboardNavBar({ className, pages, setCurrentPage }) {
       console.error("Error fetching roles:", error);
     });
 
-  }, [])
+  }, []);
 
-  console.log(roles)
+  console.log(roles);
 
   const pagesToShow = [];
   pagesToShow.push(pages[0]);
@@ -43,7 +44,7 @@ export default function DashboardNavBar({ className, pages, setCurrentPage }) {
       <div className={"DashboardNavBar"}>
         {
           pagesToShow.map((page) => (
-            <button key={page} onClick={onClick(page)}>
+            <button key={page} onClick={onClick(page)} className={selectedPage === page ? "selected" : ""}>
               {page}
             </button>
           ))
