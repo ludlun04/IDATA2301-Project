@@ -17,6 +17,8 @@ const RentInteraction = ({ car }) => {
   const [numberOfDays, setNumberOfDays] = useState(2);
   const [selectedAddons, setSelectedAddons] = useState([]);
 
+  const [rentFailMessageActive, setRentFailMessageActive] = useState(false);
+
   useEffect(() => {
     if (!startDate || !endDate) {
       setTotalPrice(0);
@@ -51,15 +53,19 @@ const RentInteraction = ({ car }) => {
 
     OrderAPI.requestRent(car.getId(), startDate, endDate, selectedAddons)
       .then((response) => {
-        console.log("Rent response:", response);
-        if (response.status === 201) {
-          navigate("/order/" + response.data);
-        } else {
-          console.error("Error renting car:", response.statusText);
+        if (response) {
+          console.log("Rent response:", response);
+          if (response.status === 201) {
+            navigate("/order/" + response.data);
+          } else {
+            console.error("Error renting car:", response.statusText);
+          }
         }
+
       })
       .catch((error) => {
         console.error("Error renting car:", error);
+        setRentFailMessageActive(true);
       });
   }
 
@@ -110,6 +116,9 @@ const RentInteraction = ({ car }) => {
       </div>
 
       <button className={"RentButton"} type="button" onClick={onRentPressed}>Rent</button>
+      {rentFailMessageActive &&
+        <p className={"RentFailMessage"}>Failed to rent the car. Please try again.</p>
+      }
     </section>
   )
 }

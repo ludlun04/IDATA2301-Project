@@ -21,9 +21,11 @@ import Dashboard from "../pages/dashboard/Dashboard";
 import { AuthProvider } from "../context/AuthContext"
 import Order from '../pages/order/Order';
 import Page404 from "../pages/404/Page404";
+import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path={"/"} element={<Root/>}>
+
     <Route index element={<Navigate to={"/home"} replace/>}/>
     <Route path={"home"} element={<Home/>}/>
     <Route path={"portal"} element={<Portal/>}/>
@@ -50,6 +52,7 @@ function App() {
 function Root() {
   return (
     <>
+      <ScrollToTop/>
       <div className={"ContentWrapper"}>
       <Header/>
       <main className={"AppMain"}>

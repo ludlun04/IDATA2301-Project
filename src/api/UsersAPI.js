@@ -8,52 +8,62 @@ import {CarAPI} from "./CarAPI";
 
 export const UsersAPI = {
   getAllUsers: async () => {
-    if (!Authentication.isSignedIn()) {
-      throw new Error("User is not signed in");
-    }
-
-    const token = Authentication.getToken();
-    const result = await axios.get(`${Constants.API_URL}/users`, {
-      headers: {
-        'Authorization': `Bearer ${token}`
+    try {
+      if (!Authentication.isSignedIn()) {
+        throw new Error("User is not signed in");
       }
-    });
 
-    let users = result.data.map(user => {
-      return getUserFromJsonObject(user);
-    });
+      const token = Authentication.getToken();
+      const result = await axios.get(`${Constants.API_URL}/users`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
 
-    console.log("UsersAPI.getAllUsers: ", users);
-    return users;
+      let users = result.data.map(user => {
+        return getUserFromJsonObject(user);
+      });
+
+      console.log("UsersAPI.getAllUsers: ", users);
+      return users;
+    } catch (error) {
+      console.error("Error fetching users:", error);
+      throw error;
+    }
   },
 
   signUp: async (user, password) => {
-    const result = await axios({
-      method: "post",
-      url: `${Constants.API_URL}/users/add`,
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      data: {
-        email: user.getEmail(),
-        username: user.getFirstName(),
-        firstName: user.getFirstName(),
-        lastName: user.getLastName(),
-        phoneNumber: {
-          countryCode: user.getPhoneNumber().getCountryCode(),
-          number: user.getPhoneNumber().getNumber()
+    try {
+      const result = await axios({
+        method: "post",
+        url: `${Constants.API_URL}/users/add`,
+        headers: {
+          'Content-Type': 'application/json'
         },
-        dateOfBirth: user.getDateOfBirth().getTime(),
-        address: {
-          country: user.getAddress().getCountry(),
-          streetAddress: user.getAddress().getStreetAddress(),
-          zipCode: user.getAddress().getStreetAddress()
-        },
-        password: password
-      }
-    });
+        data: {
+          email: user.getEmail(),
+          username: user.getFirstName(),
+          firstName: user.getFirstName(),
+          lastName: user.getLastName(),
+          phoneNumber: {
+            countryCode: user.getPhoneNumber().getCountryCode(),
+            number: user.getPhoneNumber().getNumber()
+          },
+          dateOfBirth: user.getDateOfBirth().getTime(),
+          address: {
+            country: user.getAddress().getCountry(),
+            streetAddress: user.getAddress().getStreetAddress(),
+            zipCode: user.getAddress().getStreetAddress()
+          },
+          password: password
+        }
+      });
 
-    console.log("UsersAPI.signUp: ", result.request);
+      console.log("UsersAPI.signUp: ", result.request);
+    } catch (error) {
+      console.error("Error signing up:", error);
+      throw error;
+    }
   },
 
   updateUser: async (user) => {
@@ -90,92 +100,117 @@ export const UsersAPI = {
   },
 
   getCurrentAuthenticatedUser: async () => {
-    if (Authentication.isSignedIn()) {
-      const token = Authentication.getToken();
-      const result = await axios.get(`${Constants.API_URL}/users/details`, {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
+    try {
+      if (Authentication.isSignedIn()) {
+        const token = Authentication.getToken();
+        const result = await axios.get(`${Constants.API_URL}/users/details`, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
 
-      const user = getUserFromJsonObject(result.data);
-      return user;
+        const user = getUserFromJsonObject(result.data);
+        return user;
+      }
+    } catch (error) {
+      console.error("Error fetching current user:", error);
+      throw error;
     }
   },
 
   getCurrentAuthenticatedUserRoles: async () => {
-    if (Authentication.isSignedIn()) {
-      const token = Authentication.getToken();
-      const result = await axios.get(`${Constants.API_URL}/users/roles`, {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
+    try {
+      if (Authentication.isSignedIn()) {
+        const token = Authentication.getToken();
+        const result = await axios.get(`${Constants.API_URL}/users/roles`, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
 
-      return result.data;
+        return result.data;
+      }
+    } catch (error) {
+      console.error("Error fetching current user roles:", error);
+      throw error;
     }
 
   },
 
   getFavoritesAmongCars: async (cars) => {
-    const carObjects = cars.map(car => {
-      return CarAPI.getJsonObjectFromCar(car);
-    });
+    try {
+      const carObjects = cars.map(car => {
+        return CarAPI.getJsonObjectFromCar(car);
+      });
 
-    if (Authentication.isSignedIn()) {
-      const token = Authentication.getToken();
-      const result = await axios.post(
-        `${Constants.API_URL}/users/favorites`,
-        carObjects,
-        {
-          headers: {
-            'Authorization': `Bearer ${token}`
-          },
+      if (Authentication.isSignedIn()) {
+        const token = Authentication.getToken();
+        const result = await axios.post(
+          `${Constants.API_URL}/users/favorites`,
+          carObjects,
+          {
+            headers: {
+              'Authorization': `Bearer ${token}`
+            },
 
-        }
-      );
-      return result.data.map(carObject => {
-        return CarAPI.getCarFromJsonObject(carObject);
-      })
-    } else {
-      console.error("Not signed in, can not get favorites");
+          }
+        );
+        return result.data.map(carObject => {
+          return CarAPI.getCarFromJsonObject(carObject);
+        })
+      } else {
+        console.error("Not signed in, can not get favorites");
+      }
+    } catch (error) {
+      console.error("Error fetching favorites:", error);
+      throw error;
     }
   },
 
   setFavorite: async(car, isFavorite) => {
-    if (Authentication.isSignedIn()) {
-      const token = Authentication.getToken();
-      const response = await axios.post(
-        `${Constants.API_URL}/users/favorites/alter`,
-        {
-          carId: car.getId(),
-          isFavorite: isFavorite
-        },
-        {
-          headers: {
-            'Authorization': `Bearer ${token}`
+    try {
+      if (Authentication.isSignedIn()) {
+        const token = Authentication.getToken();
+        const response = await axios.post(
+          `${Constants.API_URL}/users/favorites/alter`,
+          {
+            carId: car.getId(),
+            isFavorite: isFavorite
+          },
+          {
+            headers: {
+              'Authorization': `Bearer ${token}`
+            }
           }
-        }
-      );
-      return response.data;
+        );
+        return response.data;
+      }
+    } catch (error) {
+      console.error("Error setting favorite:", error);
+      throw error;
     }
 
   }
 }
 
 function getUserFromJsonObject(userObject) {
-  const phoneNumber = new PhoneNumber(userObject.phoneNumber.countryCode, userObject.phoneNumber.number);
-  const dateOfBirth = new Date(userObject.dateOfBirth);
-  const address = new Address(userObject.address.country, userObject.address.streetAddress, userObject.address.zipCode);
+  try {
+    const phoneNumber = new PhoneNumber(userObject.phoneNumber.countryCode, userObject.phoneNumber.number);
+    const dateOfBirth = new Date(userObject.dateOfBirth);
+    const address = new Address(userObject.address.country, userObject.address.streetAddress, userObject.address.zipCode);
 
-  return new User(
-    userObject.id,
-    userObject.email,
-    userObject.firstName,
-    userObject.lastName,
-    phoneNumber,
-    dateOfBirth,
-    userObject.roles.map(role => role.name),
-    address
-  );
+    return new User(
+      userObject.id,
+      userObject.email,
+      userObject.firstName,
+      userObject.lastName,
+      phoneNumber,
+      dateOfBirth,
+      userObject.roles.map(role => role.name),
+      address
+    );
+  } catch (error) {
+    console.error("Error creating user from JSON object:", error);
+    throw error;
+  }
 }

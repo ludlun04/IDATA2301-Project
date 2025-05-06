@@ -4,6 +4,7 @@ import CarSearchSortSection from "../../components/CarSearchSortSection/CarSearc
 import FiltersSection from "../../components/FilterSection/FiltersSection";
 import ErrorFetchingDataMessage
   from "../../components/ErrorFetchingDataMessage/ErrorFetchingDataMessage";
+import Loader from "../../components/loader/Loader";
 import {useEffect, useState} from "react";
 import {useLocation} from "react-router-dom";
 import {CarAPI} from "../../api/CarAPI";
@@ -121,40 +122,68 @@ export default function Portal() {
   }
 
   const fetchCars = async (filters) => {
-    const response = await CarAPI.getAllCars(filters);
-    setCars(response.cars);
-    setLoading(false);
+    try {
+      const response = await CarAPI.getAllCars(filters);
+      setCars(response.cars);
 
-    const url = response.url;
-    if (url) {
-      const newUrl = `${window.location.pathname}?${response.url}`;
-      window.history.pushState({}, '', newUrl);
+      const url = response.url;
+      if (url) {
+        const newUrl = `${window.location.pathname}?${response.url}`;
+        window.history.pushState({}, '', newUrl);
+      }
+      setLoading(false);
+      console.log("Fetched cars: " + cars);
+    } catch (error) {
+      console.error("Error fetching car data to portal:", error);
+      setLoading(false);
+      setErrorMessageActive(true);
     }
-    console.log("Fetched cars: " + cars);
+
   };
 
   const fetchManufacturers = async () => {
-    const manufacturers = await CarBrandAPI.getBrandsUsedInCars();
-    setPossibleBrands(manufacturers);
-    console.log("Fetched manufacturers: " + manufacturers);
+    try {
+      const manufacturers = await CarBrandAPI.getBrandsUsedInCars();
+      setPossibleBrands(manufacturers);
+      console.log("Fetched manufacturers: " + manufacturers);
+    } catch (error) {
+      console.error("Error fetching manufacturers to portal:", error);
+      setErrorMessageActive(true);
+    }
+
   }
 
   const fetchFuelTypes = async () => {
-    const fuelTypes = await FuelTypeAPI.getFuelTypesUsedInCars();
-    setPossibleFuelTypes(fuelTypes);
-    console.log("Fetched fuel types: " + fuelTypes);
+    try {
+      const fuelTypes = await FuelTypeAPI.getFuelTypesUsedInCars();
+      setPossibleFuelTypes(fuelTypes);
+      console.log("Fetched fuel types: " + fuelTypes);
+    } catch (error) {
+      console.error("Error fetching fuel types to portal:", error);
+      setErrorMessageActive(true);
+    }
   }
 
   const fetchSellers = async () => {
-    const companies = await CompanyAPI.getCompaniesUsedInCars();
-    setPossibleSellers(companies);
-    console.log("Fetched sellers: " + companies);
+    try {
+      const companies = await CompanyAPI.getCompaniesUsedInCars();
+      setPossibleSellers(companies);
+      console.log("Fetched sellers: " + companies);
+    } catch (error) {
+      console.error("Error fetching sellers to portal:", error);
+      setErrorMessageActive(true);
+    }
   }
 
   const fetchSeats = async () => {
-    const seats = await CarAPI.getAllAmountOfSeatsInCars();
-    setPossibleSeats(seats);
-    console.log("Fetched seats: " + seats);
+    try {
+      const seats = await CarAPI.getAllAmountOfSeatsInCars();
+      setPossibleSeats(seats);
+      console.log("Fetched seats: " + seats);
+    } catch (error) {
+      console.error("Error fetching seats to portal:", error);
+      setErrorMessageActive(true);
+    }
   }
 
   useEffect(() => {
@@ -164,7 +193,14 @@ export default function Portal() {
   }, [searchParams]);
 
   useEffect(() => {
-    fetchCars(filters);
+    try {
+      fetchCars(filters);
+    } catch (error) {
+      console.error("Error fetching car data:", error);
+      setErrorMessageActive(true);
+      setLoading(false);
+    }
+
   }, [
     urlParamsReady,
     chosenBrands,
@@ -243,16 +279,21 @@ export default function Portal() {
         <button className={`portalVerticalSectionButton ${centerFiltersDisplayed ? "" : " active"}`}
                 onClick={toggleFiltersDisplayed}>Filters
         </button>
-        {errorMessageActive ?
-          <ErrorFetchingDataMessage/>
-          :
-          <div className={`portalCarCards ${centerFiltersDisplayed ? "" : " active"}`}>
-            {loading ? <p>Loading...</p> : cars.map((car) => (
-              <CarCard key={car.getId()} car={car} img={tempImage}/>
-            ))}
-          </div>
-        }
+        <div className={`portalCarCards ${centerFiltersDisplayed ? "" : " active"}`}>
+          {errorMessageActive ?
+            <ErrorFetchingDataMessage/>
+            : loading ?
+              <Loader className={"portalLoader"}/>
+              : cars.length === 0 ?
+                <p>No cars found matching filters</p>
+                : (
+                  cars.map((car) => (
+                    <CarCard key={car.getId()} car={car} img={tempImage}/>
+                  ))
+                )
 
+          }
+        </div>
       </div>
 
     </div>
