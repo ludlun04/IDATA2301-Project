@@ -2,6 +2,7 @@ import Constants from "../Constants.jsx";
 import axios from 'axios';
 import {Company} from "../model/Company";
 import {PhoneNumber} from "../model/PhoneNumber";
+import {Authentication} from "./Authentication";
 
 export const CompanyAPI = {
 
@@ -18,8 +19,29 @@ export const CompanyAPI = {
       console.error("Error fetching companies:", error);
       throw error;
     }
-  }
+  },
 
+  getCurrentUserCompanies: async () => {
+    try {
+      if (Authentication.isSignedIn()) {
+        const token = Authentication.getToken();
+        const result = await axios.get(`${Constants.API_URL}/company/current_user_companies`, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+
+        let companies = [];
+        result.data.forEach((companyObject) => {
+          companies.push(getCompanyFromJsonObject(companyObject));
+        })
+        return companies;
+      }
+    } catch (error) {
+      console.error("Error fetching current user companies:", error);
+      throw error;
+    }
+  }
 }
 
 const getCompanyFromJsonObject = (companyObject) => {

@@ -2,13 +2,12 @@ import "./Dashboard.css"
 import DashboardNavBar from "../../components/DashboardComponents/DashboardNavBar/DashboardNavBar";
 import { useState } from "react";
 import UsersSection from "../../components/DashboardComponents/Admin/UsersSection";
-import CompaniesSection from "../../components/DashboardComponents/Admin/CompaniesSection";
 import UserRentals from "../../components/DashboardComponents/User/UserRentals";
 import DetailsSection from "../../components/DashboardComponents/User/DetailsSection";
 import UserFavorites from "../../components/DashboardComponents/User/UserFavorites";
-import CompanyCarsHistory from "../../components/DashboardComponents/Company/CompanyCarsHistory";
-import CompanyCars from "../../components/DashboardComponents/Company/CompanyCars";
 import DropdownMenu from "../../components/DropdownMenu/DropdownMenu";
+import Companies from "../../components/DashboardComponents/Company/Company";
+import {Outlet} from "react-router-dom";
 
 export default function Dashboard() {
   const [currentPage, setCurrentPage] = useState("Details");
@@ -17,10 +16,8 @@ export default function Dashboard() {
     ["Details", <DetailsSection key={"Details"}/>],
     ["Rentals", <UserRentals key={"Rentals"}/>],
     ["Favorites", <UserFavorites key={"Favorites"}/>],
-    ["Company Cars History", <CompanyCarsHistory key={"Company Cars History"}/>],
-    ["Company Cars", <CompanyCars key={"Company Cars"}/>],
     ["Users", <UsersSection key={"Users"}/>],
-    ["Companies", <CompaniesSection key={"Companies"}/>]
+    ["Companies", <Companies key={"Companies"}/>]
   ];
 
   const pages = pagesWithLinks.map((page) => page[0]);
