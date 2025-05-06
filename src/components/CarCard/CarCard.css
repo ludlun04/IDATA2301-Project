@@ -2,7 +2,7 @@
     display: flex;
     border: solid 1px #e8e6e6;
     min-width: 32rem;
-    height: 7rem;
+    min-height: 8rem;
     padding: .5rem;
     border-radius: .5rem;
     gap: .5rem;
