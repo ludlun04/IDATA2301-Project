@@ -122,6 +122,7 @@ export default function Portal() {
   }
 
   const fetchCars = async (filters) => {
+    console.log("Fetching cars with filters: ", filters);
     try {
       const response = await CarAPI.getAllCars(filters);
       setCars(response.cars);
@@ -189,20 +190,28 @@ export default function Portal() {
   useEffect(() => {
     if (searchParams) {
       updateChoicesFromSearchParams();
+    } else {
+      setUrlParamsReady(true);
     }
   }, [searchParams]);
 
   useEffect(() => {
     try {
-      fetchCars(filters);
+      if (urlParamsReady) {
+        console.log("Fetching cars with urlParams ready");
+        fetchCars(filters);
+        fetchManufacturers();
+        fetchFuelTypes();
+        fetchSellers();
+        fetchSeats();
+        setErrorMessageActive(false);
+      }
     } catch (error) {
       console.error("Error fetching car data:", error);
       setErrorMessageActive(true);
       setLoading(false);
     }
-
   }, [
-    urlParamsReady,
     chosenBrands,
     chosenFuelTypes,
     chosenSellers,
@@ -213,22 +222,6 @@ export default function Portal() {
     chosenToPrice,
     chosenKeyword
   ]);
-
-  useEffect(() => {
-    try {
-      fetchCars(filters);
-      fetchManufacturers();
-      fetchFuelTypes();
-      fetchSellers();
-      fetchSeats();
-      setErrorMessageActive(false);
-    } catch (error) {
-      console.error("Error fetching car data:", error);
-      setErrorMessageActive(true);
-      setLoading(false);
-    }
-
-  }, [urlParamsReady]);
 
   const filtersSectionInContext = !loading && (
     <FiltersContext.Provider value={{
