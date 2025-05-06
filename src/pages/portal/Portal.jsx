@@ -160,14 +160,14 @@ export default function Portal() {
           window.history.pushState({}, '', newUrl);
         }
         setLoading(false);
-        console.log("Fetched cars: " + cars);
+        console.log("Fetched cars: " + response.cars);
       } catch (error) {
         console.error("Error fetching car data to portal:", error);
         setLoading(false);
         setErrorMessageActive(true);
       }
 
-    }, [cars]
+    }, []
   );
 
   const fetchManufacturers = async () => {
