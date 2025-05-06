@@ -5,7 +5,8 @@ import FiltersSection from "../../components/FilterSection/FiltersSection";
 import ErrorFetchingDataMessage
   from "../../components/ErrorFetchingDataMessage/ErrorFetchingDataMessage";
 import Loader from "../../components/loader/Loader";
-import {useEffect, useState} from "react";
+import tempImage from "../../resources/logo/Logo-Dark-Vertical.svg";
+import {useCallback, useEffect, useMemo, useState} from "react";
 import {useLocation} from "react-router-dom";
 import {CarAPI} from "../../api/CarAPI";
 import {CompanyAPI} from "../../api/CompanyAPI";
@@ -18,7 +19,6 @@ export default function Portal() {
   const [centerFiltersDisplayed, setCenterFiltersDisplayed] = useState(false);
 
   const [cars, setCars] = useState([]);
-  const [tempImage, setTempImage] = useState(null);
 
   const [loading, setLoading] = useState(true);
   const [errorMessageActive, setErrorMessageActive] = useState(false);
@@ -41,21 +41,35 @@ export default function Portal() {
   const [chosenKeyword, setChosenKeyword] = useState("");
 
   // the filters object that will be sent to the API
-  const filters = {
-    brands: chosenBrands,
-    fuelTypes: chosenFuelTypes,
-    sellers: chosenSellers,
-    seats: chosenSeats,
-    fromTime: chosenFromTime,
-    toTime: chosenToTime,
-    fromPrice: chosenFromPrice,
-    toPrice: chosenToPrice,
-    keyword: chosenKeyword
-  }
+  const filters = useMemo(() => ({
+      brands: chosenBrands,
+      fuelTypes: chosenFuelTypes,
+      sellers: chosenSellers,
+      seats: chosenSeats,
+      fromTime: chosenFromTime,
+      toTime: chosenToTime,
+      fromPrice: chosenFromPrice,
+      toPrice: chosenToPrice,
+      keyword: chosenKeyword
+    }), [
+      chosenBrands,
+      chosenFuelTypes,
+      chosenSellers,
+      chosenSeats,
+      chosenFromTime,
+      chosenToTime,
+      chosenFromPrice,
+      chosenToPrice,
+      chosenKeyword
+    ]
+  );
 
   // search part of the URL, for maintaining state on refresh
   const searchParams = useLocation().search;
-  const urlParams = new URLSearchParams(searchParams);
+  const urlParams = useMemo(
+    () => new URLSearchParams(searchParams),
+    [searchParams]
+  );
 
   const [urlParamsReady, setUrlParamsReady] = useState(false);
 
@@ -67,7 +81,7 @@ export default function Portal() {
     return new Date(year, month, day);
   }
 
-  const updateChoicesFromSearchParams = () => {
+  const updateChoicesFromSearchParams = useCallback(() => {
     const brandsString = urlParams.get("brand");
     const fuelTypesString = urlParams.get("fuel_type");
     const sellersString = urlParams.get("seller");
@@ -115,32 +129,46 @@ export default function Portal() {
       setChosenKeyword(keyword);
     }
     setUrlParamsReady(true);
-  }
+  }, [
+    urlParams,
+    setUrlParamsReady,
+    setChosenBrands,
+    setChosenFuelTypes,
+    setChosenSellers,
+    setChosenSeats,
+    setChosenFromTime,
+    setChosenToTime,
+    setChosenFromPrice,
+    setChosenToPrice,
+    setChosenKeyword
+  ]);
 
   const toggleFiltersDisplayed = () => {
     setCenterFiltersDisplayed(!centerFiltersDisplayed);
   }
 
-  const fetchCars = async (filters) => {
-    console.log("Fetching cars with filters: ", filters);
-    try {
-      const response = await CarAPI.getAllCars(filters);
-      setCars(response.cars);
+  const fetchCars = useCallback(
+    async (filters) => {
+      console.log("Fetching cars with filters: ", filters);
+      try {
+        const response = await CarAPI.getAllCars(filters);
+        setCars(response.cars);
 
-      const url = response.url;
-      if (url) {
-        const newUrl = `${window.location.pathname}?${response.url}`;
-        window.history.pushState({}, '', newUrl);
+        const url = response.url;
+        if (url) {
+          const newUrl = `${window.location.pathname}?${response.url}`;
+          window.history.pushState({}, '', newUrl);
+        }
+        setLoading(false);
+        console.log("Fetched cars: " + cars);
+      } catch (error) {
+        console.error("Error fetching car data to portal:", error);
+        setLoading(false);
+        setErrorMessageActive(true);
       }
-      setLoading(false);
-      console.log("Fetched cars: " + cars);
-    } catch (error) {
-      console.error("Error fetching car data to portal:", error);
-      setLoading(false);
-      setErrorMessageActive(true);
-    }
 
-  };
+    }, [cars]
+  );
 
   const fetchManufacturers = async () => {
     try {
@@ -193,7 +221,8 @@ export default function Portal() {
     } else {
       setUrlParamsReady(true);
     }
-  }, [searchParams]);
+  }, [searchParams, updateChoicesFromSearchParams]);
+
 
   useEffect(() => {
     try {
@@ -212,6 +241,8 @@ export default function Portal() {
       setLoading(false);
     }
   }, [
+    fetchCars,
+    filters,
     urlParamsReady,
     chosenBrands,
     chosenFuelTypes,
