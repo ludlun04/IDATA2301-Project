@@ -64,6 +64,11 @@
 }
 
 
+.RentFailMessage {
+  color: var(--error);
+  width: 100%;
+  text-align: center;
+}
 
 @media screen and (max-width: 1024px) {
   .RentInteraction {

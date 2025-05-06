@@ -11,11 +11,16 @@ const CarFavoriteButton = ({car, className}) => {
   const handleFavoriteButtonClick = async (event) => {
     event.stopPropagation(); // Prevent the click event from bubbling up
 
-    const isFavorite = await UsersAPI.setFavorite(car, !car.getFavorite());
-    if (isFavorite !== null) {
-      car.setFavorite(isFavorite);
-      setIsFavorite(isFavorite);
+    try {
+      const isFavorite = await UsersAPI.setFavorite(car, !car.getFavorite());
+      if (isFavorite !== null) {
+        car.setFavorite(isFavorite);
+        setIsFavorite(isFavorite);
+      }
+    } catch (error) {
+      console.error("Failed to set favorite on car: ", error);
     }
+
 
   }
 

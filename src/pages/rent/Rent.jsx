@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 import { CarAPI } from "../../api/CarAPI";
 import CarAttributes from "../../components/CarAttribute/CarAttributes";
 import Loader from "../../components/loader/Loader";
+import ErrorFetchingDataMessage
+  from "../../components/ErrorFetchingDataMessage/ErrorFetchingDataMessage";
 import RentInteraction from "../../components/RentInteraction/RentInteraction";
 import {ImageAPI} from "../../api/ImageAPI";
 import CarFavoriteButton from "../../components/CarFavoriteButton/CarFavoriteButton";
@@ -15,6 +17,7 @@ export default function Rent(props) {
   // fetch car data
   const [car, setCar] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [noBackendMessage, setNoBackendMessage] = useState(false);
 
   // car data
   const [features, setFeatures] = useState([]);
@@ -31,6 +34,13 @@ export default function Rent(props) {
         setFeatures(car.getFeatures());
       } catch (error) {
         console.error("Error fetching car data:", error);
+        setLoading(false);
+        setNoBackendMessage(true);
+
+        if (error.response && error.response.status === 404) {
+          setCar(null);
+          setNoBackendMessage(false);
+        }
       }
     }
     fetchCar();
@@ -59,7 +69,6 @@ export default function Rent(props) {
   }, [car]);
 
 
-
   if (loading) {
     return (
       <main className={"RentMain"}>
@@ -67,6 +76,23 @@ export default function Rent(props) {
       </main>
     );
   }
+  if (noBackendMessage) {
+    return (
+      <main className={"RentMain"}>
+        <ErrorFetchingDataMessage />
+      </main>
+    );
+  }
+  if (car === null) {
+    return (
+      <main className={"RentMain"}>
+        <p>Car not found</p>
+      </main>
+    );
+  }
+
+
+
   return (
     <main className={"RentMain"}>
       <div className="RentGrid">
