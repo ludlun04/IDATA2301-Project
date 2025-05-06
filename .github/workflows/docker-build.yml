@@ -43,6 +43,5 @@ jobs:
         with:
           context: .
           push: true
-          platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/ppc64le,linux/s390x,windows/amd64,linux/386,linux/mips64le,linux/riscv64
           tags: ghcr.io/${{ github.repository_owner }}/idata2301-project:latest
-
+          platforms: linux/amd64,linux/arm64,windows/amd64
