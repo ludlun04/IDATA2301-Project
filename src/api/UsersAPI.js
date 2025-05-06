@@ -56,6 +56,39 @@ export const UsersAPI = {
     console.log("UsersAPI.signUp: ", result.request);
   },
 
+  updateUser: async (user) => {
+    if (!Authentication.isSignedIn()) {
+      throw new Error("User is not signed in");
+    }
+
+    const token = Authentication.getToken();
+    return await axios({
+      method: "put",
+      url: `${Constants.API_URL}/users/${user.getId()}`,
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      data: {
+        email: user.getEmail(),
+        firstName: user.getFirstName(),
+        lastName: user.getLastName(),
+        phoneNumber: {
+          countryCode: user.getPhoneNumber().getCountryCode(),
+          number: user.getPhoneNumber().getNumber()
+        },
+        dateOfBirth: user.getDateOfBirth().getTime(),
+        address: {
+          country: user.getAddress().getCountry(),
+          streetAddress: user.getAddress().getStreetAddress(),
+          zipCode: user.getAddress().getStreetAddress()
+        }
+      }
+    }).then((response) => {
+      console.log("UsersAPI.updateUser: ", response.data);
+    });
+  },
+
   getCurrentAuthenticatedUser: async () => {
     if (Authentication.isSignedIn()) {
       const token = Authentication.getToken();

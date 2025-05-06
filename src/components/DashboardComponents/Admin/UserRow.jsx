@@ -1,6 +1,6 @@
 import { createPortal } from "react-dom"
 import EditUserDialogue from "./EditUserDialogue";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import "./UserRow.css"
 
 export default function UserRow({ user }) {
@@ -11,7 +11,7 @@ export default function UserRow({ user }) {
   }
 
   let editUser = () => {
-    setPortal(createPortal(<EditUserDialogue onClose={onClose} user={user} />, document.body));
+    setPortal(createPortal(<EditUserDialogue showRoleSelection={true} onClose={onClose} user={user} />, document.body));
   }
 
   return (
@@ -24,6 +24,7 @@ export default function UserRow({ user }) {
         <td>{user.getLastName()}</td>
         <td>{user.getPhoneNumber().getNumber()}</td>
         <td>{user.getDateOfBirth().toDateString()}</td>
+
         <td><div>{user.getRoles().map(role => <p key={role}>{role}</p>)}</div></td>
         <td><button onClick={editUser}>{"Edit"}</button></td>
       </tr>

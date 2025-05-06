@@ -41,11 +41,11 @@ export default function UserRentals() {
         <button onClick={historyPressed}>History</button>
       </div>
       <div className={"UserRentalsContainer"}>
-        {rentals.map((order) => {
+        {rentals.length > 0 ? rentals.map((order) => {
           return (
             <RentCard key={order.getId()} orderId={order.getId()} />
           )
-        })}
+        }) : (<p>No rentals found</p>)}
       </div>
     </main>
   )

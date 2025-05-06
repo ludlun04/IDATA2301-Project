@@ -24,8 +24,6 @@ export default function DashboardNavBar({ className, pages, setCurrentPage }) {
 
   }, []);
 
-  console.log(roles);
-
 
   const userPages = ["Details", "Rentals", "Favorites"];
   const adminPages = ["Users", "Companies"];

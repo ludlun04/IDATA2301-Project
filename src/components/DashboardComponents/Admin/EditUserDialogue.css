@@ -20,9 +20,12 @@
   gap: 1rem;
 }
 
-
-
 .EditUserDialogue Form > div {
   display: flex;
   flex-direction: column;
+}
+
+.RoleCheckboxes {
+  list-style: none;
+  padding: 0;
 }

@@ -8,8 +8,8 @@ function PhoneNumberField({phoneNumber}) {
     <div className={"PhoneNumberField"}>
       <p>Phone Number</p>
       <div className={"PhoneNumberFieldInputContainer"}>
-        <input type="text" name="CountryCode" value={countryCode}/>
-        <input type="text" name="PhoneNumber" value={number}/>
+        <input type="text" name="countryCode" defaultValue={countryCode}/>
+        <input type="text" name="phoneNumber" defaultValue={number}/>
       </div>
     </div>
   )
