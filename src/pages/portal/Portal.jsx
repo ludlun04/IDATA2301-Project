@@ -212,6 +212,7 @@ export default function Portal() {
       setLoading(false);
     }
   }, [
+    urlParamsReady,
     chosenBrands,
     chosenFuelTypes,
     chosenSellers,
