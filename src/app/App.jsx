@@ -22,6 +22,14 @@ import { AuthProvider } from "../context/AuthContext"
 import Order from '../pages/order/Order';
 import Page404 from "../pages/404/Page404";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
+import DetailsSection from "../components/DashboardComponents/User/DetailsSection";
+import UserRentals from "../components/DashboardComponents/User/UserRentals";
+import UserFavorites from "../components/DashboardComponents/User/UserFavorites";
+import UsersSection from "../components/DashboardComponents/Admin/UsersSection";
+import CompaniesSection from "../components/DashboardComponents/Admin/CompaniesSection";
+import Company from "../components/DashboardComponents/Company/Company";
+import CompanyCars from "../components/DashboardComponents/Company/CompanyCars";
+import CompanyCarsHistory from "../components/DashboardComponents/Company/CompanyCarsHistory";
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path={"/"} element={<Root/>}>
@@ -34,7 +42,17 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route path={"contact"} element={<Contact/>}/>
     <Route path={"sign-in"} element={<SignIn/>}/>
     <Route path={"sign-up"} element={<SignUp/>}/>
-    <Route path={"dashboard"} element={<Dashboard/>}/>
+    <Route path={"dashboard"} element={<Dashboard/>}>
+        <Route path={"user/details"} element={<DetailsSection />} />
+        <Route path={"user/rentals"} element={<UserRentals />} />
+        <Route path={"user/favorites"} element={<UserFavorites />} />
+        <Route path={"admin/users"} element={<UsersSection />} />
+        <Route path={"admin/companies"} element={<CompaniesSection />}/>
+        <Route path={"company/:id"} element={<Company />}>
+            <Route path={"cars"} element={<CompanyCars />}/>
+            <Route path={"history"} element={<CompanyCarsHistory />}/>
+        </Route>
+    </Route>
     <Route path={"dev"} element={<EmptyDevPage/>}/>
     <Route path={"order/:id"} element={<Order/>}/>
       <Route path={"*"} element={<Page404 />} />
