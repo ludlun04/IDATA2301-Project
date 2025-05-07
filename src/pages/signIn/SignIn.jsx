@@ -25,7 +25,7 @@ export default function SignIn() {
 
     Authentication.login(email, password)
       .then(token => {
-        navigate("/dashboard");
+        navigate("/dashboard/user/details");
         console.log("Login successful, token:", token);
         setLoading(false);
         signIn();

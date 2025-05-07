@@ -15,7 +15,7 @@ import Profile from "./Profile";
 
     const handleDashboardRedirect = () => {
         if (isSignedIn) {
-            return "/dashboard";
+            return "/dashboard/user/details";
         } else {
             return "/sign-in";
         }

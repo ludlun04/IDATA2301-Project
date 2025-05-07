@@ -1,17 +1,13 @@
 import "./DashboardNavBar.css"
 import { useEffect, useState } from "react";
 import { UsersAPI } from "../../../api/UsersAPI";
+import {useNavigate} from "react-router-dom";
+import {CompanyAPI} from "../../../api/CompanyAPI";
 
-export default function DashboardNavBar({ className, pages, setCurrentPage }) {
+export default function DashboardNavBar({ className }) {
   const [roles, setRoles] = useState([]);
-  const [selectedPage, setSelectedPage] = useState(null);
-
-  let onClick = (page) => {
-    return () => {
-      setCurrentPage(page);
-      setSelectedPage(page);
-    }
-  }
+  const [companies, setCompanies] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchRoles = async () => {
@@ -25,40 +21,51 @@ export default function DashboardNavBar({ className, pages, setCurrentPage }) {
   }, []);
 
 
-  const userPages = ["Details", "Rentals", "Favorites"];
-  const adminPages = ["Users", "Companies"];
+  useEffect(() => {
+    const fetchCompanies = async () => {
+        const response = await CompanyAPI.getCurrentUserCompanies();
+        setCompanies(response);
+    }
+    fetchCompanies();
+  }, []);
+
   const hasUserRole = roles.some(role => role.name === 'USER');
   const hasAdmin = roles.some(role => role.name === 'ADMIN');
+  const hasCompany = companies.length > 0;
 
   return (
     <div className={className}>
       <div className={"DashboardNavBar"}>
-        <div className={"UserPages"}>
-        <h3>User</h3>
-        <div>
         {hasUserRole && (
-            userPages.map((page) => (
-                <button key={page} onClick={onClick(page)} className={selectedPage === page ? "selected" : ""}>
-                  {page}
-                </button>
-            ))
-            )
-        }
-        </div>
-        </div>
-        <div className={"AdminPages"}>
-        <h3>Admin</h3>
-        <div>
-          {hasAdmin && (
-            adminPages.map((page) => (
-              <button key={page} onClick={onClick(page)} className={selectedPage === page ? "selected" : ""}>
-                {page}
-              </button>
-            ))
-          )
-          }
-        </div>
-        </div>
+        <>
+          <div className={"UserPages"}>
+          <h3>User</h3>
+            <button key={"DashboardUserDetails"} onClick={() => {navigate("/dashboard/user/details")}} className={""}>Details</button>
+            <button key={"DashboardUserRentals"} onClick={() => {navigate("/dashboard/user/rentals")}} className={""}>Rentals</button>
+            <button key={"DashboardUserFavorites"} onClick={() => {navigate("/dashboard/user/favorites")}} className={""}>Favorites</button>
+          </div>
+        </>
+        )}
+        {hasAdmin && (
+        <>
+          <div className={"AdminPages"}>
+          <h3>Admin</h3>
+            <button key={"DashboardAdminUsers"} onClick={() => {navigate("/dashboard/admin/users")}} className={""}>Users</button>
+            <button key={"DashboardAdminCompanies"} onClick={() => {navigate("/dashboard/admin/companies")}} className={""}>Companies</button>
+          </div>
+
+        </>
+        )}
+          {hasCompany && (
+          <>
+            <div className={"CompanyPages"}>
+            <h3>Companies</h3>
+            {companies.map((company) => (
+                <button key={company.getId()} onClick={() => {navigate(`/dashboard/company/${company.getId()}`)}} className={""}>{company.getName()}</button>
+              ))}
+            </div>
+          </>
+          )}
       </div>
     </div>
   )

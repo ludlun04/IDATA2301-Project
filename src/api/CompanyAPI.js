@@ -21,6 +21,27 @@ export const CompanyAPI = {
     }
   },
 
+  getCompanyById: async (id) => {
+    try {
+      if (Authentication.isSignedIn()) {
+        const result = await axios.get(`${Constants.API_URL}/company/${id}`, {
+          headers: {
+            'Authorization': `Bearer ${Authentication.getToken()}`
+          }
+        });
+
+        let company = null;
+        if (result.data) {
+          company = getCompanyFromJsonObject(result.data);
+        }
+        return company;
+      }
+    } catch (error) {
+      console.error("Error fetching company by ID:", error);
+      throw error;
+    }
+  },
+
   getCurrentUserCompanies: async () => {
     try {
       if (Authentication.isSignedIn()) {
