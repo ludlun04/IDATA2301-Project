@@ -20,7 +20,7 @@ const AddonListItem = ({ addon, onAddonSelected }) => {
       <p>{addon.getName()}</p>
       <div className={"AddonListItemRight"}>
         <p>{addon.getPrice()} kr</p>
-        <input type="checkbox" checked={selected} className="AddonCheckbox" />
+        <input type="checkbox" checked={selected} className="AddonCheckbox" onChange={(e) => e.stopPropagation()} />
       </div>
     </div>
   );

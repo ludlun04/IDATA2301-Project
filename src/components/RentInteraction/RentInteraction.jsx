@@ -1,20 +1,20 @@
 import "./RentInteraction.css";
 import DatePicker from "react-datepicker";
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import CompanyCard from "../CompanyCard/CompanyCard";
-import { useNavigate } from "react-router-dom";
-import { OrderAPI } from "../../api/OrderAPI";
+import {useNavigate} from "react-router-dom";
+import {OrderAPI} from "../../api/OrderAPI";
 import AddonList from "../AddonList/AddonList";
 
-const RentInteraction = ({ car }) => {
+const RentInteraction = ({car, unavailableDates}) => {
   const navigate = useNavigate();
 
   const carPricePerDay = car.getPricePerDay();
 
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date(new Date().getTime() + 86400000)); // 1 day later
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
   const [totalPrice, setTotalPrice] = useState(0);
-  const [numberOfDays, setNumberOfDays] = useState(2);
+  const [numberOfDays, setNumberOfDays] = useState(null);
   const [selectedAddons, setSelectedAddons] = useState([]);
 
   const [rentFailMessageActive, setRentFailMessageActive] = useState(false);
@@ -22,6 +22,7 @@ const RentInteraction = ({ car }) => {
   useEffect(() => {
     if (!startDate || !endDate) {
       setTotalPrice(0);
+      setNumberOfDays(0);
       return;
     }
 
@@ -32,13 +33,25 @@ const RentInteraction = ({ car }) => {
 
     setNumberOfDays(amountOfDays);
     setTotalPrice(carTotal + addonsPrice);
-  }, [startDate, endDate, selectedAddons]);
+  }, [startDate, endDate, selectedAddons, carPricePerDay]);
 
   const onChange = (dates) => {
     const [start, end] = dates;
+    console.log(dates);
 
-    setStartDate(start);
-    setEndDate(end);
+    if (start && end && unavailableDates.some(unavailable => {
+      return unavailable.getTime() >= start.getTime() && unavailable.getTime() <= end.getTime();
+    })) {
+      console.log("Dates are unavailable");
+      setStartDate(null);
+      setEndDate(null);
+    } else {
+      console.log("Dates are available");
+      setStartDate(start);
+      setEndDate(end);
+      console.log("start: ", start);
+      console.log("end: ", end);
+    }
   };
 
   const handleDayClassName = (date) => {
@@ -49,7 +62,7 @@ const RentInteraction = ({ car }) => {
   }
 
   const onRentPressed = () => {
-    
+
 
     OrderAPI.requestRent(car.getId(), startDate, endDate, selectedAddons)
       .then((response) => {
@@ -78,7 +91,6 @@ const RentInteraction = ({ car }) => {
   }
 
 
-
   // datepicker configuration
   const dateFormat = "dd.MM.yyyy"; // displayed date format in datepicker
   const portalId = "root-portal"; // makes the datepicker window not affect positioning of datepicker field
@@ -86,24 +98,26 @@ const RentInteraction = ({ car }) => {
 
   return (
     <section className={"RentInteraction"}>
-      <CompanyCard car={car} />
+      <CompanyCard car={car}/>
 
       <DatePicker /*monthsShown={3}*/
-            className={"filtersSectionDatePicker"}
-            minDate={new Date()}
-            startDate={startDate}
-            endDate={endDate}
-            onChange={onChange}
-            dateFormat={dateFormat}
-            portalId={portalId}
-            calendarStartDay={calendarStartDay}
-            dayClassName={handleDayClassName}
-            selectsRange
-            inline
-          />
-          <p>Days: {numberOfDays}</p>
+        className={"filtersSectionDatePicker"}
+        minDate={new Date()}
+        startDate={startDate}
+        endDate={endDate}
+        onChange={onChange}
+        dateFormat={dateFormat}
+        portalId={portalId}
+        calendarStartDay={calendarStartDay}
+        dayClassName={handleDayClassName}
+        selectsRange
+        inline
+        excludeDates={unavailableDates}
+      />
 
-      <AddonList addons={car.getAddons()} onAddonSelected={onAddonSelected} />
+      <p>Days: {numberOfDays}</p>
+
+      <AddonList addons={car.getAddons()} onAddonSelected={onAddonSelected}/>
 
       <div className={"RentDailyPrice"}>
         <p className={"RentTitle"}>kr/day</p>

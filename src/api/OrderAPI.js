@@ -2,6 +2,7 @@ import axios from "axios";
 import Constants from "../Constants";
 import { Authentication } from "./Authentication";
 import { Order } from "../model/Order";
+import {CarAPI} from "./CarAPI";
 
 export const OrderAPI = {
   getOrderById: async (orderId) => {
@@ -113,5 +114,34 @@ export const OrderAPI = {
     }
   },
 
+  getOrdersByCarId: async (carId) => {
+    try {
+      const response = await axios.get(`${Constants.API_URL}/order/car/${carId}`,{});
 
+      const orderObjects = response.data;
+      const orders = [];
+      for (const orderObject of orderObjects) {
+        orders.push(_getOrderFromJsonObject(orderObject));
+      }
+      return orders;
+    } catch (error) {
+      console.error("Could not get orders by car id: ", error);
+      throw error;
+    }
+  }
+
+
+}
+
+const _getOrderFromJsonObject = (orderObject) =>  {
+  try {
+    const car = CarAPI.getCarFromJsonObject(orderObject.car);
+    const startDate = new Date(orderObject.startDate);
+    const endDate = new Date(orderObject.endDate);
+
+    return new Order(orderObject.orderId, car.getId(), orderObject.userId, startDate, endDate, orderObject.price);
+  } catch (error) {
+    console.error("Could not get order from json object: ", error);
+    throw error;
+  }
 }

@@ -10,6 +10,7 @@ import ErrorFetchingDataMessage
 import RentInteraction from "../../components/RentInteraction/RentInteraction";
 import {ImageAPI} from "../../api/ImageAPI";
 import CarFavoriteButton from "../../components/CarFavoriteButton/CarFavoriteButton";
+import {OrderAPI} from "../../api/OrderAPI";
 
 export default function Rent(props) {
   let { id } = useParams();
@@ -23,6 +24,8 @@ export default function Rent(props) {
   const [features, setFeatures] = useState([]);
 
   const [carImage, setCarImage] = useState(img);
+
+  const [unavailableDates, setUnavailableDates] = useState([]);
 
   useEffect(() => {
     const fetchCar = async () => {
@@ -43,7 +46,40 @@ export default function Rent(props) {
         }
       }
     }
+
+    const fetchUnavailableDatesForCar = async () => {
+      try {
+        const orders = await OrderAPI.getOrdersByCarId(id);
+
+
+        const datePairs = orders.map(order => {
+          return {
+            from: order.getStartDate(),
+            to: order.getEndDate()
+          }
+        });
+        const newUnavailableDates = [];
+        datePairs.forEach(pair => {
+          const startDate = pair.from;
+          const endDate = pair.to;
+          const currentDate = startDate;
+
+          while (currentDate <= endDate) {
+            console.log(currentDate);
+            newUnavailableDates.push(new Date(currentDate));
+            currentDate.setDate(currentDate.getDate() + 1);
+          }
+        });
+        setUnavailableDates(newUnavailableDates);
+        console.log("UNAVAILABLE DATES: ", unavailableDates);
+
+      } catch (error) {
+        console.error("Error fetching orders of car:", error);
+      }
+    }
+
     fetchCar();
+    fetchUnavailableDatesForCar();
   }, [id]);
 
   useEffect(() => {
@@ -107,13 +143,13 @@ export default function Rent(props) {
           <CarAttributes year={car.getYear()} seats={car.getNumberOfSeats()} transmission={car.getTransmissionType().getName()} fuel={car.getFuelType().getName()} />
         </div>
 
-        <RentInteraction car={car} />
+        <RentInteraction car={car} unavailableDates={unavailableDates} />
 
         <div className={"RentMainBottom"}>
           <section className={"RentFeatureSection"}>
             <h2>Features</h2>
             <div className={"RentFeatureList"}>
-              {features.map((feature, index) => (
+              {features.map((feature) => (
                 <p key={feature.getId()} className={"RentFeatureItem"}>- {feature.getName()}</p>
               ))}
             </div>
