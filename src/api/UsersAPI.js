@@ -71,6 +71,23 @@ export const UsersAPI = {
       throw new Error("User is not signed in");
     }
 
+    const data = {
+      email: user.getEmail(),
+      firstName: user.getFirstName(),
+      lastName: user.getLastName(),
+      phoneNumber: {
+        countryCode: user.getPhoneNumber().getCountryCode(),
+        number: user.getPhoneNumber().getNumber()
+      },
+      dateOfBirth: user.getDateOfBirth().getTime(),
+      address: {
+        country: user.getAddress().getCountry(),
+        streetAddress: user.getAddress().getStreetAddress(),
+        zipCode: user.getAddress().getStreetAddress()
+      },
+      roles: user.getRoles()
+    }
+
     const token = Authentication.getToken();
     return await axios({
       method: "put",
@@ -79,21 +96,7 @@ export const UsersAPI = {
         'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json'
       },
-      data: {
-        email: user.getEmail(),
-        firstName: user.getFirstName(),
-        lastName: user.getLastName(),
-        phoneNumber: {
-          countryCode: user.getPhoneNumber().getCountryCode(),
-          number: user.getPhoneNumber().getNumber()
-        },
-        dateOfBirth: user.getDateOfBirth().getTime(),
-        address: {
-          country: user.getAddress().getCountry(),
-          streetAddress: user.getAddress().getStreetAddress(),
-          zipCode: user.getAddress().getStreetAddress()
-        }
-      }
+      data: data
     }).then((response) => {
       console.log("UsersAPI.updateUser: ", response.data);
     });

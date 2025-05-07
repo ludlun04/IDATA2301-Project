@@ -21,7 +21,8 @@ export default function EditUserDialogue(props) {
     const data = Object.fromEntries(formData.entries());
 
     const roles = ["USER"];
-    if (data.AdminCheckbox) {
+    
+    if (data.AdminCheckbox === "on") {
       roles.push("ADMIN");
     }
 
@@ -35,7 +36,7 @@ export default function EditUserDialogue(props) {
         data.phoneNumber
       ),
       birthdate,
-      roles,
+      props.showRoleSelection ? roles : user.getRoles(),
       new Address(
         data.addressCountry,
         data.addressStreetAddress,
@@ -43,7 +44,6 @@ export default function EditUserDialogue(props) {
       )
     )
 
-    console.log("user", newUser);
     UsersAPI.updateUser(newUser).then(() => {
       console.log("User updated successfully");
       props.onClose();
