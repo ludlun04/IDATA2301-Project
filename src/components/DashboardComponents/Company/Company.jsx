@@ -1,6 +1,8 @@
 import {Outlet, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {CompanyAPI} from "../../../api/CompanyAPI";
+import CompanyRow from "../Admin/CompanyRow";
+import CompanyDetails from "./CompanyDetails/CompanyDetails";
 
 export default function Company() {
     const {id} = useParams();
@@ -12,7 +14,6 @@ export default function Company() {
             try {
                 const company = await CompanyAPI.getCompanyById(id);
                 setCompany(company);
-                console.log("company: ", company);
             } catch (error) {
                 console.error("Error fetching company data:", error);
             }
@@ -21,7 +22,8 @@ export default function Company() {
         fetchCompany()
     }, [id]);
     return (
-        <div>Company
+        <div>
+            <CompanyDetails company={company} />
             <Outlet />
         </div>
     )

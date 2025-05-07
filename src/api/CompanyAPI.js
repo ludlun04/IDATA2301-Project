@@ -3,6 +3,7 @@ import axios from 'axios';
 import {Company} from "../model/Company";
 import {PhoneNumber} from "../model/PhoneNumber";
 import {Authentication} from "./Authentication";
+import {Address} from "../model/Address";
 
 export const CompanyAPI = {
 
@@ -69,8 +70,10 @@ const getCompanyFromJsonObject = (companyObject) => {
   try {
     const phoneNumberObject = companyObject.phoneNumber;
     const phoneNumber = new PhoneNumber(phoneNumberObject.countryCode, phoneNumberObject.number);
+    const addressObject = companyObject.address;
+    const address = new Address(addressObject.country, addressObject.streetAddress, addressObject.zipCode);
 
-    return new Company(companyObject.id, companyObject.name, companyObject.address, phoneNumber);
+    return new Company(companyObject.id, companyObject.name, address, phoneNumber);
   } catch (error) {
     console.error("Error creating company from JSON object:", error);
     throw error;
