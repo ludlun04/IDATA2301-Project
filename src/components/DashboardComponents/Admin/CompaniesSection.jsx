@@ -1,22 +1,38 @@
 import "./CompaniesSection.css";
 import { Company } from "../../../model/Company";
 import CompanyRow from "./CompanyRow";
+import {useEffect, useState} from "react";
+import {CompanyAPI} from "../../../api/CompanyAPI";
 
 export default function CompaniesSection() {
-  const companies = [
-    new Company(1, "Company 1", "Yes land", "companyOld@companyOld.no"),
-    new Company(2, "Company 2", "Yes land", "companyOld@companyOld.no"),
-    new Company(3, "Company 3", "Yes land", "companyOld@companyOld.no")
-  ]
+  const [companies, setCompanies] = useState([]);
+
+  useEffect(() => {
+    const fetchCompanies = async () => {
+      try {
+        const companies = await CompanyAPI.getCompanies();
+        setCompanies(companies);
+      } catch (error) {
+        console.error("Error fetching companies:", error);
+      }
+    };
+
+    fetchCompanies();
+  }, []);
+
+  console.log(companies);
 
   const createCompanyRows = () => {
-    return companies.map(company => {
-      return <CompanyRow key={company.getId()} company={company} />
-    })
+    if (companies.length > 0) {
+      return companies.map(company => {
+        return <CompanyRow key={company.getId()} company={company} />
+      })
+    }
   }
 
   return (
     <main className="companiesSectionMain">
+      <h1>Companies</h1>
         <table className="companiesTable">
           <thead>
             <tr>

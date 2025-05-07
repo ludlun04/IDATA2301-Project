@@ -36,6 +36,7 @@ export default function DetailsSection(props) {
       <div className={props.className} style={props.style}>
         {user ? (
           <div className="DetailsSection">
+            <h1>Details</h1>
             <div className="detailsSectionRow">
               <p className={"detailsSectionDescriptor"}>First Name</p>
               <p>{user.getFirstName()}</p>

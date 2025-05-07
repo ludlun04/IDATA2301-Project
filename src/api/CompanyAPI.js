@@ -22,6 +22,27 @@ export const CompanyAPI = {
     }
   },
 
+  getCompanies: async () => {
+    try {
+      if (Authentication.isSignedIn()) {
+        const result = await axios.get(`${Constants.API_URL}/company/all`, {
+          headers: {
+            'Authorization': `Bearer ${Authentication.getToken()}`
+          }
+        });
+
+        let companies = [];
+        result.data.forEach((companyObject) => {
+          companies.push(getCompanyFromJsonObject(companyObject));
+        })
+        return companies;
+      }
+    } catch (error) {
+      console.error("Error fetching companies:", error);
+      throw error;
+    }
+  },
+
   getCompanyById: async (id) => {
     try {
       if (Authentication.isSignedIn()) {

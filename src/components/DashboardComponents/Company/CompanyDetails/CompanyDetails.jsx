@@ -12,15 +12,15 @@ const CompanyDetails = ({company}) => {
     return (
         <div>
             <div>
-                <h1>Company Name</h1>
+                <h3>Company Name</h3>
                 <p>{company.getName()}</p>
             </div>
             <div>
-                <h1>Company Address</h1>
+                <h3>Company Address</h3>
                 <p>{address.getStreetAddress() + " " + address.getZipCode() + " " + address.getCountry()}</p>
             </div>
             <div>
-                <h1>Company Phone Number</h1>
+                <h3>Company Phone Number</h3>
                 <p>{phoneNumber.getCountryCode() + " " + phoneNumber.getNumber()}</p>
             </div>
         </div>

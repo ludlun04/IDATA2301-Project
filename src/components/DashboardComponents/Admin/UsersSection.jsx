@@ -22,6 +22,7 @@ export default function UsersSection() {
 
   return (
     <main className={"usersSectionMain"}>
+      <h1>Users</h1>
       {(users.length === 0) && <h2>Maybe loading users, not sure though</h2>}
       {(users.length > 0) &&
         <table className={"usersTable"}>
