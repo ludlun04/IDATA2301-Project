@@ -1,12 +1,12 @@
-import {Outlet, useParams} from "react-router-dom";
+import {Outlet, useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {CompanyAPI} from "../../../api/CompanyAPI";
 import CompanyRow from "../Admin/CompanyRow";
 import CompanyDetails from "./CompanyDetails/CompanyDetails";
 
 export default function Company() {
+    const navigate = useNavigate();
     const {id} = useParams();
-    console.log(id);
     const [company, setCompany] = useState(null);
 
     useEffect(() => {
@@ -24,7 +24,9 @@ export default function Company() {
     return (
         <div>
             <CompanyDetails company={company} />
-            <Outlet />
+            <button onClick={() => navigate(`/dashboard/company/${id}/cars`)}>Cars</button>
+            <button onClick={() => navigate(`/dashboard/company/${id}/history`)}>History</button>
+            <Outlet company={company}/>
         </div>
     )
 }

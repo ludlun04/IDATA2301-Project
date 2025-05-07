@@ -1,12 +1,12 @@
 import "./CompanyCars.css"
-import CarDetailsTable from "./CarDetailsTable/CarDetailsTable";
-import {Car} from "../../../model/Car";
+import {useParams} from "react-router-dom";
 
 export default function CompanyCars() {
-
+    const id = useParams();
+    console.log(id);
   return (
     <main className={"CompanyCars"}>
-      <CarDetailsTable cars={Car.getSampleCars()}/>
+        Test
     </main>
   )
 }

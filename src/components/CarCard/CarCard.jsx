@@ -36,6 +36,7 @@ export default function CarCard(props) {
     fetchCarImage();
   }, [car]);
 
+
   const onClick = () => {
     navigate(`/rent/${car.getId()}`);
   }
