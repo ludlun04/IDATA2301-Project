@@ -1,7 +1,7 @@
+import "./Company.css"
 import {Outlet, useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {CompanyAPI} from "../../../api/CompanyAPI";
-import CompanyRow from "../Admin/CompanyRow";
 import CompanyDetails from "./CompanyDetails/CompanyDetails";
 
 export default function Company() {
@@ -22,11 +22,14 @@ export default function Company() {
         fetchCompany()
     }, [id]);
     return (
-        <div>
+        <div className={"Company"}>
+            <h1>{company && company.getName()}</h1>
             <CompanyDetails company={company} />
-            <button onClick={() => navigate(`/dashboard/company/${id}/cars`)}>Cars</button>
-            <button onClick={() => navigate(`/dashboard/company/${id}/history`)}>History</button>
-            <Outlet company={company}/>
+            <div className={"CompanyButtonBox"}>
+                <button onClick={() => navigate(`/dashboard/company/${id}/cars`)}>Cars</button>
+                <button onClick={() => navigate(`/dashboard/company/${id}/history`)}>History</button>
+            </div>
+            <Outlet />
         </div>
     )
 }
