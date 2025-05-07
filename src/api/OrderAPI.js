@@ -31,7 +31,7 @@ export const OrderAPI = {
 
   requestRent: async (carId, startDate, endDate, addons) => {
     try {
-      return axios(`${Constants.API_URL}/order/`, {
+      return axios(`${Constants.API_URL}/order`, {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${Authentication.getToken()}`,
