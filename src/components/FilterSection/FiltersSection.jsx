@@ -20,8 +20,10 @@ const FiltersSection = (props) => {
   const availableSeats = context.possibleSeats;
 
   const oneDayAfter = (date) => {
-    const days = 1;
-    return new Date(date.getTime() + days * 24 * 60 * 60 * 1000);
+    if (date) {
+      const days = 1;
+      return new Date(date.getTime() + days * 24 * 60 * 60 * 1000);
+    }
   }
 
   const isToday = (date) => {
@@ -34,8 +36,8 @@ const FiltersSection = (props) => {
   //true if to date exists and is today, and from date is null
   const [availableNowChecked, setAvailableNowChecked] = useState(context.chosenFromTime && isToday(context.chosenFromTime) && context.chosenToTime === null);
 
-  const [startDate, setStartDate] = useState(context.chosenFromTime || new Date());
-  const [endDate, setEndDate] = useState(context.chosenToTime || oneDayAfter(startDate));
+  const [startDate, setStartDate] = useState(context.chosenFromTime || null);
+  const [endDate, setEndDate] = useState(context.chosenToTime || null);
 
   // datepicker configuration
   const dateFormat = "dd.MM.yyyy"; // displayed date format in datepicker
