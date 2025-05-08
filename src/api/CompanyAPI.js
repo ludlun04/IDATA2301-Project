@@ -4,6 +4,7 @@ import {Company} from "../model/Company";
 import {PhoneNumber} from "../model/PhoneNumber";
 import {Authentication} from "./Authentication";
 import {Address} from "../model/Address";
+import {CarAPI} from "./CarAPI";
 
 export const CompanyAPI = {
 
@@ -100,7 +101,29 @@ export const CompanyAPI = {
       console.error("Error updating company:", error);
       throw error;
     }
-  }
+  },
+
+  getCarsBelongingToCompany: async (companyId) => {
+    try {
+      const response = await axios.get(
+        `${Constants.API_URL}/company/cars/${companyId}`,
+        {}
+      );
+
+      const cars = [];
+      response.data.forEach(carObject => {
+        cars.push(CarAPI.getCarFromJsonObject(carObject));
+      })
+
+
+      console.log(cars);
+      return cars;
+    } catch (error) {
+      console.error("Error fetching cars belonging to company: ", error);
+    }
+}
+
+
 }
 
 const getCompanyFromJsonObject = (companyObject) => {
