@@ -1,6 +1,5 @@
 import "./CarDetailsTable.css";
 import DropdownMenu from "../../../DropdownMenu/DropdownMenu";
-import order from "../../../../pages/order/Order";
 
 export default function CarDetailsTable(props) {
 

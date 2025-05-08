@@ -7,7 +7,6 @@ import {OrderAPI} from "../../../api/OrderAPI";
 export default function CompanyCarsHistory() {
 
   const idParam = useParams();
-  const id = idParam.id
 
   const [orders, setOrders] = useState([]);
   const [cars, setCars] = useState([]);
@@ -16,7 +15,7 @@ export default function CompanyCarsHistory() {
   useEffect(() => {
     const getOrdersFromApi = async () => {
       try {
-        const orders = await OrderAPI.getOrdersByCompanyId(id);
+        const orders = await OrderAPI.getOrdersByCompanyId(idParam.id);
         setOrders(orders);
         const cars = new Set();
         orders.forEach(rental => {
@@ -29,7 +28,7 @@ export default function CompanyCarsHistory() {
 
     }
     getOrdersFromApi();
-  }, [id]);
+  }, [idParam.id]);
 
 
   return (
