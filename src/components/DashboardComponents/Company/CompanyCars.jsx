@@ -1,7 +1,6 @@
 import "./CompanyCars.css"
 import {useParams} from "react-router-dom";
 import CarDetailsTable from "./CarDetailsTable/CarDetailsTable";
-import {CarAPI} from "../../../api/CarAPI";
 import {CompanyAPI} from "../../../api/CompanyAPI";
 import {useEffect, useState} from "react";
 
@@ -16,7 +15,7 @@ export default function CompanyCars() {
       setCars(cars);
     }
     getCarsFromApi();
-  }, []);
+  }, [idParam.id]);
 
 
   return (

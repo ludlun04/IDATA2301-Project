@@ -15,8 +15,6 @@ export default function EditUserDialogue(props) {
   const [birthdate, setBirthdate] = useState(user.getDateOfBirth());
 
   const onEdit = (e) => {
-    e.preventDefault();
-
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
 
