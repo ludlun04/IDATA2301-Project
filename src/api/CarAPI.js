@@ -165,7 +165,8 @@ export const CarAPI = {
         features,
         false,
         false,
-        carObject.description
+        carObject.description,
+        carObject.visible
       );
     } catch (error) {
       console.error("Error parsing car object:", error);
@@ -209,7 +210,8 @@ export const CarAPI = {
             name: feature.getName()
           }
         }),
-        description: car.getDescription()
+        description: car.getDescription(),
+        visibility: car.getVisibility()
       };
     } catch (error) {
       console.error("Error converting car to JSON object:", error);
