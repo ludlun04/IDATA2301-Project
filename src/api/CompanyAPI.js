@@ -92,11 +92,15 @@ export const CompanyAPI = {
       if (Authentication.isSignedIn()) {
         const token = Authentication.getToken();
         const jsonObject = getJsonObjectFromCompany(company);
-       await axios.put(`${Constants.API_URL}/company/update`, jsonObject, {
+       await axios(`${Constants.API_URL}/company/update`, {
+         data: jsonObject,
+          method: 'PUT',
           headers: {
             'Authorization': `Bearer ${token}`
           }
-        });}
+        });
+
+      }
     } catch (error) {
       console.error("Error updating company:", error);
       throw error;
