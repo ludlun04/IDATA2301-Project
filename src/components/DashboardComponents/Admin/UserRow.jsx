@@ -4,10 +4,10 @@ import {useState} from "react";
 import "./UserRow.css"
 
 export default function UserRow({ user }) {
-  const [portal, setPortal] = useState(<div></div>);
+  const [portal, setPortal] = useState(<></>);
 
   let onClose = () => {
-    setPortal(<div></div>);
+    setPortal(<></>);
   }
 
   let editUser = () => {

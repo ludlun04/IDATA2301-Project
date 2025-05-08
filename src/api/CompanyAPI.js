@@ -4,7 +4,6 @@ import {Company} from "../model/Company";
 import {PhoneNumber} from "../model/PhoneNumber";
 import {Authentication} from "./Authentication";
 import {Address} from "../model/Address";
-import {CarAPI} from "./CarAPI";
 
 export const CompanyAPI = {
 
@@ -87,23 +86,19 @@ export const CompanyAPI = {
     }
   },
 
-  getCarsBelongingToCompany: async (companyId) => {
+  updateCompany: async (company) => {
     try {
-      const response = await axios.get(
-        `${Constants.API_URL}/company/cars/${companyId}`,
-        {}
-      );
-
-      const cars = [];
-      response.data.forEach(carObject => {
-        cars.push(CarAPI.getCarFromJsonObject(carObject));
-      })
-
-
-      console.log(cars);
-      return cars;
+      if (Authentication.isSignedIn()) {
+        const token = Authentication.getToken();
+        const jsonObject = getJsonObjectFromCompany(company);
+       await axios.put(`${Constants.API_URL}/company/update`, jsonObject, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });}
     } catch (error) {
-      console.error("Error fetching cars belonging to company: ", error);
+      console.error("Error updating company:", error);
+      throw error;
     }
   }
 }
@@ -120,4 +115,26 @@ const getCompanyFromJsonObject = (companyObject) => {
     console.error("Error creating company from JSON object:", error);
     throw error;
   }
+}
+
+const getJsonObjectFromCompany = (company) => {
+  console.log(company);
+    try {
+        return {
+        id: company.getId(),
+        name: company.getName(),
+        address: {
+            country: company.getAddress().getCountry(),
+            streetAddress: company.getAddress().getStreetAddress(),
+            zipCode: company.getAddress().getZipCode()
+        },
+        phoneNumber: {
+            countryCode: company.getPhoneNumber().getCountryCode(),
+            number: company.getPhoneNumber().getNumber()
+        }
+        }
+    } catch (error) {
+        console.error("Error creating JSON object from company:", error);
+        throw error;
+    }
 }

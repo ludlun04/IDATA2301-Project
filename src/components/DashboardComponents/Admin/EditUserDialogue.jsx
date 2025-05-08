@@ -1,4 +1,4 @@
-import "./EditUserDialogue.css"
+import "../Dialogue.css"
 import DatePicker from "react-datepicker";
 import AddressField from "../../input/AddressField/AddressField";
 import PhoneNumberField from "../../input/PhoneNumberField/PhoneNumberField";
@@ -58,7 +58,7 @@ export default function EditUserDialogue(props) {
   }
 
   return (
-    <div className="EditUserDialogue">
+    <div className="Dialogue">
       <form onSubmit={onEdit}>
         <h2>Edit User</h2>
         <div>

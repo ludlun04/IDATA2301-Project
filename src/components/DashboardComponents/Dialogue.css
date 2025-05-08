@@ -1,4 +1,4 @@
-.EditUserDialogue {
+.Dialogue {
   position: fixed;
   top: 0;
   left: 0;
@@ -10,7 +10,7 @@
   align-items: center;
 }
 
-.EditUserDialogue Form {
+.Dialogue Form {
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -20,7 +20,7 @@
   gap: 1rem;
 }
 
-.EditUserDialogue Form > div {
+.Dialogue Form > div {
   display: flex;
   flex-direction: column;
 }
