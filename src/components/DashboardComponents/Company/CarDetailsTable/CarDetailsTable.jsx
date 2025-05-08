@@ -5,6 +5,7 @@ export default function CarDetailsTable(props) {
 
   const rentals = props.rentals;
   const cars = props.cars;
+  console.log("cars: ", cars);
 
   const getFormattedDate = (date) => {
     const year = date.getFullYear();
@@ -47,7 +48,7 @@ export default function CarDetailsTable(props) {
           <p
             className={"carDetailsTableDates"}>{getFormattedDate(rental.getFromDate())} - {getFormattedDate(rental.getToDate())}</p>
         :
-          <p className={"carDetailsTableStatus"}>IMPLEMENT ME</p>
+          <p className={"carDetailsTableStatus"}>{car.getAvailable() ? "Rented" : "Available"}</p>
         }
 
       </div>
