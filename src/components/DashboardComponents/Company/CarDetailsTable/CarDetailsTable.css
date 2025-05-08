@@ -7,6 +7,7 @@
 .carDetailsTableRowTop {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     gap: 10px;
     width: 100%;
     cursor: pointer;
@@ -18,6 +19,14 @@
 
 .carDetailsTableDropdownMenu button {
     font-weight: normal;
+}
+
+.carDetailsTableDropdownMenu button.visible {
+    background-color: var(--error);
+}
+
+.carDetailsTableDropdownMenu button.hidden {
+    background-color: var(--success);
 }
 
 .carDetailsTableDropdownMenu {
@@ -58,4 +67,24 @@
 
 .carDetailsTableColumnDescriptor {
     font-weight: 500;
+}
+
+.carVisibilityButton {
+    color: var(--text-200);
+    padding: 0.2rem;
+    border-radius: 0.2rem;
+    width: 6rem;
+    z-index: 999;
+}
+
+.carVisibilityButton:hover {
+    background-color: var(--primary-100);
+}
+
+.carVisibilityButton.hidden {
+    background-color: var(--success);
+}
+
+.carVisibilityButton.visible {
+    background-color: var(--error);
 }
