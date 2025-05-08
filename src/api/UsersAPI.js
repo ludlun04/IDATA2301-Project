@@ -21,7 +21,7 @@ export const UsersAPI = {
       });
 
       let users = result.data.map(user => {
-        return getUserFromJsonObject(user);
+        return UsersAPI.getUserFromJsonObject(user);
       });
 
       console.log("UsersAPI.getAllUsers: ", users);
@@ -112,7 +112,7 @@ export const UsersAPI = {
           }
         });
 
-        const user = getUserFromJsonObject(result.data);
+        const user = UsersAPI.getUserFromJsonObject(result.data);
         return user;
       }
     } catch (error) {
@@ -170,7 +170,7 @@ export const UsersAPI = {
     }
   },
 
-  setFavorite: async(car, isFavorite) => {
+  setFavorite: async (car, isFavorite) => {
     try {
       if (Authentication.isSignedIn()) {
         const token = Authentication.getToken();
@@ -193,27 +193,28 @@ export const UsersAPI = {
       throw error;
     }
 
+  },
+
+  getUserFromJsonObject: (userObject) => {
+    try {
+      const phoneNumber = new PhoneNumber(userObject.phoneNumber.countryCode, userObject.phoneNumber.number);
+      const dateOfBirth = new Date(userObject.dateOfBirth);
+      const address = new Address(userObject.address.country, userObject.address.streetAddress, userObject.address.zipCode);
+
+      return new User(
+        userObject.id,
+        userObject.email,
+        userObject.firstName,
+        userObject.lastName,
+        phoneNumber,
+        dateOfBirth,
+        userObject.roles.map(role => role.name),
+        address
+      );
+    } catch (error) {
+      console.error("Error creating user from JSON object:", error);
+      throw error;
+    }
   }
 }
 
-function getUserFromJsonObject(userObject) {
-  try {
-    const phoneNumber = new PhoneNumber(userObject.phoneNumber.countryCode, userObject.phoneNumber.number);
-    const dateOfBirth = new Date(userObject.dateOfBirth);
-    const address = new Address(userObject.address.country, userObject.address.streetAddress, userObject.address.zipCode);
-
-    return new User(
-      userObject.id,
-      userObject.email,
-      userObject.firstName,
-      userObject.lastName,
-      phoneNumber,
-      dateOfBirth,
-      userObject.roles.map(role => role.name),
-      address
-    );
-  } catch (error) {
-    console.error("Error creating user from JSON object:", error);
-    throw error;
-  }
-}

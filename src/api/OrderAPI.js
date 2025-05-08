@@ -3,6 +3,7 @@ import Constants from "../Constants";
 import { Authentication } from "./Authentication";
 import { Order } from "../model/Order";
 import {CarAPI} from "./CarAPI";
+import {UsersAPI} from "./UsersAPI";
 
 export const OrderAPI = {
   getOrderById: async (orderId) => {
@@ -128,6 +129,26 @@ export const OrderAPI = {
       console.error("Could not get orders by car id: ", error);
       throw error;
     }
+  },
+
+  getOrdersByCompanyId: async (companyId) => {
+    try {
+      const response = await axios.get(
+        `${Constants.API_URL}/order/company/${companyId}`,
+        {
+          headers: {
+            "Authorization": `Bearer ${Authentication.getToken()}`,
+          }
+        }
+      );
+      const orders = [];
+      response.data.forEach(orderObject => {
+        orders.push(_getOrderFromJsonObject(orderObject));
+      });
+      return orders;
+    } catch (error) {
+      console.log("Could not get orders by company id: ", error)
+    }
   }
 
 
@@ -136,10 +157,11 @@ export const OrderAPI = {
 const _getOrderFromJsonObject = (orderObject) =>  {
   try {
     const car = CarAPI.getCarFromJsonObject(orderObject.car);
+    const user = UsersAPI.getUserFromJsonObject(orderObject.user)
     const startDate = new Date(orderObject.startDate);
     const endDate = new Date(orderObject.endDate);
 
-    return new Order(orderObject.orderId, car.getId(), orderObject.userId, startDate, endDate, orderObject.price);
+    return new Order(orderObject.orderId, car, user, startDate, endDate, orderObject.price);
   } catch (error) {
     console.error("Could not get order from json object: ", error);
     throw error;

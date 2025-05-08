@@ -8,16 +8,16 @@ export class Order {
    * Constructor for the Order class.
    * 
    * @param {string} id - The id of the order.
-   * @param {string} carId - The id of the car.
-   * @param {string} userId - The id of the user.
+   * @param {Car} car - The car of the order.
+   * @param {User} user - The user of the order.
    * @param {Date} startDate - The start date of the order.
    * @param {Date} endDate - The end date of the order.
    * @param {number} price - The price of the order.
    */
-  constructor(id, carId, userId, startDate, endDate, price) {
+  constructor(id, car, user, startDate, endDate, price) {
     this._id = id;
-    this._carId = carId;
-    this._userId = userId;
+    this._car = car;
+    this._user = user;
     this._startDate = startDate;
     this._endDate = endDate;
     this._price = price;
@@ -42,19 +42,19 @@ export class Order {
   }
 
   /**
-   * Returns the car id of the order.
-   * @returns {string} The car id of the order.
+   * Returns the car of the order.
+   * @returns {Car} The car of the order.
    */
-  getCarId() {
-    return this._carId;
+  getCar() {
+    return this._car;
   }
 
   /**
-   * Returns the user id of the order.
-   * @returns {string} The user id of the order.
+   * Returns the user of the order.
+   * @returns {User} The user of the order.
    */
-  getUserId() {
-    return this._userId;
+  getUser() {
+    return this._user;
   }
 
   /**
