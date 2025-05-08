@@ -13,6 +13,8 @@ const FiltersSection = (props) => {
 
   const context = useContext(FiltersContext);
 
+  const setChosenFromTime = context.setChosenFromTime;
+  const setChosenToTime = context.setChosenToTime;
 
   const availableBrands = context.possibleBrands;
   const availableFuelTypes = context.possibleFuelTypes;
@@ -59,13 +61,13 @@ const FiltersSection = (props) => {
 
   useEffect(() => {
     if (availableNowChecked) {
-      context.setChosenFromTime(new Date());
-      context.setChosenToTime(null);
+      setChosenFromTime(new Date());
+      setChosenToTime(null);
     } else {
-      context.setChosenFromTime(startDate);
-      context.setChosenToTime(endDate);
+      setChosenFromTime(startDate);
+      setChosenToTime(endDate);
     }
-  }, [availableNowChecked, setStartDate, endDate]);
+  }, [availableNowChecked, setStartDate, endDate, startDate, setChosenFromTime, setChosenToTime]);
 
   const alterChosenSellers = (seller, checked) => {
 

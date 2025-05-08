@@ -104,6 +104,10 @@ button:active {
   color: var(--text-200) !important;
 }
 
+.react-datepicker {
+  width: fit-content;
+}
+
 :root {
   --primary-100: #FFEB54;
   --primary-200: #ffca1e;

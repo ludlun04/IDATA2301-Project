@@ -32,7 +32,6 @@ export default function Rent(props) {
       try {
         const car = await CarAPI.getCar(id);
         setCar(car)
-        console.log("car favorite: ", car.getFavorite());
         setLoading(false);
         setFeatures(car.getFeatures());
       } catch (error) {
@@ -71,8 +70,6 @@ export default function Rent(props) {
           }
         });
         setUnavailableDates(newUnavailableDates);
-        console.log("UNAVAILABLE DATES: ", unavailableDates);
-
       } catch (error) {
         console.error("Error fetching orders of car:", error);
       }

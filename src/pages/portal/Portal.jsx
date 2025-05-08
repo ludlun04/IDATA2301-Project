@@ -19,6 +19,7 @@ export default function Portal() {
   const [centerFiltersDisplayed, setCenterFiltersDisplayed] = useState(false);
 
   const [cars, setCars] = useState([]);
+  console.log(cars);
 
   const [loading, setLoading] = useState(true);
   const [errorMessageActive, setErrorMessageActive] = useState(false);
