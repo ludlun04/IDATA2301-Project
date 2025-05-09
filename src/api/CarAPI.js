@@ -165,7 +165,8 @@ export const CarAPI = {
         features,
         false,
         false,
-        carObject.description
+        carObject.description,
+        carObject.visible
       );
     } catch (error) {
       console.error("Error parsing car object:", error);
@@ -209,13 +210,37 @@ export const CarAPI = {
             name: feature.getName()
           }
         }),
-        description: car.getDescription()
+        description: car.getDescription(),
+        visibility: car.getVisibility()
       };
     } catch (error) {
       console.error("Error converting car to JSON object:", error);
       throw error;
     }
 
+  },
+
+  updateCarVisibility: async (carId, visibility) => {
+    try {
+      if (carId !== undefined && visibility !== undefined) {
+        const token = Authentication.getToken();
+        const response = await axios.put(
+            `${Constants.API_URL}/car/${carId}/visibility`,
+            visibility,
+            {
+              headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+              },
+              method: 'put',
+            }
+        );
+        return response.data;
+      }
+    } catch (error) {
+      console.error("Error updating car visibility:", error);
+      throw error;
+    }
   }
 }
 

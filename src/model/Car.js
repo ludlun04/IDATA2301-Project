@@ -21,8 +21,9 @@ export class Car {
    * @param favorite - Whether the car is favorited by the current authenticated user or not.
    * @param available - The availability of the car.
    * @param description - The description of the car.
+   * @param visibility - The visibility of the car.
    */
-  constructor(company, id, year, numberOfSeats, pricePerDay, model, fuelType, transmissionType, addons, features, favorite, available, description) {
+  constructor(company, id, year, numberOfSeats, pricePerDay, model, fuelType, transmissionType, addons, features, favorite, available, description, visibility) {
     this._id = id;
     this._company = company
     this._year = year;
@@ -36,6 +37,15 @@ export class Car {
     this._favorite = favorite;
     this._available = available;
     this._description = description;
+    this._visibility = visibility;
+  }
+
+  getVisibility() {
+    return this._visibility;
+  }
+
+  setVisibility(visibility) {
+    this._visibility = visibility;
   }
 
   getDescription() {
