@@ -61,7 +61,7 @@ export default function DashboardNavBar({ className }) {
             <div className={"CompanyPages"}>
             <h3>Companies</h3>
             {companies.map((company) => (
-                <button key={company.getId()} onClick={() => {navigate(`/dashboard/company/${company.getId()}`)}} className={""}>{company.getName()}</button>
+                <button key={company.getId()} onClick={() => {navigate(`/dashboard/company/${company.getId()}/cars`)}} className={""}>{company.getName()}</button>
               ))}
             </div>
           </>

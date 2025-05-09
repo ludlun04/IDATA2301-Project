@@ -218,6 +218,29 @@ export const CarAPI = {
       throw error;
     }
 
+  },
+
+  updateCarVisibility: async (carId, visibility) => {
+    try {
+      if (carId !== undefined && visibility !== undefined) {
+        const token = Authentication.getToken();
+        const response = await axios.put(
+            `${Constants.API_URL}/car/${carId}/visibility`,
+            visibility,
+            {
+              headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+              },
+              method: 'put',
+            }
+        );
+        return response.data;
+      }
+    } catch (error) {
+      console.error("Error updating car visibility:", error);
+      throw error;
+    }
   }
 }
 

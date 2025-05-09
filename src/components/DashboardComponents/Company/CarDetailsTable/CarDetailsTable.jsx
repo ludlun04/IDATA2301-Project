@@ -1,6 +1,7 @@
 import "./CarDetailsTable.css";
 import DropdownMenu from "../../../DropdownMenu/DropdownMenu";
 import {useEffect, useState} from "react";
+import {CarAPI} from "../../../../api/CarAPI";
 
 export default function CarDetailsTable(props) {
 
@@ -27,7 +28,8 @@ export default function CarDetailsTable(props) {
         const newCars = [];
         cars.forEach(newCar => {
             if (car.getId() === newCar.getId()) {
-                //TODO: change visibility in backend
+                CarAPI.updateCarVisibility(newCar.getId(), !newCar.getVisibility()).then(r =>
+                console.log("Car visibility updated: ", r)).catch(console.error);
                 newCar.setVisibility(!newCar.getVisibility());
                 console.log("Car visibility changed to: ", car.getVisibility());
             }
