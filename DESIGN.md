@@ -38,7 +38,8 @@ Icons will be used for navigation and informational seconds to create an underst
 For the icon pack we will use google material icons. The icons will be gray scale or adhere to our primary color scheme.
 
 ### Typography
-We decided to use Sans-serif because it is clean, simple, modern and is easy to read. 
+We decided to use Sans-serif because it is clean, simple, modern and is easy to read. The font we chose is Kantumruy Pro.
+This font is clean and simple with a modern look. It is also easy to read and has a good balance between playfull and serious.
 
 Headers:
 - Bold
