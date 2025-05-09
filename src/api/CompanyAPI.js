@@ -6,8 +6,17 @@ import {Authentication} from "./Authentication";
 import {Address} from "../model/Address";
 import {CarAPI} from "./CarAPI";
 
+/**
+ * API module for handling company-related endpoints.
+ */
 export const CompanyAPI = {
 
+  /**
+   * Fetches all companies that are currently in use.
+   *
+   * @returns {Promise<Company[]>} A promise that resolves to an array of Company objects.
+   * @throws {Error} If there is an error fetching the companies.
+   */
   getCompaniesUsedInCars: async () => {
     try {
       const result = await axios.get(`${Constants.API_URL}/company/with_rentals`, {});
@@ -23,6 +32,12 @@ export const CompanyAPI = {
     }
   },
 
+  /**
+   * Fetches all companies.
+   *
+   * @returns {Promise<Company[]>} A promise that resolves to an array of Company objects.
+   * @throws {Error} If there is an error fetching the companies.
+   */
   getCompanies: async () => {
     try {
       if (Authentication.isSignedIn()) {
@@ -44,6 +59,13 @@ export const CompanyAPI = {
     }
   },
 
+  /**
+   * Fetches a company by its ID.
+   *
+   * @param {number} id - The ID of the company to fetch.
+   * @returns {Promise<Company|null>} A promise that resolves to a Company object or null if not found.
+   * @throws {Error} If there is an error fetching the company.
+   */
   getCompanyById: async (id) => {
     try {
       if (Authentication.isSignedIn()) {
@@ -65,6 +87,12 @@ export const CompanyAPI = {
     }
   },
 
+  /**
+   * Fetches all companies that the current user is associated with.
+   *
+   * @returns {Promise<Company[]>} A promise that resolves to an array of Company objects.
+   * @throws {Error} If there is an error fetching the companies.
+   */
   getCurrentUserCompanies: async () => {
     try {
       if (Authentication.isSignedIn()) {
@@ -87,6 +115,13 @@ export const CompanyAPI = {
     }
   },
 
+  /**
+   * Creates a new company.
+   *
+   * @param {Company} company - The company to create.
+   * @returns {Promise<void>} A promise that resolves when the company is created.
+   * @throws {Error} If there is an error creating the company.
+   */
   updateCompany: async (company) => {
     try {
       if (Authentication.isSignedIn()) {
@@ -107,6 +142,13 @@ export const CompanyAPI = {
     }
   },
 
+  /**
+   * Creates a new company.
+   *
+   * @param {Company} company - The company to create.
+   * @returns {Promise<void>} A promise that resolves when the company is created.
+   * @throws {Error} If there is an error creating the company.
+   */
   getCarsBelongingToCompany: async (companyId) => {
     try {
       const response = await axios.get(
