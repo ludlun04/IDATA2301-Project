@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { OrderAPI } from "../../api/OrderAPI";
 import CarCard from "../../components/CarCard/CarCard";
-import { CarAPI } from "../../api/CarAPI";
 
 
 const Order = () => {
@@ -17,7 +16,7 @@ const Order = () => {
     OrderAPI.getOrderById(id)
       .then((order) => {
         setOrder(order);
-        console.log("Order data:", order);
+        setCar(order.getCar())
       })
       .catch((error) => {
         if (error.code === "ERR_BAD_REQUEST") {
@@ -26,20 +25,10 @@ const Order = () => {
           setStatus("Error fetching order data, please try again later.");
         }
       });
-  }, []);
+  }, [id]);
 
-  useEffect(() => {
-    if (!order) return;
+  console.log(car)
 
-    CarAPI.getCar(order.getCarId())
-      .then((car) => {
-        setCar(car);
-        console.log("Car data:", car);
-      })
-      .catch((error) => {
-        console.error("Error fetching car data:", error);
-      });
-  }, [order])
 
   return (
     <main className={"OrderMain"}>
@@ -50,8 +39,8 @@ const Order = () => {
           <>
             <ul className={"OrderInformation"}>
               <li><p>OrderId:</p><p>{order.getId()}</p></li>
-              <li><p>CarId:</p><p>{order.getCarId()}</p></li>
-              <li><p>UserId:</p><p>{order.getUserId()}</p></li>
+              <li><p>CarId:</p><p>{car.getId()}</p></li>
+              <li><p>UserId:</p><p>{order.getUser().getId()}</p></li>
               <li><p>StartDate:</p><p>{order.getStartDate().toDateString()}</p></li>
               <li><p>EndDate:</p><p>{order.getEndDate().toDateString()}</p></li>
               <li><p>Price:</p><p>{order.getPrice()}</p></li>
@@ -63,7 +52,7 @@ const Order = () => {
           <p>{status}</p>
         )}
 
-        <button className={"OrderNavButton"} type="button" onClick={() => navigate("/dashboard")}>Go to profile page</button>
+        <button className={"OrderNavButton"} type="button" onClick={() => navigate("/dashboard/user/details")}>Go to profile page</button>
       </div>
     </main>
   );

@@ -16,14 +16,7 @@ export const OrderAPI = {
       }).then(async (response) => {
         const data = response.data;
 
-        return new Order(
-          data.orderId,
-          data.carId,
-          data.userId,
-          new Date(data.startDate),
-          new Date(data.endDate),
-          data.price,
-        )
+        return _getOrderFromJsonObject(data);
       });
     } catch (error) {
       console.error("Error fetching order:", error);
@@ -65,15 +58,8 @@ export const OrderAPI = {
         const orders = [];
 
         for (const orderData of data) {
-          const order = new Order(
-            orderData.orderId,
-            orderData.carId,
-            orderData.userId,
-            new Date(orderData.startDate),
-            new Date(orderData.endDate),
-            orderData.price,
+          orders.push(_getOrderFromJsonObject(orderData)
           );
-          orders.push(order);
         }
 
         return orders;
@@ -96,15 +82,7 @@ export const OrderAPI = {
         const orders = [];
 
         for (const orderData of data) {
-          const order = new Order(
-            orderData.orderId,
-            orderData.carId,
-            orderData.userId,
-            new Date(orderData.startDate),
-            new Date(orderData.endDate),
-            orderData.price,
-          );
-          orders.push(order);
+          orders.push(_getOrderFromJsonObject(orderData));
         }
 
         return orders;
