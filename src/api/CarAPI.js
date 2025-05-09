@@ -12,8 +12,17 @@ import {UsersAPI} from "./UsersAPI";
 import {Authentication} from "./Authentication";
 import Constants from "../Constants";
 
+/**
+ * CarAPI module to handle car-related endpoints.
+ * It provides methods to fetch car details, all cars, and user favorites.
+ */
 export const CarAPI = {
-
+  /**
+   * Gets a cary by its ID.
+   * 
+   * @param {number} id a number larger than 0
+   * @returns {Promise<Car>} A promise that resolves to a Car object.
+   */
   getCar: async (id) => {
     try {
       const result = await axios.get(`${_getBaseUrl()}/${id}`, {});
@@ -34,6 +43,12 @@ export const CarAPI = {
 
   },
 
+  /**
+   * Returns all cars that fit the specified filters.
+   *
+   * @param {*} filters 
+   * @returns {Promise<Car[]>} A promise that resolves to an array of Car objects.
+   */
   getAllCars: async (filters) => {
     try {
       let urlBuilder = new CarUrlBuilder();
@@ -81,6 +96,11 @@ export const CarAPI = {
 
   },
 
+  /**
+   * Returns the current user's favorite cars.
+   *
+   * @returns {Promise<Car[]>} A promise that resolves to an array of Car objects.
+   */
   getCurrentUserFavorites: async () => {
     try {
       if (!Authentication.isSignedIn()) {
@@ -113,6 +133,11 @@ export const CarAPI = {
 
   },
 
+  /**
+   * Returns all combinations of seat numbers in cars.
+   *
+   * @returns {Promise<number[]>} A promise that resolves to an array of seat amounts.
+   */
   getAllAmountOfSeatsInCars: async () => {
     try {
       const result = await axios.get(`${_getBaseUrl()}/seats`, {});
@@ -127,6 +152,12 @@ export const CarAPI = {
     }
   },
 
+  /**
+   * Converts a JSON represaentation of a car to a Car object.
+   * @param {string} carObject 
+   * @returns {Car} A Car object.
+   * @throws {Error} If the carObject is not valid.
+   */
   getCarFromJsonObject(carObject) {
     try {
       const modelObject = carObject.model;
@@ -174,6 +205,13 @@ export const CarAPI = {
     }
   },
 
+  /**
+   * Turns a Car object into a JSON object.
+   *
+   * @param {Car} car
+   * @returns {Object} A JSON object representing the car.
+   * @throws {Error} If the car object is not valid.
+   */
   getJsonObjectFromCar(car) {
     try {
       return {
@@ -220,6 +258,14 @@ export const CarAPI = {
 
   },
 
+  /**
+   * Updates the visibility of a car.
+   * 
+   * @param {number} carId the id of the car to alter
+   * @param {boolean} visibility the new visibility of the car
+   * @returns {Promise<Car>} A promise that resolves to the updated Car object.
+   * @throws {Error} If the carId or visibility is not valid.
+   */
   updateCarVisibility: async (carId, visibility) => {
     try {
       if (carId !== undefined && visibility !== undefined) {
