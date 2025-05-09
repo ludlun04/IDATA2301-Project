@@ -1,5 +1,4 @@
 import "./CompaniesSection.css";
-import { Company } from "../../../model/Company";
 import CompanyRow from "./CompanyRow";
 import {useEffect, useState} from "react";
 import {CompanyAPI} from "../../../api/CompanyAPI";
@@ -39,7 +38,7 @@ export default function CompaniesSection() {
               <th><p>Id</p></th>
               <th><p>Name</p></th>
               <th><p>Address</p></th>
-              <th><p>Email</p></th>
+              <th><p></p></th>
             </tr>
           </thead>
           <tbody>

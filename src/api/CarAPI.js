@@ -116,7 +116,8 @@ export const CarAPI = {
 
       const cars = [];
 
-      result.data.map(car => {
+      // eslint-disable-next-line array-callback-return
+      result.data.map(car =>  {
         cars.push(CarAPI.getCarFromJsonObject(car))
       })
 
@@ -309,7 +310,7 @@ const _setFavorites = async (cars) => {
 }
 
 const _setAvailable = async (cars) => {
-  const urlBuilder = new CarUrlBuilder().withFromTime(new Date);
+  const urlBuilder = new CarUrlBuilder().withFromTime(new Date());
   const url = urlBuilder.build();
   const response = await axios.get(url, {});
 
