@@ -2,10 +2,21 @@ import axios from "axios";
 import Constants from "../Constants";
 import { Authentication } from "./Authentication";
 import { Order } from "../model/Order";
-import {CarAPI} from "./CarAPI";
-import {UsersAPI} from "./UsersAPI";
+import { CarAPI } from "./CarAPI";
+import { UsersAPI } from "./UsersAPI";
 
+/**
+ * API module for handling orders.
+ * It provides methods to fetch, create, and managing orders.
+ */
 export const OrderAPI = {
+  /**
+   * Fetches an order by its ID.
+   *
+   * @param {number} orderId - The ID of the order to fetch.
+   * @returns {Promise<Order>} A promise that resolves to an Order object.
+   * @throws {Error} If there is an error fetching the order.
+   */
   getOrderById: async (orderId) => {
     try {
       return await axios(`${Constants.API_URL}/order/${orderId}`, {
@@ -24,6 +35,16 @@ export const OrderAPI = {
     }
   },
 
+  /**
+   * Requests a rental for a car.
+   *
+   * @param {number} carId - The ID of the car to rent.
+   * @param {Date} startDate - The start date of the rental.
+   * @param {Date} endDate - The end date of the rental.
+   * @param {Array} addons - An array of addon objects.
+   * @returns {Promise<Order>} A promise that resolves to an Order object.
+   * @throws {Error} If there is an error requesting the rental.
+   */
   requestRent: async (carId, startDate, endDate, addons) => {
     try {
       return axios(`${Constants.API_URL}/order`, {
@@ -46,6 +67,12 @@ export const OrderAPI = {
 
   },
 
+  /**
+   * Fetches all active rentals for the current user.
+   *
+   * @returns {Promise<Order[]>} A promise that resolves to an array of Order objects.
+   * @throws {Error} If there is an error fetching the active rentals.
+   */
   getActiveRentals: async () => {
     try {
       return await axios(`${Constants.API_URL}/order/active`, {
@@ -70,6 +97,12 @@ export const OrderAPI = {
     }
   },
 
+  /**
+   * Fetches all historical rentals for the current user.
+   * 
+   * @returns {Promise<Order[]>} A promise that resolves to an array of Order objects.
+   * @throws {Error} If there is an error fetching the historical rentals.
+  */
   getHistoricalRentals: async () => {
     try {
       return await axios(`${Constants.API_URL}/order/history`, {
@@ -93,9 +126,16 @@ export const OrderAPI = {
     }
   },
 
+  /**
+   * Fetches all orders for a specific car by its ID.
+   * 
+   * @param {number} carId - The ID of the car.
+   * @returns {Promise<Order[]>} A promise that resolves to an array of Order objects.
+   * @throws {Error} If there is an error fetching the orders.
+   */
   getOrdersByCarId: async (carId) => {
     try {
-      const response = await axios.get(`${Constants.API_URL}/order/car/${carId}`,{});
+      const response = await axios.get(`${Constants.API_URL}/order/car/${carId}`, {});
 
       const orderObjects = response.data;
       const orders = [];
@@ -109,6 +149,13 @@ export const OrderAPI = {
     }
   },
 
+  /**
+   * Fetches all orders for a specific company by its ID.
+   * 
+   * @param {number} companyId - The ID of the company.
+   * @returns {Promise<Order[]>} A promise that resolves to an array of Order objects.
+   * @throws {Error} If there is an error fetching the orders.
+  */
   getOrdersByCompanyId: async (companyId) => {
     try {
       const response = await axios.get(
@@ -132,7 +179,7 @@ export const OrderAPI = {
 
 }
 
-const _getOrderFromJsonObject = (orderObject) =>  {
+const _getOrderFromJsonObject = (orderObject) => {
   try {
     const car = CarAPI.getCarFromJsonObject(orderObject.car);
     const user = UsersAPI.getUserFromJsonObject(orderObject.user)

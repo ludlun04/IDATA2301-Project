@@ -6,7 +6,16 @@ import {PhoneNumber} from "../model/PhoneNumber.js";
 import {Address} from "../model/Address.js";
 import {CarAPI} from "./CarAPI";
 
+/**
+ * API module for handling user-related endpoints.
+ */
 export const UsersAPI = {
+  /**
+   * Fetches all users.
+   *
+   * @returns {Promise<User[]>} A promise that resolves to an array of User objects.
+   * @throws {Error} If there is an error fetching the users.
+   */
   getAllUsers: async () => {
     try {
       if (!Authentication.isSignedIn()) {
@@ -32,6 +41,13 @@ export const UsersAPI = {
     }
   },
 
+  /**
+   * Signs up a new user.
+   * 
+   * @param {User} user - The user object containing user details.
+   * @param {string} password - The password for the new user.
+   * @throws {Error} If there is an error signing up the user.
+   */
   signUp: async (user, password) => {
     try {
       const result = await axios({
@@ -66,6 +82,13 @@ export const UsersAPI = {
     }
   },
 
+  /**
+   * Updates the details of an existing user.
+   * 
+   * @param {User} user - The user object containing updated user details.
+   * @returns {Promise<void>} A promise that resolves when the user is updated.
+   * @throws {Error} If there is an error updating the user.
+  */
   updateUser: async (user) => {
     if (!Authentication.isSignedIn()) {
       throw new Error("User is not signed in");
@@ -102,6 +125,12 @@ export const UsersAPI = {
     });
   },
 
+  /**
+   * Fetches the current authenticated user.
+   * 
+   * @returns {Promise<User>} A promise that resolves to the User object of the current authenticated user.
+   * @throws {Error} If there is an error fetching the current user.
+  */
   getCurrentAuthenticatedUser: async () => {
     try {
       if (Authentication.isSignedIn()) {
@@ -121,6 +150,12 @@ export const UsersAPI = {
     }
   },
 
+  /**
+   * Fetches the roles of the current authenticated user.
+   * 
+   * @returns {Promise<string[]>} A promise that resolves to an array of role names.
+   * @throws {Error} If there is an error fetching the user roles.
+   */
   getCurrentAuthenticatedUserRoles: async () => {
     try {
       if (Authentication.isSignedIn()) {
@@ -140,6 +175,13 @@ export const UsersAPI = {
 
   },
 
+  /**
+   * Fetches the favorite cars of the current authenticated user.
+   * 
+   * @param {Car[]} cars - An array of Car objects to check for favorites.
+   * @returns {Promise<Car[]>} A promise that resolves to an array of favorite Car objects.
+   * @throws {Error} If there is an error fetching the favorite cars.
+   */
   getFavoritesAmongCars: async (cars) => {
     try {
       const carObjects = cars.map(car => {
@@ -170,6 +212,14 @@ export const UsersAPI = {
     }
   },
 
+  /**
+   * Sets the favorite status of a car for the current authenticated user.
+   * 
+   * @param {Car} car - The Car object to set as favorite or not.
+   * @param {boolean} isFavorite - True to set as favorite, false to remove from favorites.
+   * @returns {Promise<void>} A promise that resolves when the favorite status is set.
+   * @throws {Error} If there is an error setting the favorite status.
+  */
   setFavorite: async (car, isFavorite) => {
     try {
       if (Authentication.isSignedIn()) {
@@ -195,6 +245,13 @@ export const UsersAPI = {
 
   },
 
+  /**
+   * Fetches the user object from a JSON object.
+   * 
+   * @param {Object} userObject - The JSON object representing a user.
+   * @returns {User} The User object created from the JSON object.
+   * @throws {Error} If there is an error creating the User object.
+   */
   getUserFromJsonObject: (userObject) => {
     try {
       const phoneNumber = new PhoneNumber(userObject.phoneNumber.countryCode, userObject.phoneNumber.number);
