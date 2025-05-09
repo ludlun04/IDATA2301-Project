@@ -1,10 +1,9 @@
 import "./RentCard.css";
 import img from "../../resources/logo/Logo-Dark-Icon.svg";
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ImageAPI } from "../../api/ImageAPI";
 import { OrderAPI } from "../../api/OrderAPI";
-import { CarAPI } from "../../api/CarAPI";
 
 export default function RentCard({ orderId }) {
   const navigate = useNavigate();
@@ -19,15 +18,11 @@ export default function RentCard({ orderId }) {
     }).catch((error) => {
       console.error("Error fetching order:", error);
     });
-  }, []);
+  }, [orderId]);
 
   useEffect(() => {
     if (order) {
-      CarAPI.getCar(order.getCarId()).then((car) => {
-        setCar(car);
-      }).catch((error) => {
-        console.error("Error fetching car:", error);
-      });
+      setCar(order.getCar());
     }
   }, [order]);
 
