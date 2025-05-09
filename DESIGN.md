@@ -3,36 +3,42 @@
 ## Concept Phase
 
 ### Theme
-The website should give an impression of a journey, travel and adventure. There should also be a balance in design between playfull and serious-buisness.
+The website should give an impression of a journey, travel and adventure. There is also a balance in design between playfull and serious-buisness.
 
 
 ### Color Theme
-- Companies primary color is #FFCA1E. This color gives a feeling of Happiness liveliness, hope, curiosity and intelligence.
-- Accent colors and alternative colors will be chosen from the below chart.
+- Companies primary color is #FFCA1E. This color gives a feeling of happiness, liveliness, hope, curiosity and intelligence.
+- Accent colors and alternative colors will be chosen from the palette below.
 #### Color pallet
 ![Image of color gradients from primary color](/assets/colors.jpg)
 
 ### Hierarchy and layout
-TODO: Ask the question about this thing to teacher person
-Primary focus of the page is the call to action/ rent now button. The reason for this is that we want the users to easily navigate to choosing their car and renting.
+Our base layout consists of a header at the top, page content at the center and footer at the bottom. 
+- Header contains our logo and navigation
+- Page content contains the main content of the page
+- Footer contains information, links and contact information
+
+When loading the page the user is presented with a lander page. The primary focus of the page is the call to action/ rent 
+now button. The reason for this is that we want the users to easily navigate to choosing their car and renting.
+
+The main and most important content will always be located towards the center, with navigation and extra elements around it.
+This ensures the user should be naturally guided towards seeing the most important content first.
 
 ### Images
 Images sourced from finn and pixabay
-All images used in the application are located in the ./assets file
+Images used only by the frontend is located in the assets folder. The images related to the cars are stored in the database.
 
-For the landing page we will have text on the image, since the image will act as a background
-
-For the rest of the website the text will always be next to the images.
+For the landing page we will have text on the image, since the image will act as a background. For the rest of the website the text will always be next to the images.
 
 We will mostly use clear images to show the cars as best as possible. We may use slight tint on some of the images.
 
 ### Icons
 Icons will be used for navigation and informational seconds to create an understanding of what is being displayed.
 
-For the icon pack we will use google material icons. The icons will be gray scale.
+For the icon pack we will use google material icons. The icons will be gray scale or adhere to our primary color scheme.
 
 ### Typography
-Sans-serif cause it is clean, simple, modern and is easy to read. 
+We decided to use Sans-serif because it is clean, simple, modern and is easy to read. 
 
 Headers:
 - Bold
@@ -46,9 +52,8 @@ The font will have rounded corners.
 
 
 ### Border rounding
-Borders will be slightly rounded to give a playfull design.
-
-Borders should be 1 rem
+Borders will be slightly rounded to give a slightly playfull design. We decided on all borders being rounded to 1rem
+which ensures that the design is consistent across the website.
 
 ### Shadows
-Shadows will be used to emphasize important elements.
+Shadows will be used to emphasize important elements or elements that should stand out from the background.
