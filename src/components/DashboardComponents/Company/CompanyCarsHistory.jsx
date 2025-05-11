@@ -4,6 +4,13 @@ import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {OrderAPI} from "../../../api/OrderAPI";
 
+/**
+ * CompanyCarsHistory component
+ * Displays a list of cars belonging to a specific company along with their rental history.
+ * The company ID is obtained from the URL parameters.
+ *
+ * @returns {JSX.Element}
+ */
 export default function CompanyCarsHistory() {
 
   const idParam = useParams();

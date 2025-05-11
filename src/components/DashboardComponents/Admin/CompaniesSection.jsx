@@ -3,6 +3,12 @@ import CompanyRow from "./CompanyRow";
 import {useEffect, useState} from "react";
 import {CompanyAPI} from "../../../api/CompanyAPI";
 
+/**
+  * CompaniesSection component
+  * Displays a list of companies in a table format.
+  *
+  * @returns {JSX.Element}
+  */
 export default function CompaniesSection() {
   const [companies, setCompanies] = useState([]);
 

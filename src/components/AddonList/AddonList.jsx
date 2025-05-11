@@ -1,6 +1,13 @@
 import "./AddonList.css";
 import AddonListItem from "./AddonListItem";
 
+/**
+ * A component that displays a list of addons.
+ * 
+ * @param {addon[]} addons 
+ * @param {function} onAddonSelected - A function that is called when an addon is selected.
+ * @returns {JSX.Element}
+ */
 const AddonList = ({ addons, onAddonSelected}) => {
   return (
     <div className={"AddonList"}>

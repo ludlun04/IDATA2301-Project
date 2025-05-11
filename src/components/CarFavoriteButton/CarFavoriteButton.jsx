@@ -4,6 +4,14 @@ import starFilled from "../../resources/icons/starFilled.svg";
 import starUnfilled from "../../resources/icons/starUnfilled.svg";
 import "./CarFavoriteButton.css";
 
+/**
+ * CarFavoriteButton component
+ * Displays a button to mark a car as favorite or not.
+ * 
+ * @param {Car} Car the car to be marked as favorite
+ * @param {string} className the class name to be applied to the button 
+ * @returns 
+ */
 const CarFavoriteButton = ({car, className}) => {
 
   const [isFavorite, setIsFavorite] = useState(car.getFavorite());

@@ -3,6 +3,12 @@ import UserRow from "./UserRow"
 import { useEffect, useState } from "react";
 import { UsersAPI } from "../../../api/UsersAPI";
 
+/**
+ * UsersSection component
+ * Displays a list of users in a table format.
+ * 
+ * @returns {JSX.Element}
+ */
 export default function UsersSection() {
   const [users, setUsers] = useState([])
 

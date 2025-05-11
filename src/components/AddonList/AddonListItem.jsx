@@ -1,9 +1,11 @@
 import { useState } from "react";
 import "./AddonListItem.css";
+import { Addon } from "../../model/Addon";
 
 /**
  * 
- * @param {Object} addon - The addon object containing id, name, and price 
+ * @param {Addon} addon - The addon object containing id, name, and price 
+ * @param {function} onAddonSelected - A function that is called when an addon is selected.
  * @returns AddonListItem component
  */
 const AddonListItem = ({ addon, onAddonSelected }) => {

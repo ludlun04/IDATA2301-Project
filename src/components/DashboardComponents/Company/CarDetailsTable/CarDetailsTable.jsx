@@ -3,6 +3,15 @@ import DropdownMenu from "../../../DropdownMenu/DropdownMenu";
 import {useEffect, useState} from "react";
 import {CarAPI} from "../../../../api/CarAPI";
 
+/**
+ * CarDetailsTable component
+ * Displays a table of car details with the ability to show/hide cars and view their details.
+ *
+ * @param {Object} props - The component props.
+ * @param {Array} props.orders - The list of orders associated with the cars.
+ * @param {Array} props.cars - The list of cars to be displayed.
+ * @returns {JSX.Element}
+ */
 export default function CarDetailsTable(props) {
 
     const orders = props.orders;

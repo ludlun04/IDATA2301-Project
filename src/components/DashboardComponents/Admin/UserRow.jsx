@@ -2,7 +2,15 @@ import { createPortal } from "react-dom"
 import EditUserDialogue from "./EditUserDialogue";
 import {useState} from "react";
 import "./UserRow.css"
+import { User } from "../../../model/User";
 
+/**
+ * UserRow component
+ * Displays a row of user information in a table format.
+ *
+ * @param {User} user - The user to be displayed.
+ * @returns {JSX.Element}
+ */
 export default function UserRow({ user }) {
   const [portal, setPortal] = useState(<></>);
 

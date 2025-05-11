@@ -5,6 +5,15 @@ import { useEffect, useState } from "react";
 import { UsersAPI } from "../../../api/UsersAPI";
 import EditUserDialogue from "../Admin/EditUserDialogue";
 
+/**
+ * DetailsSection component
+ * Displays the details of the currently authenticated user.
+ * Allows the user to edit their details or log out.
+ *
+ * @param {string} className - Additional CSS class names for styling.
+ * @param {object} style - Additional inline styles.
+ * @returns {JSX.Element}
+ */
 export default function DetailsSection(props) {
   const navigate = useNavigate();
   const { signOut } = useAuth();

@@ -5,6 +5,15 @@ import Loader from "../..//loader/Loader";
 import ErrorFetchingDataMessage from "../../ErrorFetchingDataMessage/ErrorFetchingDataMessage";
 import {CarAPI} from "../../../api/CarAPI";
 
+/**
+  * UserFavorites component
+  * Displays a list of cars that the user has favorited.
+  * The component fetches the user's favorited cars from the API and displays them in a grid format.
+  * If there are no favorited cars, a message is displayed.
+  * If there is an error fetching the data, an error message is displayed.
+  *
+  * @returns {JSX.Element}
+  */
 export default function UserFavorites() {
   const [favoritedCars, setFavoritedCars] = useState([]);
   const [loading, setLoading] = useState(true);

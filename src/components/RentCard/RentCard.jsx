@@ -5,6 +5,13 @@ import { useNavigate } from "react-router-dom";
 import { ImageAPI } from "../../api/ImageAPI";
 import { OrderAPI } from "../../api/OrderAPI";
 
+/**
+ * RentCard component
+ * Displays a card with information about a rental order, including an image, car model, company name, and rental dates.
+ *
+ * @param {string} orderId - The order ID to be displayed.
+ * @returns {JSX.Element}
+ */
 export default function RentCard({ orderId }) {
   const navigate = useNavigate();
   const [carImage, setCarImage] = useState(img);

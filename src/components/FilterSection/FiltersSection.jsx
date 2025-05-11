@@ -9,6 +9,16 @@ import CarFilterToggle from "../CarFilterToggle/CarFilterToggle";
 // CSS Modules, react-datepicker-cssmodules.css
 // import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
+/**
+ * FiltersSection component
+ * Displays a section for filtering cars based on various criteria such as brand, fuel type, seller, seats, and date.
+ *
+ * @param {object} props - The properties passed to the component.
+ * @param {string} props.className - The class name to be applied to the FiltersSection.
+ * @param {object} props.style - The style object to be applied to the FiltersSection.
+ * @param {React.Ref} props.ref - The ref to be attached to the FiltersSection.
+ * @returns {JSX.Element}
+ */
 const FiltersSection = (props) => {
 
   const context = useContext(FiltersContext);

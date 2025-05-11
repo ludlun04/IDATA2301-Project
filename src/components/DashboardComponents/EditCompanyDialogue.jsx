@@ -3,6 +3,16 @@ import {Address} from "../../model/Address";
 import {CompanyAPI} from "../../api/CompanyAPI";
 import {Company} from "../../model/Company";
 
+/**
+ * EditCompanyDialogue component
+ * A form that allows the user to edit the details of a company.
+ * It includes fields for company name, address, and phone number.
+ *
+ * @param {object} props - The properties passed to the component.
+ * @param {function} props.onClose - Function to close the dialogue.
+ * @param {Company} props.company - The company object to be edited.
+ * @returns {JSX.Element}
+ */
 const EditCompanyDialogue = (props) => {
   const company = props.company;
   const address = company.getAddress();

@@ -8,6 +8,16 @@ import { PhoneNumber } from "../../../model/PhoneNumber";
 import { Address } from "../../../model/Address";
 import { UsersAPI } from "../../../api/UsersAPI";
 
+/**
+ * EditUserDialogue component
+ * Displays a form to edit user details.
+ *
+ * @param {Object} props - The component props.
+ * @param {User} props.user - The user object to be edited.
+ * @param {boolean} props.showRoleSelection - Flag to show role selection.
+ * @param {function} props.onClose - Function to close the dialogue.
+ * @returns {JSX.Element}
+ */
 export default function EditUserDialogue(props) {
   const user = props.user;
   const isAdmin = user.getRoles().includes("ADMIN");

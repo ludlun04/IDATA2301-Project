@@ -4,6 +4,13 @@ import { UsersAPI } from "../../../api/UsersAPI";
 import {useNavigate} from "react-router-dom";
 import {CompanyAPI} from "../../../api/CompanyAPI";
 
+/**
+ * DashboardNavBar component
+ * Displays a navigation bar for the dashboard with links to different sections based on user roles.
+ *
+ * @param {string} className - Additional CSS class names for styling.
+ * @returns {JSX.Element}
+ */
 export default function DashboardNavBar({ className }) {
   const [roles, setRoles] = useState([]);
   const [companies, setCompanies] = useState([]);

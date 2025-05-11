@@ -2,7 +2,15 @@ import "./CompanyDetails.css"
 import {useState} from "react";
 import EditCompanyDialogue from "../../EditCompanyDialogue";
 import {createPortal} from "react-dom";
+import { Company } from "../../../../model/Company";
 
+/**
+ * CompanyDetails component
+ * Displays the details of a company including name, address, and phone number.
+ *
+ * @param {Company} company
+ * @returns {JSX.Element}
+ */
 const CompanyDetails = ({company}) => {
     const [portal, setPortal] = useState(<></>);
     if (!company) {

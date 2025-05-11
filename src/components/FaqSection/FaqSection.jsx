@@ -2,6 +2,15 @@ import "./FaqSection.css";
 import openFaqIcon from "../../resources/icons/arrowDeprecated.svg";
 import {useState, useRef, useEffect} from "react";
 
+/**
+ * FaqSection component
+ * Displays a question and answer section with a toggleable answer.
+ *
+ * @param {string} question - The question to be displayed.
+ * @param {string} answer - The answer to be displayed.
+ * @param {string} className - The class name to be applied to the FAQ section.
+ * @returns {JSX.Element}
+ */
 export default function FaqSection(props) {
     const [menuActive, toggleMenuActive] = useState(false)
     const [height, setHeight] = useState(0)

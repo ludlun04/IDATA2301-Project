@@ -1,4 +1,12 @@
+import { PhoneNumber } from "../../../model/PhoneNumber";
 import "./PhoneNumberField.css";
+
+/**
+ * A component that displays a phone number field.
+ * 
+ * @param {PhoneNumber} phoneNumber - The phone number object.
+ * * @returns {JSX.Element}
+ */
 
 function PhoneNumberField({phoneNumber}) {
   const countryCode = phoneNumber.getCountryCode() || "+47";

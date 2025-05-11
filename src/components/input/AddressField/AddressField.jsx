@@ -1,5 +1,13 @@
 import "./AddressField.css";
+import { Address } from "../../model/Address";
 
+/**
+ * AddressField component
+ * Displays a form for entering address information.
+ *
+ * @param {Address} address - The address object containing country, street address, and zip code.
+ * @returns {JSX.Element}
+ */
 const AddressField = ({ address }) => {
   return (
     <div className={"AddressField"}>

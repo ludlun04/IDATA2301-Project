@@ -3,6 +3,12 @@ import { useEffect, useState } from "react";
 import { OrderAPI } from "../../../api/OrderAPI";
 import RentCard from "../../RentCard/RentCard";
 
+/**
+ * UserRentals component
+ * Displays a list of rentals for the user, either active or historical.
+ *
+ * @returns {JSX.Element}
+ */
 export default function UserRentals() {
   const [section, setSection] = useState("Active");
   const [rentals, setRentals] = useState([]);

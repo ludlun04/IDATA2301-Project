@@ -6,6 +6,13 @@ import {useNavigate} from "react-router-dom";
 import {Car} from "../../model/Car";
 import {ImageAPI} from "../../api/ImageAPI";
 
+/* 
+ * CarCard component
+ * Displays a card with car information, including an image, model, company name, availability status, and price.
+ * 
+ * @param {Car} car - The car object to be displayed.
+ * @returns {JSX.Element}
+ */
 export default function CarCard(props) {
   const navigate = useNavigate();
   const [carImage, setCarImage] = useState(img);

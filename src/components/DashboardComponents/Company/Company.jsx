@@ -4,6 +4,13 @@ import {useEffect, useState} from "react";
 import {CompanyAPI} from "../../../api/CompanyAPI";
 import CompanyDetails from "./CompanyDetails/CompanyDetails";
 
+/**
+ * Company component
+ * Displays the details of a company including name, address, and phone number.
+ * Page gets company id from URL and fetches company data from API.
+ *
+ * @returns {JSX.Element}
+ */
 export default function Company() {
     const navigate = useNavigate();
     const {id} = useParams();

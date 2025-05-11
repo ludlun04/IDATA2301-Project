@@ -3,6 +3,13 @@ import {useState} from "react";
 import EditCompanyDialogue from "../EditCompanyDialogue";
 import {createPortal} from "react-dom";
 
+/**
+ * CompanyRow component
+ * Displays a row of company information in a table format.
+ *
+ * @param {object} company - The company object containing id, name, and address.
+ * @returns {JSX.Element}
+ */
 export default function CompanyRow({ company }) {
     const [portal, setPortal] = useState(<></>);
 

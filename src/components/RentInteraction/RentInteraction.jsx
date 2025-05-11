@@ -98,7 +98,7 @@ const RentInteraction = ({car, unavailableDates}) => {
 
   return (
     <section className={"RentInteraction"}>
-      <CompanyCard car={car}/>
+      <CompanyCard company={car.getCompany()}/>
 
       <DatePicker /*monthsShown={3}*/
         className={"filtersSectionDatePicker"}

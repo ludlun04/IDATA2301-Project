@@ -5,6 +5,16 @@ import { useState } from "react";
 import Select from "react-select";
 import SelectMenu from "../SelectMenu/SelectMenu";
 
+/**
+ * CarSearchSortSection component
+ * Displays a search field and a sort by field.
+ *
+ * @param {string} chosenKeyword - The keyword to be searched.
+ * @param {function} setChosenKeyword - Function to set the chosen keyword.
+ * @param {Array} cars - The list of cars to be sorted.
+ * @param {function} setCars - Function to set the sorted cars.
+ * @returns {JSX.Element}
+ */
 const CarSearchSortSection = (props) => {
 
   const setChosenKeyword = props.setChosenKeyword;

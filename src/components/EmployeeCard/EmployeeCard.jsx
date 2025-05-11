@@ -1,5 +1,13 @@
 import "./EmployeeCard.css";
 
+/**
+ * A component that displays an employee card.
+ * 
+ * @param {string} path - The path to the image of the employee.
+ * @param {string} name - The name of the employee.
+ * @param {string} title - The title of the employee.
+ * @returns {JSX.Element}
+ */
 export default function EmployeeCard(props) {
   const path = props.path;
   const name = props.name;
