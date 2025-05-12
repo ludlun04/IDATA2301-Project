@@ -93,7 +93,9 @@ export default function CarDetailsTable(props) {
 
     return (
         <div>
-            <div className={"CarDetailsTable"}>
+          {cars.length === 0 ?
+            <p>No cars to show</p>
+            : <div className={"CarDetailsTable"}>
                 <div className={"carDetailsTableRowTop carDetailsTableDescriptorRow"}>
                     <p className={"carDetailsTableColumn"}>Brand</p>
                     <p className={"carDetailsTableColumn"}>Model</p>
@@ -124,6 +126,7 @@ export default function CarDetailsTable(props) {
                         )
                     })}
             </div>
+          }
         </div>
 
     )
