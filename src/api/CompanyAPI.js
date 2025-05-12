@@ -145,15 +145,19 @@ export const CompanyAPI = {
   /**
    * Creates a new company.
    *
-   * @param {Company} company - The company to create.
    * @returns {Promise<void>} A promise that resolves when the company is created.
    * @throws {Error} If there is an error creating the company.
+   * @param companyId
    */
   getCarsBelongingToCompany: async (companyId) => {
     try {
       const response = await axios.get(
         `${Constants.API_URL}/company/${companyId}/cars`,
-        {}
+        {
+          headers: {
+                'Authorization': `Bearer ${Authentication.getToken()}`
+            }
+        }
       );
 
       const cars = [];
