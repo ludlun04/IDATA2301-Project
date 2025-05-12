@@ -23,7 +23,7 @@ export const UsersAPI = {
       }
 
       const token = Authentication.getToken();
-      const result = await axios.get(`${Constants.API_URL}/users`, {
+      const result = await axios.get(`${Constants.API_URL}/user`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -52,7 +52,7 @@ export const UsersAPI = {
     try {
       const result = await axios({
         method: "post",
-        url: `${Constants.API_URL}/users/add`,
+        url: `${Constants.API_URL}/user/add`,
         headers: {
           'Content-Type': 'application/json'
         },
@@ -114,7 +114,7 @@ export const UsersAPI = {
     const token = Authentication.getToken();
     return await axios({
       method: "put",
-      url: `${Constants.API_URL}/users/${user.getId()}`,
+      url: `${Constants.API_URL}/user/${user.getId()}`,
       headers: {
         'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json'
@@ -135,7 +135,7 @@ export const UsersAPI = {
     try {
       if (Authentication.isSignedIn()) {
         const token = Authentication.getToken();
-        const result = await axios.get(`${Constants.API_URL}/users/details`, {
+        const result = await axios.get(`${Constants.API_URL}/user/details`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -160,7 +160,7 @@ export const UsersAPI = {
     try {
       if (Authentication.isSignedIn()) {
         const token = Authentication.getToken();
-        const result = await axios.get(`${Constants.API_URL}/users/roles`, {
+        const result = await axios.get(`${Constants.API_URL}/user/roles`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -191,7 +191,7 @@ export const UsersAPI = {
       if (Authentication.isSignedIn()) {
         const token = Authentication.getToken();
         const result = await axios.post(
-          `${Constants.API_URL}/users/favorites`,
+          `${Constants.API_URL}/user/favorites`,
           carObjects,
           {
             headers: {
@@ -225,7 +225,7 @@ export const UsersAPI = {
       if (Authentication.isSignedIn()) {
         const token = Authentication.getToken();
         const response = await axios.post(
-          `${Constants.API_URL}/users/favorites/alter`,
+          `${Constants.API_URL}/user/favorites/alter`,
           {
             carId: car.getId(),
             isFavorite: isFavorite

@@ -32,6 +32,7 @@
 .RentCardImageContainer {
     border-radius: .5rem;
     overflow: hidden;
+    max-width: 10rem;
 }
 
 .RentCardImage {

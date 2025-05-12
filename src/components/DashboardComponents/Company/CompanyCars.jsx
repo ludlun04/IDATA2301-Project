@@ -20,6 +20,7 @@ export default function CompanyCars() {
     const getCarsFromApi = async () => {
       const cars = await CompanyAPI.getCarsBelongingToCompany(idParam.id);
       setCars(cars);
+      console.log(cars);
     }
     getCarsFromApi();
   }, [idParam.id]);
