@@ -15,7 +15,7 @@ export default function EmployeeCard(props) {
 
   return (
     <div className={"EmployeeCard"}>
-        <img className={"employeeCardImage"} src={path} alt={`Picture of ${name ? name : "unknown employee"}`}/>
+        <img className={"employeeCardImage"} src={path} alt={`${name ? name : "unknown employee"}`}/>
       <h1 className={"employeeCardHeader"}>{name ? name : "No name available"}</h1>
       <p className={"employeeCardParagraph"}>{title ? title : "no title available"}</p>
     </div>

@@ -1,5 +1,5 @@
 import "./AddressField.css";
-import { Address } from "../../model/Address";
+import { Address } from "../../../model/Address";
 
 /**
  * AddressField component
