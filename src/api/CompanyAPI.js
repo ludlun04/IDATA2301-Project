@@ -41,7 +41,7 @@ export const CompanyAPI = {
   getCompanies: async () => {
     try {
       if (Authentication.isSignedIn()) {
-        const result = await axios.get(`${Constants.API_URL}/company/all`, {
+        const result = await axios.get(`${Constants.API_URL}/company`, {
           headers: {
             'Authorization': `Bearer ${Authentication.getToken()}`
           }
@@ -152,7 +152,7 @@ export const CompanyAPI = {
   getCarsBelongingToCompany: async (companyId) => {
     try {
       const response = await axios.get(
-        `${Constants.API_URL}/company/cars/${companyId}`,
+        `${Constants.API_URL}/company/${companyId}/cars`,
         {}
       );
 
