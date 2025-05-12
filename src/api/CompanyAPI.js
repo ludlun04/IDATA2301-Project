@@ -145,9 +145,9 @@ export const CompanyAPI = {
   /**
    * Creates a new company.
    *
+   * @param {number} companyId - The company to create.
    * @returns {Promise<void>} A promise that resolves when the company is created.
    * @throws {Error} If there is an error creating the company.
-   * @param companyId
    */
   getCarsBelongingToCompany: async (companyId) => {
     try {
