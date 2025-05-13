@@ -26,19 +26,15 @@
   margin: 5px;
 }
 
-.filtersSectionFilterLine {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: .5rem;
+
+.filtersSectionCarFilterToggle {
+  width: 95%;
+  margin-bottom: .3rem;
+  margin-left: .5rem;
 }
 
-.filtersSectionFilterLine p {
-  max-width: 15ch;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.filtersSectionAvailableNow {
+
 }
 
 .filtersSectionDateLine {

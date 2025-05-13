@@ -1,0 +1,29 @@
+.RentCompanyCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.RentCompanyIcon {
+  border: 3px solid var(--primary-200);
+  padding: 0.5rem;
+  border-radius: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.RentCompanyLetter {
+  font-size: 2rem;
+}
+
+.RentCompanyCard > .RentCompanyImage{
+  background-position: center center;
+  background-size: cover;
+  display: block;
+  height: 100%;
+  max-height: 4rem;
+  border-radius: 50%;
+}

@@ -1,31 +1,82 @@
 import "./DetailsSection.css"
-export default function DetailsSection(props) {
-    const details = [
-        ["Company", "AB Rentals"],
-        ["Name", "Username"],
-        ["Email", "U***e@gmail.com"],
-        ["Phone Number", "91902345"],
-        ["First Name", "John"],
-        ["Last Name", "Doe"],
-        ["Address", "Borgundvegen"],
-        ["Birthdate", "12.02.1994"]
-    ];
-  return (
-    <div className={props.className} style={props.style}>
-      <h1>Details</h1>
-      <div className="DetailsSection">
-        {details.map((row, index) => (
-          <div key={index} className="detailsSectionRow">
-            <p className={"detailsSectionDescriptor"}>{row[0]}</p>
-            <p>{row[1]}</p>
-          </div>
-        ))}
-        <div className={"detailsSectionButtonContainer"}>
-          <button className={"FormSubmitButton detailsSectionButton"} onClick={props.onEdit}>Edit</button>
-          <button className={"FormSubmitButton detailsSectionButton"} onClick={props.onResetPassword}>Reset Password</button>
-        </div>
-      </div>
-    </div>
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../../context/AuthContext";
+import { useEffect, useState } from "react";
+import { UsersAPI } from "../../../api/UsersAPI";
+import EditUserDialogue from "../Admin/EditUserDialogue";
 
+/**
+ * DetailsSection component
+ * Displays the details of the currently authenticated user.
+ * Allows the user to edit their details or log out.
+ *
+ * @param {string} className - Additional CSS class names for styling.
+ * @param {object} style - Additional inline styles.
+ * @returns {JSX.Element}
+ */
+export default function DetailsSection(props) {
+  const navigate = useNavigate();
+  const { signOut } = useAuth();
+  const [user, setUser] = useState(null);
+  const [ showEditUserDialogue, setShowEditUserDialogue ] = useState(false);
+
+  useEffect(() => {
+    console.log("DetailsSection useEffect");
+    UsersAPI.getCurrentAuthenticatedUser().then(user => {
+      setUser(user);
+    }).catch(error => {
+      console.error("Error fetching user data:", error);
+    });
+  }, []);
+
+  const handleLogOut = () => {
+    signOut();
+    navigate("/sign-in");
+  }
+
+  const handleEdit = () => {
+    console.log("Edit user");
+    setShowEditUserDialogue(true);
+  }
+
+  return (
+    <>
+      {showEditUserDialogue && <EditUserDialogue showRoleSelection={false} user={user} onClose={() => setShowEditUserDialogue(false)}/>}
+      <div className={props.className} style={props.style}>
+        {user ? (
+          <div className="DetailsSection">
+            <h1>Details</h1>
+            <div className="detailsSectionRow">
+              <p className={"detailsSectionDescriptor"}>First Name</p>
+              <p>{user.getFirstName()}</p>
+            </div>
+            <div className="detailsSectionRow">
+              <p className={"detailsSectionDescriptor"}>Last Name</p>
+              <p>{user.getLastName()}</p>
+            </div>
+            <div className="detailsSectionRow">
+              <p className={"detailsSectionDescriptor"}>Email</p>
+              <p>{user.getEmail()}</p>
+            </div>
+            <div className="detailsSectionRow">
+              <p className={"detailsSectionDescriptor"}>Phone Number</p>
+              <p>{user.getPhoneNumber().getNumber()}</p>
+            </div>
+            <div className="detailsSectionRow">
+              <p className={"detailsSectionDescriptor"}>Address</p>
+              <p>{user.getAddress().getStreetAddress()}</p>
+            </div>
+            <div className="detailsSectionRow">
+              <p className={"detailsSectionDescriptor"}>Birthdate</p>
+              <p>{user.getDateOfBirth().toDateString()}</p>
+            </div>
+            <div className={"detailsSectionButtonContainer"}>
+              <button className={"FormSubmitButton detailsSectionButton"} onClick={handleEdit}>Edit</button>
+              <button className={"FormSubmitButton detailsSectionButton"} onClick={handleLogOut}>Log out</button>
+            </div>
+          </div>
+        ) : (<p>No current user</p>)}
+      </div>
+    </>
   );
 }

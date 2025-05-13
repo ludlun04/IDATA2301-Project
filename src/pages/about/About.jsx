@@ -10,7 +10,7 @@ export default function About() {
     return (<div className={"About"}>
             <div className={"aboutOurStory"}>
                 <h1 className={"aboutHeader"}>Our Story</h1>
-                <p className={"aboutOurStoryParagraph"}>
+                <div className={"aboutOurStoryParagraph"}>
                     <p>Our story starts in the heart of Ålesund, a place known for its breathtaking fjords, coastal beauty, and vibrant spirit. We’re more than just a car rental company — Driveo was born from a passion for exploration and a desire to help locals and travelers alike experience the freedom of the open road.</p>
 
                     <p>We saw an opportunity to create something better — a service that’s reliable, flexible, and built around you. Whether you’re visiting for a weekend getaway, embarking on a scenic adventure through the Sunnmøre Alps, or simply need a car for your daily needs, Driveo is here to make it easy and enjoyable.</p>
@@ -20,7 +20,7 @@ export default function About() {
                     <p>From the winding coastal roads to the charming streets of the city, Driveo is here to help you explore Ålesund and beyond on your terms.</p>
 
                     <p>Let’s hit the road — your adventure starts with Driveo.</p>
-                </p>
+                </div>
             </div>
             <div className={"aboutEmployees"}>
                 <h1 className={"aboutHeader"}>Employees</h1>

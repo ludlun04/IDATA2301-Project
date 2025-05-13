@@ -1,26 +1,49 @@
 import "./CompanyCars.css"
 import CarDetailsTable from "./CarDetailsTable/CarDetailsTable";
-import {User} from "../../../model/User";
-import {Car} from "../../../model/Car";
-import {Rental} from "../../../model/Rental";
+import {useParams} from "react-router-dom";
+import {useEffect, useState} from "react";
+import {OrderAPI} from "../../../api/OrderAPI";
 
+/**
+ * CompanyCarsHistory component
+ * Displays a list of cars belonging to a specific company along with their rental history.
+ * The company ID is obtained from the URL parameters.
+ *
+ * @returns {JSX.Element}
+ */
 export default function CompanyCarsHistory() {
-    const getRentals = () => {
-        const users = User.getSampleUsers();
-        const cars = Car.getSampleCars();
 
-        return [
-            new Rental(users[0], new Date("2025-03-01"), new Date("2025-03-03"), cars[0]),
-            new Rental(users[1], new Date("2025-04-01"), new Date("2025-03-05"), cars[0]),
-            new Rental(users[0], new Date("2025-06-01"), new Date("2025-03-09"), cars[2]),
-            new Rental(users[2], new Date("2025-01-01"), new Date("2025-03-03"), cars[1])
-        ];
+  const idParam = useParams();
+
+  const [orders, setOrders] = useState([]);
+  const [cars, setCars] = useState([]);
+  const [encounteredError, setEncounteredError] = useState(false);
+
+  useEffect(() => {
+    const getOrdersFromApi = async () => {
+      try {
+        const orders = await OrderAPI.getOrdersByCompanyId(idParam.id);
+        setOrders(orders);
+        const cars = new Set();
+        orders.forEach(rental => {
+          cars.add(rental.getCar())
+        });
+        setCars(Array.from(cars));
+      } catch (error) {
+        setEncounteredError(true);
+      }
+
     }
+    getOrdersFromApi();
+  }, [idParam.id]);
 
-    return (
-        <main className={"CompanyCars"}>
-            <h1>Cars</h1>
-            <CarDetailsTable rentals={getRentals()}/>
-        </main>
-    )
+
+  return (
+    <main className={"CompanyCars"}>
+      { encounteredError ?
+        <p>Failed to retrieve data. Ensure you have access to this company and try again.</p>
+        : <CarDetailsTable orders={orders} cars={cars}/>
+      }
+    </main>
+  )
 }

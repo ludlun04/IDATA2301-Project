@@ -26,3 +26,15 @@
     padding-left: 20px;
     padding-right: 20px;
 }
+
+@media screen and (max-width: 400px) {
+    .detailsSectionRow {
+        gap: 50px;
+    }
+
+    .detailsSectionButton {
+        height: 30px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}

@@ -1,21 +1,58 @@
 import "./UserRentals.css"
-import CarCard from "../../CarCard/CarCard";
+import { useEffect, useState } from "react";
+import { OrderAPI } from "../../../api/OrderAPI";
+import RentCard from "../../RentCard/RentCard";
 
+/**
+ * UserRentals component
+ * Displays a list of rentals for the user, either active or historical.
+ *
+ * @returns {JSX.Element}
+ */
 export default function UserRentals() {
-    return (
-        <main className={"UserRentals"}>
-            <h1>Rentals</h1>
-            <div className={"UserRentalsButtonContainer"}>
-                <button>Active</button>
-                <button>History</button>
-            </div>
-            <div className={"UserRentalsContainer"}>
-                <CarCard price={4325} availability={true} seats={4} year={2021} name={"Mazda CX3"} company={"Steike Rentals"} isFavorite={true}/>
-                <CarCard price={4325} availability={true} seats={4} year={2021} name={"Mazda CX3"} company={"Steike Rentals"} isFavorite={true}/>
-                <CarCard price={4325} availability={true} seats={4} year={2021} name={"Mazda CX3"} company={"Steike Rentals"} isFavorite={true}/>
-                <CarCard price={4325} availability={true} seats={4} year={2021} name={"Mazda CX3"} company={"Steike Rentals"} isFavorite={true}/>
-                <CarCard price={4325} availability={true} seats={4} year={2021} name={"Mazda CX3"} company={"Steike Rentals"} isFavorite={true}/>
-            </div>
-        </main>
-    )
+  const [section, setSection] = useState("Active");
+  const [rentals, setRentals] = useState([]);
+
+  useEffect(() => {
+    if (section === "Active") {
+      OrderAPI.getActiveRentals().then((orders) => {
+        setRentals(orders);
+      }).catch((error) => {
+        console.error("Error fetching active rentals:", error);
+      });
+    } else if (section === "History") {
+      OrderAPI.getHistoricalRentals().then((orders) => {
+        setRentals(orders);
+      }).catch((error) => {
+        console.error("Error fetching history rentals:", error);
+      });
+    }
+
+  }, [section])
+  
+
+  const activePressed = () => {
+    setSection("Active");
+  }
+
+  const historyPressed = () => {
+    setSection("History");
+  }
+
+  return (
+    <main className={"UserRentals"}>
+      <h1 className={"UserRentalsTitle"}>{section === "Active" ? ("Active Rentals") : ("Historical Rentals")}</h1>
+      <div className={"UserRentalsButtonContainer"}>
+        <button onClick={activePressed}>Active</button>
+        <button onClick={historyPressed}>History</button>
+      </div>
+      <div className={"UserRentalsContainer"}>
+        {rentals.length > 0 ? rentals.map((order) => {
+          return (
+            <RentCard key={order.getId()} orderId={order.getId()} />
+          )
+        }) : (<p>No rentals found</p>)}
+      </div>
+    </main>
+  )
 }

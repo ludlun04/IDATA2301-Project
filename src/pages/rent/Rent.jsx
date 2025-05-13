@@ -1,58 +1,163 @@
 import "./Rent.css"
-import DatePickerField from "../../components/DatePickerField/DatePickerField"
-import CarAttribute from "../../components/CarAttribute/CarAttribute";
-import bmw from "./../../resources/images/bmw.jpg";
+import img from "../../resources/logo/Logo-Dark-Vertical.svg"
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { CarAPI } from "../../api/CarAPI";
+import CarAttributes from "../../components/CarAttribute/CarAttributes";
+import Loader from "../../components/loader/Loader";
+import ErrorFetchingDataMessage
+  from "../../components/ErrorFetchingDataMessage/ErrorFetchingDataMessage";
+import RentInteraction from "../../components/RentInteraction/RentInteraction";
+import {ImageAPI} from "../../api/ImageAPI";
+import CarFavoriteButton from "../../components/CarFavoriteButton/CarFavoriteButton";
+import {OrderAPI} from "../../api/OrderAPI";
 
-export default function Rent() {
+export default function Rent(props) {
+  let { id } = useParams();
+
+  // fetch car data
+  const [car, setCar] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [noBackendMessage, setNoBackendMessage] = useState(false);
+
+  // car data
+  const [features, setFeatures] = useState([]);
+
+  const [carImage, setCarImage] = useState(img);
+
+  const [unavailableDates, setUnavailableDates] = useState([]);
+
+  useEffect(() => {
+    const fetchCar = async () => {
+      try {
+        const car = await CarAPI.getCar(id);
+        setCar(car)
+        setLoading(false);
+        setFeatures(car.getFeatures());
+      } catch (error) {
+        console.error("Error fetching car data:", error);
+        setLoading(false);
+        setNoBackendMessage(true);
+
+        if (error.response && error.response.status === 404) {
+          setCar(null);
+          setNoBackendMessage(false);
+        }
+      }
+    }
+
+    const fetchUnavailableDatesForCar = async () => {
+      try {
+        const orders = await OrderAPI.getOrdersByCarId(id);
+
+
+        const datePairs = orders.map(order => {
+          return {
+            from: order.getStartDate(),
+            to: order.getEndDate()
+          }
+        });
+        const newUnavailableDates = [];
+        datePairs.forEach(pair => {
+          const startDate = pair.from;
+          const endDate = pair.to;
+          const currentDate = startDate;
+
+          while (currentDate <= endDate) {
+            console.log(currentDate);
+            newUnavailableDates.push(new Date(currentDate));
+            currentDate.setDate(currentDate.getDate() + 1);
+          }
+        });
+        setUnavailableDates(newUnavailableDates);
+      } catch (error) {
+        console.error("Error fetching orders of car:", error);
+      }
+    }
+
+    fetchCar();
+    fetchUnavailableDatesForCar();
+  }, [id]);
+
+  useEffect(() => {
+    async function fetchCarImage() {
+      if (!car) {
+        return; //do nothing until car is set
+      }
+      try {
+        const imageData = await ImageAPI.getImageData(car.getId(), "jpg", 1600);
+
+        if (imageData && imageData.data) {
+          const imageUrl = `data:image/jpeg;base64,${imageData.data}`;
+          setCarImage(imageUrl);
+        } else {
+          console.warn("Invalid image data format:", imageData);
+        }
+      } catch (error) {
+        console.error("Error fetching car image:", error);
+      }
+    }
+
+    fetchCarImage();
+  }, [car]);
+
+
+  if (loading) {
+    return (
+      <main className={"RentMain"}>
+        <Loader />
+      </main>
+    );
+  }
+  if (noBackendMessage) {
+    return (
+      <main className={"RentMain"}>
+        <ErrorFetchingDataMessage />
+      </main>
+    );
+  }
+  if (car === null) {
+    return (
+      <main className={"RentMain"}>
+        <p>Car not found</p>
+      </main>
+    );
+  }
+
+
+
   return (
-    <main className="RentMain">
-      <img alt="" className={"RentCarImage"} src={bmw} />
-      <div className="RentInformation">
-        <h1>Fast cool car</h1>
+    <main className={"RentMain"}>
+      <div className="RentGrid">
+        <div className="RentMainTop">
+          <img alt="CarImage" className={"RentCarImage"} src={carImage} />
+          <CarFavoriteButton className={"RentCarFavoriteButton"} car={car} />
 
-        <section className={"RentAttributes"}>
-          <h2>Attributes</h2>
-          <div className={"RentAttributeList"}>
-            <CarAttribute />
-            <CarAttribute />
-            <CarAttribute />
-            <CarAttribute />
-            <CarAttribute />
-          </div>
-        </section>
-      </div>
+          <section className={"RentInformation"}>
+            <h1>{car.getName()}</h1>
+          </section>
 
-      <section className={"RentCarDescription"}>
-        <h2>Description</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </section>
+          <CarAttributes year={car.getYear()} seats={car.getNumberOfSeats()} transmission={car.getTransmissionType().getName()} fuel={car.getFuelType().getName()} />
+        </div>
 
-      <div className={"RentInteraction"}>
-        <div className={"RentInteractionInner"}>
-          <div className={"RentCompanyCard"}>
-            <div alt="Image of company renting out the car" className={"RentCompanyImage"}></div>
-            <h2>VERY VERY VERY LONG COMPANY NAMe</h2>
-          </div>
+        <RentInteraction car={car} unavailableDates={unavailableDates} />
 
-          <div className={"RentDuration"}>
-            <div className="RentDurationSelection">
-              <DatePickerField title={"From"} />
-              <DatePickerField title={"To"} />
+        <div className={"RentMainBottom"}>
+          <section className={"RentFeatureSection"}>
+            <h2>Features</h2>
+            <div className={"RentFeatureList"}>
+              {features.map((feature) => (
+                <p key={feature.getId()} className={"RentFeatureItem"}>- {feature.getName()}</p>
+              ))}
             </div>
-          </div>
+          </section>
 
-          <div className="RentDailyPrice">
-            <p className="RentTitle">kr/day</p>
-            <p className="RentContent">1000 kr</p>
-          </div>
-
-          <div className="RentTotalPrice">
-            <p className="RentTitle">Total</p>
-            <p className="RentContent">10000 kr</p>
-          </div>
-
-          <input className="RentButton" type="button" value="Rent Now" />
+          <section className={"RentCarDescription"}>
+            <h2>Description</h2>
+            <p>
+              {car.getDescription()}
+            </p>
+          </section>
         </div>
       </div>
     </main>

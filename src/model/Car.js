@@ -8,6 +8,7 @@ import { Addon } from "./Addon";
 export class Car {
   /**
    * Creates a new car.
+   * @param company - The company that owns the car.
    * @param {number} id - The ID of the car.
    * @param {number} year - The manufacturing year of the car.
    * @param {number} numberOfSeats - The number of seats in the car.
@@ -17,9 +18,14 @@ export class Car {
    * @param {Object} transmissionType - The transmission type of the car.
    * @param {Array} addons - The addons of the car.
    * @param {Array} features - The features of the car.
+   * @param favorite - Whether the car is favorited by the current authenticated user or not.
+   * @param available - The availability of the car.
+   * @param description - The description of the car.
+   * @param visibility - The visibility of the car.
    */
-  constructor(id, year, numberOfSeats, pricePerDay, model, fuelType, transmissionType, addons, features) {
+  constructor(company, id, year, numberOfSeats, pricePerDay, model, fuelType, transmissionType, addons, features, favorite, available, description, visibility) {
     this._id = id;
+    this._company = company
     this._year = year;
     this._numberOfSeats = numberOfSeats;
     this._pricePerDay = pricePerDay;
@@ -28,6 +34,55 @@ export class Car {
     this._transmissionType = transmissionType;
     this._addons = addons;
     this._features = features;
+    this._favorite = favorite;
+    this._available = available;
+    this._description = description;
+    this._visibility = visibility;
+  }
+
+  getVisibility() {
+    return this._visibility;
+  }
+
+  setVisibility(visibility) {
+    this._visibility = visibility;
+  }
+
+  getDescription() {
+    return this._description;
+  }
+
+  getCompanyName() {
+    return this._company.getName();
+  }
+
+  setCompany(company) {
+    this._company = company;
+  }
+
+  getName() {
+    const model = this.getModel();
+    return model.getBrand().getName() + " " + model.getName();
+  }
+
+  getBrand() {
+    return this._brand;
+  }
+
+  getFavorite() {
+    return this._favorite;
+  }
+
+  setFavorite(favorite) {
+    this._favorite = favorite;
+  }
+
+  getAvailable() {
+    return this._available;
+  }
+
+  setAvailable(available) {
+    this._available = available;
   }
 
   getId() {
@@ -91,6 +146,8 @@ export class Car {
     const passat = new CarModel(2, "Passat", volkswagen);
     const v60 = new CarModel(3, "V60", volvo);
 
+    const kacperRentals = new CarBrand(1, "Kacper Rentals");
+
     const petrol = new FuelType(1, "Petrol");
     const diesel = new FuelType(2, "Diesel");
 
@@ -108,9 +165,9 @@ export class Car {
     ];
 
     return [
-      new Car(1, 2015, 5, 900, corolla, petrol, manual, addons, features),
-      new Car(2, 2018, 4, 1100, passat, diesel, automatic, addons, features),
-      new Car(3, 2020, 7, 1500, v60, petrol, manual, addons, features)
+      new Car(kacperRentals, toyota,1, 2015, 5, 900, corolla, petrol, manual, addons, features, true, true),
+      new Car(kacperRentals, volkswagen,2, 2018, 4, 1100, passat, diesel, automatic, addons, features, false, true),
+      new Car(kacperRentals, volvo,3, 2020, 7, 1500, v60, petrol, manual, addons, features, true, false),
     ];
   }
 }

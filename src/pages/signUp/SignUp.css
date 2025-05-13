@@ -1,10 +1,7 @@
 .SignUp {
-    padding-top: 60px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    min-height: 100vh;
     background: var(--background);
 }
 
@@ -26,6 +23,10 @@
     background: none;
     color: #0F89F4;
     text-decoration: none;
+}
+
+.SignUp input.invalid {
+    border: 1px solid var(--error);
 }
 
 .signInNavLink:hover {
@@ -61,7 +62,18 @@
     width: 6.5rem;
 }
 
-@media only screen and (max-width: 512px) {
+.FormSubmitButton {
+    height: 2.5rem;
+}
+
+.FormSubmitButton.disabled {
+    background-color: dimgrey;
+    cursor: not-allowed;
+}
+
+
+
+@media only screen and (max-width: 600px) {
     .signup-form {
         width: 15rem;
     }

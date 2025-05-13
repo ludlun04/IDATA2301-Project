@@ -1,0 +1,14 @@
+.AddressFieldInputContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.AddressFieldInputContainer div {
+  display: flex;
+  flex-direction: column;
+}
+
+.AddressFieldInputContainer .Zip > input {
+  max-width: 8ch;
+}

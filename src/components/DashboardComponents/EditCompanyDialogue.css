@@ -1,0 +1,9 @@
+.Dialogue.editCompany {
+    width: 100%;
+    z-index: 1000;
+}
+
+.Dialogue.editCompany Form {
+    width: 30rem;
+    padding: 2rem;
+}

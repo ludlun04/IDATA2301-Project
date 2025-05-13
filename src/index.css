@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: var(--background);
 }
 
 code {
@@ -103,6 +104,10 @@ button:active {
   color: var(--text-200) !important;
 }
 
+.react-datepicker {
+  width: fit-content;
+}
+
 :root {
   --primary-100: #FFEB54;
   --primary-200: #ffca1e;
@@ -112,6 +117,12 @@ button:active {
   --text-100: #515151;
   --error: #FF9898;
   --success: #A6EC94;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 @font-face {

@@ -1,0 +1,14 @@
+.HeaderProfileButtonContainer {
+    display: flex;
+    gap: .25rem;
+    align-items: center;
+}
+
+.Circle {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    text-align: center;
+    align-content: center;
+    border: 2px solid var(--primary-200);
+}

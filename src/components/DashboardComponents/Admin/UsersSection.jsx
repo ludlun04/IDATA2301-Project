@@ -3,6 +3,12 @@ import UserRow from "./UserRow"
 import { useEffect, useState } from "react";
 import { UsersAPI } from "../../../api/UsersAPI";
 
+/**
+ * UsersSection component
+ * Displays a list of users in a table format.
+ * 
+ * @returns {JSX.Element}
+ */
 export default function UsersSection() {
   const [users, setUsers] = useState([])
 
@@ -16,7 +22,6 @@ export default function UsersSection() {
 
   const createUserRows = () => {
     return users.map(user => {
-      console.log(user.getId())
       return <UserRow key={user.getId()} user={user} />
     })
   }
@@ -24,7 +29,6 @@ export default function UsersSection() {
   return (
     <main className={"usersSectionMain"}>
       <h1>Users</h1>
-
       {(users.length === 0) && <h2>Maybe loading users, not sure though</h2>}
       {(users.length > 0) &&
         <table className={"usersTable"}>

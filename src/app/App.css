@@ -1,2 +1,7 @@
-.App {
+.AppMain {
+  flex: 1;
+}
+
+.ContentWrapper {
+  min-height: 100vh;
 }

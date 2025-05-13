@@ -1,0 +1,24 @@
+.AddonListItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: var(--background);
+  user-select: none;
+}
+
+.AddonListItem:hover {
+  background-color: var(--border-color);
+  cursor: pointer;
+}
+
+.AddonListItemRight {
+  display: flex;
+  flex-direction: row;
+  gap: .5rem;
+}
+
+.AddonCheckbox {
+  cursor: pointer;
+}

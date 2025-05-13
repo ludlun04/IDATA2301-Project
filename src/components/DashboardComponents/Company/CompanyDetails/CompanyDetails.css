@@ -1,0 +1,19 @@
+.CompanyDetails {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0 3rem 0;
+}
+
+.DetailsColumn {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+}
+
+.CompanyDetails h3 {
+    font-size: 1rem;
+    font-weight: 650;
+    margin: 0;
+}

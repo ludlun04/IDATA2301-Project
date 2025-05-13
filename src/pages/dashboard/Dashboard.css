@@ -1,14 +1,50 @@
 .Dashboard {
-    min-height: 100vh;
-    padding-top: 60px;
-    background: var(--background);
+    padding: 1rem;
     display: flex;
     flex-direction: row;
+    align-items: flex-start;
 }
 
-.DashboardSectionContainer {
-    width: 100%;
+.dashboardDropdownMenu {
+    width: 280px;
+    display: none;
+}
+.dashboardDropdownMenu button {
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+}
+
+
+
+.dashboardSectionContainer {
+    max-width: 60%;
+    overflow-x: auto;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+}
+
+.dashboardCurrentPage {
+    font-size: 1rem;
+}
+
+@media screen and (max-width: 900px) {
+    .Dashboard {
+        flex-direction: column;
+    }
+
+    .dashboardDropdownMenu {
+        display: block;
+
+    }
+
+    .dashboardDashboardNavBar {
+        display: none;
+    }
+
+    .dashboardSectionContainer {
+        max-width: 90%;
+    }
+
 }
