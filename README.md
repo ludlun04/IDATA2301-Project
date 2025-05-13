@@ -21,12 +21,12 @@ This repository contains the frontend of the Driveo application. This applicatio
 ### Run The Application
 1. Open terminal and navigate to the root of the project
 2. Run ``npm start``
-3. Open web browser and nagivate to [localhost:3000](localhost:3000)
+3. Open web browser and nagivate to [localhost:3000](http://localhost:3000)
 
 
 ## Live demo
 The application is currently deployed on an ntnu sourced server.
-[Click here to view running website](idata.stianoj.no)
+[Click here to view running website](https://idata.stianoj.no)
 
 
 ## Screenshots from the application
