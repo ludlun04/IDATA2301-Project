@@ -3,7 +3,7 @@
 ## Introduction
 This repository contains the frontend of the Driveo application. This application was developed as a part of the finals project in subjects [IDATA2301](https://www.ntnu.edu/studies/courses/IDATA2301#tab=omEmnet) and [IDATA2306](https://www.ntnu.edu/studies/courses/IDATA2306#tab=omEmnet). 
 
-### Authors
+### Contributors
 | Student Name     | GitHub account                              | Email Account            |
 | -----------------|---------------------------------------------|--------------------------|
 |Kristian Garder   | [Kristian54](https://github.com/Kristian54) | kristian.garder@ntnu.no  |
@@ -27,3 +27,12 @@ This repository contains the frontend of the Driveo application. This applicatio
 ## Live demo
 The application is currently deployed on an ntnu sourced server.
 [Click here to view running website](idata.stianoj.no)
+
+
+## Screenshots from the application
+Landing Page:
+![LandingPage](./assets/Application-screenshots/Land.png)
+Portal Page:
+![LandingPage](./assets/Application-screenshots/Portal.png)
+About Page:
+![LandingPage](./assets/Application-screenshots/About.png)
