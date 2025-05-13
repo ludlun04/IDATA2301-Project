@@ -3,14 +3,16 @@
 ## Concept Phase
 
 ### Theme
-The website should give an impression of a journey, travel and adventure. There is also a balance in design between playfull and serious-buisness.
+The aim of the website is to give an impression of journey, travel and adventure. There is also a balance in design between playfull and serious-buisness.
 
 
 ### Color Theme
-- Companies primary color is #FFCA1E. This color gives a feeling of happiness, liveliness, hope, curiosity and intelligence.
+- Companies primary color is #FFCA1E. This color gives a feeling of happiness, liveliness, hope, curiosity and intelligence. 
 - Accent colors and alternative colors will be chosen from the palette below.
 #### Color pallet
 ![Image of color gradients from primary color](/assets/colors.jpg)
+
+N.B. The ratioes between text and background are checked to ensure readability.
 
 ### Hierarchy and layout
 Our base layout consists of a header at the top, page content at the center and footer at the bottom. 
@@ -28,14 +30,14 @@ This ensures the user should be naturally guided towards seeing the most importa
 Images sourced from finn and pixabay
 Images used only by the frontend is located in the assets folder. The images related to the cars are stored in the database.
 
-For the landing page we will have text on the image, since the image will act as a background. For the rest of the website the text will always be next to the images.
+For the landing page we have text on the image, since the image will act as a background. For the rest of the website the text will always be next to the images.
 
-We will mostly use clear images to show the cars as best as possible. We may use slight tint on some of the images.
+We use clear images to show the cars as best as possible.
 
 ### Icons
-Icons will be used for navigation and informational seconds to create an understanding of what is being displayed.
+Icons are used for navigation and informational seconds to create an understanding of what is being displayed.
 
-For the icon pack we will use google material icons. The icons will be gray scale or adhere to our primary color scheme.
+For the icon pack we use google material icons. The icons are either grayscale or altered to adhere to our primary color scheme.
 
 ### Typography
 We decided to use Sans-serif because it is clean, simple, modern and is easy to read. The font we chose is Kantumruy Pro.
@@ -49,12 +51,10 @@ Body:
 - thin
 - 16-32px
 
-The font will have rounded corners.
-
 
 ### Border rounding
-Borders will be slightly rounded to give a slightly playfull design. We decided on all borders being rounded to 1rem
+Borders are slightly rounded to give a slightly playfull design. We decided on all borders being rounded to 1rem
 which ensures that the design is consistent across the website.
 
 ### Shadows
-Shadows will be used to emphasize important elements or elements that should stand out from the background.
+Shadows are used to emphasize important elements or elements that should stand out from the background.
