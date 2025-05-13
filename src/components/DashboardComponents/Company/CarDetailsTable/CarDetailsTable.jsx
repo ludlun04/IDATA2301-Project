@@ -34,18 +34,18 @@ export default function CarDetailsTable(props) {
 
     const onHideShowClick = (e, car) => {
         e.stopPropagation();
-        const newCars = [];
-        cars.forEach(newCar => {
-            if (car.getId() === newCar.getId()) {
-                CarAPI.updateCarVisibility(newCar.getId(), !newCar.getVisibility()).then(r =>
-                console.log("Car visibility updated: ", r)).catch(console.error);
-                newCar.setVisibility(!newCar.getVisibility());
-                console.log("Car visibility changed to: ", car.getVisibility());
-            }
-            newCars.push(newCar);
-        });
-        setCars(newCars);
-    }
+        CarAPI.updateCarVisibility(car.getId(), !car.getVisibility())
+            .then(() => {
+                const updatedCars = cars.map((newCar) => {
+                    if (newCar.getId() === car.getId()) {
+                        newCar.setVisibility(!newCar.getVisibility());
+                    }
+                    return newCar;
+                });
+                setCars(updatedCars);
+            })
+            .catch(console.error);
+    };
 
     const getOpenContent = (order, car) => {
         return (
