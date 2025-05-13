@@ -2,6 +2,7 @@ import {PhoneNumber} from "../../model/PhoneNumber";
 import {Address} from "../../model/Address";
 import {CompanyAPI} from "../../api/CompanyAPI";
 import {Company} from "../../model/Company";
+import "./EditCompanyDialogue.css"
 
 /**
  * EditCompanyDialogue component
@@ -51,7 +52,7 @@ const EditCompanyDialogue = (props) => {
     });
   }
   return (
-    <div className={"Dialogue"}>
+    <div className={"Dialogue editCompany"}>
       <form onSubmit={onEdit}>
         <h2>Edit Company</h2>
         <div>
