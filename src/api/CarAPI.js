@@ -108,7 +108,7 @@ export const CarAPI = {
       }
 
       const token = Authentication.getToken();
-      const result = await axios.get(`${Constants.API_URL}/users/favorites`, {
+      const result = await axios.get(`${Constants.API_URL}/user/favorites`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -287,6 +287,30 @@ export const CarAPI = {
     } catch (error) {
       console.error("Error updating car visibility:", error);
       throw error;
+    }
+  },
+
+  getCarsBelongingToCompany: async (companyId) => {
+    try {
+      const response = await axios.get(
+        `${Constants.API_URL}/car/company/${companyId}`,
+        {
+          headers: {
+            'Authorization': `Bearer ${Authentication.getToken()}`
+          }
+        }
+      );
+
+      const cars = [];
+      response.data.forEach(carObject => {
+        cars.push(CarAPI.getCarFromJsonObject(carObject));
+      })
+
+
+      console.log(cars);
+      return cars;
+    } catch (error) {
+      console.error("Error fetching cars belonging to company: ", error);
     }
   }
 }

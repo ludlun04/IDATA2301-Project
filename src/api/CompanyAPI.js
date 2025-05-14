@@ -4,7 +4,6 @@ import {Company} from "../model/Company";
 import {PhoneNumber} from "../model/PhoneNumber";
 import {Authentication} from "./Authentication";
 import {Address} from "../model/Address";
-import {CarAPI} from "./CarAPI";
 
 /**
  * API module for handling company-related endpoints.
@@ -140,38 +139,7 @@ export const CompanyAPI = {
       console.error("Error updating company:", error);
       throw error;
     }
-  },
-
-  /**
-   * Creates a new company.
-   *
-   * @param {number} companyId - The company to create.
-   * @returns {Promise<void>} A promise that resolves when the company is created.
-   * @throws {Error} If there is an error creating the company.
-   */
-  getCarsBelongingToCompany: async (companyId) => {
-    try {
-      const response = await axios.get(
-        `${Constants.API_URL}/company/${companyId}/cars`,
-        {
-          headers: {
-                'Authorization': `Bearer ${Authentication.getToken()}`
-            }
-        }
-      );
-
-      const cars = [];
-      response.data.forEach(carObject => {
-        cars.push(CarAPI.getCarFromJsonObject(carObject));
-      })
-
-
-      console.log(cars);
-      return cars;
-    } catch (error) {
-      console.error("Error fetching cars belonging to company: ", error);
-    }
-}
+  }
 
 
 }

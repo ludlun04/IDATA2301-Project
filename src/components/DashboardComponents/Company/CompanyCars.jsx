@@ -1,8 +1,8 @@
 import "./CompanyCars.css"
 import {useParams} from "react-router-dom";
 import CarDetailsTable from "./CarDetailsTable/CarDetailsTable";
-import {CompanyAPI} from "../../../api/CompanyAPI";
 import {useEffect, useState} from "react";
+import {CarAPI} from "../../../api/CarAPI";
 
 /**
  * CompanyCars component
@@ -18,7 +18,7 @@ export default function CompanyCars() {
 
   useEffect(() => {
     const getCarsFromApi = async () => {
-      const cars = await CompanyAPI.getCarsBelongingToCompany(idParam.id);
+      const cars = await CarAPI.getCarsBelongingToCompany(idParam.id);
       setCars(cars);
       console.log(cars);
     }
