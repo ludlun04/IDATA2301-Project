@@ -5,7 +5,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   Navigate,
-  Outlet
+  Outlet,
 } from "react-router-dom";
 import Home from "../pages/home/Home";
 import Portal from "../pages/portal/Portal";
