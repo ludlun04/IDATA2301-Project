@@ -60,6 +60,10 @@ export class Car {
     this._company = company;
   }
 
+  getCompany() {
+    return this._company;
+  }
+
   getName() {
     const model = this.getModel();
     return model.getBrand().getName() + " " + model.getName();
