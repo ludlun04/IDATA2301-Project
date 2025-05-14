@@ -39,7 +39,7 @@ export const CompanyAPI = {
    */
   getCompanies: async () => {
     try {
-      if (Authentication.isSignedIn()) {
+      if (Authentication.hasToken()) {
         const result = await axios.get(`${Constants.API_URL}/company`, {
           headers: {
             'Authorization': `Bearer ${Authentication.getToken()}`
@@ -67,7 +67,7 @@ export const CompanyAPI = {
    */
   getCompanyById: async (id) => {
     try {
-      if (Authentication.isSignedIn()) {
+      if (Authentication.hasToken()) {
         const result = await axios.get(`${Constants.API_URL}/company/${id}`, {
           headers: {
             'Authorization': `Bearer ${Authentication.getToken()}`
@@ -94,7 +94,7 @@ export const CompanyAPI = {
    */
   getCurrentUserCompanies: async () => {
     try {
-      if (Authentication.isSignedIn()) {
+      if (Authentication.hasToken()) {
         const token = Authentication.getToken();
         const result = await axios.get(`${Constants.API_URL}/company/current_user_companies`, {
           headers: {
@@ -123,7 +123,7 @@ export const CompanyAPI = {
    */
   updateCompany: async (company) => {
     try {
-      if (Authentication.isSignedIn()) {
+      if (Authentication.hasToken()) {
         const token = Authentication.getToken();
         const jsonObject = getJsonObjectFromCompany(company);
        await axios(`${Constants.API_URL}/company/update`, {

@@ -31,7 +31,7 @@ export const CarAPI = {
       console.log(carObject);
 
       let car = CarAPI.getCarFromJsonObject(carObject);
-      if (Authentication.isSignedIn()) {
+      if (Authentication.hasToken()) {
         car = await _setFavorite(car);
       }
 
@@ -81,7 +81,7 @@ export const CarAPI = {
 
       cars = await _setAvailable(cars);
 
-      if (Authentication.isSignedIn()) {
+      if (Authentication.hasToken()) {
         cars = await _setFavorites(cars);
       }
 
@@ -103,7 +103,7 @@ export const CarAPI = {
    */
   getCurrentUserFavorites: async () => {
     try {
-      if (!Authentication.isSignedIn()) {
+      if (!Authentication.hasToken()) {
         throw new Error("User is not signed in")
       }
 

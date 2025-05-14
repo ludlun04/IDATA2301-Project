@@ -18,7 +18,7 @@ import SignIn from "../pages/signIn/SignIn";
 import SignUp from "../pages/signUp/SignUp";
 import EmptyDevPage from "../pages/emptyDevPage/emptyDevPage";
 import Dashboard from "../pages/dashboard/Dashboard";
-import { AuthProvider } from "../context/AuthContext"
+import {AuthProvider} from "../context/AuthContext"
 import Order from '../pages/order/Order';
 import Page404 from "../pages/404/Page404";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
