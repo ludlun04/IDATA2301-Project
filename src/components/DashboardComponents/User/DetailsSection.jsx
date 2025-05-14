@@ -25,6 +25,7 @@ export default function DetailsSection(props) {
     UsersAPI.getCurrentAuthenticatedUser().then(user => {
       setUser(user);
     }).catch(error => {
+      navigate("/sign-in");
       console.error("Error fetching user data:", error);
     });
   }, []);
