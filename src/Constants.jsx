@@ -6,5 +6,4 @@ const dev = {
   API_URL: "http://localhost:8080",
 }
 
-export default dev;
-//export default process.env.NODE_ENV === "production" ? prod : dev;
+export default process.env.NODE_ENV === "production" ? prod : dev;

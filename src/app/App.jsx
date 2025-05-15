@@ -30,6 +30,7 @@ import CompaniesSection from "../components/DashboardComponents/Admin/CompaniesS
 import Company from "../components/DashboardComponents/Company/Company";
 import CompanyCars from "../components/DashboardComponents/Company/CompanyCars";
 import CompanyCarsHistory from "../components/DashboardComponents/Company/CompanyCarsHistory";
+import Constants from '../Constants';
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path={"/"} element={<Root/>}>
@@ -68,6 +69,9 @@ function App() {
 }
 
 function Root() {
+  console.log("API_URL: ", Constants.API_URL);
+  console.log("NODE_ENV: ", process.env.NODE_ENV);
+
   return (
     <>
       <ScrollToTop/>
