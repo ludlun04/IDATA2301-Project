@@ -30,7 +30,7 @@ export default function FaqSection(props) {
 
     return (
         <div className={props.className} onClick={triggerToggle}>
-            <div className={"FaqSection"}>
+            <section className={"FaqSection"}>
                 <div className={"faqSectionQuestionAndIconContainer"}>
                     <p className={`faqSectionQuestion`}>{props.question}</p>
                     <img className={`faqSectionIcon ${menuActive ? "active" : ""} `} src={openFaqIcon}
@@ -41,7 +41,7 @@ export default function FaqSection(props) {
                      ref={contentRef}>
                     <p className={"faqSectionAnswer"}>{props.answer}</p>
                 </div>
-            </div>
+            </section>
         </div>
     )
 

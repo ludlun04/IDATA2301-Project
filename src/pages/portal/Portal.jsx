@@ -285,10 +285,10 @@ export default function Portal() {
 
   return (
     <div className={"Portal"}>
-      <div className={"portalLeftFilters"}>
+      <section className={"portalLeftFilters"}>
         {filtersSectionInContext}
-      </div>
-      <div className={"portalVerticalSection"}>
+      </section>
+      <section className={"portalVerticalSection"}>
         {!loading &&
           <CarSearchSortSection
             chosenKeyword={chosenKeyword}
@@ -297,15 +297,15 @@ export default function Portal() {
             setCars={setCars}
           />
         }
-        <div className={`portalVerticalSectionFilters ${centerFiltersDisplayed ? " active" : ""}`}>
+        <section className={`portalVerticalSectionFilters ${centerFiltersDisplayed ? " active" : ""}`}>
           {filtersSectionInContext}
-        </div>
+        </section>
 
 
         <button className={`portalVerticalSectionButton ${centerFiltersDisplayed ? "" : " active"}`}
                 onClick={toggleFiltersDisplayed}>Filters
         </button>
-        <div className={`portalCarCards ${centerFiltersDisplayed ? "" : " active"}`}>
+        <section className={`portalCarCards ${centerFiltersDisplayed ? "" : " active"}`}>
           {errorMessageActive ?
             <ErrorFetchingDataMessage/>
             : loading ?
@@ -319,8 +319,8 @@ export default function Portal() {
                 )
 
           }
-        </div>
-      </div>
+        </section>
+      </section>
 
     </div>
   )

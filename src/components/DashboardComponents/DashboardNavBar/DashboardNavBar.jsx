@@ -42,38 +42,38 @@ export default function DashboardNavBar({ className }) {
 
   return (
     <div className={className}>
-      <div className={"DashboardNavBar"}>
+      <section className={"DashboardNavBar"}>
         {hasUserRole && (
         <>
-          <div className={"UserPages"}>
+          <section className={"UserPages"}>
           <h3>User</h3>
             <button key={"DashboardUserDetails"} onClick={() => {navigate("/dashboard/user/details")}} className={""}>Details</button>
             <button key={"DashboardUserRentals"} onClick={() => {navigate("/dashboard/user/rentals")}} className={""}>Rentals</button>
             <button key={"DashboardUserFavorites"} onClick={() => {navigate("/dashboard/user/favorites")}} className={""}>Favorites</button>
-          </div>
+          </section>
         </>
         )}
         {hasAdmin && (
         <>
-          <div className={"AdminPages"}>
+          <section className={"AdminPages"}>
           <h3>Admin</h3>
             <button key={"DashboardAdminUsers"} onClick={() => {navigate("/dashboard/admin/users")}} className={""}>Users</button>
             <button key={"DashboardAdminCompanies"} onClick={() => {navigate("/dashboard/admin/companies")}} className={""}>Companies</button>
-          </div>
+          </section>
 
         </>
         )}
           {hasCompany && (
           <>
-            <div className={"CompanyPages"}>
+            <section className={"CompanyPages"}>
             <h3>Companies</h3>
             {companies.map((company) => (
                 <button key={company.getId()} onClick={() => {navigate(`/dashboard/company/${company.getId()}/cars`)}} className={""}>{company.getName()}</button>
               ))}
-            </div>
+            </section>
           </>
           )}
-      </div>
+      </section>
     </div>
   )
 }

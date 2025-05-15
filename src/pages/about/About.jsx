@@ -8,7 +8,7 @@ import Haaland from "../../resources/images/employees/haaland.jpg";
 export default function About() {
     const faqSectionClassName = "aboutFaqSection";
     return (<div className={"About"}>
-            <div className={"aboutOurStory"}>
+            <section className={"aboutOurStory"}>
                 <h1 className={"aboutHeader"}>Our Story</h1>
                 <div className={"aboutOurStoryParagraph"}>
                     <p>Our story starts in the heart of Ålesund, a place known for its breathtaking fjords, coastal beauty, and vibrant spirit. We’re more than just a car rental company — Driveo was born from a passion for exploration and a desire to help locals and travelers alike experience the freedom of the open road.</p>
@@ -21,16 +21,16 @@ export default function About() {
 
                     <p>Let’s hit the road — your adventure starts with Driveo.</p>
                 </div>
-            </div>
-            <div className={"aboutEmployees"}>
+            </section>
+            <section className={"aboutEmployees"}>
                 <h1 className={"aboutHeader"}>Employees</h1>
                 <div className={"aboutEmployeeCardContainer"}>
                     <EmployeeCard path={Turing} name={"Alan Turing"} title={"Managing Director"}></EmployeeCard>
                     <EmployeeCard path={Lovelace} name={"Ada Lovelace"} title={"Finance Manager"}></EmployeeCard>
                     <EmployeeCard path={Haaland} name={"Erling Braut Haaland"} title={"Marketing Consultant"}></EmployeeCard>
                 </div>
-            </div>
-            <div className={"aboutFaq"}>
+            </section>
+            <section className={"aboutFaq"}>
                 <h1 className={"aboutHeader"}>FAQ</h1>
                 <div className={"aboutFaqSectionContainer"}>
                     <FaqSection className={faqSectionClassName}
@@ -54,7 +54,7 @@ export default function About() {
                                 answer={"Booking is easy — you can reserve your car online or give us a call. Our rentals include basic insurance, roadside assistance, and a clean, fuel-efficient vehicle ready to go. No hidden fees, no hassle — just a smooth start to your journey."}
                     />
                 </div>
-            </div>
+            </section>
         </div>
 
     )
