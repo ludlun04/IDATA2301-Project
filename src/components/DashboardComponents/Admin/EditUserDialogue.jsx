@@ -79,7 +79,7 @@ export default function EditUserDialogue(props) {
         </div>
         <div>
           <label htmlFor="email">Email</label>
-          <input type="text" name="email" defaultValue={user.getEmail()} />
+          <input type="text" name="email" disabled={true} defaultValue={user.getEmail()} />
         </div>
         <PhoneNumberField phoneNumber={user.getPhoneNumber()} />
         <AddressField address={user.getAddress()} />

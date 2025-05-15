@@ -52,15 +52,15 @@ const EditCompanyDialogue = (props) => {
     });
   }
   return (
-    <div className={"Dialogue editCompany"}>
+    <section className={"Dialogue editCompany"}>
       <form onSubmit={onEdit}>
         <h2>Edit Company</h2>
-        <div>
+        <section>
           <label htmlFor={"companyName"}>Company Name</label>
           <input type={"text"} id={"companyName"} name={"companyName"}
                  defaultValue={company.getName()}/>
-        </div>
-        <div>
+        </section>
+        <section>
           <label htmlFor={"companyStreetAddress"}>Street Address</label>
           <input type={"text"} id={"companyAddress"} name={"companyAddress"}
                  defaultValue={address.getStreetAddress()}/>
@@ -70,20 +70,20 @@ const EditCompanyDialogue = (props) => {
           <label htmlFor={"companyCountry"}>Country</label>
           <input type={"text"} id={"companyCountry"} name={"companyCountry"}
                  defaultValue={address.getCountry()}/>
-        </div>
-        <div>
+        </section>
+        <section>
           <label htmlFor={"companyCountryCode"}>Country Code</label>
           <input type={"text"} id={"companyCountryCode"} name={"companyCountryCode"}
                  defaultValue={phoneNumber.getCountryCode()}/>
           <label htmlFor={"companyPhoneNumber"}>Phone Number</label>
           <input type={"text"} id={"companyPhoneNumber"} name={"companyPhoneNumber"}
                  defaultValue={phoneNumber.getNumber()}/>
-        </div>
+        </section>
         <input type={"submit"} className={"FormSubmitButton"} value={"Save"}/>
         <input type={"button"} className={"FormSubmitButton"} onClick={onCancelEdit}
                value={"Cancel"}/>
       </form>
-    </div>
+    </section>
   )
 }
 

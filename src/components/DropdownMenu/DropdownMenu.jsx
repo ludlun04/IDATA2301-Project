@@ -20,7 +20,7 @@ const DropdownMenu = (props) => {
 
   return (
     <div className={props.className}>
-      <div className={"DropdownMenu"}>
+      <section className={"DropdownMenu"}>
         <button onClick={toggleOpen} className={"dropdownMenuButton"}>
           {props.alwaysShownContent}
           <img src={Arrow} alt="Arrow" className={isOpen ? "DropdownMenuArrowOpen" : "DropdownMenuArrow"} />
@@ -29,7 +29,7 @@ const DropdownMenu = (props) => {
         <div className={isOpen ? "DropdownMenuListOpen" : "DropdownMenuList"}>
           {props.children}
         </div>
-      </div>
+      </section>
     </div>
   )
 }

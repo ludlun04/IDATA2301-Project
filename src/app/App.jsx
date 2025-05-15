@@ -5,7 +5,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   Navigate,
-  Outlet
+  Outlet,
 } from "react-router-dom";
 import Home from "../pages/home/Home";
 import Portal from "../pages/portal/Portal";
@@ -18,7 +18,7 @@ import SignIn from "../pages/signIn/SignIn";
 import SignUp from "../pages/signUp/SignUp";
 import EmptyDevPage from "../pages/emptyDevPage/emptyDevPage";
 import Dashboard from "../pages/dashboard/Dashboard";
-import { AuthProvider } from "../context/AuthContext"
+import {AuthProvider} from "../context/AuthContext"
 import Order from '../pages/order/Order';
 import Page404 from "../pages/404/Page404";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
@@ -30,6 +30,7 @@ import CompaniesSection from "../components/DashboardComponents/Admin/CompaniesS
 import Company from "../components/DashboardComponents/Company/Company";
 import CompanyCars from "../components/DashboardComponents/Company/CompanyCars";
 import CompanyCarsHistory from "../components/DashboardComponents/Company/CompanyCarsHistory";
+import Constants from '../Constants';
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path={"/"} element={<Root/>}>
@@ -68,6 +69,9 @@ function App() {
 }
 
 function Root() {
+  console.log("API_URL: ", Constants.API_URL);
+  console.log("NODE_ENV: ", process.env.NODE_ENV);
+
   return (
     <>
       <ScrollToTop/>

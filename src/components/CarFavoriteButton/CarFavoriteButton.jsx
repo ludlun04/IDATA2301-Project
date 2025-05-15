@@ -3,6 +3,7 @@ import {UsersAPI} from "../../api/UsersAPI";
 import starFilled from "../../resources/icons/starFilled.svg";
 import starUnfilled from "../../resources/icons/starUnfilled.svg";
 import "./CarFavoriteButton.css";
+import {useNavigate} from "react-router-dom";
 
 /**
  * CarFavoriteButton component
@@ -13,6 +14,7 @@ import "./CarFavoriteButton.css";
  * @returns 
  */
 const CarFavoriteButton = ({car, className}) => {
+  const navigate = useNavigate();
 
   const [isFavorite, setIsFavorite] = useState(car.getFavorite());
 
@@ -21,9 +23,11 @@ const CarFavoriteButton = ({car, className}) => {
 
     try {
       const isFavorite = await UsersAPI.setFavorite(car, !car.getFavorite());
-      if (isFavorite !== null) {
+      if (isFavorite) {
         car.setFavorite(isFavorite);
         setIsFavorite(isFavorite);
+      } else {
+        navigate("/sign-in");
       }
     } catch (error) {
       console.error("Failed to set favorite on car: ", error);

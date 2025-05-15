@@ -27,7 +27,7 @@ export default function CarCard(props) {
   useEffect(() => {
     async function fetchCarImage() {
       try {
-        const imageData = await ImageAPI.getImageData(car.getId(), "jpg", 1600);
+        const imageData = await ImageAPI.getImageData(car.getId(), "jpg", 800);
 
         if (imageData && imageData.data) {
           const imageUrl = `data:image/jpeg;base64,${imageData.data}`;
@@ -49,11 +49,11 @@ export default function CarCard(props) {
   }
   return (
     <div className="CarCard" onClick={onClick}>
-      <div className={"CarCardImageContainer"}>
+      <section className={"CarCardImageContainer"}>
         <img className={"CarCardImg"} src={carImage} alt={"CarImage"} />
         <CarFavoriteButton className={"carCardFavoriteButton"} car={car}/>
-      </div>
-      <div className={"CarCardRightPane"}>
+      </section>
+      <section className={"CarCardRightPane"}>
         <div className={"CarCardInnerLeftPane"}>
           <div className={"CarCardHeaderContainer"}>
             <h1
@@ -74,7 +74,7 @@ export default function CarCard(props) {
             <p>{car.getPricePerDay() + ",-"}</p>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   )
 }

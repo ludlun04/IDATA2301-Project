@@ -8,8 +8,8 @@ export default function Footer() {
 
     return (
         <div className={"Footer"}>
-            <div className={"footerTop"}>
-                <div className={"footerTopLeftPane"}>
+            <section className={"footerTop"}>
+                <section className={"footerTopLeftPane"}>
                     <div className={"footerAddressPane"}>
                         <p className={"footerAddress title"}>Address</p>
                         <p className={"footerAddress"}>Brusdalsvegen 222A</p>
@@ -22,8 +22,8 @@ export default function Footer() {
                         <NavLink className={"footerNavLink"} to={"/contact"}>Contact</NavLink>
                         <NavLink className={"footerNavLink"} to={"/sign-in"}>Login</NavLink>
                     </div>
-                </div>
-                <div className={"footerTopRightPane"}>
+                </section>
+                <section className={"footerTopRightPane"}>
                     <a href={"https://www.instagram.com/ntnu/"} target={"_blank"} rel="noreferrer">
                         <img className={"footerIcon"} src={instagram} alt="Icon"/>
                     </a>
@@ -33,8 +33,8 @@ export default function Footer() {
                     <a href={"https://www.facebook.com/ntnu.no"} target={"_blank"} rel="noreferrer">
                         <img className={"footerIcon"} src={facebook} alt="Icon"/>
                     </a>
-                </div>
-            </div>
+                </section>
+            </section>
             <div className={"footerBottom"}>
                 <p className={"ntnuDisclaimer"}>This website is a result of a university group project, performed in the course IDATA2301 Web technologies, at NTNU. All the information provided here is a result of imagination. Any resemblance with real companies or products is a coincidence.</p>
             </div>

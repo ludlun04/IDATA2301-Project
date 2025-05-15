@@ -36,13 +36,13 @@ const FromToSection = (props) => {
 
   return (
     <div className={props.className}>
-      <div className={"FromToSection"}>
+      <section className={"FromToSection"}>
         <p>From</p>
         <input className={"fromToSectionInput"} value={fromValue} onChange={handleFromValueChange}/>
 
         <p>To</p>
         <input className={"fromToSectionInput"} value={toValue} onChange={handleToValueChange}/>
-      </div>
+      </section>
     </div>
   )
 }

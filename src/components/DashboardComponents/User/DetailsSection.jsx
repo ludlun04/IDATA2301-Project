@@ -25,6 +25,7 @@ export default function DetailsSection(props) {
     UsersAPI.getCurrentAuthenticatedUser().then(user => {
       setUser(user);
     }).catch(error => {
+      navigate("/sign-in");
       console.error("Error fetching user data:", error);
     });
   }, []);
@@ -44,7 +45,7 @@ export default function DetailsSection(props) {
       {showEditUserDialogue && <EditUserDialogue showRoleSelection={false} user={user} onClose={() => setShowEditUserDialogue(false)}/>}
       <div className={props.className} style={props.style}>
         {user ? (
-          <div className="DetailsSection">
+          <section className="DetailsSection">
             <h1>Details</h1>
             <div className="detailsSectionRow">
               <p className={"detailsSectionDescriptor"}>First Name</p>
@@ -74,7 +75,7 @@ export default function DetailsSection(props) {
               <button className={"FormSubmitButton detailsSectionButton"} onClick={handleEdit}>Edit</button>
               <button className={"FormSubmitButton detailsSectionButton"} onClick={handleLogOut}>Log out</button>
             </div>
-          </div>
+          </section>
         ) : (<p>No current user</p>)}
       </div>
     </>

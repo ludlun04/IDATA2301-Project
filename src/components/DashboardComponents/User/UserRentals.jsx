@@ -42,17 +42,17 @@ export default function UserRentals() {
   return (
     <main className={"UserRentals"}>
       <h1 className={"UserRentalsTitle"}>{section === "Active" ? ("Active Rentals") : ("Historical Rentals")}</h1>
-      <div className={"UserRentalsButtonContainer"}>
+      <section className={"UserRentalsButtonContainer"}>
         <button onClick={activePressed}>Active</button>
         <button onClick={historyPressed}>History</button>
-      </div>
-      <div className={"UserRentalsContainer"}>
+      </section>
+      <section className={"UserRentalsContainer"}>
         {rentals.length > 0 ? rentals.map((order) => {
           return (
             <RentCard key={order.getId()} orderId={order.getId()} />
           )
         }) : (<p>No rentals found</p>)}
-      </div>
+      </section>
     </main>
   )
 }

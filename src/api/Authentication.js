@@ -11,7 +11,7 @@ export const Authentication = {
    *
    * @returns {boolean} True if the user is signed in, false otherwise.
    */
-  isSignedIn: () => {
+  hasToken: () => {
     return localStorage.getItem("token") != null;
   },
   

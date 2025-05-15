@@ -18,7 +18,7 @@ export const UsersAPI = {
    */
   getAllUsers: async () => {
     try {
-      if (!Authentication.isSignedIn()) {
+      if (!Authentication.hasToken()) {
         throw new Error("User is not signed in");
       }
 
@@ -90,7 +90,7 @@ export const UsersAPI = {
    * @throws {Error} If there is an error updating the user.
   */
   updateUser: async (user) => {
-    if (!Authentication.isSignedIn()) {
+    if (!Authentication.hasToken()) {
       throw new Error("User is not signed in");
     }
 
@@ -133,7 +133,7 @@ export const UsersAPI = {
   */
   getCurrentAuthenticatedUser: async () => {
     try {
-      if (Authentication.isSignedIn()) {
+      if (Authentication.hasToken()) {
         const token = Authentication.getToken();
         const result = await axios.get(`${Constants.API_URL}/user/details`, {
           headers: {
@@ -158,7 +158,7 @@ export const UsersAPI = {
    */
   getCurrentAuthenticatedUserRoles: async () => {
     try {
-      if (Authentication.isSignedIn()) {
+      if (Authentication.hasToken()) {
         const token = Authentication.getToken();
         const result = await axios.get(`${Constants.API_URL}/user/roles`, {
           headers: {
@@ -188,7 +188,7 @@ export const UsersAPI = {
         return CarAPI.getJsonObjectFromCar(car);
       });
 
-      if (Authentication.isSignedIn()) {
+      if (Authentication.hasToken()) {
         const token = Authentication.getToken();
         const result = await axios.post(
           `${Constants.API_URL}/user/favorites`,
@@ -222,7 +222,7 @@ export const UsersAPI = {
   */
   setFavorite: async (car, isFavorite) => {
     try {
-      if (Authentication.isSignedIn()) {
+      if (Authentication.hasToken()) {
         const token = Authentication.getToken();
         const response = await axios.post(
           `${Constants.API_URL}/user/favorites/alter`,

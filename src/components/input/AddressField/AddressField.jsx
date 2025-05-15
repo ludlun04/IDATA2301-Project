@@ -10,7 +10,7 @@ import { Address } from "../../../model/Address";
  */
 const AddressField = ({ address }) => {
   return (
-    <div className={"AddressField"}>
+    <section className={"AddressField"}>
       <div className={"AddressFieldInputContainer"}>
         <div>
           <label htmlFor="addressCountry">Country</label>
@@ -23,7 +23,7 @@ const AddressField = ({ address }) => {
           <input type="text" name="addressZipCode" defaultValue={address.getZipCode()} />
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

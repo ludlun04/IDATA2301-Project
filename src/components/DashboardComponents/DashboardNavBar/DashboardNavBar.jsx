@@ -42,7 +42,7 @@ export default function DashboardNavBar({ className }) {
 
   return (
     <div className={className}>
-      <div className={"DashboardNavBar"}>
+      <section className={"DashboardNavBar"}>
         {hasUserRole && (
         <>
           <div className={"UserPages"}>
@@ -73,7 +73,7 @@ export default function DashboardNavBar({ className }) {
             </div>
           </>
           )}
-      </div>
+      </section>
     </div>
   )
 }

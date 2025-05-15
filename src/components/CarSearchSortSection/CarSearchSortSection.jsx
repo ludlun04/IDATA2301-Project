@@ -123,7 +123,7 @@ const CarSearchSortSection = (props) => {
 
   return (
     <div className={"CarSearchSortSection"}>
-      <div className={"carSearchContainer"}>
+      <section className={"carSearchContainer"}>
         <input
           className={"carSearchSortContainerSearch"}
           type="text"
@@ -135,7 +135,7 @@ const CarSearchSortSection = (props) => {
         <button className={"FormSubmitButton"} id={"carSearchContainerButton"} onClick={handleSearchButtonClick}>
           <SearchIcon className="SvgIcon" />
         </button>
-      </div>
+      </section>
       <SelectMenu id={"carSearchSortSectionSelectMenu"} options={options} value={sortByItem} onChange={handleSortByFieldChange} />
     </div>
   )

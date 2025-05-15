@@ -45,7 +45,9 @@ const Order = () => {
               <li><p>EndDate:</p><p>{order.getEndDate().toDateString()}</p></li>
               <li><p>Price:</p><p>{order.getPrice()}</p></li>
             </ul>
-            {car && <CarCard car={car} />}
+            <div style={{maxWidth:"20rem", display:"flex", justifyContent:"center", alignItems:"center"}}>
+              {car && <CarCard car={car} />}
+            </div>
           </>
 
         ) : (

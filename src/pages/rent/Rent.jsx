@@ -128,7 +128,7 @@ export default function Rent(props) {
 
   return (
     <main className={"RentMain"}>
-      <div className="RentGrid">
+      <section className="RentGrid">
         <div className="RentMainTop">
           <img alt="CarImage" className={"RentCarImage"} src={carImage} />
           <CarFavoriteButton className={"RentCarFavoriteButton"} car={car} />
@@ -159,7 +159,7 @@ export default function Rent(props) {
             </p>
           </section>
         </div>
-      </div>
+      </section>
     </main>
   )
 }

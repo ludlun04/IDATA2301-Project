@@ -36,7 +36,7 @@ export default function RentCard({ orderId }) {
   useEffect(() => {
     async function fetchCarImage() {
       try {
-        const imageData = await ImageAPI.getImageData(order.getCarId(), "jpg", 1600);
+        const imageData = await ImageAPI.getImageData(order.getCar().getId(), "jpg", 1600);
 
         if (imageData && imageData.data) {
           const imageUrl = `data:image/jpeg;base64,${imageData.data}`;
