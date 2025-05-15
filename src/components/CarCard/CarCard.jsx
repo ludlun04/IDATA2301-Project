@@ -27,7 +27,7 @@ export default function CarCard(props) {
   useEffect(() => {
     async function fetchCarImage() {
       try {
-        const imageData = await ImageAPI.getImageData(car.getId(), "jpg", 1600);
+        const imageData = await ImageAPI.getImageData(car.getId(), "jpg", 800);
 
         if (imageData && imageData.data) {
           const imageUrl = `data:image/jpeg;base64,${imageData.data}`;
