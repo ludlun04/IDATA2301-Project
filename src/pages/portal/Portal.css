@@ -50,13 +50,16 @@
   width: 600px;
 }
 
+.portalVerticalSectionButton {
+  width: 10rem;
+  height: 2rem;
+  font-size: 1.2rem;
+  display: none;
+  margin-bottom: 20px;
+}
 
 .portalVerticalSectionFilters.active {
   display: flex;
-}
-
-.portalVerticalSectionButton.active {
-  display: block;
 }
 
 #portalFiltersPortal {
@@ -67,8 +70,10 @@
 }
 
 @media screen and (max-width: 900px) {
-  .portalVerticalSection {
-
+  .portalCarCards.active {
+    overflow: visible;
+    height: auto;
+    padding-bottom: 1rem;
   }
 
   .portalLeftFilters {
@@ -77,6 +82,10 @@
 
   .portalVerticalSectionButton {
     display: block;
+  }
+
+  .portalVerticalSectionButton.active {
+    width: 20rem;
   }
 
   .portalVerticalSectionFilters {
@@ -112,12 +121,4 @@
   transition: height ease-in-out .5s;
   flex-direction: column;
   align-items: center;
-}
-
-.portalVerticalSectionButton {
-  width: 130px;
-  height: 50px;
-  font-size: 1.2rem;
-  display: none;
-  margin-bottom: 20px;
 }
