@@ -302,7 +302,7 @@ export default function Portal() {
         </section>
 
 
-        <button className={`portalVerticalSectionButton ${centerFiltersDisplayed ? "" : " active"}`}
+        <button className={`portalVerticalSectionButton ${centerFiltersDisplayed ? " active" : ""}`}
                 onClick={toggleFiltersDisplayed}>Filters
         </button>
         <section className={`portalCarCards ${centerFiltersDisplayed ? "" : " active"}`}>
