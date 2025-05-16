@@ -82,6 +82,12 @@
   .portalVerticalSectionFilters {
     display: flex;
   }
+
+  .portalCarCards.active {
+    overflow: visible;
+    height: auto;
+    margin-bottom: 20px;
+  }
 }
 
 @media screen and (min-width: 900px) {
