@@ -31,7 +31,15 @@
 
 #carSearchSortSectionSelectMenu {
     margin-left: 50px;
-    min-width: 115px;
+    min-width: 130px;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    transition: border-color ease-in-out .15s;
+    color: var(--text-200)
+}
+
+#carSearchSortSectionSelectMenu:focus-within {
+    border: 1px solid var(--primary-100);
 }
 
 @media screen and (max-width: 400px) {
