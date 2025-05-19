@@ -90,6 +90,7 @@
 .footerNavLink {
     color: var(--text-100);
     font-family: "Kantumruy Pro";
+    padding: .25rem;
 }
 
 .footerNavLink:active {
