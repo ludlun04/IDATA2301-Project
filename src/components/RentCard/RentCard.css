@@ -1,6 +1,6 @@
 .RentCard {
     display: flex;
-    border: solid 1px #e8e6e6;
+    border: solid 1px var(--border-color);
     height: 7rem;
     padding: .5rem;
     border-radius: .5rem;

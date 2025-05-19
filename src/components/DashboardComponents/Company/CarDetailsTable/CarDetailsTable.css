@@ -1,14 +1,14 @@
 .CarDetailsTable {
     display: flex;
     flex-direction: column;
-    width: 700px;
+    width: 40rem;
 }
 
 .carDetailsTableRowTop {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 10px;
+    gap: .5rem;
     width: 100%;
     cursor: pointer;
 }
@@ -30,11 +30,11 @@
 }
 
 .carDetailsTableDropdownMenu {
-    padding: 15px 0 15px 0;
+    padding: 1rem 0 1rem 0;
 }
 
 .carDetailsTableColumn {
-    width: 110px;
+    width: 6rem;
     text-align: center;
     font-size: 1rem;
     overflow: hidden;
@@ -60,9 +60,9 @@
 
 .carDetailsTableOpenContent {
     display: flex;
-    gap: 20px;
+    gap: 1rem;
     width: 90%;
-    margin: 10px 0 20px 0;
+    margin: .5rem 0 1rem 0;
 }
 
 .carDetailsTableColumnDescriptor {

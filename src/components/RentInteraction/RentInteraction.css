@@ -34,8 +34,8 @@
 }
 
 .RentDailyPrice > p {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
 }
 
 .RentDailyPrice > .RentTitle {
@@ -47,8 +47,8 @@
 }
 
 .RentTotalPrice > p {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
 }
 
 .RentTotalPrice > .RentTitle {

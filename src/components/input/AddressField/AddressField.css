@@ -1,7 +1,7 @@
 .AddressFieldInputContainer {
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: .5rem;
 }
 
 .AddressFieldInputContainer div {

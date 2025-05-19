@@ -15,8 +15,8 @@
   flex-direction: column;
   background-color: white;
   padding: 1rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: .5rem;
+  box-shadow: 0 .25rem .5rem rgba(0, 0, 0, 0.2);
   gap: 1rem;
 }
 

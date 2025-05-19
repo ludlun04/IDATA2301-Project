@@ -3,12 +3,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 50px;
+    gap: 3rem;
 }
 
 .aboutHeader {
     font-size: 3rem;
-    margin: 10px;
+    margin: 1rem;
     align-self: flex-start;
     background: var(--background);
 }
@@ -17,7 +17,7 @@
     display: flex;
     flex-direction: column;
     font-size: 1.2rem;
-    margin: 10px;
+    margin: 1rem;
     gap: 1rem;
     background: var(--background);
 }
@@ -41,15 +41,14 @@
 
 
 .aboutEmployees, .aboutOurStory, .aboutFaq {
-    padding: 20px;
-    border-radius: 0.5rem;
-    width: 800px;
+    padding: 1rem;
+    width: 50rem;
 }
 
 .aboutEmployeeCardContainer {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 1rem;
     justify-content: center;
     max-width: 100%;
 }
@@ -75,20 +74,17 @@
     }
 
     .aboutEmployees, .aboutOurStory, .aboutFaq {
-        width: 400px;
-    }
-
-    .aboutFaqSectionContainer {
+        width: 25rem;
     }
 }
 
 @media only screen and (max-width: 512px) {
     .aboutEmployees, .aboutOurStory, .aboutFaq {
-        width: 255px;
+        width: 16rem;
     }
 
     .aboutFaqSectionContainer {
-        width: 255px;
+        width: 16rem;
     }
 
     .aboutEmployeeCardContainer {
