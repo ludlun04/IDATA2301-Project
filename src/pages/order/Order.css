@@ -1,7 +1,7 @@
 .OrderMain {
   display: flex;
   justify-content: center;
-  padding: 2rem;
+  padding-top: 2rem;
 }
 
 .OrderContainer {
@@ -11,6 +11,10 @@
   align-items: center;
   height: fit-content;
   gap: 2rem;
+}
+
+.OrderContainer h1 {
+  margin-top: 0;
 }
 
 .OrderInformation {

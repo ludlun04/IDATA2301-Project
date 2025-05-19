@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
+    padding-top: 2rem;
 }
 
 .main404 img {
@@ -13,6 +14,7 @@
 .main404 > h1 {
     font-size: 3rem;
     font-weight: 600;
+    margin-top: 0;
 }
 
 .main404 > h2 {
