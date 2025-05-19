@@ -1,6 +1,5 @@
 .FaqSection {
     padding: 30px;
-    /*border: solid black 2px;*/
     font-size: 1.2rem;
 }
 
@@ -12,20 +11,12 @@
 
 .faqSectionAnswerContainer {
     align-items: center;
-    /*display: none;*/
     overflow: hidden;
-    /*max-height: 0;*/
-    /*transition: transform .3s ease-in-out;*/
-    /*transform: scaleY(0);*/
     font-weight: 300;
     transition: height 0.5s ease;
 }
 
 .faqSectionAnswerContainer.active {
-    /*max-height: revert;*/
-    /*transform: scaleY(1);*/
-    /*display: revert;*/
-    /*transition: all 2s ease;*/
     overflow: hidden;
     display: revert;
 }
