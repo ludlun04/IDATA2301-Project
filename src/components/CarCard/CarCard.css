@@ -86,6 +86,9 @@
     justify-content: flex-end;
     align-items: center;
     gap: .5rem;
+    background-color: var(--text-200);
+    padding: .25rem;
+    border-radius: .5rem;
 }
 
 .CarCardAvailabilityIndicator {
