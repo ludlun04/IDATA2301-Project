@@ -9,17 +9,6 @@
     margin-top: 0;
 }
 
-.dashboardDropdownMenu {
-    width: 17rem;
-    display: none;
-}
-.dashboardDropdownMenu button {
-    border: 1px solid var(--border-color);
-    border-radius: 0.5rem;
-}
-
-
-
 .dashboardSectionContainer {
     max-width: 60%;
     overflow-x: auto;
@@ -38,13 +27,8 @@
         flex-direction: column;
     }
 
-    .dashboardDropdownMenu {
-        display: block;
-
-    }
-
     .dashboardDashboardNavBar {
-        display: none;
+        display: block;
     }
 
     .dashboardSectionContainer {
