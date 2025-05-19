@@ -12,6 +12,7 @@
 }
 
 .PhoneNumberFieldInputContainer > input {
+  width: 12rem;
   border: none;
   outline: none;
 }
