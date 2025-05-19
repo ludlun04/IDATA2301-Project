@@ -90,7 +90,7 @@
     }
 
     .headerMenuButton {
-        border-radius: 50px;
+        border-radius: 5rem;
         background: var(--text-200);
         width: 40px;
         height: 4px;
