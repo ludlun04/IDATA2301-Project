@@ -1,8 +1,12 @@
 .Dashboard {
-    padding: 1rem;
+    padding: 2rem 1rem 1rem 1rem;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
+}
+
+.Dashboard h1 {
+    margin-top: 0;
 }
 
 .dashboardDropdownMenu {
