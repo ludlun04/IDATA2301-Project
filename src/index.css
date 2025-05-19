@@ -64,7 +64,7 @@ input::placeholder {
   font-family: "Kantumruy Pro", sans-serif;
   cursor: pointer;
   border-radius: 0.5rem;
-  height: 30px;
+  height: 2rem;
   font-weight: 500;
 }
 
@@ -83,7 +83,7 @@ button {
   font-family: "Kantumruy Pro", sans-serif;
   cursor: pointer;
   border-radius: 0.5rem;
-  height: 30px;
+  height: 2rem;
   font-weight: 500;
 }
 

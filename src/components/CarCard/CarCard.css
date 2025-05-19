@@ -1,6 +1,6 @@
 .CarCard {
     display: flex;
-    border: solid 1px #e8e6e6;
+    border: solid 1px var(--border-color);
     min-width: 32rem;
     min-height: 8rem;
     padding: .5rem;

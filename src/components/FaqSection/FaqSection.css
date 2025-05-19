@@ -1,5 +1,5 @@
 .FaqSection {
-    padding: 30px;
+    padding: 2rem;
     font-size: 1.2rem;
 }
 
@@ -22,7 +22,7 @@
 }
 
 .faqSectionAnswer {
-    margin-top: 20px;
+    margin-top: 1rem;
 }
 
 .faqSectionIcon {

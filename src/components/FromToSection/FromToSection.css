@@ -2,9 +2,9 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 5px;
+    gap: .5rem;
 }
 
 .fromToSectionInput {
-    width: 50px;
+    width: 3rem;
 }

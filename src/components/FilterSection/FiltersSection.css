@@ -14,27 +14,23 @@
 
 .FiltersSection ul {
   list-style-type: none;
-  margin: 10px;
+  margin: .5rem;
   padding: 0;
 }
 
 .FiltersSection li {
-  margin: 5px;
+  margin: .5rem;
 }
 
 .filtersSectionDateLine, .filtersSectionFromToSection {
-  margin: 5px;
+  margin: .5rem;
 }
 
 
 .filtersSectionCarFilterToggle {
   width: 95%;
-  margin-bottom: .3rem;
+  margin-bottom: .25rem;
   margin-left: .5rem;
-}
-
-.filtersSectionAvailableNow {
-
 }
 
 .filtersSectionDateLine {
@@ -45,7 +41,7 @@
 }
 
 .filtersSectionDatePicker {
-  width: 90px;
+  width: 6rem;
   margin-left: auto;
   text-align: center;
   --rdp-accent-color: var(--primary-100);
@@ -56,10 +52,10 @@
 }
 
 #filtersSectionFormSubmitButton {
-  margin-top: 20px;
+  margin-top: 1rem;
   margin-left: auto;
   margin-right: auto;
-  width: 100px;
-  height: 40px;
+  width: 6rem;
+  height: 2.5rem;
 }
 
