@@ -11,7 +11,7 @@ import React, {useEffect, useState} from "react";
  * @param {string} className - Additional class name for styling.
  * @returns {JSX.Element}
  */
-const CarFilterToggle = ({value, active, onClick, className}) => {
+const CarFilterToggle = ({value, active, onClick, className, id}) => {
 
   const [isActive, setIsActive] = useState(active);
 
@@ -24,8 +24,9 @@ const CarFilterToggle = ({value, active, onClick, className}) => {
       <div className={"CarFilterToggle"}>
         <button onClick={() => onClick(value, !isActive)}>
           <div className={"carFilterToggleButtonContent"}>
-            <p>{value}</p>
+            <label htmlFor={id}>{value}</label>
             <input
+              id={id}
               type="checkbox"
               checked={isActive}
               onChange={(event) => event.stopPropagation()}

@@ -127,6 +127,7 @@ const FiltersSection = (props) => {
             {availableBrands.map((brand, index) => (
               <CarFilterToggle
                 className={"filtersSectionCarFilterToggle"}
+                id={"BrandCarFilterToggle"+brand.getName()}
                 value={brand.getName()}
                 onClick={alterChosenBrands}
                 active={context.chosenBrands.includes(brand.getName())}
@@ -138,6 +139,7 @@ const FiltersSection = (props) => {
             {availableFuelTypes.map((fuelType, index) => (
               <CarFilterToggle
                 className={"filtersSectionCarFilterToggle"}
+                id={"FuelCarFilterToggle"+fuelType.getName()}
                 value={fuelType.getName()}
                 onClick={alterChosenFuelTypes}
                 active={context.chosenFuelTypes.includes(fuelType.getName())}
@@ -150,6 +152,7 @@ const FiltersSection = (props) => {
             {availableSellers.map((seller, index) => (
               <CarFilterToggle
                 className={"filtersSectionCarFilterToggle"}
+                id={"SellerCarFilterToggle"+seller.getName()}
                 value={seller.getName()}
                 onClick={alterChosenSellers}
                 active={context.chosenSellers.includes(seller.getName())}
@@ -161,6 +164,7 @@ const FiltersSection = (props) => {
             {availableSeats.map((seat, index) => (
               <CarFilterToggle
                 className={"filtersSectionCarFilterToggle"}
+                id={"SeatsCarFilterToggle"+seat}
                 value={seat}
                 onClick={alterChosenSeats}
                 active={context.chosenSeats.includes(seat)}
@@ -172,6 +176,7 @@ const FiltersSection = (props) => {
         <section>
           <h1>The Time</h1>
           <CarFilterToggle
+            id={"TimeNowCarFilterToggle"}
             className={"filtersSectionCarFilterToggle"}
             value={"Available now"}
             onClick={handleAvailableNowCheckedChange}
@@ -180,8 +185,9 @@ const FiltersSection = (props) => {
 
 
           <section className={"filtersSectionDateLine"}>
-            <p>From</p>
+            <label htmlFor="filtersSectionDatePickerFrom">From</label>
             <DatePicker
+              id="filtersSectionDatePickerFrom"
               className={"filtersSectionDatePicker"}
               selected={startDate}
               minDate={new Date()}
@@ -193,8 +199,9 @@ const FiltersSection = (props) => {
             />
           </section>
           <section className={"filtersSectionDateLine"}>
-            <p>To</p>
+            <label htmlFor="filtersSectionDatePickerTo">To</label>
             <DatePicker
+              id="filtersSectionDatePickerTo"
               className={"filtersSectionDatePicker"}
               selected={endDate}
               minDate={oneDayAfter(startDate)}

@@ -132,7 +132,7 @@ const CarSearchSortSection = (props) => {
           onKeyDown={handleSearchFieldKeyDown}
           placeholder='Type to search'
         />
-        <button className={"FormSubmitButton"} id={"carSearchContainerButton"} onClick={handleSearchButtonClick}>
+        <button className={"FormSubmitButton"} id={"carSearchContainerButton"} aria-label="Search Button" onClick={handleSearchButtonClick}>
           <SearchIcon className="SvgIcon" />
         </button>
       </section>
