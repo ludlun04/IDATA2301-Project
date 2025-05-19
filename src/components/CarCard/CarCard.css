@@ -86,29 +86,18 @@
     justify-content: flex-end;
     align-items: center;
     gap: .5rem;
-    background-color: var(--text-200);
+    background-color: var(--error);
     padding: .25rem;
     border-radius: .5rem;
 }
 
-.CarCardAvailabilityIndicator {
-    background: var(--error);
-    width: .5rem;
-    height: .5rem;
-    border-radius: 50%;
+.CarCardAvailabilityContainer.true {
+    background-color: var(--success);
 }
 
 .CarCardAvailabilityTag {
-    color: var(--error);
+    color: var(--text-200);
     font-weight: 500;
-}
-
-.CarCardAvailabilityIndicator.true {
-    background: var(--success);
-}
-
-.CarCardAvailabilityTag.true {
-    color: var(--success);
 }
 
 @media only screen and (max-width: 650px) {
