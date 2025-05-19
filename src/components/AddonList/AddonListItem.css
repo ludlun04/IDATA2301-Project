@@ -5,6 +5,7 @@
   padding: 1rem;
   background-color: var(--background);
   user-select: none;
+  border-radius: .5rem;
 }
 
 .AddonListItem:hover {
