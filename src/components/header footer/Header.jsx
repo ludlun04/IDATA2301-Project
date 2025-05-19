@@ -26,8 +26,8 @@ import Profile from "./Profile";
 
     return (
         <div className={"Header"}>
-            <NavLink className={"logo"} to={"/home"}>
-                <Logo className={"headerLogo"}/>
+            <NavLink className={"logo"} id="NavigateHome" to={"/home"} name="NavigateHome" alt="NavigateHome" aria-label="Go back to home page">
+                <Logo alt="DriveoLogo" className={"headerLogo"}/>
             </NavLink>
             <div className={`headerRightContainer ${menuButtonActive ? "active" : ""}`}>
                 <NavLink className={`navLink ${currentPage === "/portal" ? "activePage" : ""}`} to={"/portal"} onClick={handleToggle}>Rent</NavLink>
