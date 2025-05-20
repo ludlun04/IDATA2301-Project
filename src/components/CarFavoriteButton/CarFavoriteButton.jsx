@@ -23,11 +23,12 @@ const CarFavoriteButton = ({car, className}) => {
 
     try {
       const isFavorite = await UsersAPI.setFavorite(car, !car.getFavorite());
-      if (isFavorite) {
-        car.setFavorite(isFavorite);
+      console.log("isFavorite: ", isFavorite);
+      if (isFavorite !== undefined) {
         setIsFavorite(isFavorite);
+        car.setFavorite(isFavorite);
       } else {
-        navigate("/sign-in");
+        navigate("/sign-in")
       }
     } catch (error) {
       console.error("Failed to set favorite on car: ", error);

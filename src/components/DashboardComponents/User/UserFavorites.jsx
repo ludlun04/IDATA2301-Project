@@ -28,14 +28,14 @@ export default function UserFavorites() {
         if (favorites) {
           setFavoritedCars(favorites)
         }
-        setLoading(false);
+        
         setErrorMessageActive(false);
       } catch (error) {
         console.error("Error fetching favorited cars:", error);
-        setLoading(false);
         setErrorMessageActive(true);
       }
 
+      setLoading(false);
     }
 
     fetchFavoritedCars();
