@@ -20,6 +20,7 @@ export default function SignUp() {
     const [passwordIsValid, setPasswordIsValid] = useState(true);
     const [secondPasswordIsValid, setSecondPasswordIsValid] = useState(false);
     const [formIsValid, setFormIsValid] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
 
     useEffect(() => {
         const isFormValid = firstNameIsValid && lastNameIsValid && emailIsValid && addressIsValid && countryIsValid && zipCodeIsValid && countryCodeIsValid && phoneNumberIsValid && secondPasswordIsValid && passwordIsValid;
@@ -49,7 +50,7 @@ export default function SignUp() {
           )
         )
 
-        UsersAPI.signUp(user, data.password);
+        UsersAPI.signUp(user, data.password).then(r => {}).catch(error => {setErrorMessage("Network error. Unable to reach server."); console.log(error);});
     }
 
     useEffect(() => {
@@ -177,6 +178,7 @@ export default function SignUp() {
                     <input type="password" name="passwordRepeat" id="passwordRepeat" onChange={handleSecondPasswordInputChange} className={secondPasswordIsValid ? "valid" : "invalid"}/>
                 </div>
                 <input className={formIsValid ? "FormSubmitButton" : "FormSubmitButton disabled"} type="submit" value="Sign Up" disabled={!formIsValid}/>
+                <p>{errorMessage}</p>
                 <p>Already have an account?
                     <NavLink className={"signInNavLink"} to={"/sign-in"}>Login!</NavLink>
                 </p>

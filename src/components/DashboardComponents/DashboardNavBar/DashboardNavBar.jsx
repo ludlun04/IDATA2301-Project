@@ -33,7 +33,7 @@ export default function DashboardNavBar({ className }) {
         const response = await CompanyAPI.getCurrentUserCompanies();
         setCompanies(response);
     }
-    fetchCompanies();
+    fetchCompanies().then(r => {}).catch(error => {console.log(error)});
   }, []);
 
   const hasUserRole = roles.some(role => role.name === 'USER');
