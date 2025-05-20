@@ -45,12 +45,9 @@ export default function Portal() {
   // the sort by item that the user has chosen
   const [sortByItem, setSortByItem] = useState(null);
   const handleSetCars = (newCars, choice) => {
-    console.log("Setting cars: ", newCars);
     if (choice) {
-      console.log("Sorting cars by: ", choice);
       setCars(CarSortUtil.getCarsOrderedFromSortByItem(newCars, choice));
     } else {
-      console.log("No sort by item chosen, setting cars without sorting");
       setCars(newCars)
     }
   }
@@ -173,7 +170,15 @@ export default function Portal() {
         const url = response.url;
         if (url) {
           const newUrl = `${window.location.pathname}?${response.url}`;
+          console.log("New url: ", newUrl);
           window.history.pushState({}, '', newUrl);
+        } else {
+          try {
+            window.history.pushState({}, '', window.location.pathname.split('?')[0]);
+          } catch (error) {
+            console.error("Error updating URL: ", error);
+          }
+
         }
         setLoading(false);
         console.log("Fetched cars: " + response.cars);
