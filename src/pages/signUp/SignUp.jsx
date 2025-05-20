@@ -1,6 +1,6 @@
 import {User} from "../../model/User";
 import "./SignUp.css"
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import DatePicker from "react-datepicker";
 import {useEffect, useState} from "react";
 import { UsersAPI } from "../../api/UsersAPI";
@@ -8,6 +8,7 @@ import { PhoneNumber } from "../../model/PhoneNumber";
 import { Address } from "../../model/Address";
 
 export default function SignUp() {
+    const navigate = useNavigate();
     const [birthDate, setBirthDate] = useState(new Date());
     const [firstNameIsValid, setFirstNameIsValid] = useState(true);
     const [lastNameIsValid, setLastNameIsValid] = useState(true);
@@ -50,7 +51,11 @@ export default function SignUp() {
           )
         )
 
-        UsersAPI.signUp(user, data.password).then(r => {}).catch(error => {setErrorMessage("Network error. Unable to reach server."); console.log(error);});
+        UsersAPI.signUp(user, data.password).then(r => {})
+        .then(() => {
+            navigate("/sign-in");
+        })
+        .catch(error => {setErrorMessage("Network error. Unable to reach server."); console.log(error);});
     }
 
     useEffect(() => {
