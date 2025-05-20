@@ -12,6 +12,7 @@
 }
 
 .PhoneNumberFieldInputContainer > input {
+  width: 30rem;
   border: none;
   outline: none;
 }
@@ -21,4 +22,10 @@
   background-color: var(--border-color);
   border: none;
   outline: none;
+}
+
+@media screen and (max-width: 900px) {
+  .PhoneNumberFieldInputContainer > input {
+    width: 12rem;
+  }
 }

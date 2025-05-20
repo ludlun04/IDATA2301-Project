@@ -1,13 +1,14 @@
 import {User} from "../../model/User";
 import "./SignUp.css"
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import DatePicker from "react-datepicker";
 import {useEffect, useState} from "react";
-import { UsersAPI } from "../../api/UsersAPI";
+import { UsersAPI } from "../../util/api/UsersAPI";
 import { PhoneNumber } from "../../model/PhoneNumber";
 import { Address } from "../../model/Address";
 
 export default function SignUp() {
+    const navigate = useNavigate();
     const [birthDate, setBirthDate] = useState(new Date());
     const [firstNameIsValid, setFirstNameIsValid] = useState(true);
     const [lastNameIsValid, setLastNameIsValid] = useState(true);
@@ -20,6 +21,7 @@ export default function SignUp() {
     const [passwordIsValid, setPasswordIsValid] = useState(true);
     const [secondPasswordIsValid, setSecondPasswordIsValid] = useState(false);
     const [formIsValid, setFormIsValid] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
 
     useEffect(() => {
         const isFormValid = firstNameIsValid && lastNameIsValid && emailIsValid && addressIsValid && countryIsValid && zipCodeIsValid && countryCodeIsValid && phoneNumberIsValid && secondPasswordIsValid && passwordIsValid;
@@ -49,7 +51,11 @@ export default function SignUp() {
           )
         )
 
-        UsersAPI.signUp(user, data.password);
+        UsersAPI.signUp(user, data.password).then(r => {})
+        .then(() => {
+            navigate("/sign-in");
+        })
+        .catch(error => {setErrorMessage("Network error. Unable to reach server."); console.log(error);});
     }
 
     useEffect(() => {
@@ -177,6 +183,7 @@ export default function SignUp() {
                     <input type="password" name="passwordRepeat" id="passwordRepeat" onChange={handleSecondPasswordInputChange} className={secondPasswordIsValid ? "valid" : "invalid"}/>
                 </div>
                 <input className={formIsValid ? "FormSubmitButton" : "FormSubmitButton disabled"} type="submit" value="Sign Up" disabled={!formIsValid}/>
+                <p>{errorMessage}</p>
                 <p>Already have an account?
                     <NavLink className={"signInNavLink"} to={"/sign-in"}>Login!</NavLink>
                 </p>

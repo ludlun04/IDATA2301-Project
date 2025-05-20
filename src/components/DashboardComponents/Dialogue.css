@@ -29,3 +29,13 @@
   list-style: none;
   padding: 0;
 }
+
+@media screen and (max-width: 900px) {
+  .Dialogue Form {
+    width: 16rem;
+  }
+
+  .Dialogue {
+    top: 3rem;
+  }
+}

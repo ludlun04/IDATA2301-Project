@@ -1,0 +1,22 @@
+.Company {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.CompanyButtonBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+}
+
+.CompanyButtonBox > button {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 6rem;
+}

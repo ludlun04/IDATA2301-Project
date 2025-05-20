@@ -1,6 +1,6 @@
 import {PhoneNumber} from "../../model/PhoneNumber";
 import {Address} from "../../model/Address";
-import {CompanyAPI} from "../../api/CompanyAPI";
+import {CompanyAPI} from "../../util/api/CompanyAPI";
 import {Company} from "../../model/Company";
 import "./EditCompanyDialogue.css"
 

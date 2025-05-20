@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {UsersAPI} from "../../api/UsersAPI";
+import {UsersAPI} from "../../util/api/UsersAPI";
 import starFilled from "../../resources/icons/starFilled.svg";
 import starUnfilled from "../../resources/icons/starUnfilled.svg";
 import "./CarFavoriteButton.css";
@@ -23,11 +23,12 @@ const CarFavoriteButton = ({car, className}) => {
 
     try {
       const isFavorite = await UsersAPI.setFavorite(car, !car.getFavorite());
-      if (isFavorite) {
-        car.setFavorite(isFavorite);
+      console.log("isFavorite: ", isFavorite);
+      if (isFavorite !== undefined) {
         setIsFavorite(isFavorite);
+        car.setFavorite(isFavorite);
       } else {
-        navigate("/sign-in");
+        navigate("/sign-in")
       }
     } catch (error) {
       console.error("Failed to set favorite on car: ", error);

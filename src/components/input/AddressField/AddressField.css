@@ -12,3 +12,9 @@
 .AddressFieldInputContainer .Zip > input {
   max-width: 8ch;
 }
+
+@media screen and (max-width: 900px) {
+  .AddressFieldInputContainer {
+    flex-direction: column;
+  }
+}

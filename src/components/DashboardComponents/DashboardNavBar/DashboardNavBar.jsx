@@ -1,8 +1,8 @@
 import "./DashboardNavBar.css"
 import { useEffect, useState } from "react";
-import { UsersAPI } from "../../../api/UsersAPI";
+import { UsersAPI } from "../../../util/api/UsersAPI";
 import {useNavigate} from "react-router-dom";
-import {CompanyAPI} from "../../../api/CompanyAPI";
+import {CompanyAPI} from "../../../util/api/CompanyAPI";
 
 /**
  * DashboardNavBar component
@@ -33,45 +33,46 @@ export default function DashboardNavBar({ className }) {
         const response = await CompanyAPI.getCurrentUserCompanies();
         setCompanies(response);
     }
-    fetchCompanies();
+    fetchCompanies().then(r => {}).catch(error => {console.log(error)});
   }, []);
 
-  const hasUserRole = roles.some(role => role.name === 'USER');
-  const hasAdmin = roles.some(role => role.name === 'ADMIN');
-  const hasCompany = companies.length > 0;
+  let hasUserRole = false;
+  let hasAdmin = false;
+  let hasCompany = false;
+  try {
+    hasUserRole = roles.some(role => role.name === 'USER');
+    hasAdmin = roles.some(role => role.name === 'ADMIN');
+    hasCompany = companies.length > 0;
+  } catch (error) {
+    console.error("Error checking roles:", error);
+  }
+
 
   return (
     <div className={className}>
       <section className={"DashboardNavBar"}>
         {hasUserRole && (
-        <>
           <div className={"UserPages"}>
           <h3>User</h3>
             <button key={"DashboardUserDetails"} onClick={() => {navigate("/dashboard/user/details")}} className={""}>Details</button>
             <button key={"DashboardUserRentals"} onClick={() => {navigate("/dashboard/user/rentals")}} className={""}>Rentals</button>
             <button key={"DashboardUserFavorites"} onClick={() => {navigate("/dashboard/user/favorites")}} className={""}>Favorites</button>
           </div>
-        </>
         )}
         {hasAdmin && (
-        <>
           <div className={"AdminPages"}>
           <h3>Admin</h3>
             <button key={"DashboardAdminUsers"} onClick={() => {navigate("/dashboard/admin/users")}} className={""}>Users</button>
             <button key={"DashboardAdminCompanies"} onClick={() => {navigate("/dashboard/admin/companies")}} className={""}>Companies</button>
           </div>
-
-        </>
         )}
           {hasCompany && (
-          <>
             <div className={"CompanyPages"}>
             <h3>Companies</h3>
             {companies.map((company) => (
                 <button key={company.getId()} onClick={() => {navigate(`/dashboard/company/${company.getId()}/cars`)}} className={""}>{company.getName()}</button>
               ))}
             </div>
-          </>
           )}
       </section>
     </div>

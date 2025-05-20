@@ -1,7 +1,7 @@
 import "./CarDetailsTable.css";
 import DropdownMenu from "../../../DropdownMenu/DropdownMenu";
 import {useEffect, useState} from "react";
-import {CarAPI} from "../../../../api/CarAPI";
+import {CarAPI} from "../../../../util/api/CarAPI";
 
 /**
  * CarDetailsTable component
@@ -97,14 +97,14 @@ export default function CarDetailsTable(props) {
             <p>No cars to show</p>
             : <div className={"CarDetailsTable"}>
                 <div className={"carDetailsTableRowTop carDetailsTableDescriptorRow"}>
-                    <p className={"carDetailsTableColumn"}>Brand</p>
-                    <p className={"carDetailsTableColumn"}>Model</p>
-                    <p className={"carDetailsTableColumn"}>Year</p>
-                    <p className={"carDetailsTableColumn"}>Visibility</p>
+                    <h3 className={"carDetailsTableColumn"}>Brand</h3>
+                    <h3 className={"carDetailsTableColumn"}>Model</h3>
+                    <h3 className={"carDetailsTableColumn"}>Year</h3>
+                    <h3 className={"carDetailsTableColumn"}>Visibility</h3>
                     {orders !== undefined ?
-                        <p className={"carDetailsTableDates"}>Dates</p>
+                        <h3 className={"carDetailsTableDates"}>Dates</h3>
                         :
-                        <p className={"carDetailsTableStatus"}>Status</p>
+                        <h3 className={"carDetailsTableStatus"}>Status</h3>
                     }
                 </div>
                 {orders !== undefined ?

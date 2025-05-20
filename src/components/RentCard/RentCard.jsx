@@ -2,8 +2,8 @@ import "./RentCard.css";
 import img from "../../resources/logo/Logo-Dark-Icon.svg";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ImageAPI } from "../../api/ImageAPI";
-import { OrderAPI } from "../../api/OrderAPI";
+import { ImageAPI } from "../../util/api/ImageAPI";
+import { OrderAPI } from "../../util/api/OrderAPI";
 
 /**
  * RentCard component

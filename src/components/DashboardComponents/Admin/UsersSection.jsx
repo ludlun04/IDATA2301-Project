@@ -1,7 +1,7 @@
 import "./UsersSection.css";
 import UserRow from "./UserRow"
 import { useEffect, useState } from "react";
-import { UsersAPI } from "../../../api/UsersAPI";
+import { UsersAPI } from "../../../util/api/UsersAPI";
 
 /**
  * UsersSection component

@@ -3,7 +3,7 @@ import CarCard from "../../CarCard/CarCard";
 import {useEffect, useState} from "react";
 import Loader from "../..//loader/Loader";
 import ErrorFetchingDataMessage from "../../ErrorFetchingDataMessage/ErrorFetchingDataMessage";
-import {CarAPI} from "../../../api/CarAPI";
+import {CarAPI} from "../../../util/api/CarAPI";
 
 /**
   * UserFavorites component
@@ -28,14 +28,14 @@ export default function UserFavorites() {
         if (favorites) {
           setFavoritedCars(favorites)
         }
-        setLoading(false);
+        
         setErrorMessageActive(false);
       } catch (error) {
         console.error("Error fetching favorited cars:", error);
-        setLoading(false);
         setErrorMessageActive(true);
       }
 
+      setLoading(false);
     }
 
     fetchFavoritedCars();

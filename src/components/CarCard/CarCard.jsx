@@ -4,7 +4,7 @@ import CarFavoriteButton from "../CarFavoriteButton/CarFavoriteButton";
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {Car} from "../../model/Car";
-import {ImageAPI} from "../../api/ImageAPI";
+import {ImageAPI} from "../../util/api/ImageAPI";
 
 /* 
  * CarCard component
@@ -66,9 +66,8 @@ export default function CarCard(props) {
           </div>
         </div>
         <div className={"CarCardInnerRightPane"}>
-          <div className={"CarCardAvailabilityContainer"}>
-            <div className={`CarCardAvailabilityIndicator ${car.getAvailable()}`}></div>
-            <p className={`CarCardAvailabilityTag ${car.getAvailable()}`}>{car.getAvailable() ? "Available" : "Unavailable"}</p>
+          <div className={`CarCardAvailabilityContainer ${car.getAvailable()}`}>
+            <p className={`CarCardAvailabilityTag`}>{car.getAvailable() ? "Available" : "Unavailable"}</p>
           </div>
           <div className={"CarCardPriceContainer"}>
             <p>{car.getPricePerDay() + ",-"}</p>

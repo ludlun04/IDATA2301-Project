@@ -3,7 +3,7 @@ import DatePicker from "react-datepicker";
 import {useEffect, useState} from "react";
 import CompanyCard from "../CompanyCard/CompanyCard";
 import {useNavigate} from "react-router-dom";
-import {OrderAPI} from "../../api/OrderAPI";
+import {OrderAPI} from "../../util/api/OrderAPI";
 import AddonList from "../AddonList/AddonList";
 
 const RentInteraction = ({car, unavailableDates}) => {

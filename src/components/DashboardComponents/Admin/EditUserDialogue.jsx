@@ -6,7 +6,7 @@ import { useState } from "react";
 import { User } from "../../../model/User";
 import { PhoneNumber } from "../../../model/PhoneNumber";
 import { Address } from "../../../model/Address";
-import { UsersAPI } from "../../../api/UsersAPI";
+import { UsersAPI } from "../../../util/api/UsersAPI";
 
 /**
  * EditUserDialogue component
