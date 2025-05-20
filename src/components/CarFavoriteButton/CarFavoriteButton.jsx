@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {UsersAPI} from "../../api/UsersAPI";
+import {UsersAPI} from "../../util/api/UsersAPI";
 import starFilled from "../../resources/icons/starFilled.svg";
 import starUnfilled from "../../resources/icons/starUnfilled.svg";
 import "./CarFavoriteButton.css";

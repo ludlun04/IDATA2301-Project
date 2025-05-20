@@ -1,9 +1,9 @@
-import Constants from "../Constants.jsx";
+import Constants from "../../Constants.jsx";
 import axios from 'axios';
 import {Authentication} from './Authentication';
-import {User} from '../model/User';
-import {PhoneNumber} from "../model/PhoneNumber.js";
-import {Address} from "../model/Address.js";
+import {User} from '../../model/User';
+import {PhoneNumber} from "../../model/PhoneNumber.js";
+import {Address} from "../../model/Address.js";
 import {CarAPI} from "./CarAPI";
 
 /**

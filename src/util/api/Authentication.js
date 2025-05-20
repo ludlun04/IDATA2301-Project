@@ -1,4 +1,4 @@
-import Constants from "../Constants.jsx";
+import Constants from "../../Constants.jsx";
 
 import axios from "axios";
 

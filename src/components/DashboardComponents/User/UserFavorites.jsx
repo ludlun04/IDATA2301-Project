@@ -3,7 +3,7 @@ import CarCard from "../../CarCard/CarCard";
 import {useEffect, useState} from "react";
 import Loader from "../..//loader/Loader";
 import ErrorFetchingDataMessage from "../../ErrorFetchingDataMessage/ErrorFetchingDataMessage";
-import {CarAPI} from "../../../api/CarAPI";
+import {CarAPI} from "../../../util/api/CarAPI";
 
 /**
   * UserFavorites component

@@ -1,7 +1,7 @@
 import "./CarDetailsTable.css";
 import DropdownMenu from "../../../DropdownMenu/DropdownMenu";
 import {useEffect, useState} from "react";
-import {CarAPI} from "../../../../api/CarAPI";
+import {CarAPI} from "../../../../util/api/CarAPI";
 
 /**
  * CarDetailsTable component

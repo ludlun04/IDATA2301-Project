@@ -8,18 +8,19 @@ import Loader from "../../components/loader/Loader";
 import tempImage from "../../resources/logo/Logo-Dark-Vertical.svg";
 import {useCallback, useEffect, useMemo, useState} from "react";
 import {useLocation} from "react-router-dom";
-import {CarAPI} from "../../api/CarAPI";
-import {CompanyAPI} from "../../api/CompanyAPI";
-import {CarBrandAPI} from "../../api/CarBrandAPI";
-import {FuelTypeAPI} from "../../api/FuelTypeAPI";
+import {CarAPI} from "../../util/api/CarAPI";
+import {CompanyAPI} from "../../util/api/CompanyAPI";
+import {CarBrandAPI} from "../../util/api/CarBrandAPI";
+import {FuelTypeAPI} from "../../util/api/FuelTypeAPI";
 import {FiltersContext} from "../../context/FiltersContext";
+import {CarSortUtil} from "../../util/CarSortUtil";
 
 export default function Portal() {
 
   const [centerFiltersDisplayed, setCenterFiltersDisplayed] = useState(false);
 
   const [cars, setCars] = useState([]);
-  console.log(cars);
+
 
   const [loading, setLoading] = useState(true);
   const [errorMessageActive, setErrorMessageActive] = useState(false);
@@ -40,6 +41,19 @@ export default function Portal() {
   const [chosenFromPrice, setChosenFromPrice] = useState(null);
   const [chosenToPrice, setChosenToPrice] = useState(null);
   const [chosenKeyword, setChosenKeyword] = useState("");
+
+  // the sort by item that the user has chosen
+  const [sortByItem, setSortByItem] = useState(null);
+  const handleSetCars = (newCars, choice) => {
+    console.log("Setting cars: ", newCars);
+    if (choice) {
+      console.log("Sorting cars by: ", choice);
+      setCars(CarSortUtil.getCarsOrderedFromSortByItem(newCars, choice));
+    } else {
+      console.log("No sort by item chosen, setting cars without sorting");
+      setCars(newCars)
+    }
+  }
 
   // the filters object that will be sent to the API
   const filters = useMemo(() => ({
@@ -153,7 +167,8 @@ export default function Portal() {
       console.log("Fetching cars with filters: ", filters);
       try {
         const response = await CarAPI.getAllCars(filters);
-        setCars(response.cars);
+        console.log("Current sort by item: ", sortByItem);
+        handleSetCars(response.cars, sortByItem);
 
         const url = response.url;
         if (url) {
@@ -168,7 +183,7 @@ export default function Portal() {
         setErrorMessageActive(true);
       }
 
-    }, []
+    }, [sortByItem]
   );
 
   const fetchManufacturers = async () => {
@@ -294,7 +309,9 @@ export default function Portal() {
             chosenKeyword={chosenKeyword}
             setChosenKeyword={setChosenKeyword}
             cars={cars}
-            setCars={setCars}
+            handleSetCars={handleSetCars}
+            sortByItem={sortByItem}
+            setSortByItem={setSortByItem}
           />
         }
         <section className={`portalVerticalSectionFilters ${centerFiltersDisplayed ? " active" : ""}`}>

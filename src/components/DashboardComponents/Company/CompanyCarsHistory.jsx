@@ -2,7 +2,7 @@ import "./CompanyCars.css"
 import CarDetailsTable from "./CarDetailsTable/CarDetailsTable";
 import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
-import {OrderAPI} from "../../../api/OrderAPI";
+import {OrderAPI} from "../../../util/api/OrderAPI";
 
 /**
  * CompanyCarsHistory component

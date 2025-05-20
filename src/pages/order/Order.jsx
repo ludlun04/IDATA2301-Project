@@ -1,7 +1,7 @@
 import "./Order.css";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { OrderAPI } from "../../api/OrderAPI";
+import { OrderAPI } from "../../util/api/OrderAPI";
 import CarCard from "../../components/CarCard/CarCard";
 
 

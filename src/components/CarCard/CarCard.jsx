@@ -4,7 +4,7 @@ import CarFavoriteButton from "../CarFavoriteButton/CarFavoriteButton";
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {Car} from "../../model/Car";
-import {ImageAPI} from "../../api/ImageAPI";
+import {ImageAPI} from "../../util/api/ImageAPI";
 
 /* 
  * CarCard component

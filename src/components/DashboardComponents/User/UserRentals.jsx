@@ -1,6 +1,6 @@
 import "./UserRentals.css"
 import { useEffect, useState } from "react";
-import { OrderAPI } from "../../../api/OrderAPI";
+import { OrderAPI } from "../../../util/api/OrderAPI";
 import RentCard from "../../RentCard/RentCard";
 
 /**

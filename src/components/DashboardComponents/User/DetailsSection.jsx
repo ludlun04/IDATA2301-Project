@@ -2,7 +2,7 @@ import "./DetailsSection.css"
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../context/AuthContext";
 import { useEffect, useState } from "react";
-import { UsersAPI } from "../../../api/UsersAPI";
+import { UsersAPI } from "../../../util/api/UsersAPI";
 import EditUserDialogue from "../Admin/EditUserDialogue";
 
 /**

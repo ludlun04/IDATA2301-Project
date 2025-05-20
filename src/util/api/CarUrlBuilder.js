@@ -1,4 +1,4 @@
-import Constants from "../Constants";
+import Constants from "../../Constants";
 
 /**
  * Class to build URLs for car-related API requests.

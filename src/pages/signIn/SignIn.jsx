@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Authentication } from "../../api/Authentication";
+import { Authentication } from "../../util/api/Authentication";
 import "./SignIn.css"
 import { NavLink, useNavigate } from "react-router-dom";
 import {useAuth} from "../../context/AuthContext";

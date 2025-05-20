@@ -2,15 +2,15 @@ import "./Rent.css"
 import img from "../../resources/logo/Logo-Dark-Vertical.svg"
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { CarAPI } from "../../api/CarAPI";
+import { CarAPI } from "../../util/api/CarAPI";
 import CarAttributes from "../../components/CarAttribute/CarAttributes";
 import Loader from "../../components/loader/Loader";
 import ErrorFetchingDataMessage
   from "../../components/ErrorFetchingDataMessage/ErrorFetchingDataMessage";
 import RentInteraction from "../../components/RentInteraction/RentInteraction";
-import {ImageAPI} from "../../api/ImageAPI";
+import {ImageAPI} from "../../util/api/ImageAPI";
 import CarFavoriteButton from "../../components/CarFavoriteButton/CarFavoriteButton";
-import {OrderAPI} from "../../api/OrderAPI";
+import {OrderAPI} from "../../util/api/OrderAPI";
 
 export default function Rent(props) {
   let { id } = useParams();

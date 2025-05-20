@@ -1,7 +1,7 @@
 import "./Company.css"
 import {Outlet, useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
-import {CompanyAPI} from "../../../api/CompanyAPI";
+import {CompanyAPI} from "../../../util/api/CompanyAPI";
 import CompanyDetails from "./CompanyDetails/CompanyDetails";
 
 /**

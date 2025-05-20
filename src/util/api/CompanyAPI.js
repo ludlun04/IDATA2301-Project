@@ -1,9 +1,9 @@
-import Constants from "../Constants.jsx";
+import Constants from "../../Constants.jsx";
 import axios from 'axios';
-import {Company} from "../model/Company";
-import {PhoneNumber} from "../model/PhoneNumber";
+import {Company} from "../../model/Company";
+import {PhoneNumber} from "../../model/PhoneNumber";
 import {Authentication} from "./Authentication";
-import {Address} from "../model/Address";
+import {Address} from "../../model/Address";
 
 /**
  * API module for handling company-related endpoints.

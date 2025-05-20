@@ -1,8 +1,8 @@
 import "./DashboardNavBar.css"
 import { useEffect, useState } from "react";
-import { UsersAPI } from "../../../api/UsersAPI";
+import { UsersAPI } from "../../../util/api/UsersAPI";
 import {useNavigate} from "react-router-dom";
-import {CompanyAPI} from "../../../api/CompanyAPI";
+import {CompanyAPI} from "../../../util/api/CompanyAPI";
 
 /**
  * DashboardNavBar component
@@ -36,9 +36,17 @@ export default function DashboardNavBar({ className }) {
     fetchCompanies().then(r => {}).catch(error => {console.log(error)});
   }, []);
 
-  const hasUserRole = roles.some(role => role.name === 'USER');
-  const hasAdmin = roles.some(role => role.name === 'ADMIN');
-  const hasCompany = companies.length > 0;
+  let hasUserRole = false;
+  let hasAdmin = false;
+  let hasCompany = false;
+  try {
+    hasUserRole = roles.some(role => role.name === 'USER');
+    hasAdmin = roles.some(role => role.name === 'ADMIN');
+    hasCompany = companies.length > 0;
+  } catch (error) {
+    console.error("Error checking roles:", error);
+  }
+
 
   return (
     <div className={className}>

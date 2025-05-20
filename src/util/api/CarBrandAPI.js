@@ -1,6 +1,6 @@
-import Constants from "../Constants";
+import Constants from "../../Constants";
 import axios from "axios";
-import {CarBrand} from "../model/CarBrand";
+import {CarBrand} from "../../model/CarBrand";
 
 /**
  * Apis for handling car brands.

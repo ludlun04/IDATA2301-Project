@@ -1,6 +1,6 @@
-import Constants from "../Constants";
+import Constants from "../../Constants";
 import axios from "axios";
-import {FuelType} from "../model/FuelType";
+import {FuelType} from "../../model/FuelType";
 
 /**
  * API module for handling fuel types.

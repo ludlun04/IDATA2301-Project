@@ -2,7 +2,7 @@ import "./CompanyCars.css"
 import {useParams} from "react-router-dom";
 import CarDetailsTable from "./CarDetailsTable/CarDetailsTable";
 import {useEffect, useState} from "react";
-import {CarAPI} from "../../../api/CarAPI";
+import {CarAPI} from "../../../util/api/CarAPI";
 
 /**
  * CompanyCars component

@@ -1,7 +1,7 @@
 import axios from "axios";
-import Constants from "../Constants";
+import Constants from "../../Constants";
 import { Authentication } from "./Authentication";
-import { Order } from "../model/Order";
+import { Order } from "../../model/Order";
 import { CarAPI } from "./CarAPI";
 import { UsersAPI } from "./UsersAPI";
 

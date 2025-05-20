@@ -1,7 +1,7 @@
 import "./CompaniesSection.css";
 import CompanyRow from "./CompanyRow";
 import {useEffect, useState} from "react";
-import {CompanyAPI} from "../../../api/CompanyAPI";
+import {CompanyAPI} from "../../../util/api/CompanyAPI";
 
 /**
   * CompaniesSection component

@@ -3,7 +3,7 @@ import "./SignUp.css"
 import {NavLink, useNavigate} from "react-router-dom";
 import DatePicker from "react-datepicker";
 import {useEffect, useState} from "react";
-import { UsersAPI } from "../../api/UsersAPI";
+import { UsersAPI } from "../../util/api/UsersAPI";
 import { PhoneNumber } from "../../model/PhoneNumber";
 import { Address } from "../../model/Address";
 

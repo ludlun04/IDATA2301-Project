@@ -1,16 +1,16 @@
 import axios from 'axios';
-import {Car} from "../model/Car";
-import {CarBrand} from "../model/CarBrand";
-import {CarModel} from "../model/CarModel";
-import {FuelType} from "../model/FuelType";
-import {TransmissionType} from "../model/TransmissionType";
-import {Company} from "../model/Company";
-import {Feature} from "../model/Feature";
-import {Addon} from "../model/Addon";
+import {Car} from "../../model/Car";
+import {CarBrand} from "../../model/CarBrand";
+import {CarModel} from "../../model/CarModel";
+import {FuelType} from "../../model/FuelType";
+import {TransmissionType} from "../../model/TransmissionType";
+import {Company} from "../../model/Company";
+import {Feature} from "../../model/Feature";
+import {Addon} from "../../model/Addon";
 import {CarUrlBuilder} from "./CarUrlBuilder";
 import {UsersAPI} from "./UsersAPI";
 import {Authentication} from "./Authentication";
-import Constants from "../Constants";
+import Constants from "../../Constants";
 
 /**
  * CarAPI module to handle car-related endpoints.
