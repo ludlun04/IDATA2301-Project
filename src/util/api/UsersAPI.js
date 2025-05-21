@@ -69,7 +69,7 @@ export const UsersAPI = {
           address: {
             country: user.getAddress().getCountry(),
             streetAddress: user.getAddress().getStreetAddress(),
-            zipCode: user.getAddress().getStreetAddress()
+            zipCode: user.getAddress().getZipCode()
           },
           password: password
         }
@@ -106,7 +106,7 @@ export const UsersAPI = {
       address: {
         country: user.getAddress().getCountry(),
         streetAddress: user.getAddress().getStreetAddress(),
-        zipCode: user.getAddress().getStreetAddress()
+        zipCode: user.getAddress().getZipCode()
       },
       roles: user.getRoles()
     }
