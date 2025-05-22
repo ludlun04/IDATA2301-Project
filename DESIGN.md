@@ -1,7 +1,7 @@
 # Design Guideline
 
 ### Theme
-The aim of our website to convey a sense of journey, adventure and travel, since adventuring and traveling is what one does with a rental car.
+The aim of our website is to convey a sense of journey, adventure and travel, since adventuring and traveling is what one does with a rental car.
 There is a balance in the design between playful and serious-business, in order to appear professional, but also approachable.
 
 
