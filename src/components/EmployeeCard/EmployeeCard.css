@@ -35,7 +35,7 @@
 
 @media only screen and (max-width: 512px) {
     .EmployeeCard {
-        width: 110rem;
+        width: 10rem;
     }
     .employeeCardHeader {
         font-size: 1rem;
