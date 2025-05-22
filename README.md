@@ -9,7 +9,7 @@ The project is a simple car rental application where companies go to advertise t
 | Student Name     | GitHub account                              | Email Account           |
 | -----------------|---------------------------------------------|-------------------------|
 |Kristian Garder   | [Kristian54](https://github.com/Kristian54) | kristian.garder@ntnu.no |
-|Ludvik Lund-Hole  | [ludlun04](https://github.com/ludlun04)     | ludviklu@ntnu.no         |
+|Ludvik Lund-Hole  | [ludlun04](https://github.com/ludlun04)     | ludviklu@stud.ntnu.no   |
 |Stian Øye Jenssen | [Grade123](https://github.com/Grade123)     | stianoj@stud.ntnu.no    |
 
 
