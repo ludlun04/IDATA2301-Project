@@ -1,6 +1,4 @@
-# Design Guidelines
-
-## Concept Phase
+# Design Guideline
 
 ### Theme
 The aim of our website to convey a sense of journey, adventure and travel, since adventuring and traveling is what one does with a rental car.
@@ -16,7 +14,7 @@ This color gives a feeling of happiness, liveliness, hope, curiosity and intelli
 ![Image of color gradients from primary color](/assets/colors.jpg)
 
 ### Hierarchy and layout
-Our base layout consists of a header at the top, page content at the center and footer at the bottom. 
+Our base layout will consist of a header at the top, page content at the center and footer at the bottom. 
 - Header contains our logo and navigation, as well as a user icon if the user is logged in
 - Page content contains the main content of the page
 - Footer contains information, links and contact information
@@ -30,10 +28,10 @@ Certain forms will be placed in the center of the page, elevated above the other
 These measures ensure that the user is naturally guided towards seeing the most important content first.
 
 ### Images
-Images sourced from finn and pixabay
-Images used only by the frontend are located in the assets folder of the frontend application.
+Images sourced from finn.no and pixabay.com
+Images used only by the frontend will be located in the assets folder of the frontend application.
 
-The images related to the cars are stored in the database. This decision was made to easily map between entities in the database and their respective images, ensuring semantic integrity.
+The images related to the cars should be stored in the database. This decision was made to easily map between entities in the database and their respective images, ensuring semantic integrity.
 However, this approach does entail a drawback. It takes longer for the images to load to the webpage.
 
 For the landing page we have text on the image, since the image will act as a background. For the rest of the website the text will always be next to the images.
@@ -47,7 +45,7 @@ For the icon pack we will use Google material icons.
 The icons will be gray scale or adhere to our primary color scheme, depending on which color results in better contrast.
 
 ### Typography
-We decided to use Sans-serif because it is clean, simple, modern and is easy to read. The font we chose is Kantumruy Pro.
+We decided to use Sans-serif because it is clean, simple, modern and is easy to read. The font we chose is Kantumruy Pro. This font should be used in every part of the website.
 This font is clean and simple with a modern look, which is the standard approach in modern web design.
 It is also easy to read and has a good balance between playful and serious.
 
@@ -73,4 +71,4 @@ Slight shadows will be used to emphasize important elements or elements that sho
 We want to keep them minimal, since bold shadows clash with our flat, minimal design.
 
 ### Spacing
-TODO
+Common spacing values should be used in most places to ensure a consistent design both across and within pages. The most common spacings include 1rem for smaller sections, and 2rem for larger elements.
